@@ -1,8 +1,11 @@
 import { Flex, Text, Image, Divider, Button } from "@chakra-ui/react";
 import NavRightContent from "./NavRightContent/NavBarRightContent";
 import Link from "next/link";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../Firebase/ClientApp";
 
 const Navbar: React.FC = () => {
+  const [user] = useAuthState(auth);
   return (
     <>
       <Flex
@@ -27,7 +30,7 @@ const Navbar: React.FC = () => {
               </Flex>
             </Link>
             <Flex>
-              <NavRightContent />
+              <NavRightContent user={user} />
             </Flex>
           </Flex>
         </Flex>

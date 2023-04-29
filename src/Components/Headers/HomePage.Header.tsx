@@ -1,13 +1,16 @@
+import { authModalState } from "@/Atoms/AuthModalAtom";
 import { Button, Flex, Heading, Text, Image } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import TextTransition, { presets } from "react-text-transition";
+import { useSetRecoilState } from "recoil";
 
 const TEXTS = ["Journal", "Blog", "Connect", "Grow"];
 
 const HomePageHeader: React.FC = () => {
   const [index, setIndex] = useState(0);
+  const setAuthModalView = useSetRecoilState(authModalState);
   useEffect(() => {
-    const animateTiming = setInterval(() => setIndex((prev) => prev + 1), 1500);
+    const animateTiming = setInterval(() => setIndex((prev) => prev + 1), 2000);
     return () => {
       clearTimeout(animateTiming);
     };
@@ -44,6 +47,12 @@ const HomePageHeader: React.FC = () => {
               variant={"outline"}
               _hover={{
                 bg: "#57385c",
+              }}
+              onClick={() => {
+                setAuthModalView({
+                  view: "Sign Up",
+                  open: true,
+                });
               }}
             >
               Get Started

@@ -3,7 +3,6 @@ import {
   Icon,
   Image,
   Text,
-  Button,
   useDisclosure,
   List,
   ListIcon,
@@ -11,7 +10,7 @@ import {
   Divider,
 } from "@chakra-ui/react";
 import { CiUser, CiLogin } from "react-icons/ci";
-import { BsChevronDown, BsChevronRight } from "react-icons/bs";
+import { BsChevronRight } from "react-icons/bs";
 import {
   Drawer,
   DrawerBody,
@@ -21,10 +20,15 @@ import {
   DrawerContent,
   DrawerCloseButton,
 } from "@chakra-ui/react";
-import React from "react";
+
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "@/Components/Firebase/ClientApp";
+import { signOut } from "firebase/auth";
 
 const NavUserProfile: React.FC = () => {
+  const [user] = useAuthState(auth);
   const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
     <>
       <Flex align={"center"} onClick={onOpen} cursor={"pointer"}>
@@ -42,7 +46,7 @@ const NavUserProfile: React.FC = () => {
         <DrawerContent>
           <DrawerCloseButton />
           <DrawerHeader my={"50px"}>
-            <Text> Obi Okwonko</Text>
+            <Text> {user?.displayName}</Text>
           </DrawerHeader>
 
           <DrawerBody>
@@ -55,10 +59,15 @@ const NavUserProfile: React.FC = () => {
               alignItems={"center"}
               width={"100%"}
               justifyContent={"start"}
+              onClick={(event: React.MouseEvent) => {
+                event.stopPropagation();
+                signOut(auth);
+              }}
             >
               <Icon as={CiLogin} mr={"2"} />
               Sign out
             </Text>
+            <Text fontSize={"xs"}>{user?.email}</Text>
           </DrawerFooter>
         </DrawerContent>
       </Drawer>

@@ -10,6 +10,9 @@ const pill = definePartsStyle({
     borderColor: "gray.200",
     background: "gray.50",
     borderRadius: "full",
+    _placeholder: {
+      fontSize: "sm",
+    },
 
     // Let's also provide dark mode alternatives
     _dark: {

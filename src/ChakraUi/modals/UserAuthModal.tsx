@@ -10,11 +10,12 @@ import {
   ModalHeader,
   ModalBody,
   ModalCloseButton,
-  Text,
 } from "@chakra-ui/react";
 
 const AuthModal: React.FC = () => {
   const [value, setValue] = useRecoilState(authModalState);
+  console.log(value);
+
   return (
     <>
       <Modal

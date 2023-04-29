@@ -1,9 +1,11 @@
 import { authModalState } from "@/Atoms/AuthModalAtom";
 import { Flex, Input, Button, Text, Spinner } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSetRecoilState } from "recoil";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { auth } from "../Firebase/ClientApp";
+import { FIREBASE_ERROR } from "../Firebase/error";
+import { useRouter } from "next/navigation";
 
 const SignUp: React.FC = () => {
   const setAuthViewState = useSetRecoilState(authModalState);
@@ -11,35 +13,61 @@ const SignUp: React.FC = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
   const [userValue, setUserValue] = useState({
-    Email: "",
+    email: "",
     password: "",
     confirmPassword: "",
   });
-  const handleUserAuth = () => {
+  const route = useRouter();
+
+  // functions
+  const HamdleUserInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setUserValue((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+  const HandleCreateUser = (e: React.ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const { email, password, confirmPassword } = userValue;
     setUserError("");
-    if (userValue.password !== userValue.confirmPassword) {
+    if (password !== confirmPassword) {
       setUserError("password do not match!");
       return;
+    } else if (password.length < 6) {
+      setUserError("password too short, must be more than 6 character");
+
+      return;
     }
+    createUserWithEmailAndPassword(email, password);
+    route.push("/onboarding");
   };
+  // Effects
+
   return (
     <>
-      <form>
+      <form onSubmit={HandleCreateUser}>
         <Flex
           flexDir={"column"}
           align={"center"}
           mb={{ base: "50%", md: "20%" }}
         >
           <Input
+            value={userValue.email}
             isRequired
-            name="Email"
+            name="email"
             variant={"pill"}
             my={"10px"}
             width={{ base: "80%", md: "50%" }}
             placeholder="Email"
             type={"email"}
+            minLength={6}
+            onChange={(event) => {
+              HamdleUserInput(event);
+            }}
           />
           <Input
+            value={userValue.password}
             isRequired
             name="password"
             variant={"pill"}
@@ -47,8 +75,12 @@ const SignUp: React.FC = () => {
             width={{ base: "80%", md: "50%" }}
             placeholder="Password"
             type={"password"}
+            onChange={(event) => {
+              HamdleUserInput(event);
+            }}
           />
           <Input
+            value={userValue.confirmPassword}
             isRequired
             name="confirmPassword"
             variant={"pill"}
@@ -56,7 +88,19 @@ const SignUp: React.FC = () => {
             width={{ base: "80%", md: "50%" }}
             placeholder="Confirm Password"
             type={"password"}
+            onChange={(event) => {
+              HamdleUserInput(event);
+            }}
           />
+          <Flex fontSize={"xs"} color={"red.400"}>
+            {error && (
+              <Text>
+                {FIREBASE_ERROR[error.message as keyof typeof FIREBASE_ERROR]}
+              </Text>
+            )}
+            {userError && <Text> {userError}</Text>}
+          </Flex>
+
           <Flex width={"100%"} justify={"center"}>
             {loading ? (
               <Spinner size={{ base: "xs", md: "sm" }} />
@@ -66,9 +110,9 @@ const SignUp: React.FC = () => {
               </Button>
             )}
           </Flex>
-          <Flex align={"center"} width={"100"} justify={"center"}>
+          <Flex align={"center"} width={"100%"} justify={"center"}>
             <Text fontSize={"sm"} mt={"1.5"}>
-              Already have an accunt ?
+              Already have an account ?
             </Text>
             <Text
               ml={"2"}

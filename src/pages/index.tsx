@@ -1,11 +1,11 @@
 import Head from "next/head";
-import { Inter } from "next/font/google";
-import { Heading, Text } from "@chakra-ui/react";
+import { Text } from "@chakra-ui/react";
 import HomePageHeader from "@/Components/Headers/HomePage.Header";
-
-const inter = Inter({ subsets: ["latin"] });
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "@/Components/Firebase/ClientApp";
 
 export default function Home() {
+  const [user] = useAuthState(auth);
   return (
     <>
       <Head>
@@ -14,7 +14,8 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <HomePageHeader />
+      {!user && <HomePageHeader />}
+
       <main>
         <Text height={"200vh"}> some other things</Text>
       </main>
