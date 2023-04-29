@@ -1,0 +1,71 @@
+import { Button, Flex, Heading, Text, Image } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import TextTransition, { presets } from "react-text-transition";
+
+const TEXTS = ["Journal", "Blog", "Connect", "Grow"];
+
+const HomePageHeader: React.FC = () => {
+  const [index, setIndex] = useState(0);
+  useEffect(() => {
+    const animateTiming = setInterval(() => setIndex((prev) => prev + 1), 1500);
+    return () => {
+      clearTimeout(animateTiming);
+    };
+  }, []);
+  return (
+    <>
+      <Flex
+        height={"70vh"}
+        bg={"#57385c"}
+        justify={"center"}
+        width={"100%"}
+        px={"20px"}
+        color={"white"}
+      >
+        <Flex
+          flexDir={"column"}
+          width={{ base: "100%", md: "50%" }}
+          justify={"center"}
+        >
+          <Heading fontWeight={"light"} fontSize={{ base: "8vh" }}>
+            <TextTransition springConfig={presets.molasses}>
+              {TEXTS[index % TEXTS.length]}
+            </TextTransition>
+          </Heading>
+          <Flex flexDir={"column"} display={"absolute"}>
+            <Text my={"5"}>
+              Express yourself, <br />
+              grow and connect with supportive <br />
+              community of like minded individuals
+            </Text>
+            <Button
+              width={"50%"}
+              borderRadius={"full"}
+              variant={"outline"}
+              _hover={{
+                bg: "#57385c",
+              }}
+            >
+              Get Started
+            </Button>
+          </Flex>
+        </Flex>
+
+        <Flex
+          width={"50%"}
+          height={"100%"}
+          display={{ base: "none", md: "block" }}
+        >
+          <Image
+            src={"headerHomeImage.gif"}
+            alt={"homepageImage"}
+            objectFit={"contain"}
+            width={"100%"}
+            height={"100%"}
+          />
+        </Flex>
+      </Flex>
+    </>
+  );
+};
+export default HomePageHeader;
