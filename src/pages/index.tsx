@@ -3,6 +3,7 @@ import { Text } from "@chakra-ui/react";
 import HomePageHeader from "@/Components/Headers/HomePage.Header";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/Components/Firebase/ClientApp";
+import ContentLayout from "@/Components/Layout/Content.Layout";
 
 export default function Home() {
   const [user] = useAuthState(auth);
@@ -17,7 +18,14 @@ export default function Home() {
       {!user && <HomePageHeader />}
 
       <main>
-        <Text height={"200vh"}> some other things</Text>
+        <ContentLayout>
+          <>
+            <Text width={"100%"}>LHS</Text>
+          </>
+          <>
+            <Text>RHS</Text>
+          </>
+        </ContentLayout>
       </main>
     </>
   );

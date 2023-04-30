@@ -105,3 +105,21 @@ a {
     color-scheme: dark;
   }
 } */
+@media (max-width: 700px) {
+  .centerText {
+    text-align: center;
+    display: inline;
+  }
+  .text {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+/* Tablet and Smaller Desktop */
+@media (min-width: 701px) and (max-width: 1120px) {
+  .text {
+    display: flex;
+    justify-content: center;
+  }
+}

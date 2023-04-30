@@ -1,7 +1,9 @@
 import "@/styles/globals.css";
 import "@fontsource/lexend/200.css";
+import "@fontsource/lexend/700.css";
 import "@fontsource/ultra";
 import type { AppProps } from "next/app";
+
 import Theme from "@/ChakraUi/Theme";
 import { ChakraProvider } from "@chakra-ui/react";
 import Layout from "@/Components/Layout/Layout";

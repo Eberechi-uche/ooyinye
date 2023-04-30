@@ -9,7 +9,7 @@ const Theme = extendTheme({
         lineHeight: "tall",
       },
       a: {
-        color: "teal.500",
+        color: "inherit",
       },
     },
   },

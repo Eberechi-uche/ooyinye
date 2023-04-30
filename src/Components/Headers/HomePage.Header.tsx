@@ -1,7 +1,7 @@
 import { authModalState } from "@/Atoms/AuthModalAtom";
 import { Button, Flex, Heading, Text, Image } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import TextTransition, { presets } from "react-text-transition";
+import ReactTextTransition, { presets } from "react-text-transition";
 import { useSetRecoilState } from "recoil";
 
 const TEXTS = ["Journal", "Blog", "Connect", "Grow"];
@@ -27,13 +27,17 @@ const HomePageHeader: React.FC = () => {
       >
         <Flex
           flexDir={"column"}
-          width={{ base: "100%", md: "50%" }}
+          width={{ base: "100%", lg: "50%" }}
           justify={"center"}
+          textAlign={{ base: "center", lg: "start" }}
         >
-          <Heading fontWeight={"light"} fontSize={{ base: "8vh" }}>
-            <TextTransition springConfig={presets.molasses}>
+          <Heading fontWeight={"light"}>
+            <ReactTextTransition
+              springConfig={presets.molasses}
+              className="text"
+            >
               {TEXTS[index % TEXTS.length]}
-            </TextTransition>
+            </ReactTextTransition>
           </Heading>
           <Flex flexDir={"column"} display={"absolute"}>
             <Text my={"5"}>
@@ -63,7 +67,7 @@ const HomePageHeader: React.FC = () => {
         <Flex
           width={"50%"}
           height={"100%"}
-          display={{ base: "none", md: "block" }}
+          display={{ base: "none", lg: "block" }}
         >
           <Image
             src={"headerHomeImage.gif"}

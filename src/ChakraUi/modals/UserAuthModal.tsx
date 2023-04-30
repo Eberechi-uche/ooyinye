@@ -14,7 +14,6 @@ import {
 
 const AuthModal: React.FC = () => {
   const [value, setValue] = useRecoilState(authModalState);
-  console.log(value);
 
   return (
     <>

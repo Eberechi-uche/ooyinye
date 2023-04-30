@@ -84,7 +84,7 @@ const Welcome: React.FC = () => {
           type={"email"}
           variant={"pill"}
           my={"10px"}
-          width={{ base: "70%", md: "30%" }}
+          width={"70%"}
           placeholder="Display name"
           onChange={(e) => {
             handleUserInput(e);
