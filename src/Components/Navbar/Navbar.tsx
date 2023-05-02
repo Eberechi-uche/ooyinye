@@ -14,6 +14,8 @@ const Navbar: React.FC = () => {
         flexDir={"column"}
         bg={"#ffff"}
         zIndex={"5"}
+        borderBottom={"1px solid "}
+        borderColor={"gray.700"}
       >
         <Flex p={"10px 5px"}>
           <Flex justify={"space-between"} width={"100%"} align={"center"}>
@@ -60,8 +62,6 @@ const Navbar: React.FC = () => {
             </Flex>
           </Flex>
         </Flex>
-
-        <Divider />
       </Flex>
     </>
   );

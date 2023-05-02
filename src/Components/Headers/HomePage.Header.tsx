@@ -19,7 +19,7 @@ const HomePageHeader: React.FC = () => {
     <>
       <Flex
         height={"70vh"}
-        bg={"#57385c"}
+        bg={"gray.900"}
         justify={"center"}
         width={"100%"}
         px={"20px"}

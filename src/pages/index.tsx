@@ -1,9 +1,13 @@
 import Head from "next/head";
-import { Text } from "@chakra-ui/react";
+import { Text, Flex, Divider, Button } from "@chakra-ui/react";
 import HomePageHeader from "@/Components/Headers/HomePage.Header";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/Components/Firebase/ClientApp";
 import ContentLayout from "@/Components/Layout/Content.Layout";
+import Carousel from "@/Components/Layout/Carousel.Layout";
+import TopTrendCard from "@/Components/Card/TopTrendCard";
+import PostCard from "@/Components/Card/PostCard";
+import HomeLHS from "@/Components/LeftContentComponent/HomeLHS/HomeLHS";
 
 export default function Home() {
   const [user] = useAuthState(auth);
@@ -20,10 +24,124 @@ export default function Home() {
       <main>
         <ContentLayout>
           <>
-            <Text width={"100%"}>LHS</Text>
+            <Flex flexDir={"column"}>
+              <Text width={"100%"} fontWeight={"700"} ml={"2"}>
+                Trending Now in Blogs
+              </Text>
+              <Carousel>
+                <TopTrendCard />
+                <TopTrendCard />
+                <TopTrendCard />
+                <TopTrendCard />
+                <TopTrendCard />
+                <TopTrendCard />
+              </Carousel>
+            </Flex>
+            <Flex flexDir={"column"}>
+              <Text width={"100%"} fontWeight={"700"} ml={"2"}>
+                Top Stories
+              </Text>
+              <Carousel>
+                <TopTrendCard />
+                <TopTrendCard />
+                <TopTrendCard />
+                <TopTrendCard />
+                <TopTrendCard />
+                <TopTrendCard />
+              </Carousel>
+            </Flex>
+
+            <Flex width={"100%"} flexDir={"column"} py={"20"}>
+              <Text letterSpacing={"4px"} fontWeight={"bold"}>
+                Blog Posts
+              </Text>
+              <Flex flexDir={"column"} borderBottom={"1px solid"}>
+                <Flex
+                  align={"center"}
+                  width={"100%"}
+                  overflowX={"scroll"}
+                  sx={{
+                    "::-webkit-scrollbar": {
+                      display: "none",
+                    },
+                  }}
+                  my={"7"}
+                >
+                  <Flex>
+                    <Button
+                      variant={"outline"}
+                      size={{ base: "sm" }}
+                      borderRadius={"full"}
+                      m={"1"}
+                    >
+                      Science
+                    </Button>
+                    <Button
+                      variant={"outline"}
+                      size={{ base: "sm" }}
+                      borderRadius={"full"}
+                      m={"1"}
+                    >
+                      Science
+                    </Button>
+                    <Button
+                      variant={"outline"}
+                      size={{ base: "sm" }}
+                      m={"1"}
+                      borderRadius={"full"}
+                    >
+                      life style
+                    </Button>
+                    <Button
+                      variant={"outline"}
+                      m={"1"}
+                      size={{ base: "sm" }}
+                      borderRadius={"full"}
+                    >
+                      Technologies
+                    </Button>
+                    <Button
+                      m={"1"}
+                      variant={"outline"}
+                      size={{ base: "sm" }}
+                      borderRadius={"full"}
+                    >
+                      Art
+                    </Button>
+                    <Button
+                      m={"1"}
+                      variant={"outline"}
+                      size={{ base: "sm" }}
+                      borderRadius={"full"}
+                    >
+                      Business
+                    </Button>
+                    <Button
+                      m={"1"}
+                      variant={"outline"}
+                      size={{ base: "sm" }}
+                      borderRadius={"full"}
+                    >
+                      DIY
+                    </Button>
+                  </Flex>
+                </Flex>
+              </Flex>
+
+              <PostCard />
+              <PostCard />
+              <PostCard />
+              <PostCard />
+              <PostCard />
+              <PostCard />
+              <PostCard />
+              <PostCard />
+              <PostCard />
+              <PostCard />
+            </Flex>
           </>
           <>
-            <Text>RHS</Text>
+            <HomeLHS />
           </>
         </ContentLayout>
       </main>

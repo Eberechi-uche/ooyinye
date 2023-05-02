@@ -8,19 +8,21 @@ const ContentLayout: React.FC<ContentLayoutProps> = ({ children }) => {
   return (
     <>
       <Flex justify={"center"}>
-        <Flex justify={"center"} width={"100%"} maxWidth={"760"}>
+        <Flex justify={"center"} width={"100%"} maxWidth={"1300px"}>
           <Flex
             direction={"column"}
-            width={{ base: "100%", lg: "70%" }}
-            px={{ base: "0", lg: "2" }}
+            width={{ base: "100%", lg: "65%" }}
+            p={"4"}
           >
             {children && children[0 as keyof typeof children]}
           </Flex>
           <Flex
             flexGrow={"1"}
             display={{ base: "none", lg: "unset" }}
-            borderStart={"1.5px solid"}
+            borderStart={"1px solid"}
             borderColor={"gray.200"}
+            minH={"100vh"}
+            p={"4"}
           >
             {children && children[1 as keyof typeof children]}
           </Flex>
