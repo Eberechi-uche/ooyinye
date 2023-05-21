@@ -1,4 +1,4 @@
-import { Flex, Text, Image, Divider, Button } from "@chakra-ui/react";
+import { Flex, Text, Image } from "@chakra-ui/react";
 import NavRightContent from "./NavRightContent/NavBarRightContent";
 import Link from "next/link";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -22,7 +22,7 @@ const Navbar: React.FC = () => {
             <Link href={"/"}>
               <Flex align={"center"}>
                 <Image
-                  src={"/logo.png"}
+                  src={"/favicon.ico"}
                   alt={"logo"}
                   boxSize={{ base: "10vw", md: "4vw" }}
                 />

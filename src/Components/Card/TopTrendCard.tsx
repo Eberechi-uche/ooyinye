@@ -56,7 +56,7 @@ const TopTrendCard: React.FC = () => {
         </Flex>
 
         <Flex flexDir={"column"}>
-          <Text fontWeight={"700"} textTransform={"capitalize"}>
+          <Text fontWeight={"700"} textTransform={"capitalize"} noOfLines={1}>
             the quick brown fox
           </Text>
           <Text noOfLines={2} fontSize={"xs"}>

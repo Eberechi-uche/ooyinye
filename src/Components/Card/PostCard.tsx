@@ -60,12 +60,16 @@ const PostCard: React.FC = () => {
           </Flex>
         )}
 
-        <Flex align={"center"} mt={"4"}>
-          <Flex flexDir={"column"} noOfLines={[4, 6]} alignSelf={"flex-start"}>
-            <Text fontWeight={"700"}>
-              The QUick brown fox the Quickiest brown fox
+        <Flex align={"center"} mt={"2"}>
+          <Flex
+            flexDir={"column"}
+            alignSelf={"flex-start"}
+            height={"fit-content"}
+          >
+            <Text fontWeight={"700"} noOfLines={[1, 2]}>
+              The Quick brown fox the Quickiest brown fox
             </Text>
-            <Text fontSize={{ base: "xs" }}>
+            <Text fontSize={{ base: "xs" }} noOfLines={[2, 4]}>
               The Quick fox jumped over the lazy Dog The Quick fox jumped over
               the lazy DogThe Quick fox jumped over the lazy DogThe Quick fox
               jumped over the lazy DogThe Quick fox jumped over the lazy Dog The
@@ -78,11 +82,13 @@ const PostCard: React.FC = () => {
           <Image
             alt={"postImage"}
             src={"journal2.jpg"}
-            width={{ base: "30%" }}
-            height={"100%"}
+            width={{ base: "35%" }}
+            height={{ base: "80%", md: "60%" }}
             objectFit={"cover"}
             ml={"4"}
             borderRadius={"3px"}
+            border={"2px solid"}
+            alignSelf={"flex-start"}
           />
         </Flex>
       </Flex>

@@ -44,8 +44,9 @@ export const ProfileInfo: React.FC<ProfileInfoProps> = ({ profile }) => {
         <Image
           src={"/series.webp"}
           alt={"userProfile"}
-          boxSize={"100px"}
-          borderRadius={"full"}
+          boxSize={"200px"}
+          objectFit={"cover"}
+          borderRadius={"10px"}
         />
       </Flex>
 
@@ -56,7 +57,7 @@ export const ProfileInfo: React.FC<ProfileInfoProps> = ({ profile }) => {
         align={"center"}
         mt={"20px"}
       >
-        <Text textTransform={"capitalize"} fontSize={"2xl"} fontWeight={"500"}>
+        <Text textTransform={"capitalize"} fontSize={"2xl"} fontWeight={"700"}>
           {profile}
         </Text>
         <Flex width={{ base: "80%", md: "50%" }} justify={"space-around"}>
