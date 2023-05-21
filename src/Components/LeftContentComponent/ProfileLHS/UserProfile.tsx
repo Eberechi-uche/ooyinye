@@ -1,6 +1,4 @@
-import ProfilePageHeader, {
-  ProfileInfo,
-} from "@/Components/Headers/ProfilePage.Header";
+import { UserSocials } from "@/Components/Headers/ProfilePage.Header";
 import { ProfilePageHeaderProps } from "@/Components/Headers/ProfilePage.Header";
 import { Flex, Image, Text, Button } from "@chakra-ui/react";
 
@@ -52,9 +50,13 @@ const UserProfleLHS: React.FC<ProfilePageHeaderProps> = ({ profile }) => {
             </Text>
           </Flex>
 
-          <Flex width={"80%"} justify={"space-around"}>
-            <Button variant={"brandPrimary"}> follow</Button>
-            <Button variant={"brandPrimary"}> connect</Button>
+          <Flex width={"80%"} justify={"space-around"} py={"10"}>
+            <Button variant={"brandPrimary"} width={"50%"}>
+              follow
+            </Button>
+          </Flex>
+          <Flex>
+            <Text fontSize={"2xl"}>Socials</Text>
           </Flex>
         </Flex>
       </Flex>

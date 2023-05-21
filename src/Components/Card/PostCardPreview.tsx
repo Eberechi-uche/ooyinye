@@ -6,7 +6,7 @@ const PostCardPreview: React.FC = () => {
       <Flex width={"100%"} align={"center"} my={"3"}>
         <Flex width={"20%"} h={"100%"} alignSelf={"flex-end"}>
           <Image
-            src={"journal.jpg"}
+            src={"/journal.jpg"}
             alt={"postImage"}
             width={"100%"}
             height={"100%"}
@@ -25,7 +25,7 @@ const PostCardPreview: React.FC = () => {
           </Text>
           <Flex align={"center"}>
             <Image
-              src={"profileplacholder.png"}
+              src={"/profileplacholder.png"}
               alt={"profilePhoto"}
               boxSize={"20px"}
               borderRadius={"full"}

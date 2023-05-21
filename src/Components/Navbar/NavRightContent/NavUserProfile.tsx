@@ -9,7 +9,13 @@ import {
   ListItem,
   Divider,
 } from "@chakra-ui/react";
-import { CiUser, CiLogin } from "react-icons/ci";
+import {
+  CiUser,
+  CiLogin,
+  CiGrid41,
+  CiBookmarkCheck,
+  CiPen,
+} from "react-icons/ci";
 import { BsChevronRight } from "react-icons/bs";
 import {
   Drawer,
@@ -34,7 +40,7 @@ const NavUserProfile: React.FC = () => {
     <>
       <Flex align={"center"} onClick={onOpen} cursor={"pointer"}>
         <Image
-          src={"profileplacholder.png"}
+          src={"/profileplacholder.png"}
           alt={"user profile"}
           boxSize={"30px"}
           objectFit={"cover"}
@@ -88,12 +94,16 @@ const UserActions: React.FC = () => {
         </ListItem>
 
         <ListItem display={"flex"} alignItems={"center"}>
-          <ListIcon as={CiUser} />
+          <ListIcon as={CiGrid41} />
           Dashboard
         </ListItem>
         <ListItem display={"flex"} alignItems={"center"}>
-          <ListIcon as={CiUser} />
+          <ListIcon as={CiPen} />
           write
+        </ListItem>
+        <ListItem display={"flex"} alignItems={"center"}>
+          <ListIcon as={CiBookmarkCheck} />
+          Bookmarks
         </ListItem>
       </List>
     </>
