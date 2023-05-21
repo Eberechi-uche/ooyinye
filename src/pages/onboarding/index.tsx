@@ -45,7 +45,6 @@ const Onboarding: React.FC = () => {
             )}
           </Flex>
         </>
-        <></>
       </ContentLayout>
     </>
   );
