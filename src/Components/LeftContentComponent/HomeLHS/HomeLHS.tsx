@@ -1,5 +1,6 @@
 import { Button, Flex, Icon, Text, Image } from "@chakra-ui/react";
 import PostCardPreview from "@/Components/Card/PostCardPreview";
+import Link from "next/link";
 
 const HomeLHS: React.FC = () => {
   return (
@@ -82,19 +83,21 @@ const Anouncements: React.FC = () => {
 const TopUsers: React.FC = () => {
   return (
     <>
-      <Flex align={"center"} my={"2"}>
-        <Image
-          src={"profileplacholder.png"}
-          alt={"userProfile"}
-          boxSize={"45px"}
-          borderRadius={"full"}
-        />
-        <Flex>
-          <Text textTransform={"capitalize"} fontWeight={"700"} ml={"2"}>
-            Quick fox
-          </Text>
+      <Link href={"/Quick Fox"}>
+        <Flex align={"center"} my={"2"}>
+          <Image
+            src={"profileplacholder.png"}
+            alt={"userProfile"}
+            boxSize={"45px"}
+            borderRadius={"full"}
+          />
+          <Flex>
+            <Text textTransform={"capitalize"} fontWeight={"700"} ml={"2"}>
+              Quick fox
+            </Text>
+          </Flex>
         </Flex>
-      </Flex>
+      </Link>
     </>
   );
 };

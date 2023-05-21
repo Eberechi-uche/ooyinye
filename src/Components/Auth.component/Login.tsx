@@ -11,7 +11,7 @@ const Login: React.FC = () => {
     Email: "",
     password: "",
   });
-  const [signInWithEmailAndPassword, user, loading, error] =
+  const [signInWithEmailAndPassword, , loading] =
     useSignInWithEmailAndPassword(auth);
 
   const handleUserInput = (event: React.ChangeEvent<HTMLInputElement>) => {
