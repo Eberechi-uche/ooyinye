@@ -47,7 +47,12 @@ const TopTrendCard: React.FC = () => {
               </Text>
             </Flex>
           </Flex>
-          <Image src={"/blogimage.png"} objectFit={"cover"} width={"100%"} />
+          <Image
+            src={"/blogimage.png"}
+            objectFit={"cover"}
+            width={"100%"}
+            alt={"user-profile"}
+          />
         </Flex>
 
         <Flex flexDir={"column"}>
