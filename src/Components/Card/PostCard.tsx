@@ -1,6 +1,11 @@
 import { Flex, Image, Text, Icon } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import { BsDot, BsBookmarkPlus, BsFillPinFill } from "react-icons/bs";
+import {
+  BsDot,
+  BsBookmarkPlus,
+  BsFillPinFill,
+  BsClockFill,
+} from "react-icons/bs";
 
 const PostCard: React.FC = () => {
   const { profile } = useRouter().query;
@@ -14,7 +19,7 @@ const PostCard: React.FC = () => {
         ) : (
           <Flex>
             <Image
-              src="profileplacholder.png"
+              src="series.webp"
               alt={"userprofile"}
               boxSize={"30"}
               borderRadius={"full"}
@@ -32,6 +37,15 @@ const PostCard: React.FC = () => {
                     <Icon as={BsDot} mx={"2"} />
                     1st April
                   </Text>
+                  <Text
+                    fontSize={"12px"}
+                    color={"gray.500"}
+                    display={"flex"}
+                    alignItems={"center"}
+                  >
+                    <Icon as={BsDot} mx={"2"} />
+                    <Icon as={BsClockFill} mx={"2"} />8 mins
+                  </Text>
                 </Flex>
 
                 <Flex>
@@ -47,11 +61,11 @@ const PostCard: React.FC = () => {
         )}
 
         <Flex align={"center"} mt={"4"}>
-          <Flex flexDir={"column"}>
+          <Flex flexDir={"column"} noOfLines={[4, 6]} alignSelf={"flex-start"}>
             <Text fontWeight={"700"}>
               The QUick brown fox the Quickiest brown fox
             </Text>
-            <Text fontSize={{ base: "xs" }} noOfLines={[3, 4, 6]}>
+            <Text fontSize={{ base: "xs" }}>
               The Quick fox jumped over the lazy Dog The Quick fox jumped over
               the lazy DogThe Quick fox jumped over the lazy DogThe Quick fox
               jumped over the lazy DogThe Quick fox jumped over the lazy Dog The
@@ -65,9 +79,10 @@ const PostCard: React.FC = () => {
             alt={"postImage"}
             src={"journal2.jpg"}
             width={{ base: "30%" }}
+            height={"100%"}
             objectFit={"cover"}
             ml={"4"}
-            borderRadius={"5px"}
+            borderRadius={"3px"}
           />
         </Flex>
       </Flex>

@@ -14,18 +14,7 @@ const UserAuth: React.FC = () => {
             open: true,
           }));
         }}
-        borderRadius={"full"}
-        width={{ base: "70px" }}
-        height={{ base: "35px" }}
-        variant={"outline"}
-        bg={"black"}
-        fontWeight={"900"}
-        color="#fff"
-        _hover={{
-          bg: "#fff",
-          color: "#000",
-          borderColor: "#000",
-        }}
+        variant={"brandPrimary"}
       >
         join
       </Button>

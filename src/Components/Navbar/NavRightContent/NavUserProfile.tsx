@@ -24,6 +24,7 @@ import {
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/Components/Firebase/ClientApp";
 import { signOut } from "firebase/auth";
+import Link from "next/link";
 
 const NavUserProfile: React.FC = () => {
   const [user] = useAuthState(auth);
@@ -80,8 +81,19 @@ const UserActions: React.FC = () => {
     <>
       <List spacing={3} fontSize={"lg"} fontWeight={"light"}>
         <ListItem display={"flex"} alignItems={"center"}>
+          <Link href={`/${auth.currentUser?.displayName}`}>
+            <ListIcon as={CiUser} />
+            Profile
+          </Link>
+        </ListItem>
+
+        <ListItem display={"flex"} alignItems={"center"}>
           <ListIcon as={CiUser} />
-          Profile
+          Dashboard
+        </ListItem>
+        <ListItem display={"flex"} alignItems={"center"}>
+          <ListIcon as={CiUser} />
+          write
         </ListItem>
       </List>
     </>

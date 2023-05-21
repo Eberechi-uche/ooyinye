@@ -46,18 +46,13 @@ const HomePageHeader: React.FC = () => {
               community of like minded individuals
             </Text>
             <Button
-              width={"50%"}
-              borderRadius={"full"}
-              variant={"outline"}
-              _hover={{
-                bg: "#57385c",
-              }}
               onClick={() => {
                 setAuthModalView({
                   view: "Sign Up",
                   open: true,
                 });
               }}
+              variant={"brandPrimary"}
             >
               Get Started
             </Button>

@@ -12,7 +12,7 @@ const ContentLayout: React.FC<ContentLayoutProps> = ({ children }) => {
           <Flex
             direction={"column"}
             width={{ base: "100%", lg: "65%" }}
-            p={"4"}
+            p={"5%"}
           >
             {children && children[0 as keyof typeof children]}
           </Flex>

@@ -3,14 +3,17 @@ import TopTrendCard from "@/Components/Card/TopTrendCard";
 import ProfilePageHeader from "@/Components/Headers/ProfilePage.Header";
 import Carousel from "@/Components/Layout/Carousel.Layout";
 import ContentLayout from "@/Components/Layout/Content.Layout";
+import UserProfleLHS from "@/Components/LeftContentComponent/ProfileLHS/UserProfile";
 import { Flex, Text } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 
 const Profile: React.FC = () => {
+  const { profile } = useRouter().query;
   return (
     <>
       <ContentLayout>
         <>
-          <ProfilePageHeader />
+          <ProfilePageHeader profile={profile} />
           <Flex flexDir={"column"}>
             <Text>Pinned</Text>
             <Carousel>
@@ -35,9 +38,7 @@ const Profile: React.FC = () => {
           </Flex>
         </>
         <>
-          <Flex>
-            <Text> hello right hand</Text>
-          </Flex>
+          <UserProfleLHS profile={profile} />
         </>
       </ContentLayout>
     </>
