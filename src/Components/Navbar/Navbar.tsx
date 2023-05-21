@@ -22,7 +22,7 @@ const Navbar: React.FC = () => {
             <Link href={"/"}>
               <Flex align={"center"}>
                 <Image
-                  src={"logo.png"}
+                  src={"/logo.png"}
                   alt={"logo"}
                   boxSize={{ base: "10vw", md: "4vw" }}
                 />
