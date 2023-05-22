@@ -1,4 +1,5 @@
 import {
+  Button,
   Divider,
   Drawer,
   DrawerBody,
@@ -24,7 +25,6 @@ import {
 import BlogLHS from "@/Components/LeftContentComponent/Blog/BlogLHS";
 import { RiShareForwardFill } from "react-icons/ri";
 import BlogPostHeader from "@/Components/Headers/BlogPost.Header";
-import { FaTwitterSquare, FaLinkedin, FaInstagramSquare } from "react-icons/fa";
 import BlogParser from "@/Components/BlogParser/BlogParser";
 import PostCard from "@/Components/Card/PostCard";
 
@@ -37,8 +37,9 @@ const Post: React.FC = () => {
           <BlogPostHeader />
           <Flex minH={"100vh"} flexDir={"column"} width={"100%"}>
             <Flex
-              width={"100%"}
+              width={{ base: "95%", md: "50%" }}
               justify={"space-between"}
+              alignSelf={"center"}
               align={"center"}
               bg={"blue.100"}
               borderRadius={"5px"}
@@ -47,7 +48,11 @@ const Post: React.FC = () => {
               top={"10%"}
               display={{ base: "flex", lg: "none" }}
             >
-              <Flex height={"50px"} align={"center"} justify={"space-between"}>
+              <Flex
+                height={{ base: "50px", md: "80px" }}
+                align={"center"}
+                justify={"space-between"}
+              >
                 <Icon as={RiShareForwardFill} fontSize={"2xl"} mr={"5"} />
                 <Icon as={IoBookmarks} fontSize={"2xl"} />
               </Flex>
@@ -62,15 +67,10 @@ const Post: React.FC = () => {
               </Flex>
             </Flex>
             <BlogParser />
-            <Flex
-              flexDir={"column"}
-              my={"10"}
-              bg={"gray.50"}
-              width={"100%"}
-              px={"5"}
-            >
-              <Divider />
-              <Text fontWeight={"700"}>More by John Doe</Text>
+            <Flex flexDir={"column"} my={"10"} bg={"teal.200"} width={"100%"}>
+              <Text fontWeight={"700"} mx={"4"}>
+                More by John Doe
+              </Text>
               <PostCard />
               <PostCard />
               <PostCard />
@@ -96,16 +96,16 @@ type CommentDrawerProps = {
 const CommentDrawer: React.FC<CommentDrawerProps> = ({ isOpen, onClose }) => {
   return (
     <>
-      <Drawer
-        isOpen={isOpen}
-        placement="bottom"
-        onClose={onClose}
-        size={"full"}
-      >
+      <Drawer isOpen={isOpen} placement="bottom" onClose={onClose} size={"lg"}>
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
-          <DrawerHeader>Comments</DrawerHeader>
+          <DrawerHeader>
+            <Flex width={"100%"} align={"center"}>
+              <Text mr={"5"}> comments</Text>
+              <Text fontSize={"sm"}> 200</Text>
+            </Flex>
+          </DrawerHeader>
 
           <DrawerBody>
             <Flex flexDir={"column"}>
@@ -114,27 +114,14 @@ const CommentDrawer: React.FC<CommentDrawerProps> = ({ isOpen, onClose }) => {
               <Comments />
               <Comments />
               <Comments />
-
-              <Comments />
-              <Comments />
-              <Comments />
-              <Comments />
-              <Comments />
-              <Comments />
             </Flex>
           </DrawerBody>
 
           <DrawerFooter py={"10"}>
-            {/* <Flex flexDir={"column"} width={"100%"}>
-              <Text borderTop={"1px solid"} borderColor={"blue.100"}>
-                Socials
-              </Text>
-              <Flex width={"100%"} justify={"space-evenly"} py={"5"}>
-                <Icon as={FaTwitterSquare} fontSize={"3xl"} />
-                <Icon as={FaLinkedin} fontSize={"3xl"} />
-                <Icon as={FaInstagramSquare} fontSize={"3xl"} />
-              </Flex>
-            </Flex> */}
+            <Button variant={"unstyled"} onClick={onClose}>
+              {" "}
+              close
+            </Button>
           </DrawerFooter>
         </DrawerContent>
       </Drawer>

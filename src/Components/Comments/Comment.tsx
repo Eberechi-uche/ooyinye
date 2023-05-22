@@ -3,13 +3,7 @@ import { Flex, Text, Image } from "@chakra-ui/react";
 const Comments: React.FC = () => {
   return (
     <>
-      <Flex
-        mt={"10"}
-        borderLeft={"1px solid"}
-        flexDir={"column"}
-        px={"2"}
-        borderColor={"gray.200"}
-      >
+      <Flex mt={"10"} flexDir={"column"} px={"2"}>
         <Flex>
           <Image
             alt={"userProfile"}

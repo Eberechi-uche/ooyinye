@@ -13,7 +13,7 @@ const PostCard: React.FC = () => {
   return (
     <>
       <Link href={"/posts/blooger"}>
-        <Flex flexDir={"column"} py={"5"}>
+        <Flex flexDir={"column"} py={"5"} px={"5"}>
           {profile ? (
             <Flex width={"100%"} justify={"space-between"}>
               <Text> date</Text> <Icon as={BsFillPinFill} />
@@ -89,7 +89,6 @@ const PostCard: React.FC = () => {
               objectFit={"cover"}
               ml={"4"}
               borderRadius={"3px"}
-              border={"2px solid"}
               alignSelf={"flex-start"}
             />
           </Flex>

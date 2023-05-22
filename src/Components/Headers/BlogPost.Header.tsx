@@ -5,7 +5,7 @@ import { BsBookFill, BsDot } from "react-icons/bs";
 const BlogPostHeader: React.FC = () => {
   return (
     <>
-      <Flex width={"100%"} flexDir={"column"}>
+      <Flex width={"100%"} flexDir={"column"} px={"2"}>
         <Flex flexDir={"column"}>
           <Text fontSize={{ base: "5vw", lg: "3vw" }} fontWeight={"900"}>
             The mystery behind Lorem Ipsum -
