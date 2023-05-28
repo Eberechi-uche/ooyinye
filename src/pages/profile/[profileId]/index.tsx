@@ -10,38 +10,32 @@ import { useRouter } from "next/router";
 const Profile: React.FC = () => {
   const { profileId } = useRouter().query;
   return (
-    <>
-      <ContentLayout>
-        <>
-          <ProfilePageHeader profile={profileId} />
-          <Flex flexDir={"column"}>
-            <Text>Pinned</Text>
-            <Carousel>
-              <TopTrendCard />
-              <TopTrendCard />
-              <TopTrendCard />
-              <TopTrendCard />
-              <TopTrendCard />
-            </Carousel>
-          </Flex>
-          <Flex flexDir={"column"}>
-            <PostCard />
-            <PostCard />
-            <PostCard />
-            <PostCard />
-            <PostCard />
-            <PostCard />
-            <PostCard />
-            <PostCard />
-            <PostCard />
-            <PostCard />
-          </Flex>
-        </>
-        <>
-          <UserProfleLHS profile={profileId} />
-        </>
-      </ContentLayout>
-    </>
+    <Flex width={"100vw"} justify={"center"}>
+      <Flex maxW={"1300px"} flexDir={"column"}>
+        <ProfilePageHeader profile={profileId} />
+        <Flex flexDir={"column"} bg={"whatsapp.50"}>
+          <Text>Pinned</Text>
+          <PostCard />
+          <PostCard />
+          <PostCard />
+          <PostCard />
+          <PostCard />
+          <PostCard />
+        </Flex>
+        <Flex flexDir={"column"}>
+          <PostCard />
+          <PostCard />
+          <PostCard />
+          <PostCard />
+          <PostCard />
+          <PostCard />
+          <PostCard />
+          <PostCard />
+          <PostCard />
+          <PostCard />
+        </Flex>
+      </Flex>
+    </Flex>
   );
 };
 

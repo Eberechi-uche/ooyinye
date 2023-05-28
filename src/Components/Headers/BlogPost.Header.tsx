@@ -16,7 +16,7 @@ const BlogPostHeader: React.FC = () => {
         justify={"space-evenly"}
         color={"gray.100"}
       >
-        <Flex flexDir={"column"} mt={"20%"} width={"80%"} align={"center"}>
+        <Flex flexDir={"column"} width={"80%"} align={"center"}>
           <Heading fontWeight={"500"}>The mystery behind Lorem Ipsum </Heading>
           <Flex
             width={{ base: "100%", md: "80%", lg: "60%" }}

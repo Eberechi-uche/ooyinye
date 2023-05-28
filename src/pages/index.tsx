@@ -4,8 +4,7 @@ import HomePageHeader from "@/Components/Headers/HomePage.Header";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/Components/Firebase/ClientApp";
 import ContentLayout from "@/Components/Layout/Content.Layout";
-import Carousel from "@/Components/Layout/Carousel.Layout";
-import TopTrendCard from "@/Components/Card/TopTrendCard";
+import HomeRHS from "@/Components/LeftContentComponent/HomeLHS/HomeRHS";
 import PostCard from "@/Components/Card/PostCard";
 import HomeLHS from "@/Components/LeftContentComponent/HomeLHS/HomeLHS";
 import HomeNavFooter from "@/Components/MobileFooter/HomeNavFooter";
@@ -24,6 +23,9 @@ export default function Home() {
 
       <main>
         <ContentLayout>
+          <>
+            <HomeRHS />
+          </>
           <>
             <HomeNavFooter />
             <Flex

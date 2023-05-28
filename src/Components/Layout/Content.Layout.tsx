@@ -7,24 +7,35 @@ interface ContentLayoutProps {
 const ContentLayout: React.FC<ContentLayoutProps> = ({ children }) => {
   return (
     <>
-      <Flex justify={"center"}>
-        <Flex justify={"center"} width={"100%"} maxWidth={"1300px"}>
+      <Flex justify={"center"} width={"100%"}>
+        <Flex width={"100%"} maxWidth={"1500px"}>
           <Flex
-            direction={"column"}
-            width={{ base: "100%", lg: "65%" }}
-            px={{ base: "0", lg: "5%" }}
+            display={{ base: "none", md: "unset" }}
+            minH={"100vh"}
+            minWidth={"100px"}
+            p={"4"}
+            flexDir={"column"}
+            align={"center"}
           >
             {children && children[0 as keyof typeof children]}
           </Flex>
           <Flex
-            flexGrow={"1"}
+            direction={"column"}
+            width={{ base: "100%", lg: "70%" }}
+            maxW={"900px"}
+            align={"center"}
+            flexGrow={"4"}
+          >
+            {children && children[1 as keyof typeof children]}
+          </Flex>
+          <Flex
             display={{ base: "none", lg: "unset" }}
-            borderStart={"1px solid"}
             borderColor={"gray.200"}
             minH={"100vh"}
             p={"4"}
+            maxW={"400px"}
           >
-            {children && children[1 as keyof typeof children]}
+            {children && children[2 as keyof typeof children]}
           </Flex>
         </Flex>
       </Flex>

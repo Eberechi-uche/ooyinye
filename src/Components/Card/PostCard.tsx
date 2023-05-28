@@ -49,7 +49,7 @@ const PostCard: React.FC = () => {
                     </Text>
                   </Flex>
 
-                  <Flex>
+                  <Flex fontSize={"lg"}>
                     {profile ? (
                       <Icon as={BsFillPinFill} />
                     ) : (

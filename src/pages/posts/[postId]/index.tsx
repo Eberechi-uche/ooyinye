@@ -28,6 +28,7 @@ import BlogPostHeader from "@/Components/Headers/BlogPost.Header";
 import BlogParser from "@/Components/BlogParser/BlogParser";
 import PostCard from "@/Components/Card/PostCard";
 import SingleContentLayout from "@/Components/Layout/SingleContent.Layout";
+import BlogNavFooter from "@/Components/MobileFooter/BlogNavFooter";
 
 const Post: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -35,6 +36,7 @@ const Post: React.FC = () => {
     <>
       <SingleContentLayout>
         <>
+          <BlogNavFooter onOpen={onOpen} />
           <BlogPostHeader />
           <Flex minH={"100vh"} flexDir={"column"} width={"100%"}>
             <BlogParser />
@@ -66,6 +68,7 @@ const CommentDrawer: React.FC<CommentDrawerProps> = ({ isOpen, onClose }) => {
     <>
       <Drawer isOpen={isOpen} placement="bottom" onClose={onClose} size={"lg"}>
         <DrawerOverlay />
+
         <DrawerContent>
           <DrawerCloseButton />
           <DrawerHeader>

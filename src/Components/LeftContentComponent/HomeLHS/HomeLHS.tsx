@@ -16,12 +16,13 @@ const HomeLHS: React.FC = () => {
             display: "none",
           },
         }}
+        my={"10"}
       >
         <Flex>
           <Anouncements />
         </Flex>
 
-        <Flex flexDir={"column"} my={"10"}>
+        <Flex flexDir={"column"}>
           <Text fontWeight={"700"}> Top writters</Text>
           <TopUsers />
           <TopUsers />
