@@ -17,11 +17,13 @@ import {
   DrawerCloseButton,
   useDisclosure,
 } from "@chakra-ui/react";
-import { useRef } from "react";
+
 import { FaTwitterSquare, FaLinkedin, FaInstagramSquare } from "react-icons/fa";
+
 export type ProfilePageHeaderProps = {
   profile: string | undefined | string[];
 };
+
 const ProfilePageHeader: React.FC<ProfilePageHeaderProps> = ({ profile }) => {
   return (
     <>
@@ -63,9 +65,9 @@ export const ProfileInfo: React.FC<ProfileInfoProps> = ({ profile }) => {
         <Image
           src={"/series.webp"}
           alt={"userProfile"}
-          boxSize={"200px"}
+          boxSize={"150px"}
           objectFit={"cover"}
-          borderRadius={"10px"}
+          borderRadius={"full"}
         />
       </Flex>
 

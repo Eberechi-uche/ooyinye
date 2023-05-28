@@ -7,6 +7,7 @@ import {
   BsFillPinFill,
   BsClockFill,
 } from "react-icons/bs";
+import { CiBookmarkPlus } from "react-icons/ci";
 
 const PostCard: React.FC = () => {
   const { profile } = useRouter().query;
@@ -32,7 +33,6 @@ const PostCard: React.FC = () => {
                     <Text> Quick Fox</Text>
                     <Text
                       fontSize={"12px"}
-                      color={"gray.500"}
                       display={"flex"}
                       alignItems={"center"}
                     >
@@ -41,7 +41,6 @@ const PostCard: React.FC = () => {
                     </Text>
                     <Text
                       fontSize={"12px"}
-                      color={"gray.500"}
                       display={"flex"}
                       alignItems={"center"}
                     >
@@ -54,7 +53,7 @@ const PostCard: React.FC = () => {
                     {profile ? (
                       <Icon as={BsFillPinFill} />
                     ) : (
-                      <Icon as={BsBookmarkPlus} />
+                      <Icon as={CiBookmarkPlus} />
                     )}
                   </Flex>
                 </Flex>
@@ -68,10 +67,10 @@ const PostCard: React.FC = () => {
               alignSelf={"flex-start"}
               height={"fit-content"}
             >
-              <Text fontWeight={"700"} noOfLines={[1, 2]}>
+              <Text fontWeight={"700"} fontSize={{ base: "sm", md: "md" }}>
                 The Quick brown fox the Quickiest brown fox
               </Text>
-              <Text fontSize={{ base: "xs" }} noOfLines={[2, 4]}>
+              <Text fontSize={{ base: "xs" }} noOfLines={[1, 2]}>
                 The Quick fox jumped over the lazy Dog The Quick fox jumped over
                 the lazy DogThe Quick fox jumped over the lazy DogThe Quick fox
                 jumped over the lazy DogThe Quick fox jumped over the lazy Dog
@@ -84,12 +83,12 @@ const PostCard: React.FC = () => {
             <Image
               alt={"postImage"}
               src={"/blogsample.png"}
-              width={{ base: "35%" }}
-              height={{ base: "80%", md: "60%" }}
+              width={{ base: "25%", md: "20%" }}
+              height={{ base: "70%", md: "40%" }}
               objectFit={"cover"}
               ml={"4"}
               borderRadius={"3px"}
-              alignSelf={"flex-start"}
+              alignSelf={"center"}
             />
           </Flex>
         </Flex>

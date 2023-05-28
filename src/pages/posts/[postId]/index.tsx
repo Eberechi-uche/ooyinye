@@ -27,45 +27,16 @@ import { RiShareForwardFill } from "react-icons/ri";
 import BlogPostHeader from "@/Components/Headers/BlogPost.Header";
 import BlogParser from "@/Components/BlogParser/BlogParser";
 import PostCard from "@/Components/Card/PostCard";
+import SingleContentLayout from "@/Components/Layout/SingleContent.Layout";
 
 const Post: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
-      <ContentLayout>
+      <SingleContentLayout>
         <>
           <BlogPostHeader />
           <Flex minH={"100vh"} flexDir={"column"} width={"100%"}>
-            <Flex
-              width={{ base: "95%", md: "50%" }}
-              justify={"space-between"}
-              alignSelf={"center"}
-              align={"center"}
-              bg={"blue.100"}
-              borderRadius={"5px"}
-              position={"sticky"}
-              px={"10%"}
-              top={"10%"}
-              display={{ base: "flex", lg: "none" }}
-            >
-              <Flex
-                height={{ base: "50px", md: "80px" }}
-                align={"center"}
-                justify={"space-between"}
-              >
-                <Icon as={RiShareForwardFill} fontSize={"2xl"} mr={"5"} />
-                <Icon as={IoBookmarks} fontSize={"2xl"} />
-              </Flex>
-              <Flex height={"50px"} align={"center"}>
-                <Icon
-                  as={IoChatbubbles}
-                  mr={"7"}
-                  fontSize={"2xl"}
-                  onClick={onOpen}
-                />
-                <Icon as={IoHeartOutline} fontSize={"2xl"} />
-              </Flex>
-            </Flex>
             <BlogParser />
             <Flex flexDir={"column"} my={"10"} bg={"teal.200"} width={"100%"}>
               <Text fontWeight={"700"} mx={"4"}>
@@ -80,10 +51,7 @@ const Post: React.FC = () => {
           </Flex>
           <CommentDrawer onClose={onClose} isOpen={isOpen} />
         </>
-        <>
-          <BlogLHS />
-        </>
-      </ContentLayout>
+      </SingleContentLayout>
     </>
   );
 };

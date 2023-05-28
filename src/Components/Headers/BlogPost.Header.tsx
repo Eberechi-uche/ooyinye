@@ -1,36 +1,40 @@
-import { Flex, Icon, Divider, Image, Text } from "@chakra-ui/react";
+import { Flex, Icon, Divider, Image, Text, Heading } from "@chakra-ui/react";
 import Link from "next/link";
-import { BsBookFill, BsDot } from "react-icons/bs";
+import { CiCircleChevDown } from "react-icons/ci";
 
 const BlogPostHeader: React.FC = () => {
   return (
     <>
-      <Flex width={"100%"} flexDir={"column"} px={"2"}>
-        <Flex flexDir={"column"}>
-          <Text fontSize={{ base: "5vw", lg: "3vw" }} fontWeight={"900"}>
-            The mystery behind Lorem Ipsum -
-          </Text>
-          <Flex align={"center"}>
-            <Text mr={"5"} display={"flex"} alignItems={"center"}>
-              <Icon as={BsBookFill} mr={"2"} />8 mins
+      <Flex
+        width={"100%"}
+        flexDir={"column"}
+        p={"2"}
+        height={"100vh"}
+        bg={"blue.900"}
+        align={"center"}
+        textAlign={"center"}
+        justify={"space-evenly"}
+        color={"gray.100"}
+      >
+        <Flex flexDir={"column"} mt={"20%"} width={"80%"} align={"center"}>
+          <Heading fontWeight={"500"}>The mystery behind Lorem Ipsum </Heading>
+          <Flex
+            width={{ base: "100%", md: "80%", lg: "60%" }}
+            color={"gray.300"}
+          >
+            <Text>
+              the quick brown fox jumped over the lazy dog the quick brown fox
             </Text>
-            <Icon as={BsDot} mr={"2"} fontSize={"xx-large"} />
-            <Text> january 25th </Text>
+          </Flex>
+          <Flex align={"center"} justify={"space-evenly"} mt={"2"}>
+            <Text textTransform={"uppercase"} fontSize={"xs"}>
+              by John Doe
+            </Text>
+            <Divider height={"10px"} orientation="vertical" mx={"1"} />
+            <Text fontSize={"xs"}> 26 may 2023</Text>
           </Flex>
         </Flex>
-        <Divider />
-        <Link href={"/john doe"}>
-          <Flex py={"5"} align={"center"}>
-            <Image
-              src={"/series.webp"}
-              boxSize={"45px"}
-              alt={"profileImage"}
-              borderRadius={"full"}
-              mr={"2"}
-            />
-            <Text>John Doe</Text>
-          </Flex>
-        </Link>
+        <Icon as={CiCircleChevDown} fontSize={"4xl"} />
       </Flex>
     </>
   );

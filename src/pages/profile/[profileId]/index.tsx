@@ -8,12 +8,12 @@ import { Flex, Text } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 
 const Profile: React.FC = () => {
-  const { profile } = useRouter().query;
+  const { profileId } = useRouter().query;
   return (
     <>
       <ContentLayout>
         <>
-          <ProfilePageHeader profile={profile} />
+          <ProfilePageHeader profile={profileId} />
           <Flex flexDir={"column"}>
             <Text>Pinned</Text>
             <Carousel>
@@ -38,7 +38,7 @@ const Profile: React.FC = () => {
           </Flex>
         </>
         <>
-          <UserProfleLHS profile={profile} />
+          <UserProfleLHS profile={profileId} />
         </>
       </ContentLayout>
     </>

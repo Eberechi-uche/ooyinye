@@ -62,7 +62,7 @@ const Welcome: React.FC = () => {
         align={"center"}
         flexDir={"column"}
         textAlign={"center"}
-        height={"50vh"}
+        height={"30vh"}
         justify={"end"}
         fontSize={{ base: "xs", md: "sm" }}
       >
@@ -84,17 +84,17 @@ const Welcome: React.FC = () => {
           type={"email"}
           variant={"pill"}
           my={"10px"}
-          width={"70%"}
+          width={{ base: "100%", md: "50%" }}
+          maxW={"300px"}
           placeholder="Display name"
           onChange={(e) => {
             handleUserInput(e);
           }}
-          maxLength={20}
+          maxLength={25}
+          color={"blackAlpha.900"}
         />
         <Button
-          bg={"#000"}
-          variant={"outline"}
-          color={"#fff"}
+          color={"gray.900"}
           borderRadius={"full"}
           isDisabled={name.length < 5}
           onClick={handleNameUpdate}

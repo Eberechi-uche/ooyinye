@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Text, Flex, Divider, Button } from "@chakra-ui/react";
+import { Text, Flex, Button } from "@chakra-ui/react";
 import HomePageHeader from "@/Components/Headers/HomePage.Header";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/Components/Firebase/ClientApp";
@@ -8,6 +8,7 @@ import Carousel from "@/Components/Layout/Carousel.Layout";
 import TopTrendCard from "@/Components/Card/TopTrendCard";
 import PostCard from "@/Components/Card/PostCard";
 import HomeLHS from "@/Components/LeftContentComponent/HomeLHS/HomeLHS";
+import HomeNavFooter from "@/Components/MobileFooter/HomeNavFooter";
 
 export default function Home() {
   const [user] = useAuthState(auth);
@@ -24,31 +25,41 @@ export default function Home() {
       <main>
         <ContentLayout>
           <>
-            <Flex flexDir={"column"}>
+            <HomeNavFooter />
+            <Flex
+              flexDir={"column"}
+              bg={"red.700"}
+              width={"100%"}
+              color={"#fff"}
+            >
               <Text width={"100%"} fontWeight={"700"} ml={"2"}>
                 Trending Now in Blogs
               </Text>
-              <Carousel>
-                <TopTrendCard />
-                <TopTrendCard />
-                <TopTrendCard />
-                <TopTrendCard />
-                <TopTrendCard />
-                <TopTrendCard />
-              </Carousel>
+              <PostCard />
+              <PostCard />
+              <PostCard />
+              <PostCard />
+              <PostCard />
+              <PostCard />
+              <PostCard />
+              <PostCard />
+              <PostCard />
+              <PostCard />
             </Flex>
-            <Flex flexDir={"column"}>
+            <Flex flexDir={"column"} bg={"yellow.500"} color={"#fff"}>
               <Text width={"100%"} fontWeight={"700"} ml={"2"}>
-                Top Stories
+                Trending Now in Blogs
               </Text>
-              <Carousel>
-                <TopTrendCard />
-                <TopTrendCard />
-                <TopTrendCard />
-                <TopTrendCard />
-                <TopTrendCard />
-                <TopTrendCard />
-              </Carousel>
+              <PostCard />
+              <PostCard />
+              <PostCard />
+              <PostCard />
+              <PostCard />
+              <PostCard />
+              <PostCard />
+              <PostCard />
+              <PostCard />
+              <PostCard />
             </Flex>
 
             <Flex width={"100%"} flexDir={"column"} py={"20"}>

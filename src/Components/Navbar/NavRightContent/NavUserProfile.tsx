@@ -87,7 +87,7 @@ const UserActions: React.FC = () => {
     <>
       <List spacing={3} fontSize={"lg"} fontWeight={"light"}>
         <ListItem display={"flex"} alignItems={"center"}>
-          <Link href={`/${auth.currentUser?.displayName}`}>
+          <Link href={`/profile/${auth.currentUser?.displayName}`}>
             <ListIcon as={CiUser} />
             Profile
           </Link>

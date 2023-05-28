@@ -17,60 +17,68 @@ const HomePageHeader: React.FC = () => {
   }, []);
   return (
     <>
-      <Flex
-        height={"70vh"}
-        bg={"gray.900"}
-        justify={"center"}
-        width={"100%"}
-        px={"20px"}
-        color={"white"}
-      >
+      <Flex bg={"gray.900"} justify={"center"}>
         <Flex
-          flexDir={"column"}
-          width={{ base: "100%", lg: "50%" }}
+          height={"70vh"}
           justify={"center"}
-          textAlign={{ base: "center", lg: "start" }}
+          width={"100%"}
+          px={"20px"}
+          color={"white"}
+          maxW={"1300px"}
         >
-          <Heading fontWeight={"light"}>
-            <ReactTextTransition
-              springConfig={presets.molasses}
-              className="text"
-            >
-              {TEXTS[index % TEXTS.length]}
-            </ReactTextTransition>
-          </Heading>
-          <Flex flexDir={"column"} display={"absolute"}>
-            <Text my={"5"}>
-              Express yourself, <br />
-              grow and connect with supportive <br />
-              community of like minded individuals
-            </Text>
-            <Button
-              onClick={() => {
-                setAuthModalView({
-                  view: "Sign Up",
-                  open: true,
-                });
+          <Flex
+            flexDir={"column"}
+            width={{ base: "100%", lg: "50%" }}
+            justify={"center"}
+            textAlign={{ base: "center", lg: "start" }}
+          >
+            <Heading
+              fontWeight={"light"}
+              fontSize={{
+                base: "50px",
+                md: "",
+                lg: "100px",
               }}
-              variant={"brandPrimary"}
+              bgImage="url('homeTextbg.webp')"
+              bgClip="text"
+              bgPosition={"center"}
+              bgSize={"cover"}
             >
-              Get Started
-            </Button>
+              Be On The <br />
+              Know.
+            </Heading>
+            <Flex flexDir={"column"} display={"absolute"}>
+              <Text my={"5"}>
+                Create, Read, content that <br />
+                inspires you
+              </Text>
+              <Button
+                onClick={() => {
+                  setAuthModalView({
+                    view: "Sign Up",
+                    open: true,
+                  });
+                }}
+                variant={"brandPrimary"}
+              >
+                Get Started
+              </Button>
+            </Flex>
           </Flex>
-        </Flex>
 
-        <Flex
-          width={"50%"}
-          height={"100%"}
-          display={{ base: "none", lg: "block" }}
-        >
-          <Image
-            src={"headerHomeImage.gif"}
-            alt={"homepageImage"}
-            objectFit={"contain"}
-            width={"100%"}
+          <Flex
+            width={"50%"}
             height={"100%"}
-          />
+            display={{ base: "none", lg: "block" }}
+          >
+            <Image
+              src={"headerHomeImage.gif"}
+              alt={"homepageImage"}
+              objectFit={"contain"}
+              width={"100%"}
+              height={"100%"}
+            />
+          </Flex>
         </Flex>
       </Flex>
     </>

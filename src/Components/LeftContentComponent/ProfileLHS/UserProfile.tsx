@@ -21,8 +21,8 @@ const UserProfleLHS: React.FC<ProfilePageHeaderProps> = ({ profile }) => {
           <Image
             src={"/series.webp"}
             alt={"userProfile"}
-            width={"100%"}
-            height={"200px"}
+            boxSize={"200px"}
+            borderRadius={"full"}
             objectFit={"cover"}
           />
         </Flex>

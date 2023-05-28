@@ -1,11 +1,20 @@
 import { defineStyle, defineStyleConfig } from "@chakra-ui/react";
 
 const outline = defineStyle({
-  border: "2px dashed",
+  border: "2px solid",
   borderRadius: 0,
   fontWeight: "semibold",
+  color: "black",
+  _hover: {
+    color: "green",
+  },
 });
-
+const solid = defineStyle({
+  border: "2px solid",
+  borderRadius: 0,
+  fontWeight: "semibold",
+  color: "black",
+});
 const brandPrimary = defineStyle({
   background: "black",
   color: "white",
@@ -20,6 +29,7 @@ const brandPrimary = defineStyle({
 export const buttonTheme = defineStyleConfig({
   variants: {
     outline,
+    solid,
     brandPrimary,
   },
 });
