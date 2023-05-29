@@ -1,4 +1,13 @@
-import { Flex, Icon, Divider, Image, Text, Heading } from "@chakra-ui/react";
+import {
+  Flex,
+  Icon,
+  Divider,
+  Image,
+  Text,
+  Heading,
+  Avatar,
+  AvatarGroup,
+} from "@chakra-ui/react";
 import Link from "next/link";
 import { CiCircleChevDown } from "react-icons/ci";
 
@@ -9,7 +18,7 @@ const BlogPostHeader: React.FC = () => {
         width={"100%"}
         flexDir={"column"}
         p={"2"}
-        height={"100vh"}
+        height={{ base: "80vh", md: "100vh" }}
         bg={"blue.900"}
         align={"center"}
         textAlign={"center"}
@@ -33,6 +42,20 @@ const BlogPostHeader: React.FC = () => {
             <Divider height={"10px"} orientation="vertical" mx={"1"} />
             <Text fontSize={"xs"}> 26 may 2023</Text>
           </Flex>
+        </Flex>
+
+        <Flex flexDir={"column"} fontSize={"xs"}>
+          <Text textTransform={"uppercase"}> Liked by </Text>
+          <AvatarGroup max={6} color={"black"} size={{ base: "sm", md: "md" }}>
+            <Avatar name="Ryan Florence" src="https://bit.ly/ryan-florence" />
+            <Avatar name="Ryan Florence" src="https://bit.ly/ryan-florence" />
+            <Avatar name="Ryan Florence" src="https://bit.ly/ryan-florence" />
+            <Avatar name="Ryan Florence" src="https://bit.ly/ryan-florence" />
+            <Avatar name="Ryan Florence" src="https://bit.ly/ryan-florence" />
+            <Avatar name="Ryan Florence" src="https://bit.ly/ryan-florence" />
+            <Avatar name="Ryan Florence" src="https://bit.ly/ryan-florence" />
+            <Avatar name="Ryan Florence" src="https://bit.ly/ryan-florence" />
+          </AvatarGroup>
         </Flex>
         <Icon as={CiCircleChevDown} fontSize={"4xl"} />
       </Flex>

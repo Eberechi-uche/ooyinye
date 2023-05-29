@@ -11,12 +11,12 @@ import {
 import { useSetRecoilState } from "recoil";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../Firebase/ClientApp";
+
 const HomeNavFooter: React.FC = () => {
   const route = useRouter();
   const setAuthState = useSetRecoilState(authModalState);
   const [user] = useAuthState(auth);
 
-  console.log(route);
   return (
     <>
       <Flex

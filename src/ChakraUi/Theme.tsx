@@ -7,7 +7,6 @@ const Theme = extendTheme({
     global: {
       "html, body": {
         color: "gray.900",
-        lineHeight: "tall",
       },
       a: {
         color: "inherit",

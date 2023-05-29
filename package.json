@@ -12,6 +12,7 @@
     "@chakra-ui/react": "^2.6.0",
     "@emotion/react": "^11.10.8",
     "@emotion/styled": "^11.10.8",
+    "@fontsource-variable/azeret-mono": "^5.0.2",
     "@fontsource/lexend": "^4.5.15",
     "@fontsource/ultra": "^4.5.6",
     "@lexical/react": "^0.10.0",

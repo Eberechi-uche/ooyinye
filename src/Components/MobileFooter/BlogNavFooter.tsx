@@ -1,4 +1,5 @@
 import { Flex, Icon } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 import {
   CiCompass1,
   CiCirclePlus,
@@ -32,6 +33,7 @@ const BlogNavFooter: React.FC<BlogNavFooterProp> = ({ onOpen }) => {
         <Icon as={CiShare1} fontSize={"2xl"} />
         <Icon as={CiHeart} fontSize={"2xl"} />
         <Icon as={CiChat2} fontSize={"2xl"} onClick={onOpen} />
+        <Icon as={CiDollar} fontSize={"2xl"} />
         <Icon as={CiDollar} fontSize={"2xl"} />
       </Flex>
     </>

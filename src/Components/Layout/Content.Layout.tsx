@@ -12,8 +12,8 @@ const ContentLayout: React.FC<ContentLayoutProps> = ({ children }) => {
           <Flex
             display={{ base: "none", md: "unset" }}
             minH={"100vh"}
-            minWidth={"100px"}
-            p={"4"}
+            minWidth={"50px"}
+            p={"2"}
             flexDir={"column"}
             align={"center"}
           >

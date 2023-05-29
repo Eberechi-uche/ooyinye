@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Text, Flex, Button } from "@chakra-ui/react";
+import { Text, Flex, Button, Icon, Input } from "@chakra-ui/react";
 import HomePageHeader from "@/Components/Headers/HomePage.Header";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/Components/Firebase/ClientApp";
@@ -8,6 +8,8 @@ import HomeRHS from "@/Components/LeftContentComponent/HomeLHS/HomeRHS";
 import PostCard from "@/Components/Card/PostCard";
 import HomeLHS from "@/Components/LeftContentComponent/HomeLHS/HomeLHS";
 import HomeNavFooter from "@/Components/MobileFooter/HomeNavFooter";
+import { CiCirclePlus, CiSearch } from "react-icons/ci";
+import Link from "next/link";
 
 export default function Home() {
   const [user] = useAuthState(auth);
@@ -34,23 +36,8 @@ export default function Home() {
               width={"100%"}
               color={"#fff"}
             >
-              <Text width={"100%"} fontWeight={"700"} ml={"2"}>
-                Trending Now in Blogs
-              </Text>
-              <PostCard />
-              <PostCard />
-              <PostCard />
-              <PostCard />
-              <PostCard />
-              <PostCard />
-              <PostCard />
-              <PostCard />
-              <PostCard />
-              <PostCard />
-            </Flex>
-            <Flex flexDir={"column"} bg={"yellow.500"} color={"#fff"}>
-              <Text width={"100%"} fontWeight={"700"} ml={"2"}>
-                Trending Now in Blogs
+              <Text width={"100%"} fontWeight={"700"} ml={"2"} fontSize={"3xl"}>
+                Top Reads
               </Text>
               <PostCard />
               <PostCard />
@@ -65,80 +52,34 @@ export default function Home() {
             </Flex>
 
             <Flex width={"100%"} flexDir={"column"} py={"20"}>
-              <Text letterSpacing={"4px"} fontWeight={"bold"}>
-                Blog Posts
-              </Text>
-              <Flex flexDir={"column"} borderBottom={"1px solid"}>
-                <Flex
-                  align={"center"}
-                  width={"100%"}
-                  overflowX={"scroll"}
-                  sx={{
-                    "::-webkit-scrollbar": {
-                      display: "none",
-                    },
-                  }}
-                  my={"7"}
-                >
-                  <Flex>
-                    <Button
-                      variant={"outline"}
-                      size={{ base: "sm" }}
-                      borderRadius={"full"}
-                      m={"1"}
-                    >
-                      Science
-                    </Button>
-                    <Button
-                      variant={"outline"}
-                      size={{ base: "sm" }}
-                      borderRadius={"full"}
-                      m={"1"}
-                    >
-                      Science
-                    </Button>
-                    <Button
-                      variant={"outline"}
-                      size={{ base: "sm" }}
-                      m={"1"}
-                      borderRadius={"full"}
-                    >
-                      life style
-                    </Button>
-                    <Button
-                      variant={"outline"}
-                      m={"1"}
-                      size={{ base: "sm" }}
-                      borderRadius={"full"}
-                    >
-                      Technologies
-                    </Button>
-                    <Button
-                      m={"1"}
-                      variant={"outline"}
-                      size={{ base: "sm" }}
-                      borderRadius={"full"}
-                    >
-                      Art
-                    </Button>
-                    <Button
-                      m={"1"}
-                      variant={"outline"}
-                      size={{ base: "sm" }}
-                      borderRadius={"full"}
-                    >
-                      Business
-                    </Button>
-                    <Button
-                      m={"1"}
-                      variant={"outline"}
-                      size={{ base: "sm" }}
-                      borderRadius={"full"}
-                    >
-                      DIY
-                    </Button>
+              <Flex
+                width={"100%"}
+                justify={"space-between"}
+                align={"center"}
+                px={"4"}
+                fontSize={"2xl"}
+              >
+                <Text fontWeight={"500"}>For you</Text>
+                <Link href={"/search"}>
+                  <Flex
+                    align={"center"}
+                    borderRadius={"full"}
+                    border={"1px solid"}
+                    borderColor={"gray.300"}
+                    p={{
+                      base: "1",
+                      md: "0",
+                    }}
+                  >
+                    <Icon as={CiSearch} />
+                    <Input
+                      placeholder="search blog"
+                      border={"none"}
+                      disabled
+                      display={{ base: "none", md: "unset" }}
+                    />
                   </Flex>
-                </Flex>
+                </Link>
               </Flex>
 
               <PostCard />

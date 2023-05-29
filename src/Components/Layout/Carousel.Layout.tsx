@@ -8,7 +8,6 @@ const Carousel: React.FC<CarouselProps> = ({ children }) => {
     <>
       <Flex
         width={"100%"}
-        borderBottom={"0.5px solid"}
         borderColor={"gray.900"}
         overflowX={"scroll"}
         pb={"20px"}
