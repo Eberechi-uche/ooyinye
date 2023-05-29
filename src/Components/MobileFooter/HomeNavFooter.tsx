@@ -22,12 +22,11 @@ const HomeNavFooter: React.FC = () => {
       <Flex
         width={"100%"}
         justify={"space-between"}
-        px={"4"}
+        px={"5"}
         height={"60px"}
         bg={"#fff"}
         align={"center"}
         zIndex={"10"}
-        mx={"0"}
         position={"fixed"}
         bottom={"0"}
         display={{ base: "flex", md: "none" }}

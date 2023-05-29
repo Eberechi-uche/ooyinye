@@ -20,11 +20,12 @@ const PostCard: React.FC = () => {
               <Text> date</Text> <Icon as={BsFillPinFill} />
             </Flex>
           ) : (
-            <Flex>
+            <Flex align={"center"}>
               <Image
                 src="/series.webp"
                 alt={"userprofile"}
-                boxSize={"30"}
+                boxSize={"20px"}
+                objectFit={"cover"}
                 borderRadius={"full"}
               />
               <Flex ml={"2"} flexDir={"column"} width={"100%"}>
@@ -67,13 +68,10 @@ const PostCard: React.FC = () => {
               alignSelf={"flex-start"}
               height={"fit-content"}
             >
-              <Text fontWeight={"700"} fontSize={{ base: "sm", md: "md" }}>
+              <Text fontWeight={"600"} fontSize={{ base: "sm", md: "md" }}>
                 The Quick brown fox the Quickiest brown fox
               </Text>
-              <Text fontSize={{ base: "xs" }} noOfLines={[1, 2]}>
-                The Quick fox jumped over the lazy Dog The Quick fox jumped over
-                the lazy DogThe Quick fox jumped over the lazy DogThe Quick fox
-                jumped over the lazy DogThe Quick fox jumped over the lazy Dog
+              <Text fontSize={{ base: "xs" }} noOfLines={[1, 2, 3]}>
                 The Quick fox jumped over the lazy Dog The Quick fox jumped over
                 the lazy DogThe Quick fox jumped over the lazy DogThe Quick fox
                 jumped over the lazy DogThe Quick fox jumped over the lazy Dog

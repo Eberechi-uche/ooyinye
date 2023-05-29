@@ -36,12 +36,9 @@ export default function Home() {
               width={"100%"}
               color={"#fff"}
             >
-              <Text width={"100%"} fontWeight={"700"} ml={"2"} fontSize={"3xl"}>
+              <Text width={"100%"} fontWeight={"700"} fontSize={"3xl"}>
                 Top Reads
               </Text>
-              <PostCard />
-              <PostCard />
-              <PostCard />
               <PostCard />
               <PostCard />
               <PostCard />

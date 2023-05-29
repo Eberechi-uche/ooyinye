@@ -9,21 +9,13 @@ import {
   DrawerHeader,
   DrawerOverlay,
   Flex,
-  Icon,
   Input,
   Text,
   useDisclosure,
+  Image,
 } from "@chakra-ui/react";
 import Comments from "@/Components/Comments/Comment";
-import ContentLayout from "@/Components/Layout/Content.Layout";
-import {
-  IoChatbubbles,
-  IoHeartOutline,
-  IoShareSocial,
-  IoBookmarks,
-} from "react-icons/io5";
-import BlogLHS from "@/Components/LeftContentComponent/Blog/BlogLHS";
-import { RiShareForwardFill } from "react-icons/ri";
+
 import BlogPostHeader from "@/Components/Headers/BlogPost.Header";
 import BlogParser from "@/Components/BlogParser/BlogParser";
 import PostCard from "@/Components/Card/PostCard";
@@ -38,9 +30,10 @@ const Post: React.FC = () => {
         <>
           <BlogNavFooter onOpen={onOpen} />
           <BlogPostHeader />
+          <Image alt={"imageName"} src={"/blogsample.png"} />
           <Flex minH={"100vh"} flexDir={"column"} width={"100%"}>
             <BlogParser />
-            <Flex flexDir={"column"} my={"10"} bg={"teal.200"} width={"100%"}>
+            <Flex flexDir={"column"} my={"10"} bg={"gray.50"} width={"100%"}>
               <Text fontWeight={"700"} mx={"4"}>
                 More by John Doe
               </Text>
@@ -90,7 +83,6 @@ const CommentDrawer: React.FC<CommentDrawerProps> = ({ isOpen, onClose }) => {
 
           <DrawerFooter py={"10"}>
             <Button variant={"unstyled"} onClick={onClose}>
-              {" "}
               close
             </Button>
           </DrawerFooter>

@@ -9,38 +9,51 @@ const Search: React.FC = () => {
     <>
       <SingleContentLayout>
         <Flex width={"100%"} justify={"center"} flexDir={"column"}>
-          <Flex
-            width={"100%"}
-            overflow={"hidden"}
-            height={"15vh"}
-            flexDir={"column"}
-            textAlign={"center"}
-          >
+          <Flex width={"100%"} flexDir={"column"} p={"5"} minH={"20vh"}>
             <Text
-              fontSize={{ base: "100px", md: "10vw", lg: "80px" }}
+              fontSize={{ base: "25vw", md: "20vw", lg: "15vw" }}
               fontWeight={"700"}
               color={"gray.200"}
+              textAlign={"center"}
             >
               Search
             </Text>
-          </Flex>
-          <Flex width={"100%"} flexDir={"column"} p={"5"} minH={"20vh"}>
             <Input
               bg={"white"}
               borderRadius={"full"}
               placeholder="search blog"
             />
             <Carousel>
-              <Button mx={"2"} colorScheme="blue" variant={"unstyled"}>
+              <Button
+                mx={"2"}
+                colorScheme="blue"
+                variant={"unstyled"}
+                color={"gray.400"}
+              >
                 Artificial Inteligence
               </Button>
-              <Button mx={"2"} colorScheme="blue" variant={"unstyled"}>
+              <Button
+                mx={"2"}
+                colorScheme="blue"
+                variant={"unstyled"}
+                color={"gray.400"}
+              >
                 Programming
-              </Button>{" "}
-              <Button mx={"2"} colorScheme="blue" variant={"unstyled"}>
+              </Button>
+              <Button
+                mx={"2"}
+                colorScheme="blue"
+                variant={"unstyled"}
+                color={"gray.400"}
+              >
                 Life
-              </Button>{" "}
-              <Button mx={"2"} colorScheme="blue" variant={"unstyled"}>
+              </Button>
+              <Button
+                mx={"2"}
+                colorScheme="blue"
+                variant={"unstyled"}
+                color={"gray.400"}
+              >
                 Fiction
               </Button>
             </Carousel>
