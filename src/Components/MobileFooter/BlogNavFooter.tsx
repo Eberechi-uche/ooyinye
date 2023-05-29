@@ -1,16 +1,6 @@
 import { Flex, Icon } from "@chakra-ui/react";
-import { useRouter } from "next/router";
-import {
-  CiCompass1,
-  CiCirclePlus,
-  CiSearch,
-  CiViewList,
-  CiUser,
-  CiShare1,
-  CiHeart,
-  CiChat2,
-  CiDollar,
-} from "react-icons/ci";
+
+import { CiShare1, CiHeart, CiChat2, CiDollar } from "react-icons/ci";
 type BlogNavFooterProp = {
   onOpen: () => void;
 };

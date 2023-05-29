@@ -1,67 +1,59 @@
 import { Flex, Image, Text, Icon } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import {
-  BsDot,
-  BsBookmarkPlus,
-  BsFillPinFill,
-  BsClockFill,
-} from "react-icons/bs";
+import { BsDot, BsFillPinFill, BsClockFill } from "react-icons/bs";
 import { CiBookmarkPlus } from "react-icons/ci";
+import ProfileCardMini from "./ProfileCardMini";
 
-const PostCard: React.FC = () => {
+type PostCardProps = {
+  showProfile: boolean;
+};
+
+const PostCard: React.FC<PostCardProps> = ({ showProfile }) => {
   const { profile } = useRouter().query;
   return (
     <>
-      <Link href={"/posts/blooger"}>
-        <Flex flexDir={"column"} py={"5"} px={"5"}>
-          {profile ? (
-            <Flex width={"100%"} justify={"space-between"}>
-              <Text> date</Text> <Icon as={BsFillPinFill} />
-            </Flex>
-          ) : (
-            <Flex align={"center"}>
-              <Image
-                src="/series.webp"
-                alt={"userprofile"}
-                boxSize={"20px"}
-                objectFit={"cover"}
-                borderRadius={"full"}
-              />
-              <Flex ml={"2"} flexDir={"column"} width={"100%"}>
-                <Flex align={"center"} justify={"space-between"}>
-                  <Flex>
-                    <Text> Quick Fox</Text>
-                    <Text
-                      fontSize={"12px"}
-                      display={"flex"}
-                      alignItems={"center"}
-                    >
-                      <Icon as={BsDot} mx={"2"} />
-                      1st April
-                    </Text>
-                    <Text
-                      fontSize={"12px"}
-                      display={"flex"}
-                      alignItems={"center"}
-                    >
-                      <Icon as={BsDot} mx={"2"} />
-                      <Icon as={BsClockFill} mx={"2"} />8 mins
-                    </Text>
-                  </Flex>
+      <Flex flexDir={"column"} py={"5"} px={"5"}>
+        {profile ? (
+          <Flex width={"100%"} justify={"space-between"}>
+            <Text> date</Text> <Icon as={BsFillPinFill} />
+          </Flex>
+        ) : (
+          <Flex align={"center"}>
+            <Flex flexDir={"column"} width={"100%"}>
+              {showProfile && <ProfileCardMini />}
 
-                  <Flex fontSize={"lg"}>
-                    {profile ? (
-                      <Icon as={BsFillPinFill} />
-                    ) : (
-                      <Icon as={CiBookmarkPlus} />
-                    )}
-                  </Flex>
+              <Flex align={"center"} justify={"space-between"}>
+                <Flex>
+                  <Text
+                    fontSize={"12px"}
+                    display={"flex"}
+                    alignItems={"center"}
+                  >
+                    1st April
+                  </Text>
+                  <Text
+                    fontSize={"12px"}
+                    display={"flex"}
+                    alignItems={"center"}
+                  >
+                    <Icon as={BsDot} mx={"2"} />
+                    <Icon as={BsClockFill} mx={"2"} />8 mins
+                  </Text>
+                </Flex>
+
+                <Flex fontSize={"lg"}>
+                  {profile ? (
+                    <Icon as={BsFillPinFill} />
+                  ) : (
+                    <Icon as={CiBookmarkPlus} />
+                  )}
                 </Flex>
               </Flex>
             </Flex>
-          )}
-
+          </Flex>
+        )}
+        <Link href={"/posts/blooger"}>
           <Flex align={"center"} mt={"2"}>
             <Flex
               flexDir={"column"}
@@ -89,8 +81,8 @@ const PostCard: React.FC = () => {
               alignSelf={"center"}
             />
           </Flex>
-        </Flex>
-      </Link>
+        </Link>
+      </Flex>
     </>
   );
 };

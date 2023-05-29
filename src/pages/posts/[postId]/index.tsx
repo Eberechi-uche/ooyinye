@@ -13,14 +13,18 @@ import {
   Text,
   useDisclosure,
   Image,
+  Grid,
+  SimpleGrid,
 } from "@chakra-ui/react";
 import Comments from "@/Components/Comments/Comment";
 
 import BlogPostHeader from "@/Components/Headers/BlogPost.Header";
 import BlogParser from "@/Components/BlogParser/BlogParser";
-import PostCard from "@/Components/Card/PostCard";
+
 import SingleContentLayout from "@/Components/Layout/SingleContent.Layout";
 import BlogNavFooter from "@/Components/MobileFooter/BlogNavFooter";
+import PostcardLarge from "@/Components/Card/PostcardLarge";
+import ProfileCardLarge from "@/Components/Card/ProfileCardLarge";
 
 const Post: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -33,15 +37,46 @@ const Post: React.FC = () => {
           <Image alt={"imageName"} src={"/blogsample.png"} />
           <Flex minH={"100vh"} flexDir={"column"} width={"100%"}>
             <BlogParser />
-            <Flex flexDir={"column"} my={"10"} bg={"gray.50"} width={"100%"}>
-              <Text fontWeight={"700"} mx={"4"}>
-                More by John Doe
+            <Flex
+              flexDir={"column"}
+              mt={"10"}
+              bg={"gray.50"}
+              width={"100%"}
+              align={"center"}
+            >
+              <Text fontWeight={"700"} m={"4"} fontSize={"2xl"}>
+                more by
               </Text>
-              <PostCard />
-              <PostCard />
-              <PostCard />
-              <PostCard />
-              <PostCard />
+
+              <ProfileCardLarge />
+              <SimpleGrid columns={{ base: 1, md: 2 }} placeItems={"center"}>
+                <PostcardLarge showProfile={false} />
+                <PostcardLarge showProfile={false} />
+                <PostcardLarge showProfile={false} />
+                <PostcardLarge showProfile={false} />
+                <PostcardLarge showProfile={false} />
+                <PostcardLarge showProfile={false} />
+              </SimpleGrid>
+            </Flex>
+            <Flex
+              flexDir={"column"}
+              bg={"gray.700"}
+              width={"100%"}
+              align={"center"}
+              color={"#fff"}
+              pb={"10"}
+            >
+              <Text fontWeight={"700"} m={"4"} fontSize={"2xl"}>
+                Recommendation
+              </Text>
+              <SimpleGrid columns={{ base: 1, md: 2 }} placeItems={"center"}>
+                <PostcardLarge showProfile={true} />
+                <PostcardLarge showProfile={true} />
+                <PostcardLarge showProfile={true} />
+                <PostcardLarge showProfile={true} />
+                <PostcardLarge showProfile={true} />
+                <PostcardLarge showProfile={true} />
+              </SimpleGrid>
             </Flex>
           </Flex>
           <CommentDrawer onClose={onClose} isOpen={isOpen} />

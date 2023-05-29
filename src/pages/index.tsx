@@ -36,16 +36,14 @@ export default function Home() {
               width={"100%"}
               color={"#fff"}
             >
-              <Text width={"100%"} fontWeight={"700"} fontSize={"3xl"}>
+              <Text width={"100%"} fontWeight={"700"} fontSize={"3xl"} px={"4"}>
                 Top Reads
               </Text>
-              <PostCard />
-              <PostCard />
-              <PostCard />
-              <PostCard />
-              <PostCard />
-              <PostCard />
-              <PostCard />
+              <PostCard showProfile={true} />
+              <PostCard showProfile={true} />
+              <PostCard showProfile={true} />
+              <PostCard showProfile={true} />
+              <PostCard showProfile={true} />
             </Flex>
 
             <Flex width={"100%"} flexDir={"column"} py={"20"}>
@@ -56,7 +54,9 @@ export default function Home() {
                 px={"4"}
                 fontSize={"2xl"}
               >
-                <Text fontWeight={"500"}>For you</Text>
+                <Text fontWeight={"700"} fontSize={"3xl"}>
+                  For you
+                </Text>
                 <Link href={"/search"}>
                   <Flex
                     align={"center"}
@@ -68,7 +68,11 @@ export default function Home() {
                       md: "0",
                     }}
                   >
-                    <Icon as={CiSearch} />
+                    <Icon
+                      as={CiSearch}
+                      color={"gray.300"}
+                      ml={{ md: "2", lg: "4" }}
+                    />
                     <Input
                       placeholder="search blog"
                       border={"none"}
@@ -79,16 +83,14 @@ export default function Home() {
                 </Link>
               </Flex>
 
-              <PostCard />
-              <PostCard />
-              <PostCard />
-              <PostCard />
-              <PostCard />
-              <PostCard />
-              <PostCard />
-              <PostCard />
-              <PostCard />
-              <PostCard />
+              <PostCard showProfile={true} />
+              <PostCard showProfile={true} />
+              <PostCard showProfile={true} />
+              <PostCard showProfile={true} />
+              <PostCard showProfile={true} />
+              <PostCard showProfile={true} />
+              <PostCard showProfile={true} />
+              <PostCard showProfile={true} />
             </Flex>
           </>
           <>

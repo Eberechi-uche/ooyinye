@@ -1,5 +1,6 @@
 import PostCard from "@/Components/Card/PostCard";
-import TopTrendCard from "@/Components/Card/TopTrendCard";
+import TopTrendCard from "@/Components/Card/PostcardLarge";
+import ProfileCardLarge from "@/Components/Card/ProfileCardLarge";
 import ProfilePageHeader from "@/Components/Headers/ProfilePage.Header";
 import Carousel from "@/Components/Layout/Carousel.Layout";
 import ContentLayout from "@/Components/Layout/Content.Layout";
@@ -11,28 +12,22 @@ const Profile: React.FC = () => {
   const { profileId } = useRouter().query;
   return (
     <Flex width={"100vw"} justify={"center"}>
-      <Flex maxW={"1300px"} flexDir={"column"}>
-        <ProfilePageHeader profile={profileId} />
-        <Flex flexDir={"column"} bg={"whatsapp.50"}>
+      <Flex maxW={"900px"} flexDir={"column"}>
+        {/* <ProfilePageHeader profile={profileId} /> */}
+        <ProfileCardLarge />
+        <Flex flexDir={"column"} bg={"gray.50"}>
           <Text>Pinned</Text>
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
+          <PostCard showProfile={false} />
+          <PostCard showProfile={false} />
         </Flex>
         <Flex flexDir={"column"}>
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
+          <PostCard showProfile={false} />
+          <PostCard showProfile={false} />
+          <PostCard showProfile={false} />
+          <PostCard showProfile={false} />
+          <PostCard showProfile={false} />
+          <PostCard showProfile={false} />
+          <PostCard showProfile={false} />
         </Flex>
       </Flex>
     </Flex>

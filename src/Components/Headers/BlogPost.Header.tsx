@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { CiCircleChevDown } from "react-icons/ci";
+import ProfileCardMini from "../Card/ProfileCardMini";
 
 const BlogPostHeader: React.FC = () => {
   return (
@@ -35,17 +36,20 @@ const BlogPostHeader: React.FC = () => {
               the quick brown fox jumped over the lazy dog the quick brown fox
             </Text>
           </Flex>
-          <Flex align={"center"} justify={"space-evenly"} mt={"2"}>
-            <Text textTransform={"uppercase"} fontSize={"xs"}>
-              by John Doe
-            </Text>
-            <Divider height={"10px"} orientation="vertical" mx={"1"} />
-            <Text fontSize={"xs"}> 26 may 2023</Text>
+          <Flex
+            align={"center"}
+            justify={"space-evenly"}
+            mt={"2"}
+            flexDir={"column"}
+            fontSize={"xs"}
+          >
+            <Text> by</Text>
+            <ProfileCardMini />
+            <Text> 26 may 2023</Text>
           </Flex>
         </Flex>
 
-        <Flex flexDir={"column"} fontSize={"xs"}>
-          <Text textTransform={"uppercase"}> Liked by </Text>
+        <Flex fontSize={"xs"} align={"center"}>
           <AvatarGroup max={6} color={"black"} size={{ base: "sm", md: "md" }}>
             <Avatar name="Ryan Florence" src="https://bit.ly/ryan-florence" />
             <Avatar name="Ryan Florence" src="https://bit.ly/ryan-florence" />
