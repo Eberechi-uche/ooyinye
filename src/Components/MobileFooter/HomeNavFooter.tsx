@@ -7,6 +7,7 @@ import {
   CiSearch,
   CiMemoPad,
   CiUser,
+  CiPen,
 } from "react-icons/ci";
 import { useSetRecoilState } from "recoil";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -46,10 +47,17 @@ const HomeNavFooter: React.FC = () => {
           }}
         />
         <Icon
-          as={CiCirclePlus}
+          as={CiPen}
           fontSize={"4xl"}
           color={"blue.600"}
           onClick={() => {
+            if (!user) {
+              setAuthState({
+                view: "Login",
+                open: true,
+              });
+              return;
+            }
             route.push("/write");
           }}
         />

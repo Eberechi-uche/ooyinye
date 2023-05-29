@@ -30,7 +30,7 @@ const Explore: React.FC = () => {
                     Artififial Inteligence
                   </Text>
                   <Divider mx={"4"} />
-                  <Text fontSize={"xs"}>
+                  <Text fontSize={"sm"} fontWeight={"300"}>
                     Explore the fascinating world of Artificial Intelligence
                     (AI) and its profound impact on our lives. In this digital
                     era, AI has emerged as a transformative force,
@@ -45,7 +45,7 @@ const Explore: React.FC = () => {
                     Programming
                   </Text>
                   <Divider mx={"4"} />
-                  <Text fontSize={"xs"}>
+                  <Text fontSize={"sm"} fontWeight={"300"}>
                     embark on a thrilling exploration of the boundless world of
                     programming. In this digital age, programming has become an
                     indispensable skill, empowering individuals to shape
@@ -59,7 +59,7 @@ const Explore: React.FC = () => {
                     life
                   </Text>
                   <Divider mx={"4"} />
-                  <Text fontSize={"xs"}>
+                  <Text fontSize={"sm"} fontWeight={"300"}>
                     Sanctuary of reflection and exploration, where we delve into
                     the profound essence of life itself. In this ever-changing
                     world, it's essential to pause, breathe, and contemplate the
@@ -73,7 +73,7 @@ const Explore: React.FC = () => {
                     Fiction
                   </Text>
                   <Divider mx={"4"} />
-                  <Text fontSize={"xs"}>
+                  <Text fontSize={"sm"} fontWeight={"300"}>
                     A captivating realm where fiction comes alive, and
                     imagination knows no bounds. Here, we embark on a magical
                     journey through the pages of extraordinary stories,

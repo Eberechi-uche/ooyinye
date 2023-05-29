@@ -54,16 +54,16 @@ const PostCard: React.FC<PostCardProps> = ({ showProfile }) => {
           </Flex>
         )}
         <Link href={"/posts/blooger"}>
-          <Flex align={"center"} mt={"2"}>
+          <Flex align={"center"} mt={"2"} fontSize={"md"}>
             <Flex
               flexDir={"column"}
               alignSelf={"flex-start"}
               height={"fit-content"}
             >
-              <Text fontWeight={"600"} fontSize={{ base: "sm", md: "md" }}>
+              <Text fontWeight={"500"}>
                 The Quick brown fox the Quickiest brown fox
               </Text>
-              <Text fontSize={{ base: "xs" }} noOfLines={[1, 2, 3]}>
+              <Text noOfLines={[1]} fontWeight={"200"}>
                 The Quick fox jumped over the lazy Dog The Quick fox jumped over
                 the lazy DogThe Quick fox jumped over the lazy DogThe Quick fox
                 jumped over the lazy DogThe Quick fox jumped over the lazy Dog
@@ -73,8 +73,8 @@ const PostCard: React.FC<PostCardProps> = ({ showProfile }) => {
             <Image
               alt={"postImage"}
               src={"/blogsample.png"}
-              width={{ base: "25%", md: "20%" }}
-              height={{ base: "70%", md: "40%" }}
+              width={{ base: "20%", md: "15%" }}
+              height={{ base: "80%", md: "40%" }}
               objectFit={"cover"}
               ml={"4"}
               borderRadius={"3px"}

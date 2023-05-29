@@ -1,4 +1,4 @@
-import { Flex, Text, Image, Icon, Button } from "@chakra-ui/react";
+import { Flex, Text, Image, Icon, Button, Divider } from "@chakra-ui/react";
 import { CiShare1, CiHeart, CiChat2, CiDollar } from "react-icons/ci";
 
 const ProfileCardLarge: React.FC = () => {
@@ -14,7 +14,7 @@ const ProfileCardLarge: React.FC = () => {
               borderRadius={"full"}
               mr={"2"}
             />
-            <Text> Ada loveLace</Text>
+            <Text fontWeight={"500"}> Ada loveLace</Text>
           </Flex>
           <Flex align={"center"}>
             <Button
@@ -29,6 +29,7 @@ const ProfileCardLarge: React.FC = () => {
           </Flex>
         </Flex>
         <Text fontSize={"sm"}>users bio here if available</Text>
+        <Divider my={"5"} />
       </Flex>
     </>
   );

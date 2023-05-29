@@ -1,10 +1,4 @@
-import {
-  CiCompass1,
-  CiCirclePlus,
-  CiSearch,
-  CiMemoPad,
-  CiUser,
-} from "react-icons/ci";
+import { CiCompass1, CiPen, CiSearch, CiMemoPad, CiUser } from "react-icons/ci";
 import { useRouter } from "next/router";
 import { Flex, Icon, Text } from "@chakra-ui/react";
 import { useSetRecoilState } from "recoil";
@@ -33,6 +27,7 @@ const HomeRHS: React.FC = () => {
         width={"100%"}
         height={"50vh"}
         justify={"space-evenly"}
+        cursor={"pointer"}
       >
         <Flex
           width={"100%"}
@@ -72,10 +67,17 @@ const HomeRHS: React.FC = () => {
           width={"100%"}
           align={"center"}
           onClick={() => {
+            if (!user) {
+              setAuthState({
+                view: "Login",
+                open: true,
+              });
+              return;
+            }
             route.push("/write");
           }}
         >
-          <Icon as={CiCirclePlus} fontSize={"2xl"} mr={"2"} />
+          <Icon as={CiPen} fontSize={"2xl"} mr={"2"} />
           <Text
             display={{ base: "none", md: "none", lg: "unset" }}
             fontSize={"sm"}

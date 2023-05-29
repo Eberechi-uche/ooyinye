@@ -1,7 +1,7 @@
 import { Divider, Flex, Image, Text, Icon } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { BsDot, BsBookmarkPlus, BsFillPinFill, BsClock } from "react-icons/bs";
-import { CiBookmarkPlus } from "react-icons/ci";
+import { CiBookmarkPlus, CiHeart } from "react-icons/ci";
 import CardProfileMini from "./ProfileCardMini";
 type PostcardLargeProps = {
   showProfile: boolean;
@@ -29,35 +29,39 @@ const PostcardLarge: React.FC<PostcardLargeProps> = ({ showProfile }) => {
         {showProfile && <CardProfileMini />}
 
         <Flex flexDir={"column"}>
-          <Text fontWeight={"700"} textTransform={"capitalize"}>
+          <Text fontWeight={"500"} textTransform={"capitalize"}>
             The quick brown fox jumps over the lazy dog The quick brown fox
           </Text>
-          <Text noOfLines={1} fontSize={"xs"}>
+          <Text noOfLines={1} fontSize={"sm"} fontWeight={"200"}>
             The quick brown fox jumps over the lazy dog The quick brown fox
             jumps over the lazy dog The quick brown fox jumps over the lazy dog
             The quick brown fox jumps over the lazy dog
           </Text>
 
-          <Flex width={"100%"}>
-            <Text fontSize={"xs"} my={"2"}>
-              26 may, 2022
-            </Text>
-            <Text
-              display={"flex"}
-              alignItems={"center"}
-              mx={"2"}
-              fontSize={"xs"}
-            >
-              <Icon as={BsClock} mx={"1"} />
-              10min Read
-            </Text>
-          </Flex>
-        </Flex>
-        <Flex width={"100%"} justify={"space-between"} my={"2"}>
-          <Flex>
+          <Flex
+            width={"100%"}
+            fontWeight={"200"}
+            justify={"space-between"}
+            align={"center"}
+          >
+            <Flex>
+              <Text fontSize={"xs"} my={"2"}>
+                26 may, 2022
+              </Text>
+              <Text
+                display={"flex"}
+                alignItems={"center"}
+                mx={"2"}
+                fontSize={"xs"}
+              >
+                <Icon as={BsClock} mx={"1"} />
+                10min Read
+              </Text>
+            </Flex>
             <Icon as={CiBookmarkPlus} />
           </Flex>
         </Flex>
+        <Flex width={"100%"} justify={"space-between"} my={"2"}></Flex>
       </Flex>
     </>
   );

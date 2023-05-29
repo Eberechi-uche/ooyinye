@@ -4,7 +4,7 @@ const BlogParser: React.FC = () => {
   return (
     <>
       <Flex flexDir={"column"} my={"10"}>
-        <Text textAlign={"left"} px={"4"}>
+        <Text textAlign={"left"} px={"4"} fontWeight={"300"}>
           What Is Meant By Lorem Ipsum In Website? The word Lorem Ipsum is
           derived from the Latin word which means “pain itself”. It is a kind of
           a text filler tool that is used by the webmaster on the website.

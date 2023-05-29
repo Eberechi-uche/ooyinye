@@ -15,6 +15,7 @@ import {
   CiGrid41,
   CiBookmarkCheck,
   CiPen,
+  CiSettings,
 } from "react-icons/ci";
 import { BsChevronRight } from "react-icons/bs";
 import {
@@ -104,6 +105,10 @@ const UserActions: React.FC = () => {
         <ListItem display={"flex"} alignItems={"center"}>
           <ListIcon as={CiBookmarkCheck} />
           Bookmarks
+        </ListItem>
+        <ListItem display={"flex"} alignItems={"center"}>
+          <ListIcon as={CiSettings} />
+          Profile settings
         </ListItem>
       </List>
     </>
