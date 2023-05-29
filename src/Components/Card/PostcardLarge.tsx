@@ -11,7 +11,7 @@ const PostcardLarge: React.FC<PostcardLargeProps> = ({ showProfile }) => {
   return (
     <>
       <Flex
-        width={"80%"}
+        width={"90%"}
         borderColor={"gray.300"}
         flexDir={"column"}
         mx={"2"}
@@ -23,6 +23,7 @@ const PostcardLarge: React.FC<PostcardLargeProps> = ({ showProfile }) => {
             objectFit={"cover"}
             width={"100%"}
             alt={"user-profile"}
+            borderTopRadius={"7px"}
           />
         </Flex>
         {showProfile && <CardProfileMini />}
