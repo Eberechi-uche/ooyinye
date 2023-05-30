@@ -10,10 +10,10 @@ const outline = defineStyle({
   },
 });
 const solid = defineStyle({
-  border: "2px solid",
-  borderRadius: 0,
+  borderRadius: 100,
   fontWeight: "semibold",
   color: "black",
+  colorScheme: "blackAlpha",
 });
 const brandPrimary = defineStyle({
   background: "black",

@@ -11,7 +11,7 @@ const Search: React.FC = () => {
         <Flex width={"100%"} justify={"center"} flexDir={"column"}>
           <Flex width={"100%"} flexDir={"column"} p={"5"} minH={"20vh"}>
             <Text
-              fontSize={{ base: "25vw", md: "20vw", lg: "15vw" }}
+              fontSize={{ base: "20vw", md: "20vw", lg: "15vw" }}
               fontWeight={"600"}
               color={"gray.200"}
               textAlign={"center"}

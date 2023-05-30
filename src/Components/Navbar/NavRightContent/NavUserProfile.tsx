@@ -41,7 +41,7 @@ const NavUserProfile: React.FC = () => {
     <>
       <Flex align={"center"} onClick={onOpen} cursor={"pointer"}>
         <Image
-          src={"/profileplacholder.png"}
+          src={user?.photoURL ? user.photoURL : "/profileplacholder.png"}
           alt={"user profile"}
           boxSize={"30px"}
           objectFit={"cover"}
@@ -103,12 +103,16 @@ const UserActions: React.FC = () => {
           write
         </ListItem>
         <ListItem display={"flex"} alignItems={"center"}>
-          <ListIcon as={CiBookmarkCheck} />
-          Bookmarks
+          <Link href={"/Bookmarks"}>
+            <ListIcon as={CiBookmarkCheck} />
+            Bookmarks
+          </Link>
         </ListItem>
         <ListItem display={"flex"} alignItems={"center"}>
-          <ListIcon as={CiSettings} />
-          Profile settings
+          <Link href={"/profile/profile-setting"}>
+            <ListIcon as={CiSettings} />
+            Profile settings
+          </Link>
         </ListItem>
       </List>
     </>

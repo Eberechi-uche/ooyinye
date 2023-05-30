@@ -58,7 +58,7 @@ const PostcardLarge: React.FC<PostcardLargeProps> = ({ showProfile }) => {
                 10min Read
               </Text>
             </Flex>
-            <Icon as={CiBookmarkPlus} />
+            <Icon as={CiBookmarkPlus} fontSize={"2xl"} />
           </Flex>
         </Flex>
         <Flex width={"100%"} justify={"space-between"} my={"2"}></Flex>

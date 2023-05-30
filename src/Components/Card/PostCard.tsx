@@ -42,12 +42,8 @@ const PostCard: React.FC<PostCardProps> = ({ showProfile }) => {
                   </Text>
                 </Flex>
 
-                <Flex fontSize={"lg"}>
-                  {profile ? (
-                    <Icon as={BsFillPinFill} />
-                  ) : (
-                    <Icon as={CiBookmarkPlus} />
-                  )}
+                <Flex fontSize={"2xl"}>
+                  <Icon as={CiBookmarkPlus} />
                 </Flex>
               </Flex>
             </Flex>
@@ -60,20 +56,16 @@ const PostCard: React.FC<PostCardProps> = ({ showProfile }) => {
               alignSelf={"flex-start"}
               height={"fit-content"}
             >
-              <Text fontWeight={"500"}>
-                The Quick brown fox the Quickiest brown fox
-              </Text>
-              <Text noOfLines={[1]} fontWeight={"200"}>
-                The Quick fox jumped over the lazy Dog The Quick fox jumped over
-                the lazy DogThe Quick fox jumped over the lazy DogThe Quick fox
-                jumped over the lazy DogThe Quick fox jumped over the lazy Dog
+              <Text fontWeight={"600"}>
+                The mystery behind lorem ipsum, origin, uses and everything
+                inbetween
               </Text>
             </Flex>
 
             <Image
               alt={"postImage"}
               src={"/blogsample.png"}
-              width={{ base: "20%", md: "15%" }}
+              width={{ base: "25%", md: "15%" }}
               height={{ base: "80%", md: "40%" }}
               objectFit={"cover"}
               ml={"4"}

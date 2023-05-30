@@ -20,6 +20,7 @@ const ProfileCardMini: React.FC = () => {
             objectFit={"cover"}
             borderRadius={"full"}
             mr={"2"}
+            alt={"profile"}
           />
           <Text fontWeight={"700"}>Ada lovelace</Text>
         </Flex>
