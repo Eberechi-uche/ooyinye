@@ -62,8 +62,9 @@ const ProfileCardLarge: React.FC<ProfileCardLargeProps> = ({
           <Link href={twitter} target="_blank">
             <Icon as={CiTwitter} mr={"10"} color={"blue.600"} />
           </Link>
-
-          <Icon as={CiMail} color={"red.500"} />
+          <Link href={email}>
+            <Icon as={CiMail} color={"red.500"} />
+          </Link>
         </Flex>
         <Divider />
       </Flex>

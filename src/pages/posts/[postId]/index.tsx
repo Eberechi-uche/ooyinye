@@ -48,7 +48,14 @@ const Post: React.FC = () => {
                 more by
               </Text>
 
-              <ProfileCardLarge />
+              <ProfileCardLarge
+                imageUrl={undefined}
+                Bio={undefined}
+                email={undefined}
+                userDN={undefined}
+                userId={undefined}
+                twitter={undefined}
+              />
               <SimpleGrid columns={{ base: 1, md: 2 }} placeItems={"center"}>
                 <PostcardLarge showProfile={false} />
                 <PostcardLarge showProfile={false} />

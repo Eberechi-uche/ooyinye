@@ -17,6 +17,9 @@ export const useProfileData = () => {
 
   const updateUserBio = async (data: UserDetails) => {
     setLoading(true);
+    if (!user) {
+      return;
+    }
     try {
       await setDoc(
         doc(firestore, "users", `@${user?.email?.split("@")[0]}`),
