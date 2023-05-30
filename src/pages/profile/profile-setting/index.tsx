@@ -71,7 +71,7 @@ const Setting: React.FC = () => {
         </Flex>
         <Flex my={"5"} width={"100%"} position={"relative"}>
           <Image
-            src={file ? file : user?.photoURL || "/profileplacholder.png"}
+            src={file ? file : user?.photoURL!}
             boxSize={"90px"}
             borderRadius={"full"}
             alt={"profile-picture"}
@@ -182,6 +182,7 @@ const Setting: React.FC = () => {
           color={"#fff"}
           onClick={handleProfileUpdate}
           isLoading={loading}
+          isDisabled={userDetails.Bio.length < 10}
         >
           update
         </Button>

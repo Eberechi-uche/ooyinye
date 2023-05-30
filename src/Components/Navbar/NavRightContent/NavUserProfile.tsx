@@ -41,7 +41,7 @@ const NavUserProfile: React.FC = () => {
     <>
       <Flex align={"center"} onClick={onOpen} cursor={"pointer"}>
         <Image
-          src={user?.photoURL ? user.photoURL : "/profileplacholder.png"}
+          src={user?.photoURL!}
           alt={"user profile"}
           boxSize={"30px"}
           objectFit={"cover"}
@@ -88,7 +88,7 @@ const UserActions: React.FC = () => {
     <>
       <List spacing={3} fontSize={"lg"} fontWeight={"light"}>
         <ListItem display={"flex"} alignItems={"center"}>
-          <Link href={`/profile/${auth.currentUser?.displayName}`}>
+          <Link href={`/profile/@${auth.currentUser?.email?.split("@")[0]}`}>
             <ListIcon as={CiUser} />
             Profile
           </Link>

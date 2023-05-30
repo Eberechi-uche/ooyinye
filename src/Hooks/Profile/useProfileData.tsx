@@ -1,6 +1,6 @@
 import { auth, firestore, storage } from "@/Components/Firebase/ClientApp";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { setDoc, doc, collection } from "firebase/firestore";
+import { setDoc, doc } from "firebase/firestore";
 import { updateProfile } from "firebase/auth";
 import { useState } from "react";
 import { getDownloadURL, ref, uploadString } from "firebase/storage";
@@ -20,7 +20,8 @@ export const useProfileData = () => {
     try {
       await setDoc(
         doc(firestore, "users", `@${user?.email?.split("@")[0]}`),
-        data
+        data,
+        { merge: true }
       );
     } catch (error: any) {
       console.log(error.message);
@@ -37,10 +38,6 @@ export const useProfileData = () => {
         `profilePicture/@${user?.email?.split("@")[0]}/image}`
       );
       await uploadString(imageRef, photo, "data_url");
-      const downloardUrl = await getDownloadURL(imageRef);
-      updateProfile(user!, {
-        photoURL: downloardUrl,
-      });
     } catch (error: any) {
       console.log(error.message);
       setUpdateError(error.message);

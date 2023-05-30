@@ -1,19 +1,14 @@
-import {
-  Button,
-  Flex,
-  Highlight,
-  Input,
-  Text,
-  useToast,
-} from "@chakra-ui/react";
+import { Button, Flex, Highlight, Input, useToast } from "@chakra-ui/react";
 import { useState } from "react";
 import { updateProfile } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "../Firebase/ClientApp";
+import { auth, firestore, storage } from "../Firebase/ClientApp";
 import { useSetRecoilState } from "recoil";
 import { authModalState } from "@/Atoms/AuthModalAtom";
 import { useRouter } from "next/router";
-
+import { setDoc, doc } from "firebase/firestore";
+import { getDownloadURL, ref, uploadString } from "firebase/storage";
+import { profileImageURL } from "@/utilities/profileImage";
 const Welcome: React.FC = () => {
   const [name, setName] = useState("");
   const [user] = useAuthState(auth);
@@ -40,8 +35,8 @@ const Welcome: React.FC = () => {
         })
         .then(() => {
           toast({
-            title: `Welcome! 🎉 ${name}`,
-            description: "Your Amazing journey starts now",
+            title: `Welcome `,
+            description: `${name}`,
             status: "success",
             duration: 3000,
             isClosable: true,
@@ -49,10 +44,32 @@ const Welcome: React.FC = () => {
           });
           setLoading(false);
           route.push("/");
+        })
+        .then(() => {
+          handleProfileCreation();
         });
     } catch (error: any) {
       console.log("welcome", error.message);
     }
+  };
+  const handleProfileCreation = async () => {
+    const imageRef = ref(
+      storage,
+      `profilePicture/@${user?.email?.split("@")[0]}/image}`
+    );
+    await uploadString(imageRef, profileImageURL, "data_url");
+    const downloardUrl = await getDownloadURL(imageRef);
+    const data = {
+      userId: `@${user?.email?.split("@")[0]}`,
+      userDN: user?.displayName,
+      imageUrl: downloardUrl,
+    };
+
+    const docRef = doc(firestore, "users", `@${user?.email?.split("@")[0]}`);
+    await setDoc(docRef, data);
+    updateProfile(user!, {
+      photoURL: downloardUrl,
+    });
   };
 
   return (

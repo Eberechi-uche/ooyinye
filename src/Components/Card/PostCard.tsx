@@ -50,13 +50,20 @@ const PostCard: React.FC<PostCardProps> = ({ showProfile }) => {
           </Flex>
         )}
         <Link href={"/posts/blooger"}>
-          <Flex align={"center"} mt={"2"} fontSize={"md"}>
+          <Flex
+            align={"center"}
+            mt={"2"}
+            fontSize={{ base: "sm", md: "sm" }}
+            justify={"space-between"}
+            width={"100%"}
+          >
             <Flex
               flexDir={"column"}
               alignSelf={"flex-start"}
               height={"fit-content"}
+              width={"80%"}
             >
-              <Text fontWeight={"600"}>
+              <Text fontWeight={"700"} noOfLines={[3, 4]}>
                 The mystery behind lorem ipsum, origin, uses and everything
                 inbetween
               </Text>
@@ -64,7 +71,7 @@ const PostCard: React.FC<PostCardProps> = ({ showProfile }) => {
 
             <Image
               alt={"postImage"}
-              src={"/blogsample.png"}
+              src={"/fiction.webp"}
               width={{ base: "25%", md: "15%" }}
               height={{ base: "80%", md: "40%" }}
               objectFit={"cover"}

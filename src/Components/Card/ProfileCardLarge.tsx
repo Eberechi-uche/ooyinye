@@ -1,24 +1,48 @@
 import { Flex, Text, Image, Icon, Button, Divider } from "@chakra-ui/react";
-import { CiShare1, CiHeart, CiChat2, CiDollar } from "react-icons/ci";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { CiMail, CiDollar, CiTwitter } from "react-icons/ci";
 
-type ProfileCardLargeProps = {
-  id: string;
+export type ProfileCardLargeProps = {
+  email: string | undefined;
+  Bio: string | undefined;
+  imageUrl: string | undefined;
+  userId: string | undefined;
+  twitter: string | undefined;
+  userDN: string | undefined;
 };
-const ProfileCardLarge: React.FC = () => {
+const ProfileCardLarge: React.FC<ProfileCardLargeProps> = ({
+  email = "https://beebom.com/cool-interesting-websites/",
+  twitter = "https://beebom.com/cool-interesting-websites/",
+  imageUrl = "/ada-lovelace.webp",
+  Bio = "First female programer, mathematician, built the analytical engine",
+  userId = "@adalovelace",
+  userDN = "Ada Lovelace",
+}) => {
+  const { profileId } = useRouter().query;
+  const route = useRouter();
+
   return (
     <>
-      <Flex width={"100%"} p={"5"} flexDir={"column"}>
+      <Flex
+        width={"100%"}
+        p={"5"}
+        flexDir={"column"}
+        onClick={() => {
+          route.push(`/profile/${userId}`);
+        }}
+      >
         <Flex justify={"space-between"} width={"100%"}>
           <Flex width={"100%"} align={"center"}>
             <Image
-              src={"/programming.jpg"}
+              src={imageUrl}
               boxSize={"50px"}
               objectFit={"cover"}
               borderRadius={"full"}
               mr={"2"}
               alt={"profile"}
             />
-            <Text fontWeight={"500"}> Ada loveLace</Text>
+            <Text fontWeight={"500"}> {userDN}</Text>
           </Flex>
           <Flex align={"center"}>
             <Button
@@ -32,8 +56,16 @@ const ProfileCardLarge: React.FC = () => {
             <Icon as={CiDollar} fontSize={"4xl"} color={"green.500"} />
           </Flex>
         </Flex>
-        <Text fontSize={"sm"}>users bio here if available</Text>
-        <Divider my={"5"} />
+
+        <Text fontSize={"sm"}>{Bio}</Text>
+        <Flex fontSize={"2xl"} mt={"7"}>
+          <Link href={twitter} target="_blank">
+            <Icon as={CiTwitter} mr={"10"} color={"blue.600"} />
+          </Link>
+
+          <Icon as={CiMail} color={"red.500"} />
+        </Flex>
+        <Divider />
       </Flex>
     </>
   );

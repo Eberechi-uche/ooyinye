@@ -1,6 +1,5 @@
 import Welcome from "@/Components/Auth.component/Welcome";
-import ContentLayout from "@/Components/Layout/Content.Layout";
-import { Flex, Text, Image, Button, Icon, Stack, Box } from "@chakra-ui/react";
+import { Flex, Text, Button, Icon } from "@chakra-ui/react";
 import { useState } from "react";
 import { RxDot, RxDotFilled } from "react-icons/rx";
 

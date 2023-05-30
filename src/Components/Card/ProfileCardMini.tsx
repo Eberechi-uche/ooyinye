@@ -15,7 +15,7 @@ const ProfileCardMini: React.FC = () => {
       >
         <Flex>
           <Image
-            src={"/programming.jpg"}
+            src={"/ada-lovelace.webp"}
             boxSize={"20px"}
             objectFit={"cover"}
             borderRadius={"full"}
