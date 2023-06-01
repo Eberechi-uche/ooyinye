@@ -38,7 +38,7 @@ const HomeRHS: React.FC = () => {
         cursor={"pointer"}
       >
         <Flex width={"100%"}>
-          <Explore children={"Explore"} />
+          <Explore value={"Explore"} />
         </Flex>
 
         <Flex
@@ -48,7 +48,7 @@ const HomeRHS: React.FC = () => {
             route.push("/search");
           }}
         >
-          <Search children={"Search"} />
+          <Search value={"Search"} />
           <Text
             display={{ base: "none", md: "none", lg: "unset" }}
             fontSize={"sm"}
@@ -61,17 +61,17 @@ const HomeRHS: React.FC = () => {
 
         {user && (
           <Flex width={"100%"} align={"center"}>
-            <Draft children={"Drafts"} />
+            <Draft value={"Drafts"} />
           </Flex>
         )}
         {user && (
           <Flex width={"100%"} align={"center"}>
-            <Bookmarks children={"Bookmarks"} />
+            <Bookmarks value={"Bookmarks"} />
           </Flex>
         )}
 
         <Flex width={"100%"} align={"center"}>
-          <Profile userID={ID} children={"Profile"} />
+          <Profile userID={ID} value={"Profile"} />
         </Flex>
       </Flex>
     </>

@@ -63,10 +63,10 @@ const Post: React.FC = () => {
             display={{ base: "none", md: "flex" }}
             cursor={"pointer"}
           >
-            <CommentsIcon children={"(3 comments)"} onOpen={onOpen} />
-            <ShareIcon children={"share"} />
-            <LikeIcon children={"5 like(s)"} />
-            <SupportIcon children={"support"} />
+            <CommentsIcon value={"(3 comments)"} onOpen={onOpen} />
+            <ShareIcon value={"share"} />
+            <LikeIcon value={"5 like(s)"} />
+            <SupportIcon value={"support"} />
           </Flex>
           <Flex minH={"100vh"} flexDir={"column"} width={"100%"}>
             <BlogParser />

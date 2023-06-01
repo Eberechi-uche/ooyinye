@@ -20,10 +20,10 @@ const BlogNavFooter: React.FC<BlogNavFooterProp> = ({ onOpen }) => {
         bottom={"0"}
         display={{ base: "flex", md: "none" }}
       >
-        <ShareIcon children />
-        <LikeIcon children />
-        <CommentsIcon children onOpen={onOpen} />
-        <SupportIcon children />
+        <ShareIcon value={undefined} />
+        <LikeIcon value={undefined} />
+        <CommentsIcon value={undefined} onOpen={onOpen} />
+        <SupportIcon value={undefined} />
       </Flex>
     </>
   );

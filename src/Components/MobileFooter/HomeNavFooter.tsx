@@ -34,11 +34,11 @@ const HomeNavFooter: React.FC = () => {
         bottom={"0"}
         display={{ base: "flex", md: "none" }}
       >
-        <Explore children />
-        <Search children />
-        {user && <Draft children />}
-        {user && <Bookmarks children />}
-        <Profile userID={ID} children />
+        <Explore value={undefined} />
+        <Search value={undefined} />
+        {user && <Draft value={undefined} />}
+        {user && <Bookmarks value={undefined} />}
+        <Profile userID={ID} value={undefined} />
       </Flex>
     </>
   );

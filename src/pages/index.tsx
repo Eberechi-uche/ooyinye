@@ -4,9 +4,9 @@ import HomePageHeader from "@/Components/Headers/HomePage.Header";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/Components/Firebase/ClientApp";
 import ContentLayout from "@/Components/Layout/Content.Layout";
-import HomeRHS from "@/Components/LeftContentComponent/HomeLHS/HomeRHS";
+import HomeRHS from "@/Components/LeftContentComponent/HomeSideContent/HomeRHS";
 import PostCard from "@/Components/Card/PostCard";
-import HomeLHS from "@/Components/LeftContentComponent/HomeLHS/HomeLHS";
+import HomeLHS from "@/Components/LeftContentComponent/HomeSideContent/HomeLHS";
 import HomeNavFooter from "@/Components/MobileFooter/HomeNavFooter";
 import { CiCirclePlus, CiSearch } from "react-icons/ci";
 import Link from "next/link";
@@ -70,7 +70,7 @@ export default function Home() {
                   >
                     <Icon
                       as={CiSearch}
-                      color={"gray.300"}
+                      color={"gray.700"}
                       ml={{ md: "2", lg: "4" }}
                     />
                     <Input

@@ -18,9 +18,9 @@ import { authModalState } from "@/Atoms/AuthModalAtom";
 import { ReactNode } from "react";
 
 type IconProps = {
-  children: ReactNode | undefined;
+  value: string | undefined;
 };
-export const Explore: React.FC<IconProps> = ({ children }) => {
+export const Explore: React.FC<IconProps> = ({ value }) => {
   const route = useRouter();
   return (
     <>
@@ -31,9 +31,9 @@ export const Explore: React.FC<IconProps> = ({ children }) => {
         }}
       >
         <Icon as={CiCompass1} fontSize={"2xl"} />
-        {children && (
+        {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
-            {children}
+            {value}
           </Text>
         )}
       </Flex>
@@ -41,7 +41,7 @@ export const Explore: React.FC<IconProps> = ({ children }) => {
   );
 };
 
-export const Search: React.FC<IconProps> = ({ children }) => {
+export const Search: React.FC<IconProps> = ({ value }) => {
   const route = useRouter();
   return (
     <>
@@ -51,9 +51,9 @@ export const Search: React.FC<IconProps> = ({ children }) => {
         }}
       >
         <Icon as={CiSearch} fontSize={"2xl"} />
-        {children && (
+        {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
-            {children}
+            {value}
           </Text>
         )}
       </Flex>
@@ -61,7 +61,7 @@ export const Search: React.FC<IconProps> = ({ children }) => {
   );
 };
 
-export const Bookmarks: React.FC<IconProps> = ({ children }) => {
+export const Bookmarks: React.FC<IconProps> = ({ value }) => {
   const route = useRouter();
 
   return (
@@ -73,16 +73,16 @@ export const Bookmarks: React.FC<IconProps> = ({ children }) => {
         }}
       >
         <Icon as={CiMemoPad} fontSize={"2xl"} />
-        {children && (
+        {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
-            {children}
+            {value}
           </Text>
         )}
       </Flex>
     </>
   );
 };
-export const Draft: React.FC<IconProps> = ({ children }) => {
+export const Draft: React.FC<IconProps> = ({ value }) => {
   const route = useRouter();
 
   return (
@@ -94,9 +94,9 @@ export const Draft: React.FC<IconProps> = ({ children }) => {
         }}
       >
         <Icon as={CiCirclePlus} fontSize={"4xl"} />
-        {children && (
+        {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
-            {children}
+            {value}
           </Text>
         )}
       </Flex>
@@ -109,7 +109,7 @@ type ProfileProps = {
 };
 export const Profile: React.FC<ProfileProps & IconProps> = ({
   userID,
-  children,
+  value,
 }) => {
   const route = useRouter();
   const setAuthState = useSetRecoilState(authModalState);
@@ -130,9 +130,9 @@ export const Profile: React.FC<ProfileProps & IconProps> = ({
         }}
       >
         <Icon as={CiUser} fontSize={"2xl"} />
-        {children && (
+        {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
-            {children}
+            {value}
           </Text>
         )}
       </Flex>
@@ -145,7 +145,7 @@ type CommentIconProp = {
 };
 
 export const CommentsIcon: React.FC<IconProps & CommentIconProp> = ({
-  children,
+  value,
   onOpen,
 }) => {
   const route = useRouter();
@@ -154,9 +154,9 @@ export const CommentsIcon: React.FC<IconProps & CommentIconProp> = ({
     <>
       <Flex align={"center"} onClick={onOpen}>
         <Icon as={CiChat2} fontSize={"2xl"} />
-        {children && (
+        {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
-            {children}
+            {value}
           </Text>
         )}
       </Flex>
@@ -164,7 +164,7 @@ export const CommentsIcon: React.FC<IconProps & CommentIconProp> = ({
   );
 };
 
-export const LikeIcon: React.FC<IconProps> = ({ children }) => {
+export const LikeIcon: React.FC<IconProps> = ({ value }) => {
   const route = useRouter();
   const setAuthState = useSetRecoilState(authModalState);
   const [user] = useAuthState(auth);
@@ -184,9 +184,9 @@ export const LikeIcon: React.FC<IconProps> = ({ children }) => {
         }}
       >
         <Icon as={CiHeart} fontSize={"2xl"} />
-        {children && (
+        {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
-            {children}
+            {value}
           </Text>
         )}
       </Flex>
@@ -194,7 +194,7 @@ export const LikeIcon: React.FC<IconProps> = ({ children }) => {
   );
 };
 
-export const ShareIcon: React.FC<IconProps> = ({ children }) => {
+export const ShareIcon: React.FC<IconProps> = ({ value }) => {
   const route = useRouter();
 
   return (
@@ -206,9 +206,9 @@ export const ShareIcon: React.FC<IconProps> = ({ children }) => {
         }}
       >
         <Icon as={CiShare1} fontSize={"2xl"} />
-        {children && (
+        {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
-            {children}
+            {value}
           </Text>
         )}
       </Flex>
@@ -216,16 +216,16 @@ export const ShareIcon: React.FC<IconProps> = ({ children }) => {
   );
 };
 
-export const SupportIcon: React.FC<IconProps> = ({ children }) => {
+export const SupportIcon: React.FC<IconProps> = ({ value }) => {
   const route = useRouter();
 
   return (
     <>
       <Flex align={"center"}>
         <Icon as={CiDollar} fontSize={"4xl"} />
-        {children && (
+        {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
-            {children}
+            {value}
           </Text>
         )}
       </Flex>

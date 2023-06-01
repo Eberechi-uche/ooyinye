@@ -56,7 +56,7 @@ const ProfileCardLarge: React.FC<ProfileCardLargeProps> = ({
             >
               follow
             </Button>
-            <SupportIcon children={"Support"} />
+            <SupportIcon value={"Support"} />
           </Flex>
         </Flex>
 
