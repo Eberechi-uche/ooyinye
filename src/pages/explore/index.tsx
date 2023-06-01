@@ -4,7 +4,15 @@ import { Flex, ListItem, Text, List, Divider } from "@chakra-ui/react";
 const Explore: React.FC = () => {
   return (
     <>
-      <Flex width={"100vw"} bg={"thistle"} flexDir={"column"} align={"center"}>
+      <Flex
+        width={"100vw"}
+        bgImage={"url('/explore.png')"}
+        bgPos={"top"}
+        bgRepeat={"no-repeat"}
+        flexDir={"column"}
+        align={"center"}
+        height={"100vh"}
+      >
         <Flex
           flexDir={"column"}
           width={"100%"}
@@ -22,15 +30,15 @@ const Explore: React.FC = () => {
             </Text>
             <Text> Discover Articles based on your interest</Text>
           </Flex>
-          <Flex fontWeight={"500"}>
-            <List width={"100%"}>
+          <Flex>
+            <List width={"100%"} fontWeight={"700"}>
               <ListItem my={"20"}>
                 <Flex>
-                  <Text textTransform={"uppercase"} fontWeight={"600"}>
+                  <Text textTransform={"uppercase"}>
                     Artififial Inteligence
                   </Text>
                   <Divider mx={"4"} />
-                  <Text fontSize={"sm"} fontWeight={"300"}>
+                  <Text fontSize={"sm"}>
                     Explore the fascinating world of Artificial Intelligence
                     (AI) and its profound impact on our lives. In this digital
                     era, AI has emerged as a transformative force,
@@ -41,11 +49,9 @@ const Explore: React.FC = () => {
               </ListItem>
               <ListItem my={"20"}>
                 <Flex justify={"center"}>
-                  <Text textTransform={"uppercase"} fontWeight={"600"}>
-                    Programming
-                  </Text>
+                  <Text textTransform={"uppercase"}>Programming</Text>
                   <Divider mx={"4"} />
-                  <Text fontSize={"sm"} fontWeight={"300"}>
+                  <Text fontSize={"sm"}>
                     embark on a thrilling exploration of the boundless world of
                     programming. In this digital age, programming has become an
                     indispensable skill, empowering individuals to shape
@@ -55,11 +61,9 @@ const Explore: React.FC = () => {
               </ListItem>
               <ListItem my={"20"}>
                 <Flex justify={"center"}>
-                  <Text textTransform={"uppercase"} fontWeight={"600"}>
-                    life
-                  </Text>
+                  <Text textTransform={"uppercase"}>life</Text>
                   <Divider mx={"4"} />
-                  <Text fontSize={"sm"} fontWeight={"300"}>
+                  <Text fontSize={"sm"}>
                     Sanctuary of reflection and exploration, where we delve into
                     the profound essence of life itself. In this ever-changing
                     world, it's essential to pause, breathe, and contemplate the
@@ -69,11 +73,9 @@ const Explore: React.FC = () => {
               </ListItem>
               <ListItem my={"20"}>
                 <Flex justify={"center"}>
-                  <Text textTransform={"uppercase"} fontWeight={"600"}>
-                    Fiction
-                  </Text>
+                  <Text textTransform={"uppercase"}>Fiction</Text>
                   <Divider mx={"4"} />
-                  <Text fontSize={"sm"} fontWeight={"300"}>
+                  <Text fontSize={"sm"}>
                     A captivating realm where fiction comes alive, and
                     imagination knows no bounds. Here, we embark on a magical
                     journey through the pages of extraordinary stories,

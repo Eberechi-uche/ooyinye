@@ -1,6 +1,6 @@
-import { Flex, Icon } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 
-import { CiShare1, CiHeart, CiChat2, CiDollar } from "react-icons/ci";
+import { CommentsIcon, LikeIcon, ShareIcon, SupportIcon } from "../Icons/Icons";
 type BlogNavFooterProp = {
   onOpen: () => void;
 };
@@ -20,10 +20,10 @@ const BlogNavFooter: React.FC<BlogNavFooterProp> = ({ onOpen }) => {
         bottom={"0"}
         display={{ base: "flex", md: "none" }}
       >
-        <Icon as={CiShare1} fontSize={"2xl"} />
-        <Icon as={CiHeart} fontSize={"2xl"} />
-        <Icon as={CiChat2} fontSize={"2xl"} onClick={onOpen} />
-        <Icon as={CiDollar} fontSize={"2xl"} />
+        <ShareIcon children />
+        <LikeIcon children />
+        <CommentsIcon children onOpen={onOpen} />
+        <SupportIcon children />
       </Flex>
     </>
   );

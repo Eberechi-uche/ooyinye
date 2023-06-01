@@ -16,8 +16,10 @@ import {
   CiBookmarkCheck,
   CiPen,
   CiSettings,
+  CiFileOn,
 } from "react-icons/ci";
-import { BsChevronRight } from "react-icons/bs";
+
+import { BsBookmarkFill, BsChevronRight, BsFillBookFill } from "react-icons/bs";
 import {
   Drawer,
   DrawerBody,
@@ -32,6 +34,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/Components/Firebase/ClientApp";
 import { signOut } from "firebase/auth";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const NavUserProfile: React.FC = () => {
   const [user] = useAuthState(auth);
@@ -83,15 +86,21 @@ const NavUserProfile: React.FC = () => {
   );
 };
 export default NavUserProfile;
+
 const UserActions: React.FC = () => {
+  const route = useRouter();
   return (
     <>
       <List spacing={3} fontSize={"lg"} fontWeight={"light"}>
-        <ListItem display={"flex"} alignItems={"center"}>
-          <Link href={`/profile/@${auth.currentUser?.email?.split("@")[0]}`}>
-            <ListIcon as={CiUser} />
-            Profile
-          </Link>
+        <ListItem
+          display={"flex"}
+          alignItems={"center"}
+          onClick={() => {
+            route.push(`/profile/@${auth.currentUser?.email?.split("@")[0]}`);
+          }}
+        >
+          <ListIcon as={CiUser} />
+          Profile
         </ListItem>
 
         <ListItem display={"flex"} alignItems={"center"}>
@@ -99,20 +108,28 @@ const UserActions: React.FC = () => {
           Dashboard
         </ListItem>
         <ListItem display={"flex"} alignItems={"center"}>
-          <ListIcon as={CiPen} />
-          write
+          <ListIcon as={CiFileOn} />
+          Draft
         </ListItem>
-        <ListItem display={"flex"} alignItems={"center"}>
-          <Link href={"/Bookmarks"}>
-            <ListIcon as={CiBookmarkCheck} />
-            Bookmarks
-          </Link>
+        <ListItem
+          display={"flex"}
+          alignItems={"center"}
+          onClick={() => {
+            route.push("/Bookmarks");
+          }}
+        >
+          <ListIcon as={CiBookmarkCheck} />
+          Bookmarks
         </ListItem>
-        <ListItem display={"flex"} alignItems={"center"}>
-          <Link href={"/profile/profile-setting"}>
-            <ListIcon as={CiSettings} />
-            Profile settings
-          </Link>
+        <ListItem
+          display={"flex"}
+          alignItems={"center"}
+          onClick={() => {
+            route.push("/profile/profile-setting");
+          }}
+        >
+          <ListIcon as={CiSettings} />
+          Profile settings
         </ListItem>
       </List>
     </>

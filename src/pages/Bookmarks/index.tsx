@@ -1,5 +1,6 @@
+import { SavedPostCard } from "@/Components/Card/SavePostCard";
 import SingleContentLayout from "@/Components/Layout/SingleContent.Layout";
-import { Flex, Text } from "@chakra-ui/react";
+import { Flex, Stack, Text } from "@chakra-ui/react";
 
 const Bookmarks: React.FC = () => {
   return (
@@ -14,6 +15,13 @@ const Bookmarks: React.FC = () => {
           >
             Reading List
           </Text>
+        </Flex>
+        <Flex px={"2"} flexDir={"column"} align={"center"} width={"100%"}>
+          <SavedPostCard />
+          <SavedPostCard />
+          <SavedPostCard />
+          <SavedPostCard />
+          <SavedPostCard />
         </Flex>
       </SingleContentLayout>
     </>

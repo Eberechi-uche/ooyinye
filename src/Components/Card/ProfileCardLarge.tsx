@@ -1,7 +1,9 @@
 import { Flex, Text, Image, Icon, Button, Divider } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { CiMail, CiDollar, CiTwitter } from "react-icons/ci";
+import { CiMail, CiTwitter } from "react-icons/ci";
+import { SupportIcon } from "../Icons/Icons";
+import { BsDot } from "react-icons/bs";
 
 export type ProfileCardLargeProps = {
   email: string | undefined;
@@ -50,10 +52,11 @@ const ProfileCardLarge: React.FC<ProfileCardLargeProps> = ({
               size={"sm"}
               colorScheme="blue"
               color={"#fff"}
+              mr={"3"}
             >
               follow
             </Button>
-            <Icon as={CiDollar} fontSize={"4xl"} color={"green.500"} />
+            <SupportIcon children={"Support"} />
           </Flex>
         </Flex>
 
@@ -65,6 +68,16 @@ const ProfileCardLarge: React.FC<ProfileCardLargeProps> = ({
           <Link href={email}>
             <Icon as={CiMail} color={"red.500"} />
           </Link>
+        </Flex>
+        <Flex
+          color={"blue.600"}
+          fontWeight={"500"}
+          width={"100%"}
+          align={"center"}
+        >
+          <Text> 2k followers</Text>
+          <Icon as={BsDot} mx={"4"} fontSize={"2xl"} />
+          <Text> 400 following</Text>
         </Flex>
         <Divider />
       </Flex>

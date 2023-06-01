@@ -15,7 +15,7 @@ const Theme = extendTheme({
   },
   fonts: {
     heading: "Ultra",
-    body: `'Poppins', sans-serif`,
+    body: `'Inter Variable', sans-serif`,
   },
   components: {
     Input: inputTheme,

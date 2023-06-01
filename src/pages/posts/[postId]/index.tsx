@@ -13,10 +13,8 @@ import {
   Text,
   useDisclosure,
   Image,
-  Grid,
   SimpleGrid,
 } from "@chakra-ui/react";
-import Comments from "@/Components/Comments/Comment";
 
 import BlogPostHeader from "@/Components/Headers/BlogPost.Header";
 import BlogParser from "@/Components/BlogParser/BlogParser";
@@ -25,9 +23,23 @@ import SingleContentLayout from "@/Components/Layout/SingleContent.Layout";
 import BlogNavFooter from "@/Components/MobileFooter/BlogNavFooter";
 import PostcardLarge from "@/Components/Card/PostcardLarge";
 import ProfileCardLarge from "@/Components/Card/ProfileCardLarge";
+import UserAuth from "@/Components/Auth.component/UserAuth";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "@/Components/Firebase/ClientApp";
+import { User } from "firebase/auth";
+import Comments from "@/Components/Comments/Comment";
+import { useEffect, useState } from "react";
+import {
+  CommentsIcon,
+  LikeIcon,
+  ShareIcon,
+  SupportIcon,
+} from "@/Components/Icons/Icons";
 
 const Post: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [user] = useAuthState(auth);
+
   return (
     <>
       <SingleContentLayout>
@@ -35,6 +47,27 @@ const Post: React.FC = () => {
           <BlogNavFooter onOpen={onOpen} />
           <BlogPostHeader />
           <Image alt={"imageName"} src={"/blogsample.png"} />
+          <Flex
+            width={"100%"}
+            align={"center"}
+            justify={"space-between"}
+            py={"2"}
+            px={"5"}
+            my={"5"}
+            borderY={"1px solid"}
+            borderColor={"gray.300"}
+            pos={"sticky"}
+            top={"20"}
+            bg={"white"}
+            zIndex={"10"}
+            display={{ base: "none", md: "flex" }}
+            cursor={"pointer"}
+          >
+            <CommentsIcon children onOpen={onOpen} />
+            <ShareIcon children={"share"} />
+            <LikeIcon children={"like"} />
+            <SupportIcon children={"support"} />
+          </Flex>
           <Flex minH={"100vh"} flexDir={"column"} width={"100%"}>
             <BlogParser />
             <Flex
@@ -86,7 +119,9 @@ const Post: React.FC = () => {
               </SimpleGrid>
             </Flex>
           </Flex>
-          <CommentDrawer onClose={onClose} isOpen={isOpen} />
+          {isOpen && (
+            <CommentDrawer onClose={onClose} isOpen={isOpen} user={user} />
+          )}
         </>
       </SingleContentLayout>
     </>
@@ -95,13 +130,23 @@ const Post: React.FC = () => {
 
 type CommentDrawerProps = {
   isOpen: boolean;
+  user: User | null | undefined;
 
   onClose: () => void;
 };
-const CommentDrawer: React.FC<CommentDrawerProps> = ({ isOpen, onClose }) => {
+const CommentDrawer: React.FC<CommentDrawerProps> = ({
+  isOpen,
+  onClose,
+  user,
+}) => {
   return (
     <>
-      <Drawer isOpen={isOpen} placement="bottom" onClose={onClose} size={"lg"}>
+      <Drawer
+        isOpen={isOpen}
+        placement={window.innerWidth < 700 ? "bottom" : "right"}
+        onClose={onClose}
+        size={"sm"}
+      >
         <DrawerOverlay />
 
         <DrawerContent>
@@ -116,7 +161,27 @@ const CommentDrawer: React.FC<CommentDrawerProps> = ({ isOpen, onClose }) => {
           <DrawerBody>
             <Flex flexDir={"column"}>
               <Divider />
-              <Input placeholder={"comment"} />
+              {user ? (
+                <>
+                  <Input placeholder={"comment"} />
+                </>
+              ) : (
+                <>
+                  <Flex
+                    width={{ base: "100%", md: "60%" }}
+                    flexDir={"column"}
+                    p={"4"}
+                    alignSelf={"center"}
+                    onClick={onClose}
+                  >
+                    <Text textAlign={"center"} mb={"2"}>
+                      Login to Join the conversation
+                    </Text>
+                    <UserAuth />
+                  </Flex>
+                </>
+              )}
+
               <Comments />
               <Comments />
               <Comments />

@@ -22,9 +22,9 @@ const ProfileCardMini: React.FC = () => {
             mr={"2"}
             alt={"profile"}
           />
-          <Text fontWeight={"700"}>Ada lovelace</Text>
+          <Text fontWeight={"400"}>Ada lovelace</Text>
         </Flex>
-        <Text color={"blue.500"} fontWeight={"700"} ml={"10"}>
+        <Text color={"blue.500"} fontWeight={"400"} ml={"10"}>
           follow
         </Text>
       </Flex>

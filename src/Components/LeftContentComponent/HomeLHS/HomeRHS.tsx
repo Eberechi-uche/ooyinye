@@ -5,17 +5,25 @@ import { useSetRecoilState } from "recoil";
 import { authModalState } from "@/Atoms/AuthModalAtom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/Components/Firebase/ClientApp";
+import {
+  Bookmarks,
+  Draft,
+  Explore,
+  Profile,
+  Search,
+} from "@/Components/Icons/Icons";
 
 const HomeRHS: React.FC = () => {
   const route = useRouter();
   const setAuthState = useSetRecoilState(authModalState);
   const [user] = useAuthState(auth);
+  const ID = user?.email?.split("@")[0];
 
   return (
     <>
       <Flex
         position={"sticky"}
-        top={"20"}
+        top={"10"}
         flexDir={"column"}
         maxH={"100vh"}
         overflowY={"scroll"}
@@ -25,25 +33,12 @@ const HomeRHS: React.FC = () => {
           },
         }}
         width={"100%"}
-        height={"50vh"}
+        height={"100vh"}
         justify={"space-evenly"}
         cursor={"pointer"}
       >
-        <Flex
-          width={"100%"}
-          justify={"space-between"}
-          onClick={() => {
-            route.push("/explore");
-          }}
-        >
-          <Icon as={CiCompass1} fontSize={"2xl"} mr={"2"} />
-          <Text
-            display={{ base: "none", md: "none", lg: "unset" }}
-            fontSize={"sm"}
-            minW={"200px"}
-          >
-            Explore
-          </Text>
+        <Flex width={"100%"}>
+          <Explore children={"Explore"} />
         </Flex>
 
         <Flex
@@ -53,77 +48,30 @@ const HomeRHS: React.FC = () => {
             route.push("/search");
           }}
         >
-          <Icon as={CiSearch} fontSize={"2xl"} mr={"2"} />
+          <Search children={"Search"} />
           <Text
             display={{ base: "none", md: "none", lg: "unset" }}
             fontSize={"sm"}
             minW={"200px"}
+            ml={"2"}
           >
             search
           </Text>
         </Flex>
 
-        <Flex
-          width={"100%"}
-          align={"center"}
-          onClick={() => {
-            if (!user) {
-              setAuthState({
-                view: "Login",
-                open: true,
-              });
-              return;
-            }
-            route.push("/write");
-          }}
-        >
-          <Icon as={CiPen} fontSize={"2xl"} mr={"2"} />
-          <Text
-            display={{ base: "none", md: "none", lg: "unset" }}
-            fontSize={"sm"}
-            minW={"200px"}
-          >
-            write
-          </Text>
-        </Flex>
-        <Flex
-          width={"100%"}
-          align={"center"}
-          onClick={() => {
-            route.push("/Bookmarks");
-          }}
-        >
-          <Icon as={CiMemoPad} fontSize={"2xl"} mr={"2"} />
-          <Text
-            display={{ base: "none", md: "none", lg: "unset" }}
-            fontSize={"sm"}
-            minW={"200px"}
-          >
-            Reading List
-          </Text>
-        </Flex>
-        <Flex
-          width={"100%"}
-          align={"center"}
-          onClick={() => {
-            if (!user) {
-              setAuthState({
-                view: "Login",
-                open: true,
-              });
-              return;
-            }
-            route.push("/profile/eberechi");
-          }}
-        >
-          <Icon as={CiUser} fontSize={"2xl"} mr={"2"} />
-          <Text
-            display={{ base: "none", md: "none", lg: "unset" }}
-            fontSize={"sm"}
-            minW={"200px"}
-          >
-            profile
-          </Text>
+        {user && (
+          <Flex width={"100%"} align={"center"}>
+            <Draft children={"Drafts"} />
+          </Flex>
+        )}
+        {user && (
+          <Flex width={"100%"} align={"center"}>
+            <Bookmarks children={"Bookmarks"} />
+          </Flex>
+        )}
+
+        <Flex width={"100%"} align={"center"}>
+          <Profile userID={ID} children={"Profile"} />
         </Flex>
       </Flex>
     </>

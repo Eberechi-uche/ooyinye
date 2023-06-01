@@ -1,5 +1,6 @@
 import { Flex, Icon } from "@chakra-ui/react";
 import { useRouter } from "next/router";
+import { Explore, Search, Bookmarks, Draft, Profile } from "../Icons/Icons";
 import { authModalState } from "@/Atoms/AuthModalAtom";
 import {
   CiCompass1,
@@ -17,6 +18,7 @@ const HomeNavFooter: React.FC = () => {
   const route = useRouter();
   const setAuthState = useSetRecoilState(authModalState);
   const [user] = useAuthState(auth);
+  const ID = user?.email?.split("@")[0];
 
   return (
     <>
@@ -32,56 +34,11 @@ const HomeNavFooter: React.FC = () => {
         bottom={"0"}
         display={{ base: "flex", md: "none" }}
       >
-        <Icon
-          as={CiCompass1}
-          fontSize={"2xl"}
-          onClick={() => {
-            route.push("/explore");
-          }}
-        />
-        <Icon
-          as={CiSearch}
-          fontSize={"2xl"}
-          onClick={() => {
-            route.push("/search");
-          }}
-        />
-        <Icon
-          as={CiPen}
-          fontSize={"4xl"}
-          color={"blue.600"}
-          onClick={() => {
-            if (!user) {
-              setAuthState({
-                view: "Login",
-                open: true,
-              });
-              return;
-            }
-            route.push("/write");
-          }}
-        />
-        <Icon
-          as={CiMemoPad}
-          fontSize={"2xl"}
-          onClick={() => {
-            route.push("/Bookmarks");
-          }}
-        />
-        <Icon
-          as={CiUser}
-          fontSize={"2xl"}
-          onClick={() => {
-            if (!user) {
-              setAuthState({
-                view: "Login",
-                open: true,
-              });
-              return;
-            }
-            route.push(`/profile/${user.displayName}`);
-          }}
-        />
+        <Explore children />
+        <Search children />
+        {user && <Draft children />}
+        {user && <Bookmarks children />}
+        <Profile userID={ID} children />
       </Flex>
     </>
   );
