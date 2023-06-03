@@ -10,12 +10,13 @@ import {
   CiHeart,
   CiChat2,
   CiDollar,
+  CiGrid41,
+  CiSettings,
 } from "react-icons/ci";
 import { useRouter } from "next/router";
 import { auth } from "../Firebase/ClientApp";
 import { useSetRecoilState } from "recoil";
 import { authModalState } from "@/Atoms/AuthModalAtom";
-import { ReactNode } from "react";
 
 type IconProps = {
   value: string | undefined;
@@ -206,6 +207,39 @@ export const ShareIcon: React.FC<IconProps> = ({ value }) => {
         }}
       >
         <Icon as={CiShare1} fontSize={"2xl"} />
+        {value && (
+          <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
+            {value}
+          </Text>
+        )}
+      </Flex>
+    </>
+  );
+};
+
+export const Dashboard: React.FC<IconProps> = ({ value }) => {
+  const route = useRouter();
+
+  return (
+    <>
+      <Flex align={"center"}>
+        <Icon as={CiGrid41} fontSize={"4xl"} />
+        {value && (
+          <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
+            {value}
+          </Text>
+        )}
+      </Flex>
+    </>
+  );
+};
+export const ProfileSetting: React.FC<IconProps> = ({ value }) => {
+  const route = useRouter();
+
+  return (
+    <>
+      <Flex align={"center"}>
+        <Icon as={CiSettings} fontSize={"4xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}

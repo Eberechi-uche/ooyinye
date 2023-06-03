@@ -19,13 +19,15 @@ import { useProfileData } from "@/Hooks/Profile/useProfileData";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/Components/Firebase/ClientApp";
 import { UserDetails } from "@/Hooks/Profile/useProfileData";
+import { useRouter } from "next/router";
 
 const Setting: React.FC = () => {
   const { file, onFileUpload, setFile } = useFileUpload();
+  const route = useRouter();
   const [user] = useAuthState(auth);
   const { updateUserBio, updateUserDp, loading, updateError } =
     useProfileData();
-  const [wordCount] = useState(100);
+  const [wordCount] = useState(250);
   const [userDetails, setUserDetails] = useState<UserDetails>({
     Bio: "",
     twitter: "",
@@ -37,7 +39,6 @@ const Setting: React.FC = () => {
   const handleInputChange = (
     e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
   ) => {
-    e.preventDefault();
     const { name, value } = e.target;
     setUserDetails((prev) => ({
       ...prev,
@@ -120,8 +121,10 @@ const Setting: React.FC = () => {
                   colorScheme="whatsapp"
                   color={"white"}
                   isLoading={loading}
-                  onClick={() => {
-                    updateUserDp(file);
+                  onClick={async () => {
+                    await updateUserDp(file);
+                    setFile("");
+                    route.reload();
                   }}
                 >
                   use
@@ -134,7 +137,7 @@ const Setting: React.FC = () => {
           <Textarea
             height={"90px"}
             placeholder="your bio"
-            maxLength={100}
+            maxLength={wordCount}
             value={userDetails.Bio}
             onChange={handleInputChange}
             name={"Bio"}

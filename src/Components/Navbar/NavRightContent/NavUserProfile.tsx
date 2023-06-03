@@ -19,7 +19,7 @@ import {
   CiFileOn,
 } from "react-icons/ci";
 
-import { BsBookmarkFill, BsChevronRight, BsFillBookFill } from "react-icons/bs";
+import { BsChevronRight } from "react-icons/bs";
 import {
   Drawer,
   DrawerBody,
@@ -33,7 +33,6 @@ import {
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/Components/Firebase/ClientApp";
 import { signOut } from "firebase/auth";
-import Link from "next/link";
 import { useRouter } from "next/router";
 
 const NavUserProfile: React.FC = () => {

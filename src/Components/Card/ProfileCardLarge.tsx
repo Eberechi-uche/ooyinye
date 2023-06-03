@@ -60,7 +60,7 @@ const ProfileCardLarge: React.FC<ProfileCardLargeProps> = ({
           </Flex>
         </Flex>
 
-        <Text fontSize={"sm"}>{Bio}</Text>
+        <Text fontSize={"xs"}>{Bio}</Text>
         <Flex fontSize={"2xl"} mt={"7"}>
           <Link href={twitter} target="_blank">
             <Icon as={CiTwitter} mr={"10"} color={"blue.600"} />
