@@ -1,4 +1,4 @@
-import { Flex, Image, Text } from "@chakra-ui/react";
+import { Icon, Flex, Image, Text } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 
 const ProfileCardMini: React.FC = () => {
@@ -24,9 +24,6 @@ const ProfileCardMini: React.FC = () => {
           />
           <Text fontWeight={"400"}>Ada lovelace</Text>
         </Flex>
-        <Text color={"blue.500"} fontWeight={"400"} ml={"10"}>
-          follow
-        </Text>
       </Flex>
     </>
   );

@@ -1,10 +1,33 @@
-import { Flex, Text, Image, Icon, Button, Divider } from "@chakra-ui/react";
+import {
+  Flex,
+  Text,
+  Image,
+  Icon,
+  Button,
+  Divider,
+  Drawer,
+  DrawerBody,
+  DrawerCloseButton,
+  DrawerContent,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  Input,
+  useDisclosure,
+} from "@chakra-ui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { CiMail, CiTwitter } from "react-icons/ci";
 import { SupportIcon } from "../Icons/Icons";
-import { BsDot, BsMailbox, BsMailbox2, BsTwitter } from "react-icons/bs";
+import { BsDot, BsTwitter } from "react-icons/bs";
 import { IoMail } from "react-icons/io5";
+import { useProfileData } from "@/Hooks/Profile/useProfileData";
+import { useSetRecoilState } from "recoil";
+import { authModalState } from "@/Atoms/AuthModalAtom";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../Firebase/ClientApp";
+import ProfileCardMini from "./ProfileCardMini";
+import { useState } from "react";
+import { TopUsers } from "../LeftContentComponent/HomeSideContent/HomeLHS";
 
 export type ProfileCardLargeProps = {
   email: string | undefined;
@@ -22,8 +45,12 @@ const ProfileCardLarge: React.FC<ProfileCardLargeProps> = ({
   userId = "@adalovelace",
   userDN = "Ada Lovelace",
 }) => {
-  const { profileId } = useRouter().query;
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const route = useRouter();
+  const [user] = useAuthState(auth);
+  const setAuthModalState = useSetRecoilState(authModalState);
+  const { onClickFollow, loading } = useProfileData();
+  const [drawerValue, setDrawerValue] = useState("");
 
   return (
     <>
@@ -51,9 +78,24 @@ const ProfileCardLarge: React.FC<ProfileCardLargeProps> = ({
             <Button
               borderRadius={"full"}
               size={"sm"}
-              colorScheme="blue"
+              colorScheme="green"
               color={"#fff"}
               mr={"3"}
+              isLoading={loading}
+              onClick={() => {
+                if (!user) {
+                  setAuthModalState({
+                    view: "Login",
+                    open: true,
+                  });
+                  return;
+                }
+                onClickFollow({
+                  userID: "@Adalovelace",
+                  userDN: "Ada lovelace",
+                  imagerUrl: "testcase",
+                });
+              }}
             >
               follow
             </Button>
@@ -74,18 +116,91 @@ const ProfileCardLarge: React.FC<ProfileCardLargeProps> = ({
           </Link>
         </Flex>
         <Flex
-          color={"blue.600"}
+          color={"green.300"}
           fontWeight={"500"}
           width={"100%"}
           align={"center"}
+          my={"2"}
         >
-          <Text> 2k followers</Text>
+          <Button
+            size={"xs"}
+            colorScheme="green"
+            color={"#fff"}
+            onClick={(e) => {
+              e.stopPropagation();
+              setDrawerValue("followers");
+              onOpen();
+            }}
+          >
+            followers
+          </Button>
           <Icon as={BsDot} mx={"4"} fontSize={"2xl"} />
-          <Text> 400 following</Text>
+          <Button
+            size={"xs"}
+            colorScheme="green"
+            color={"#fff"}
+            onClick={(e) => {
+              e.stopPropagation();
+              setDrawerValue("following");
+              onOpen();
+            }}
+          >
+            following
+          </Button>
         </Flex>
         <Divider />
       </Flex>
+      {isOpen && (
+        <ProfileCardLargeDrawer
+          isOpen={isOpen}
+          onClose={onClose}
+          value={drawerValue}
+        />
+      )}
     </>
   );
 };
+type ProfileCardLargeDrawerProps = {
+  isOpen: boolean;
+  onClose: () => void;
+  value: string;
+};
+const ProfileCardLargeDrawer: React.FC<ProfileCardLargeDrawerProps> = ({
+  isOpen,
+  onClose,
+  value,
+}) => {
+  return (
+    <>
+      <Drawer isOpen={isOpen} placement="right" onClose={onClose} size={"md"}>
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton />
+          <DrawerHeader>
+            <Flex width={"100%"}>
+              <Text mr={"5"}>{value}</Text>
+              <Text> 5</Text>
+            </Flex>
+          </DrawerHeader>
+
+          <DrawerBody onClick={onClose}>
+            <TopUsers />
+            <TopUsers />
+            <TopUsers />
+            <TopUsers />
+            <TopUsers />
+            <TopUsers />
+          </DrawerBody>
+
+          <DrawerFooter>
+            <Button variant="unstyled" mr={3} onClick={onClose}>
+              close
+            </Button>
+          </DrawerFooter>
+        </DrawerContent>
+      </Drawer>
+    </>
+  );
+};
+
 export default ProfileCardLarge;

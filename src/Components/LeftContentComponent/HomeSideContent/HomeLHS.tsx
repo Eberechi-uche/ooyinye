@@ -81,21 +81,32 @@ const Anouncements: React.FC = () => {
   );
 };
 
-const TopUsers: React.FC = () => {
+export const TopUsers: React.FC = () => {
   return (
     <>
-      <Link href={"/Quick Fox"}>
-        <Flex align={"center"} my={"2"}>
-          <Image
-            src={"profileplacholder.png"}
-            alt={"userProfile"}
-            boxSize={"45px"}
-            borderRadius={"full"}
-          />
-          <Flex>
-            <Text textTransform={"capitalize"} fontWeight={"700"} ml={"2"}>
-              Quick fox
+      <Link href={"/profile/Quick Fox"}>
+        <Flex
+          align={"center"}
+          my={"5"}
+          width={"100%"}
+          justify={"space-between"}
+        >
+          <Flex align={"center"}>
+            <Image
+              src={"/profile.jpeg"}
+              alt={"userProfile"}
+              boxSize={"45px"}
+              objectFit={"cover"}
+              borderRadius={"full"}
+            />
+            <Text textTransform={"capitalize"} fontWeight={"500"} ml={"2"}>
+              charles babbage
             </Text>
+          </Flex>
+          <Flex>
+            <Button color={"#fff"} colorScheme="green" size={"sm"}>
+              follow
+            </Button>
           </Flex>
         </Flex>
       </Link>

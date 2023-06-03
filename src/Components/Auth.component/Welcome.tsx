@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import { setDoc, doc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadString } from "firebase/storage";
 import { profileImageURL } from "@/utilities/profileImage";
+
 const Welcome: React.FC = () => {
   const [name, setName] = useState("");
   const [user] = useAuthState(auth);
