@@ -32,9 +32,9 @@ export default function Home() {
             <HomeNavFooter />
             <Flex
               flexDir={"column"}
-              bg={"red.700"}
+              bg={"blackAlpha.900"}
               width={"100%"}
-              color={"#fff"}
+              color={"white"}
             >
               <Text width={"100%"} fontWeight={"700"} fontSize={"3xl"} px={"4"}>
                 Top Reads

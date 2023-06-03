@@ -1,3 +1,4 @@
+import TextHeader from "@/Components/Headers/TextHeader";
 import SingleContentLayout from "@/Components/Layout/SingleContent.Layout";
 import { Flex, ListItem, Text, List, Divider } from "@chakra-ui/react";
 
@@ -21,13 +22,7 @@ const Explore: React.FC = () => {
           p={"5%"}
         >
           <Flex flexDir={"column"} width={"100%"}>
-            <Text
-              fontSize={{ base: "20vw", md: "15vw", lg: "150px" }}
-              color={"gray.200"}
-              fontWeight={"700"}
-            >
-              Explore
-            </Text>
+            <TextHeader text="Explore" />
             <Text> Discover Articles based on your interest</Text>
           </Flex>
           <Flex>

@@ -36,11 +36,6 @@ const Profile: React.FC = () => {
           userId={user?.userId}
           userDN={user?.userDN}
         />
-        <Flex flexDir={"column"} bg={"gray.50"}>
-          <Text>Pinned</Text>
-          <PostCard showProfile={false} />
-          <PostCard showProfile={false} />
-        </Flex>
         <Flex flexDir={"column"}>
           <PostCard showProfile={false} />
           <PostCard showProfile={false} />

@@ -3,7 +3,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { CiMail, CiTwitter } from "react-icons/ci";
 import { SupportIcon } from "../Icons/Icons";
-import { BsDot } from "react-icons/bs";
+import { BsDot, BsMailbox, BsMailbox2, BsTwitter } from "react-icons/bs";
+import { IoMail } from "react-icons/io5";
 
 export type ProfileCardLargeProps = {
   email: string | undefined;
@@ -60,13 +61,16 @@ const ProfileCardLarge: React.FC<ProfileCardLargeProps> = ({
           </Flex>
         </Flex>
 
-        <Text fontSize={"xs"}>{Bio}</Text>
+        <Text fontSize={"sm"} my={"2"}>
+          {Bio}
+        </Text>
+
         <Flex fontSize={"2xl"} mt={"7"}>
           <Link href={twitter} target="_blank">
-            <Icon as={CiTwitter} mr={"10"} color={"blue.600"} />
+            <Icon as={BsTwitter} mr={"10"} />
           </Link>
           <Link href={email}>
-            <Icon as={CiMail} color={"red.500"} />
+            <Icon as={IoMail} />
           </Link>
         </Flex>
         <Flex

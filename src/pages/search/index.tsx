@@ -1,3 +1,4 @@
+import TextHeader from "@/Components/Headers/TextHeader";
 import Carousel from "@/Components/Layout/Carousel.Layout";
 
 import SingleContentLayout from "@/Components/Layout/SingleContent.Layout";
@@ -10,14 +11,7 @@ const Search: React.FC = () => {
       <SingleContentLayout>
         <Flex width={"100%"} justify={"center"} flexDir={"column"}>
           <Flex width={"100%"} flexDir={"column"} p={"5"} minH={"20vh"}>
-            <Text
-              fontSize={{ base: "20vw", md: "20vw", lg: "15vw" }}
-              fontWeight={"600"}
-              color={"gray.200"}
-              textAlign={"center"}
-            >
-              Search
-            </Text>
+            <TextHeader text="search" />
             <Input
               bg={"white"}
               borderRadius={"full"}

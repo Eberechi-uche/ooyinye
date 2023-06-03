@@ -20,6 +20,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/Components/Firebase/ClientApp";
 import { UserDetails } from "@/Hooks/Profile/useProfileData";
 import { useRouter } from "next/router";
+import TextHeader from "@/Components/Headers/TextHeader";
 
 const Setting: React.FC = () => {
   const { file, onFileUpload, setFile } = useFileUpload();
@@ -59,14 +60,8 @@ const Setting: React.FC = () => {
     <SingleContentLayout>
       <Flex width={"100%"} justify={"center"} flexDir={"column"} px={"3"}>
         <Flex flexDir={"column"} textAlign={"center"}>
-          <Text
-            fontSize={{ base: "20vw", md: "20vw", lg: "15vw" }}
-            fontWeight={"600"}
-            color={"gray.200"}
-          >
-            Settings
-          </Text>
-          <Text fontSize={"sm"}>
+          <TextHeader text="setting" />
+          <Text fontSize={"sm"} textAlign={"left"}>
             Update your bio, profile, picture, and add links to your socials
           </Text>
         </Flex>
