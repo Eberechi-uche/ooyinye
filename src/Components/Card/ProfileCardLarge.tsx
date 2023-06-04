@@ -12,20 +12,19 @@ import {
   DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
-  Input,
   useDisclosure,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { SupportIcon } from "../Icons/Icons";
+import { ProfileSetting, SupportIcon } from "../Icons/Icons";
 import { BsDot, BsTwitter } from "react-icons/bs";
 import { IoMail } from "react-icons/io5";
 import { useProfileData } from "@/Hooks/Profile/useProfileData";
-import { useSetRecoilState } from "recoil";
-import { authModalState } from "@/Atoms/AuthModalAtom";
+import { UserSnippet } from "@/Hooks/Profile/useProfileData";
+
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../Firebase/ClientApp";
-import ProfileCardMini from "./ProfileCardMini";
+
 import { useState } from "react";
 import { TopUsers } from "../LeftContentComponent/HomeSideContent/HomeLHS";
 
@@ -38,17 +37,17 @@ export type ProfileCardLargeProps = {
   userDN: string | undefined;
 };
 const ProfileCardLarge: React.FC<ProfileCardLargeProps> = ({
-  email = "https://beebom.com/cool-interesting-websites/",
-  twitter = "https://beebom.com/cool-interesting-websites/",
+  email,
+  twitter,
   imageUrl = "/ada-lovelace.webp",
-  Bio = "First female programer, mathematician, built the analytical engine",
+  Bio,
   userId = "@adalovelace",
-  userDN = "Ada Lovelace",
+  userDN = "Ada lovelace ",
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const route = useRouter();
   const [user] = useAuthState(auth);
-  const setAuthModalState = useSetRecoilState(authModalState);
+
   const { onClickFollow, loading } = useProfileData();
   const [drawerValue, setDrawerValue] = useState("");
 
@@ -74,33 +73,17 @@ const ProfileCardLarge: React.FC<ProfileCardLargeProps> = ({
             />
             <Text fontWeight={"500"}> {userDN}</Text>
           </Flex>
-          <Flex align={"center"}>
-            <Button
-              borderRadius={"full"}
-              size={"sm"}
-              colorScheme="green"
-              color={"#fff"}
-              mr={"3"}
+          {userId !== `@${user?.email?.split("@")[0]}` && (
+            <NotAuthUserAction
+              onClickFollow={onClickFollow}
+              userDN={userDN}
+              userId={userId}
+              imageUrl={imageUrl}
               isLoading={loading}
-              onClick={() => {
-                if (!user) {
-                  setAuthModalState({
-                    view: "Login",
-                    open: true,
-                  });
-                  return;
-                }
-                onClickFollow({
-                  userID: "@Adalovelace",
-                  userDN: "Ada lovelace",
-                  imagerUrl: "testcase",
-                });
-              }}
-            >
-              follow
-            </Button>
-            <SupportIcon value={"Support"} />
-          </Flex>
+            />
+          )}
+
+          {userId === `@${user?.email?.split("@")[0]}` && <AuthUserAction />}
         </Flex>
 
         <Text fontSize={"sm"} my={"2"}>
@@ -108,12 +91,20 @@ const ProfileCardLarge: React.FC<ProfileCardLargeProps> = ({
         </Text>
 
         <Flex fontSize={"2xl"} mt={"7"}>
-          <Link href={twitter} target="_blank">
-            <Icon as={BsTwitter} mr={"10"} />
-          </Link>
-          <Link href={email}>
-            <Icon as={IoMail} />
-          </Link>
+          {twitter && (
+            <>
+              <Link href={twitter} target="_blank">
+                <Icon as={BsTwitter} mr={"10"} />
+              </Link>
+            </>
+          )}
+          {email && (
+            <>
+              <Link href={email}>
+                <Icon as={IoMail} />
+              </Link>
+            </>
+          )}
         </Flex>
         <Flex
           color={"green.300"}
@@ -203,4 +194,65 @@ const ProfileCardLargeDrawer: React.FC<ProfileCardLargeDrawerProps> = ({
   );
 };
 
+type NotAuthUserActionProps = {
+  onClickFollow: (user: UserSnippet) => void;
+  isLoading: boolean;
+  userId: string;
+  userDN: string;
+  imageUrl: string;
+};
+
+const NotAuthUserAction: React.FC<NotAuthUserActionProps> = ({
+  onClickFollow,
+  isLoading,
+  userDN,
+  userId,
+  imageUrl,
+}) => {
+  return (
+    <>
+      <Flex align={"center"}>
+        <Button
+          borderRadius={"full"}
+          size={"sm"}
+          colorScheme="green"
+          color={"#fff"}
+          mr={"3"}
+          isLoading={isLoading}
+          onClick={(e) => {
+            e.stopPropagation();
+            onClickFollow({
+              userId,
+              userDN,
+              imageUrl,
+            });
+          }}
+        >
+          follow
+        </Button>
+
+        <SupportIcon value={"Support"} />
+      </Flex>
+    </>
+  );
+};
+
+const AuthUserAction: React.FC = () => {
+  return (
+    <>
+      <Flex align={"center"}>
+        <Button
+          borderRadius={"full"}
+          size={"sm"}
+          variant="brandPrimary"
+          color={"#fff"}
+        >
+          Dashboard
+        </Button>
+
+        <ProfileSetting value={"setting"} />
+      </Flex>
+    </>
+  );
+};
 export default ProfileCardLarge;

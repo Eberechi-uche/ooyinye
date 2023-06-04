@@ -64,7 +64,7 @@ const Login: React.FC = () => {
           <Spinner size={{ base: "xs", md: "sm" }} />
         ) : (
           <Button variant={"unstyled"} type="submit">
-            Login
+            Log in
           </Button>
         )}
 

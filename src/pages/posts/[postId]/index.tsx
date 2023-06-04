@@ -14,6 +14,9 @@ import {
   useDisclosure,
   Image,
   SimpleGrid,
+  Avatar,
+  AvatarGroup,
+  Icon,
 } from "@chakra-ui/react";
 
 import BlogPostHeader from "@/Components/Headers/BlogPost.Header";
@@ -35,6 +38,7 @@ import {
   ShareIcon,
   SupportIcon,
 } from "@/Components/Icons/Icons";
+import { BsArrowBarLeft, BsArrowRight } from "react-icons/bs";
 
 const Post: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -53,11 +57,10 @@ const Post: React.FC = () => {
             justify={"space-between"}
             py={"2"}
             px={"5"}
-            my={"5"}
             borderY={"1px solid"}
             borderColor={"gray.300"}
             pos={"sticky"}
-            top={"20"}
+            top={"7%"}
             bg={"white"}
             zIndex={"10"}
             display={{ base: "none", md: "flex" }}
@@ -70,6 +73,44 @@ const Post: React.FC = () => {
           </Flex>
           <Flex minH={"100vh"} flexDir={"column"} width={"100%"}>
             <BlogParser />
+            <Divider
+              width={"20%"}
+              colorScheme="blackAlpha"
+              border={"1px solid"}
+              alignSelf={"center"}
+            />
+
+            <Flex
+              fontSize={"xs"}
+              align={"center"}
+              width={"100%"}
+              p={"5"}
+              justify={"center"}
+            >
+              <AvatarGroup
+                max={6}
+                color={"black"}
+                size={{ base: "sm", md: "md" }}
+              >
+                <Avatar
+                  name="Ryan Florence"
+                  src="https://bit.ly/ryan-florence"
+                />
+                <Avatar
+                  name="Ryan Florence"
+                  src="https://bit.ly/ryan-florence"
+                />
+                <Avatar
+                  name="Ryan Florence"
+                  src="https://bit.ly/ryan-florence"
+                />
+              </AvatarGroup>
+              <Icon as={BsArrowRight} mx={"5"} />
+              <Text color={"red.500"} fontWeight={"700"}>
+                likes
+              </Text>
+            </Flex>
+
             <Flex
               flexDir={"column"}
               mt={"10"}

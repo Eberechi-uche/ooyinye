@@ -10,7 +10,7 @@ const ProfileCardMini: React.FC = () => {
         align={"center"}
         my={"2"}
         onClick={() => {
-          route.push("/profile/Ada Lovelace");
+          route.push("/profile/@adalovelace");
         }}
       >
         <Flex>

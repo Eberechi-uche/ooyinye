@@ -1,22 +1,22 @@
-import { Box, Icon, Text, Flex } from "@chakra-ui/react";
+import { Icon, Text, Flex } from "@chakra-ui/react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import {
-  CiCompass1,
-  CiCirclePlus,
-  CiSearch,
-  CiMemoPad,
-  CiUser,
-  CiShare1,
-  CiHeart,
-  CiChat2,
-  CiDollar,
-  CiGrid41,
-  CiSettings,
-} from "react-icons/ci";
+import { CiGrid41, CiSettings } from "react-icons/ci";
 import { useRouter } from "next/router";
 import { auth } from "../Firebase/ClientApp";
 import { useSetRecoilState } from "recoil";
 import { authModalState } from "@/Atoms/AuthModalAtom";
+
+import { RiSettings3Line } from "react-icons/ri";
+import {
+  FaCommentAlt,
+  FaCompass,
+  FaRegHeart,
+  FaSearch,
+  FaShareSquare,
+  FaUser,
+} from "react-icons/fa";
+import { BsCoin, BsFillBookmarksFill } from "react-icons/bs";
+import { CgNotes } from "react-icons/cg";
 
 type IconProps = {
   value: string | undefined;
@@ -31,7 +31,7 @@ export const Explore: React.FC<IconProps> = ({ value }) => {
           route.push("/explore");
         }}
       >
-        <Icon as={CiCompass1} fontSize={"2xl"} />
+        <Icon as={FaCompass} fontSize={{ base: "2xl", md: "3xl" }} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}
@@ -51,7 +51,7 @@ export const Search: React.FC<IconProps> = ({ value }) => {
           route.push("/search");
         }}
       >
-        <Icon as={CiSearch} fontSize={"2xl"} />
+        <Icon as={FaSearch} fontSize={"2xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}
@@ -73,7 +73,7 @@ export const Bookmarks: React.FC<IconProps> = ({ value }) => {
           route.push("/Bookmarks");
         }}
       >
-        <Icon as={CiMemoPad} fontSize={"2xl"} />
+        <Icon as={BsFillBookmarksFill} fontSize={"2xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}
@@ -94,7 +94,7 @@ export const Draft: React.FC<IconProps> = ({ value }) => {
           route.push("/");
         }}
       >
-        <Icon as={CiCirclePlus} fontSize={"4xl"} />
+        <Icon as={CgNotes} fontSize={"4xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}
@@ -130,7 +130,7 @@ export const Profile: React.FC<ProfileProps & IconProps> = ({
           route.push(`/profile/${userID}`);
         }}
       >
-        <Icon as={CiUser} fontSize={"2xl"} />
+        <Icon as={FaUser} fontSize={"2xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}
@@ -149,12 +149,10 @@ export const CommentsIcon: React.FC<IconProps & CommentIconProp> = ({
   value,
   onOpen,
 }) => {
-  const route = useRouter();
-
   return (
     <>
       <Flex align={"center"} onClick={onOpen}>
-        <Icon as={CiChat2} fontSize={"2xl"} />
+        <Icon as={FaCommentAlt} fontSize={"xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}
@@ -166,7 +164,6 @@ export const CommentsIcon: React.FC<IconProps & CommentIconProp> = ({
 };
 
 export const LikeIcon: React.FC<IconProps> = ({ value }) => {
-  const route = useRouter();
   const setAuthState = useSetRecoilState(authModalState);
   const [user] = useAuthState(auth);
 
@@ -184,7 +181,7 @@ export const LikeIcon: React.FC<IconProps> = ({ value }) => {
           }
         }}
       >
-        <Icon as={CiHeart} fontSize={"2xl"} />
+        <Icon as={FaRegHeart} fontSize={"2xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}
@@ -196,17 +193,10 @@ export const LikeIcon: React.FC<IconProps> = ({ value }) => {
 };
 
 export const ShareIcon: React.FC<IconProps> = ({ value }) => {
-  const route = useRouter();
-
   return (
     <>
-      <Flex
-        align={"center"}
-        onClick={() => {
-          route.push("/Bookmarks");
-        }}
-      >
-        <Icon as={CiShare1} fontSize={"2xl"} />
+      <Flex align={"center"}>
+        <Icon as={FaShareSquare} fontSize={"2xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}
@@ -218,8 +208,6 @@ export const ShareIcon: React.FC<IconProps> = ({ value }) => {
 };
 
 export const Dashboard: React.FC<IconProps> = ({ value }) => {
-  const route = useRouter();
-
   return (
     <>
       <Flex align={"center"}>
@@ -238,8 +226,13 @@ export const ProfileSetting: React.FC<IconProps> = ({ value }) => {
 
   return (
     <>
-      <Flex align={"center"}>
-        <Icon as={CiSettings} fontSize={"4xl"} />
+      <Flex
+        align={"center"}
+        onClick={() => {
+          route.push("/profile/profile-setting");
+        }}
+      >
+        <Icon as={RiSettings3Line} fontSize={"4xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}
@@ -256,7 +249,7 @@ export const SupportIcon: React.FC<IconProps> = ({ value }) => {
   return (
     <>
       <Flex align={"center"}>
-        <Icon as={CiDollar} fontSize={"4xl"} />
+        <Icon as={BsCoin} fontSize={"3xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}

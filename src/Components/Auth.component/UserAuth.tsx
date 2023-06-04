@@ -15,8 +15,9 @@ const UserAuth: React.FC = () => {
           }));
         }}
         variant={"brandPrimary"}
+        size={"sm"}
       >
-        join
+        Log in
       </Button>
       <AuthModal />
     </>

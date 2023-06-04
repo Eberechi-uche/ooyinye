@@ -4,6 +4,8 @@ import { setDoc, doc, writeBatch } from "firebase/firestore";
 import { useState } from "react";
 import { ref, uploadString } from "firebase/storage";
 import { User } from "firebase/auth";
+import { useSetRecoilState } from "recoil";
+import { authModalState } from "@/Atoms/AuthModalAtom";
 
 export type UserDetails = {
   Bio: string;
@@ -12,30 +14,30 @@ export type UserDetails = {
 };
 
 export type UserSnippet = {
-  userID: string;
+  userId: string;
   userDN: string;
-  imagerUrl: string;
+  imageUrl: string;
 };
 
 const follow = async (userProfile: UserSnippet, authUser: User) => {
   const batch = writeBatch(firestore);
   const authUserSnippet: UserSnippet = {
-    imagerUrl: authUser.photoURL!,
+    imageUrl: authUser.photoURL!,
     userDN: authUser.displayName!,
-    userID: `@${authUser.email?.split("@")[0]}`,
+    userId: `@${authUser.email?.split("@")[0]}`,
   };
   const userProfileRef = doc(
     firestore,
     "users",
     `@${authUser.email?.split("@")[0]}`,
     "following",
-    `${userProfile.userID}`
+    `${userProfile.userId}`
   );
 
   const followedUserRef = doc(
     firestore,
     "users",
-    `${userProfile.userID}`,
+    `${userProfile.userId}`,
     "followers",
     `@${authUser.email?.split("@")[0]}`
   );
@@ -49,10 +51,12 @@ const follow = async (userProfile: UserSnippet, authUser: User) => {
 };
 
 const unFollow = () => {};
+
 export const useProfileData = () => {
   const [user] = useAuthState(auth);
   const [loading, setLoading] = useState(false);
   const [updateError, setUpdateError] = useState("");
+  const setAuthModalState = useSetRecoilState(authModalState);
 
   const updateUserBio = async (data: UserDetails) => {
     setLoading(true);
@@ -89,6 +93,13 @@ export const useProfileData = () => {
     setLoading(false);
   };
   const onClickFollow = async (userProfile: UserSnippet) => {
+    if (!user) {
+      setAuthModalState({
+        view: "Login",
+        open: true,
+      });
+      return;
+    }
     setLoading(true);
     await follow(userProfile, user!);
     setLoading(false);
