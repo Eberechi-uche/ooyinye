@@ -30,12 +30,7 @@ export default function Home() {
           </>
           <>
             <HomeNavFooter />
-            <Flex
-              flexDir={"column"}
-              bg={"blackAlpha.900"}
-              width={"100%"}
-              color={"white"}
-            >
+            <Flex flexDir={"column"} width={"100%"}>
               <Text width={"100%"} fontWeight={"700"} fontSize={"3xl"} px={"4"}>
                 Top Reads
               </Text>

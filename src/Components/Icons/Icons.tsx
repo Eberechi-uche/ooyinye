@@ -31,7 +31,7 @@ export const Explore: React.FC<IconProps> = ({ value }) => {
           route.push("/explore");
         }}
       >
-        <Icon as={FaCompass} fontSize={{ base: "2xl", md: "3xl" }} />
+        <Icon as={FaCompass} fontSize={"xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}
@@ -51,7 +51,7 @@ export const Search: React.FC<IconProps> = ({ value }) => {
           route.push("/search");
         }}
       >
-        <Icon as={FaSearch} fontSize={"2xl"} />
+        <Icon as={FaSearch} fontSize={"xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}
@@ -73,7 +73,7 @@ export const Bookmarks: React.FC<IconProps> = ({ value }) => {
           route.push("/Bookmarks");
         }}
       >
-        <Icon as={BsFillBookmarksFill} fontSize={"2xl"} />
+        <Icon as={BsFillBookmarksFill} fontSize={"xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}
@@ -94,7 +94,7 @@ export const Draft: React.FC<IconProps> = ({ value }) => {
           route.push("/");
         }}
       >
-        <Icon as={CgNotes} fontSize={"4xl"} />
+        <Icon as={CgNotes} fontSize={"xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}
@@ -130,7 +130,7 @@ export const Profile: React.FC<ProfileProps & IconProps> = ({
           route.push(`/profile/${userID}`);
         }}
       >
-        <Icon as={FaUser} fontSize={"2xl"} />
+        <Icon as={FaUser} fontSize={"xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}
@@ -181,7 +181,7 @@ export const LikeIcon: React.FC<IconProps> = ({ value }) => {
           }
         }}
       >
-        <Icon as={FaRegHeart} fontSize={"2xl"} />
+        <Icon as={FaRegHeart} fontSize={"xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}
@@ -196,7 +196,7 @@ export const ShareIcon: React.FC<IconProps> = ({ value }) => {
   return (
     <>
       <Flex align={"center"}>
-        <Icon as={FaShareSquare} fontSize={"2xl"} />
+        <Icon as={FaShareSquare} fontSize={"xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}

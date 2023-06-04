@@ -1,38 +1,31 @@
-import { Divider, Flex, Image, Text, Icon } from "@chakra-ui/react";
+import { Flex, Image, Text, Icon } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import { BsDot, BsBookmarkPlus, BsFillPinFill, BsClock } from "react-icons/bs";
-import { CiBookmarkPlus, CiHeart } from "react-icons/ci";
+import { BsClock } from "react-icons/bs";
+import { CiBookmarkPlus } from "react-icons/ci";
 import CardProfileMini from "./ProfileCardMini";
 type PostcardLargeProps = {
   showProfile: boolean;
 };
 const PostcardLarge: React.FC<PostcardLargeProps> = ({ showProfile }) => {
-  const { profile } = useRouter().query;
   return (
     <>
-      <Flex
-        width={"90%"}
-        borderColor={"gray.300"}
-        flexDir={"column"}
-        mx={"2"}
-        my={"5"}
-      >
-        <Flex maxH={"400px"} width={"100%"} position={"relative"}>
+      <Flex width={"80%"} borderColor={"gray.50"} flexDir={"column"} my={"5"}>
+        <Flex maxH={"150px"} width={"100%"} position={"relative"} mb={"2"}>
           <Image
             src={"/insight.jpg"}
             objectFit={"cover"}
             width={"100%"}
             alt={"user-profile"}
-            borderTopRadius={"7px"}
+            borderRadius={"4px"}
           />
         </Flex>
         {showProfile && <CardProfileMini />}
 
-        <Flex flexDir={"column"}>
-          <Text fontWeight={"500"} textTransform={"capitalize"}>
+        <Flex flexDir={"column"} my={"2"}>
+          <Text fontWeight={"700"} textTransform={"capitalize"} my={"2"}>
             The quick brown fox jumps over the lazy dog The quick brown fox
           </Text>
-          <Text noOfLines={1} fontSize={"sm"} fontWeight={"200"}>
+          <Text noOfLines={2} fontSize={"sm"} fontWeight={"200"}>
             The quick brown fox jumps over the lazy dog The quick brown fox
             jumps over the lazy dog The quick brown fox jumps over the lazy dog
             The quick brown fox jumps over the lazy dog
@@ -43,6 +36,7 @@ const PostcardLarge: React.FC<PostcardLargeProps> = ({ showProfile }) => {
             fontWeight={"200"}
             justify={"space-between"}
             align={"center"}
+            my={"2"}
           >
             <Flex>
               <Text fontSize={"xs"} my={"2"}>

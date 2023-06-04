@@ -10,12 +10,11 @@ const BlogNavFooter: React.FC<BlogNavFooterProp> = ({ onOpen }) => {
       <Flex
         width={"100%"}
         justify={"space-between"}
-        px={"4"}
-        height={"60px"}
+        px={"2"}
+        height={"40px"}
         bg={"#fff"}
         align={"center"}
         zIndex={"10"}
-        mx={"0"}
         position={"fixed"}
         bottom={"0"}
         display={{ base: "flex", md: "none" }}

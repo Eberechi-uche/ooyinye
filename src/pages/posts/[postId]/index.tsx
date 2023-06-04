@@ -47,7 +47,7 @@ const Post: React.FC = () => {
   return (
     <>
       <SingleContentLayout>
-        <>
+        <Flex pos={"relative"} flexDir={"column"} width={"100%"}>
           <BlogNavFooter onOpen={onOpen} />
           <BlogPostHeader />
           <Image alt={"imageName"} src={"/blogsample.png"} />
@@ -57,12 +57,10 @@ const Post: React.FC = () => {
             justify={"space-between"}
             py={"2"}
             px={"5"}
-            borderY={"1px solid"}
-            borderColor={"gray.300"}
+            top={"0"}
             pos={"sticky"}
-            top={"7%"}
             bg={"white"}
-            zIndex={"10"}
+            zIndex={"15"}
             display={{ base: "none", md: "flex" }}
             cursor={"pointer"}
           >
@@ -163,7 +161,7 @@ const Post: React.FC = () => {
           {isOpen && (
             <CommentDrawer onClose={onClose} isOpen={isOpen} user={user} />
           )}
-        </>
+        </Flex>
       </SingleContentLayout>
     </>
   );

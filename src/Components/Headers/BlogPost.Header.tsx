@@ -1,14 +1,4 @@
-import {
-  Flex,
-  Icon,
-  Divider,
-  Image,
-  Text,
-  Heading,
-  Avatar,
-  AvatarGroup,
-} from "@chakra-ui/react";
-import Link from "next/link";
+import { Flex, Icon, Text, Heading } from "@chakra-ui/react";
 import { CiCircleChevDown } from "react-icons/ci";
 import ProfileCardMini from "../Card/ProfileCardMini";
 
@@ -23,11 +13,13 @@ const BlogPostHeader: React.FC = () => {
         bg={"blue.900"}
         align={"center"}
         textAlign={"center"}
-        justify={"space-evenly"}
+        justify={"space-between"}
         color={"gray.100"}
       >
-        <Flex flexDir={"column"} width={"80%"} align={"center"}>
-          <Heading fontWeight={"500"}>The mystery behind Lorem Ipsum </Heading>
+        <Flex flexDir={"column"} width={"80%"} align={"center"} mt={"20%"}>
+          <Heading fontWeight={"500"} fontSize={"lg"}>
+            The mystery behind Lorem Ipsum, History and origin
+          </Heading>
           <Flex
             width={{ base: "100%", md: "80%", lg: "60%" }}
             color={"gray.300"}
@@ -49,7 +41,7 @@ const BlogPostHeader: React.FC = () => {
           </Flex>
         </Flex>
 
-        <Icon as={CiCircleChevDown} fontSize={"4xl"} />
+        <Icon as={CiCircleChevDown} fontSize={"4xl"} mb={"30%"} />
       </Flex>
     </>
   );
