@@ -11,7 +11,7 @@ const BlogNavFooter: React.FC<BlogNavFooterProp> = ({ onOpen }) => {
         width={"100%"}
         justify={"space-between"}
         px={"2"}
-        height={"40px"}
+        height={"50px"}
         bg={"#fff"}
         align={"center"}
         zIndex={"10"}

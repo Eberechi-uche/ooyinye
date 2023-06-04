@@ -137,14 +137,7 @@ const Post: React.FC = () => {
                 <PostcardLarge showProfile={false} />
               </SimpleGrid>
             </Flex>
-            <Flex
-              flexDir={"column"}
-              bg={"gray.700"}
-              width={"100%"}
-              align={"center"}
-              color={"#fff"}
-              pb={"10"}
-            >
+            <Flex flexDir={"column"} width={"100%"} align={"center"} pb={"10"}>
               <Text fontWeight={"700"} m={"4"} fontSize={"2xl"}>
                 Recommendation
               </Text>

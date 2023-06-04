@@ -26,7 +26,7 @@ const HomeNavFooter: React.FC = () => {
         width={"100%"}
         justify={"space-between"}
         px={"5"}
-        height={"40px"}
+        height={"50px"}
         bg={"#fff"}
         align={"center"}
         zIndex={"10"}

@@ -10,7 +10,7 @@ const BlogPostHeader: React.FC = () => {
         flexDir={"column"}
         p={"2"}
         height={{ base: "100vh", md: "100vh" }}
-        bg={"blue.900"}
+        bg={"blue.500"}
         align={"center"}
         textAlign={"center"}
         justify={"space-between"}

@@ -9,7 +9,7 @@ type PostcardLargeProps = {
 const PostcardLarge: React.FC<PostcardLargeProps> = ({ showProfile }) => {
   return (
     <>
-      <Flex width={"80%"} borderColor={"gray.50"} flexDir={"column"} my={"5"}>
+      <Flex width={"85%"} borderColor={"gray.50"} flexDir={"column"} my={"5"}>
         <Flex maxH={"150px"} width={"100%"} position={"relative"} mb={"2"}>
           <Image
             src={"/insight.jpg"}
@@ -19,13 +19,13 @@ const PostcardLarge: React.FC<PostcardLargeProps> = ({ showProfile }) => {
             borderRadius={"4px"}
           />
         </Flex>
-        {showProfile && <CardProfileMini />}
+        <CardProfileMini />
 
         <Flex flexDir={"column"} my={"2"}>
           <Text fontWeight={"700"} textTransform={"capitalize"} my={"2"}>
             The quick brown fox jumps over the lazy dog The quick brown fox
           </Text>
-          <Text noOfLines={2} fontSize={"sm"} fontWeight={"200"}>
+          <Text noOfLines={2} fontSize={"sm"}>
             The quick brown fox jumps over the lazy dog The quick brown fox
             jumps over the lazy dog The quick brown fox jumps over the lazy dog
             The quick brown fox jumps over the lazy dog
