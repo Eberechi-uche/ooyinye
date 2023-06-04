@@ -1,4 +1,4 @@
-import { Button, Flex, Icon, Text, Image } from "@chakra-ui/react";
+import { Button, Flex, Icon, Text, Image, Divider } from "@chakra-ui/react";
 import PostCardPreview from "@/Components/Card/PostCardPreview";
 import Link from "next/link";
 
@@ -95,8 +95,8 @@ export const TopUsers: React.FC = () => {
             <Image
               src={"/profile.jpeg"}
               alt={"userProfile"}
-              boxSize={"45px"}
-              objectFit={"cover"}
+              boxSize={"35px"}
+              objectFit={"contain"}
               borderRadius={"full"}
             />
             <Text textTransform={"capitalize"} fontWeight={"500"} ml={"2"}>
@@ -104,11 +104,12 @@ export const TopUsers: React.FC = () => {
             </Text>
           </Flex>
           <Flex>
-            <Button color={"#fff"} colorScheme="green" size={"sm"}>
+            <Button color={"#fff"} colorScheme="green" size={"xs"}>
               follow
             </Button>
           </Flex>
         </Flex>
+        <Divider />
       </Link>
     </>
   );

@@ -10,12 +10,14 @@ const ContentLayout: React.FC<ContentLayoutProps> = ({ children }) => {
       <Flex justify={"center"} width={"100vw"}>
         <Flex width={"100%"} maxWidth={"1500px"}>
           <Flex
-            display={{ base: "none", md: "unset" }}
+            display={{ base: "none", md: "flex" }}
             minH={"100vh"}
-            minWidth={"50px"}
-            p={"2"}
+            minWidth={"70px"}
+            p={"5"}
+            width={"max-content"}
             flexDir={"column"}
             align={"center"}
+            borderRight={"1px solid"}
           >
             {children && children[0 as keyof typeof children]}
           </Flex>

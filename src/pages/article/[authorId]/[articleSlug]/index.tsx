@@ -38,16 +38,20 @@ import {
   ShareIcon,
   SupportIcon,
 } from "@/Components/Icons/Icons";
-import { BsArrowBarLeft, BsArrowRight } from "react-icons/bs";
+import { BsArrowRight } from "react-icons/bs";
+import { useRouter } from "next/router";
 
 const Post: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [user] = useAuthState(auth);
+  const { authorId, articleSlug } = useRouter().query;
 
   return (
     <>
       <SingleContentLayout>
         <Flex pos={"relative"} flexDir={"column"} width={"100%"}>
+          <Text> {authorId}</Text>
+          <Text>{articleSlug}</Text>
           <BlogNavFooter onOpen={onOpen} />
           <BlogPostHeader />
           <Image alt={"imageName"} src={"/blogsample.png"} />

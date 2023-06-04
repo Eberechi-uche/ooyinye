@@ -23,18 +23,20 @@ const HomeRHS: React.FC = () => {
     <>
       <Flex
         position={"sticky"}
-        top={"10"}
+        top={"20"}
         flexDir={"column"}
-        maxH={"100vh"}
-        overflowY={"scroll"}
+        // maxH={"100vh"}
+        // overflowY={"scroll"}
         sx={{
           "::-webkit-scrollbar": {
             display: "none",
           },
         }}
-        width={"100%"}
-        height={"100vh"}
-        justify={"space-evenly"}
+        minWidth={"fit-content"}
+        px={"4"}
+        align={"center"}
+        height={"80vh"}
+        justify={"space-between"}
         cursor={"pointer"}
       >
         <Flex width={"100%"}>
@@ -49,14 +51,6 @@ const HomeRHS: React.FC = () => {
           }}
         >
           <Search value={"Search"} />
-          <Text
-            display={{ base: "none", md: "none", lg: "unset" }}
-            fontSize={"sm"}
-            minW={"200px"}
-            ml={"2"}
-          >
-            search
-          </Text>
         </Flex>
 
         {user && (

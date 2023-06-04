@@ -102,7 +102,13 @@ const UserActions: React.FC = () => {
           Profile
         </ListItem>
 
-        <ListItem display={"flex"} alignItems={"center"}>
+        <ListItem
+          display={"flex"}
+          alignItems={"center"}
+          onClick={() => {
+            route.push(`/profile/Dashboard`);
+          }}
+        >
           <ListIcon as={CiGrid41} />
           Dashboard
         </ListItem>

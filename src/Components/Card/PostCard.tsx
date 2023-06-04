@@ -49,7 +49,9 @@ const PostCard: React.FC<PostCardProps> = ({ showProfile }) => {
             </Flex>
           </Flex>
         )}
-        <Link href={"/posts/blooger"}>
+        <Link
+          href={`/article/${"@adalovelave"}/${"the-mystery-behind-lorem-ipsum"}`}
+        >
           <Flex
             align={"center"}
             mt={"2"}

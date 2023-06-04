@@ -1,4 +1,4 @@
-const usePostData = () => {
+export const useArticleData = () => {
   const getArticleComment = () => {};
   const getArticle = () => {};
   const addComment = () => {};
