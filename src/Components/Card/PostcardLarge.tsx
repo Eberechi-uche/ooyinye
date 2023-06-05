@@ -10,7 +10,13 @@ const PostcardLarge: React.FC<PostcardLargeProps> = ({ showProfile }) => {
   return (
     <>
       <Flex width={"85%"} borderColor={"gray.50"} flexDir={"column"} my={"5"}>
-        <Flex maxH={"150px"} width={"100%"} position={"relative"} mb={"2"}>
+        <Flex
+          maxH={"170px"}
+          minH={"170px"}
+          width={"100%"}
+          position={"relative"}
+          mb={"2"}
+        >
           <Image
             src={"/insight.jpg"}
             objectFit={"cover"}

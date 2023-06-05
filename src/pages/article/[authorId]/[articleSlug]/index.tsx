@@ -50,8 +50,6 @@ const Post: React.FC = () => {
     <>
       <SingleContentLayout>
         <Flex pos={"relative"} flexDir={"column"} width={"100%"}>
-          <Text> {authorId}</Text>
-          <Text>{articleSlug}</Text>
           <BlogNavFooter onOpen={onOpen} />
           <BlogPostHeader />
           <Image alt={"imageName"} src={"/blogsample.png"} />
