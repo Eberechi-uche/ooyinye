@@ -1,4 +1,5 @@
-import { Button, Flex, Textarea, useToast } from "@chakra-ui/react";
+import { Button, Flex, Textarea, useToast, Icon } from "@chakra-ui/react";
+import { BsArrowBarRight } from "react-icons/bs";
 
 type TextEditorProps = {
   articleContent: string;
@@ -24,7 +25,7 @@ const TextEditor: React.FC<TextEditorProps> = ({
     <>
       <Flex flexDir={"column"} my={"5"}>
         <Textarea
-          h={"80vh"}
+          h={"50vh"}
           bg={"#fff"}
           focusBorderColor="gray.500"
           border={"none"}
@@ -34,7 +35,7 @@ const TextEditor: React.FC<TextEditorProps> = ({
         />
         <Flex
           my={"5"}
-          width={{ base: "100%", md: "70%" }}
+          width={{ base: "100%", md: "50%", lg: "40%" }}
           justify={"space-between"}
           alignSelf={"flex-end"}
         >
@@ -48,8 +49,9 @@ const TextEditor: React.FC<TextEditorProps> = ({
           >
             save Article
           </Button>
-          <Button colorScheme="green" variant={"solid"} color={"#fff"}>
-            publish
+          <Button colorScheme="green" variant={"outline"} borderRadius={"full"}>
+            Preview & Publish
+            <Icon as={BsArrowBarRight} fontSize={"2xl"} ml={"2"} />
           </Button>
         </Flex>
       </Flex>

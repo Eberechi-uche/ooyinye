@@ -115,7 +115,7 @@ const ProfileCardLarge: React.FC<ProfileCardLargeProps> = ({
         >
           <Button
             size={"xs"}
-            colorScheme="green"
+            colorScheme="blackAlpha"
             color={"#fff"}
             onClick={(e) => {
               e.stopPropagation();
@@ -125,10 +125,10 @@ const ProfileCardLarge: React.FC<ProfileCardLargeProps> = ({
           >
             followers
           </Button>
-          <Icon as={BsDot} mx={"4"} fontSize={"2xl"} />
           <Button
+            ml={"4"}
             size={"xs"}
-            colorScheme="green"
+            colorScheme="blackAlpha"
             color={"#fff"}
             onClick={(e) => {
               e.stopPropagation();
@@ -215,7 +215,8 @@ const NotAuthUserAction: React.FC<NotAuthUserActionProps> = ({
         <Button
           borderRadius={"full"}
           size={"sm"}
-          colorScheme="green"
+          bg={"gray.800"}
+          colorScheme="blackAlpha"
           color={"#fff"}
           mr={"3"}
           isLoading={isLoading}
@@ -238,6 +239,7 @@ const NotAuthUserAction: React.FC<NotAuthUserActionProps> = ({
 };
 
 const AuthUserAction: React.FC = () => {
+  const route = useRouter();
   return (
     <>
       <Flex align={"center"}>
@@ -246,11 +248,23 @@ const AuthUserAction: React.FC = () => {
           size={"sm"}
           variant="brandPrimary"
           color={"#fff"}
+          onClick={() => {
+            route.push("/profile/Dashboard");
+          }}
+          mr={"3"}
         >
           Dashboard
         </Button>
-
-        <ProfileSetting value={"setting"} />
+        <Flex
+          border={"3px solid"}
+          py={"0.5"}
+          px={"1"}
+          borderRadius={"full"}
+          borderColor={"gray.400"}
+          cursor={"pointer"}
+        >
+          <ProfileSetting value={"setting"} />
+        </Flex>
       </Flex>
     </>
   );

@@ -1,7 +1,13 @@
 import { Flex, Image, Text, Icon } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { BsDot, BsFillPinFill, BsClockFill } from "react-icons/bs";
+import {
+  BsDot,
+  BsFillPinFill,
+  BsClockFill,
+  BsBookmark,
+  BsClock,
+} from "react-icons/bs";
 import { CiBookmarkPlus } from "react-icons/ci";
 import ProfileCardMini from "./ProfileCardMini";
 
@@ -38,12 +44,12 @@ const PostCard: React.FC<PostCardProps> = ({ showProfile }) => {
                     alignItems={"center"}
                   >
                     <Icon as={BsDot} mx={"2"} />
-                    <Icon as={BsClockFill} mx={"2"} />8 mins
+                    <Icon as={BsClock} mx={"2"} />8 mins
                   </Text>
                 </Flex>
 
-                <Flex fontSize={"2xl"}>
-                  <Icon as={CiBookmarkPlus} />
+                <Flex>
+                  <Icon as={BsBookmark} />
                 </Flex>
               </Flex>
             </Flex>
@@ -65,7 +71,7 @@ const PostCard: React.FC<PostCardProps> = ({ showProfile }) => {
               height={"fit-content"}
               width={"80%"}
             >
-              <Text fontWeight={"700"} noOfLines={[3, 4]}>
+              <Text fontWeight={"900"} noOfLines={[3, 4]}>
                 The mystery behind lorem ipsum, origin, uses and everything
                 inbetween
               </Text>

@@ -81,37 +81,6 @@ const Post: React.FC = () => {
             />
 
             <Flex
-              fontSize={"xs"}
-              align={"center"}
-              width={"100%"}
-              p={"5"}
-              justify={"center"}
-            >
-              <AvatarGroup
-                max={6}
-                color={"black"}
-                size={{ base: "sm", md: "md" }}
-              >
-                <Avatar
-                  name="Ryan Florence"
-                  src="https://bit.ly/ryan-florence"
-                />
-                <Avatar
-                  name="Ryan Florence"
-                  src="https://bit.ly/ryan-florence"
-                />
-                <Avatar
-                  name="Ryan Florence"
-                  src="https://bit.ly/ryan-florence"
-                />
-              </AvatarGroup>
-              <Icon as={BsArrowRight} mx={"5"} />
-              <Text color={"red.500"} fontWeight={"700"}>
-                likes
-              </Text>
-            </Flex>
-
-            <Flex
               flexDir={"column"}
               mt={"10"}
               bg={"gray.50"}

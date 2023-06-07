@@ -10,6 +10,7 @@ import HomeLHS from "@/Components/LeftContentComponent/HomeSideContent/HomeLHS";
 import HomeNavFooter from "@/Components/MobileFooter/HomeNavFooter";
 import { CiCirclePlus, CiSearch } from "react-icons/ci";
 import Link from "next/link";
+import { SearchIcon } from "@/Components/Icons/Icons";
 
 export default function Home() {
   const [user] = useAuthState(auth);
@@ -31,7 +32,7 @@ export default function Home() {
           <>
             <HomeNavFooter />
             <Flex flexDir={"column"} width={"100%"}>
-              <Text width={"100%"} fontWeight={"700"} fontSize={"3xl"} px={"4"}>
+              <Text width={"100%"} fontWeight={"900"} px={"4"}>
                 Top Reads
               </Text>
               <PostCard showProfile={true} />
@@ -47,11 +48,8 @@ export default function Home() {
                 justify={"space-between"}
                 align={"center"}
                 px={"4"}
-                fontSize={"2xl"}
               >
-                <Text fontWeight={"700"} fontSize={"3xl"}>
-                  For you
-                </Text>
+                <Text fontWeight={"900"}>For you</Text>
                 <Link href={"/search"}>
                   <Flex
                     align={"center"}
@@ -62,12 +60,9 @@ export default function Home() {
                       base: "1",
                       md: "0",
                     }}
+                    px={{ md: "2" }}
                   >
-                    <Icon
-                      as={CiSearch}
-                      color={"gray.700"}
-                      ml={{ md: "2", lg: "4" }}
-                    />
+                    <SearchIcon value="" />
                     <Input
                       placeholder="search blog"
                       border={"none"}

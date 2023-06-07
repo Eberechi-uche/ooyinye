@@ -1,8 +1,9 @@
 import { Flex, Image, Text, Icon } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import { BsClock } from "react-icons/bs";
+import { BsBookmark, BsBookmarkPlus, BsClock } from "react-icons/bs";
 import { CiBookmarkPlus } from "react-icons/ci";
 import CardProfileMini from "./ProfileCardMini";
+import { IoBookmarkSharp } from "react-icons/io5";
 type PostcardLargeProps = {
   showProfile: boolean;
 };
@@ -28,10 +29,10 @@ const PostcardLarge: React.FC<PostcardLargeProps> = ({ showProfile }) => {
         <CardProfileMini />
 
         <Flex flexDir={"column"} my={"2"}>
-          <Text fontWeight={"700"} textTransform={"capitalize"} my={"2"}>
+          <Text fontWeight={"900"} textTransform={"capitalize"} my={"2"}>
             The quick brown fox jumps over the lazy dog The quick brown fox
           </Text>
-          <Text noOfLines={2} fontSize={"sm"}>
+          <Text noOfLines={2} fontSize={"sm"} my={"1"}>
             The quick brown fox jumps over the lazy dog The quick brown fox
             jumps over the lazy dog The quick brown fox jumps over the lazy dog
             The quick brown fox jumps over the lazy dog
@@ -58,7 +59,7 @@ const PostcardLarge: React.FC<PostcardLargeProps> = ({ showProfile }) => {
                 10min Read
               </Text>
             </Flex>
-            <Icon as={CiBookmarkPlus} fontSize={"2xl"} />
+            <Icon as={BsBookmark} />
           </Flex>
         </Flex>
         <Flex width={"100%"} justify={"space-between"} my={"2"}></Flex>

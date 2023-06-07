@@ -1,27 +1,28 @@
 import { Icon, Text, Flex } from "@chakra-ui/react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { CiGrid41, CiSettings } from "react-icons/ci";
+
 import { useRouter } from "next/router";
 import { auth } from "../Firebase/ClientApp";
 import { useSetRecoilState } from "recoil";
 import { authModalState } from "@/Atoms/AuthModalAtom";
 
-import { RiSettings3Line } from "react-icons/ri";
+import { RiSettings3Line, RiShareCircleLine } from "react-icons/ri";
 import {
-  FaCommentAlt,
   FaCompass,
+  FaRegComment,
   FaRegHeart,
   FaSearch,
-  FaShareSquare,
   FaUser,
 } from "react-icons/fa";
 import { BsCoin, BsFillBookmarksFill } from "react-icons/bs";
 import { CgNotes } from "react-icons/cg";
 
+import { RxDashboard } from "react-icons/rx";
+
 type IconProps = {
   value: string | undefined;
 };
-export const Explore: React.FC<IconProps> = ({ value }) => {
+export const ExploreIcon: React.FC<IconProps> = ({ value }) => {
   const route = useRouter();
   return (
     <>
@@ -42,7 +43,7 @@ export const Explore: React.FC<IconProps> = ({ value }) => {
   );
 };
 
-export const Search: React.FC<IconProps> = ({ value }) => {
+export const SearchIcon: React.FC<IconProps> = ({ value }) => {
   const route = useRouter();
   return (
     <>
@@ -62,7 +63,7 @@ export const Search: React.FC<IconProps> = ({ value }) => {
   );
 };
 
-export const Bookmarks: React.FC<IconProps> = ({ value }) => {
+export const BookmarkIcon: React.FC<IconProps> = ({ value }) => {
   const route = useRouter();
 
   return (
@@ -83,7 +84,7 @@ export const Bookmarks: React.FC<IconProps> = ({ value }) => {
     </>
   );
 };
-export const Draft: React.FC<IconProps> = ({ value }) => {
+export const DraftIcon: React.FC<IconProps> = ({ value }) => {
   const route = useRouter();
 
   return (
@@ -91,7 +92,7 @@ export const Draft: React.FC<IconProps> = ({ value }) => {
       <Flex
         align={"center"}
         onClick={() => {
-          route.push("/");
+          route.push("/profile/Dashboard/studio");
         }}
       >
         <Icon as={CgNotes} fontSize={"xl"} />
@@ -108,7 +109,7 @@ export const Draft: React.FC<IconProps> = ({ value }) => {
 type ProfileProps = {
   userID: String | undefined;
 };
-export const Profile: React.FC<ProfileProps & IconProps> = ({
+export const ProfileIcon: React.FC<ProfileProps & IconProps> = ({
   userID,
   value,
 }) => {
@@ -127,7 +128,7 @@ export const Profile: React.FC<ProfileProps & IconProps> = ({
             });
             return;
           }
-          route.push(`/profile/${userID}`);
+          route.push(`/profile/@${userID}`);
         }}
       >
         <Icon as={FaUser} fontSize={"xl"} />
@@ -152,7 +153,7 @@ export const CommentsIcon: React.FC<IconProps & CommentIconProp> = ({
   return (
     <>
       <Flex align={"center"} onClick={onOpen}>
-        <Icon as={FaCommentAlt} fontSize={"xl"} />
+        <Icon as={FaRegComment} fontSize={"xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}
@@ -196,7 +197,7 @@ export const ShareIcon: React.FC<IconProps> = ({ value }) => {
   return (
     <>
       <Flex align={"center"}>
-        <Icon as={FaShareSquare} fontSize={"xl"} />
+        <Icon as={RiShareCircleLine} fontSize={"xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}
@@ -207,11 +208,11 @@ export const ShareIcon: React.FC<IconProps> = ({ value }) => {
   );
 };
 
-export const Dashboard: React.FC<IconProps> = ({ value }) => {
+export const DashboardIcon: React.FC<IconProps> = ({ value }) => {
   return (
     <>
       <Flex align={"center"}>
-        <Icon as={CiGrid41} fontSize={"4xl"} />
+        <Icon as={RxDashboard} fontSize={"xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}
@@ -232,7 +233,7 @@ export const ProfileSetting: React.FC<IconProps> = ({ value }) => {
           route.push("/profile/profile-setting");
         }}
       >
-        <Icon as={RiSettings3Line} fontSize={"4xl"} />
+        <Icon as={RiSettings3Line} fontSize={"2xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}

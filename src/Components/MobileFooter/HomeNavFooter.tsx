@@ -1,15 +1,13 @@
-import { Flex, Icon } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import { Explore, Search, Bookmarks, Draft, Profile } from "../Icons/Icons";
-import { authModalState } from "@/Atoms/AuthModalAtom";
 import {
-  CiCompass1,
-  CiCirclePlus,
-  CiSearch,
-  CiMemoPad,
-  CiUser,
-  CiPen,
-} from "react-icons/ci";
+  ExploreIcon,
+  SearchIcon,
+  BookmarkIcon,
+  ProfileIcon,
+  DraftIcon,
+} from "../Icons/Icons";
+import { authModalState } from "@/Atoms/AuthModalAtom";
 import { useSetRecoilState } from "recoil";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../Firebase/ClientApp";
@@ -34,11 +32,11 @@ const HomeNavFooter: React.FC = () => {
         bottom={"0"}
         display={{ base: "flex", md: "none" }}
       >
-        <Explore value={undefined} />
-        <Search value={undefined} />
-        {user && <Draft value={undefined} />}
-        {user && <Bookmarks value={undefined} />}
-        <Profile userID={ID} value={undefined} />
+        <ExploreIcon value={undefined} />
+        <SearchIcon value={undefined} />
+        {user && <DraftIcon value={undefined} />}
+        {user && <BookmarkIcon value={undefined} />}
+        <ProfileIcon userID={ID} value={undefined} />
       </Flex>
     </>
   );

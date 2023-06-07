@@ -1,4 +1,3 @@
-import { CiCompass1, CiPen, CiSearch, CiMemoPad, CiUser } from "react-icons/ci";
 import { useRouter } from "next/router";
 import { Flex, Icon, Text } from "@chakra-ui/react";
 import { useSetRecoilState } from "recoil";
@@ -6,11 +5,11 @@ import { authModalState } from "@/Atoms/AuthModalAtom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/Components/Firebase/ClientApp";
 import {
-  Bookmarks,
-  Draft,
-  Explore,
-  Profile,
-  Search,
+  BookmarkIcon,
+  DraftIcon,
+  ExploreIcon,
+  ProfileIcon,
+  SearchIcon,
 } from "@/Components/Icons/Icons";
 
 const HomeRHS: React.FC = () => {
@@ -40,7 +39,7 @@ const HomeRHS: React.FC = () => {
         cursor={"pointer"}
       >
         <Flex width={"100%"}>
-          <Explore value={"Explore"} />
+          <ExploreIcon value={"ExploreIcon"} />
         </Flex>
 
         <Flex
@@ -50,22 +49,22 @@ const HomeRHS: React.FC = () => {
             route.push("/search");
           }}
         >
-          <Search value={"Search"} />
+          <SearchIcon value={"Search"} />
         </Flex>
 
         {user && (
           <Flex width={"100%"} align={"center"}>
-            <Draft value={"Drafts"} />
+            <DraftIcon value={"Drafts"} />
           </Flex>
         )}
         {user && (
           <Flex width={"100%"} align={"center"}>
-            <Bookmarks value={"Bookmarks"} />
+            <BookmarkIcon value={"Bookmarks"} />
           </Flex>
         )}
 
         <Flex width={"100%"} align={"center"}>
-          <Profile userID={ID} value={"Profile"} />
+          <ProfileIcon userID={ID} value={"Profile"} />
         </Flex>
       </Flex>
     </>

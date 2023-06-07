@@ -9,15 +9,7 @@ import {
   ListItem,
   Divider,
 } from "@chakra-ui/react";
-import {
-  CiUser,
-  CiLogin,
-  CiGrid41,
-  CiBookmarkCheck,
-  CiPen,
-  CiSettings,
-  CiFileOn,
-} from "react-icons/ci";
+import { CiUser, CiLogin, CiBookmarkCheck, CiSettings } from "react-icons/ci";
 
 import { BsChevronRight } from "react-icons/bs";
 import {
@@ -34,6 +26,13 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/Components/Firebase/ClientApp";
 import { signOut } from "firebase/auth";
 import { useRouter } from "next/router";
+import {
+  BookmarkIcon,
+  DashboardIcon,
+  DraftIcon,
+  ProfileIcon,
+  ProfileSetting,
+} from "@/Components/Icons/Icons";
 
 const NavUserProfile: React.FC = () => {
   const [user] = useAuthState(auth);
@@ -59,7 +58,7 @@ const NavUserProfile: React.FC = () => {
             <Text> {user?.displayName}</Text>
           </DrawerHeader>
 
-          <DrawerBody>
+          <DrawerBody onClick={onClose} cursor={"pointer"}>
             <UserActions />
           </DrawerBody>
           <Divider />
@@ -98,8 +97,13 @@ const UserActions: React.FC = () => {
             route.push(`/profile/@${auth.currentUser?.email?.split("@")[0]}`);
           }}
         >
-          <ListIcon as={CiUser} />
-          Profile
+          <ProfileIcon
+            value={"Profile"}
+            userID={auth.currentUser?.email?.split("@")[0]}
+          />
+          <Text display={{ lg: "none" }} ml={"2"}>
+            Profile
+          </Text>
         </ListItem>
 
         <ListItem
@@ -109,12 +113,22 @@ const UserActions: React.FC = () => {
             route.push(`/profile/Dashboard`);
           }}
         >
-          <ListIcon as={CiGrid41} />
-          Dashboard
+          <DashboardIcon value={"Dashboard"} />
+          <Text display={{ lg: "none" }} ml={"2"}>
+            Dashboard
+          </Text>
         </ListItem>
-        <ListItem display={"flex"} alignItems={"center"}>
-          <ListIcon as={CiFileOn} />
-          Draft
+        <ListItem
+          display={"flex"}
+          alignItems={"center"}
+          onClick={() => {
+            route.push(`/profile/Dashboard/studio`);
+          }}
+        >
+          <DraftIcon value="Draft" />
+          <Text display={{ lg: "none" }} ml={"2"}>
+            Draft
+          </Text>
         </ListItem>
         <ListItem
           display={"flex"}
@@ -123,8 +137,10 @@ const UserActions: React.FC = () => {
             route.push("/Bookmarks");
           }}
         >
-          <ListIcon as={CiBookmarkCheck} />
-          Bookmarks
+          <BookmarkIcon value={"Bookmarks"} />
+          <Text display={{ lg: "none" }} ml={"2"}>
+            Bookmarks
+          </Text>
         </ListItem>
         <ListItem
           display={"flex"}
@@ -133,8 +149,10 @@ const UserActions: React.FC = () => {
             route.push("/profile/profile-setting");
           }}
         >
-          <ListIcon as={CiSettings} />
-          Profile settings
+          <ProfileSetting value="Profile setting" />
+          <Text display={{ lg: "none" }} ml={"2"}>
+            Profile setting
+          </Text>
         </ListItem>
       </List>
     </>

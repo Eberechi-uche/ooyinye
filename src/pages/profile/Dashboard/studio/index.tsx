@@ -63,7 +63,7 @@ const Studio: React.FC = () => {
                 />
               </TabPanel>
               <TabPanel px={"0"}>
-                <p>write</p>
+                <p>Article content</p>
                 <TextEditor
                   articleContent={articleContent}
                   setArticleContent={setArticleContent}
