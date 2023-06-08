@@ -24,15 +24,6 @@ const TextEditor: React.FC<TextEditorProps> = ({
   return (
     <>
       <Flex flexDir={"column"} my={"5"}>
-        <Textarea
-          h={"50vh"}
-          bg={"#fff"}
-          focusBorderColor="gray.500"
-          border={"none"}
-          name="articleDesc"
-          value={articleContent}
-          onChange={handleOnChange}
-        />
         <Flex
           my={"5"}
           width={{ base: "100%", md: "50%", lg: "40%" }}

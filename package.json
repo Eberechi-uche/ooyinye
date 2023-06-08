@@ -23,6 +23,8 @@
     "@tiptap/extension-character-count": "^2.0.3",
     "@tiptap/extension-code-block": "^2.0.3",
     "@tiptap/extension-heading": "^2.0.3",
+    "@tiptap/extension-history": "^2.0.3",
+    "@tiptap/extension-italic": "^2.0.3",
     "@tiptap/extension-list-item": "^2.0.3",
     "@tiptap/extension-ordered-list": "^2.0.3",
     "@tiptap/pm": "^2.0.3",

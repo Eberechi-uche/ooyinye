@@ -15,6 +15,7 @@ const Theme = extendTheme({
     },
   },
   fonts: {
+    heading: `'Inter Variable', sans-serif`,
     body: `'Inter Variable', sans-serif`,
   },
   components: {

@@ -124,33 +124,42 @@ a {
   }
 }
 
-* + * {
+.TipTap-editor * + * {
   margin-top: 0.75em;
 }
 
-ul,
+.TipTap-editor ul,
 ol {
   padding: 0 1rem;
 }
 
-h1,
+.TipTap-editor h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
   line-height: 1.1;
+  font-weight: 900;
 }
-
+.TipTap-editor h1 {
+  font-size: xx-large;
+}
+.TipTap-editor h2 {
+  font-size: x-large;
+}
+.TipTap-editor h3 {
+  font-size: large;
+}
 code {
-  background-color: rgba(#221f1f, 0.1);
+  background-color: rgba(#9b353578, 0.1);
 }
 
 pre {
   color: #fff;
   font-family: "JetBrainsMono", monospace;
   padding: 0.75rem 1rem;
-  background-color: #221f1f;
+  background-color: #1b1616f4;
 }
 
 pre code {
@@ -176,22 +185,20 @@ hr {
   }
 }
 
-.quotes {
-  background-color: blue;
-}
-blockquote {
-  background-color: aquamarine;
-  border-left: 2px solid rgba(128, 128, 128, 0.491);
+.TipTap-editor blockquote {
+  background-color: rgba(52, 212, 159, 0.6);
+  border-left: 2px solid rgba(18, 11, 11, 0.584);
   margin: 5px 20px;
   padding: 1em 2em;
   font-style: italic;
   font-family: Georgia, "Times New Roman", Times, serif;
-  color: rgba(128, 123, 123, 0.769);
+  color: rgba(250, 250, 250, 0.952);
 }
 
 .TipTap-editor {
-  height: 80vh;
+  height: 90vh;
   background-color: #fff;
   padding: 1em 2em;
   outline: none;
+  overflow: scroll;
 }

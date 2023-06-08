@@ -64,14 +64,14 @@ const Studio: React.FC = () => {
                 />
               </TabPanel>
               <TabPanel px={"0"}>
-                {/* <TextEditor
+                <TipEditor />
+                <TextEditor
                   articleContent={articleContent}
                   setArticleContent={setArticleContent}
                   saveArticle={handleArticleSave}
                   isLoading={loading}
                   error={error}
-                /> */}
-                <TipEditor />
+                />
               </TabPanel>
             </TabPanels>
           </Tabs>

@@ -1,4 +1,4 @@
-import { Flex, IconButton } from "@chakra-ui/react";
+import { Flex, IconButton, Icon } from "@chakra-ui/react";
 
 import {
   Popover,
@@ -12,7 +12,7 @@ import {
 import { ImItalic } from "react-icons/im";
 import { GrBold, GrCode } from "react-icons/gr";
 import { BiCodeBlock } from "react-icons/bi";
-import { FaListUl, FaListOl, FaHeading } from "react-icons/fa";
+import { FaListUl, FaListOl, FaHeading, FaCheck } from "react-icons/fa";
 import { RiDoubleQuotesL } from "react-icons/ri";
 
 type ToolkitProp = {
@@ -23,16 +23,15 @@ const ToolKit: React.FC<ToolkitProp> = ({ editor }) => {
     return null;
   }
 
-  const active = "green.300";
+  const active = "gray.200";
   const inActive = "";
-  const colorScheme = "whatsapp";
+
   return (
     <Flex
       width={"100%"}
       h={"10vh"}
-      border={"2px solid"}
-      borderColor={"gray.300"}
       p={"4"}
+      bg="gray.600"
       justify={"space-evenly"}
     >
       <IconButton
@@ -41,7 +40,6 @@ const ToolKit: React.FC<ToolkitProp> = ({ editor }) => {
         onClick={() => editor.chain().focus().toggleBold().run()}
         disabled={!editor.can().chain().focus().toggleBold().run()}
         bg={editor.isActive("bold") ? `${active}` : `${inActive}`}
-        colorScheme={colorScheme}
       />
       <IconButton
         aria-label="code"
@@ -49,7 +47,6 @@ const ToolKit: React.FC<ToolkitProp> = ({ editor }) => {
         onClick={() => editor.chain().focus().toggleCode().run()}
         disabled={!editor.can().chain().focus().toggleCode().run()}
         bg={editor.isActive("code") ? `${active}` : `${inActive}`}
-        colorScheme={colorScheme}
       />
       <IconButton
         aria-label="Blockquote"
@@ -57,29 +54,25 @@ const ToolKit: React.FC<ToolkitProp> = ({ editor }) => {
         onClick={() => editor.chain().focus().toggleBlockquote().run()}
         disabled={!editor.can().chain().focus().toggleCode().run()}
         bg={editor.isActive("blockquote") ? `${active}` : `${inActive}`}
-        colorScheme={colorScheme}
       />
       <IconButton
-        aria-label="Blockquote"
+        aria-label="Italic"
         icon={<ImItalic />}
-        onClick={() => editor.chain().focus().toggleBlockquote().run()}
-        disabled={!editor.can().chain().focus().toggleCode().run()}
-        bg={editor.isActive("blockquote") ? `${active}` : `${inActive}`}
-        colorScheme={colorScheme}
+        onClick={() => editor.chain().focus().toggleItalic().run()}
+        bg={editor.isActive("italic") ? `${active}` : `${inActive}`}
       />
       <IconButton
         aria-label="codeBlock"
+        borderRadius={"none"}
         icon={<BiCodeBlock />}
         onClick={() => editor.chain().focus().toggleCodeBlock().run()}
         bg={editor.isActive("codeBlock") ? `${active}` : `${inActive}`}
-        colorScheme={colorScheme}
       />
       <IconButton
         aria-label="listItem"
         icon={<FaListUl />}
         onClick={() => editor.chain().focus().toggleBulletList().run()}
         bg={editor.isActive("bulletList") ? `${active}` : `${inActive}`}
-        colorScheme={colorScheme}
       />
       <IconButton
         aria-label="orderedList"
@@ -87,7 +80,6 @@ const ToolKit: React.FC<ToolkitProp> = ({ editor }) => {
         onClick={() => editor.chain().focus().toggleOrderedList().run()}
         disabled={!editor.can().splitListItem("listItem")}
         bg={editor.isActive("orderedList") ? `${active}` : `${inActive}`}
-        colorScheme={colorScheme}
       />
       <Popover>
         <PopoverTrigger>
@@ -97,10 +89,64 @@ const ToolKit: React.FC<ToolkitProp> = ({ editor }) => {
           <PopoverArrow />
           <PopoverCloseButton />
 
-          <PopoverBody fontWeight={"700"}>
-            <Text fontSize={"4xl"}> H1</Text>
-            <Text fontSize={"2xl"}>H2</Text>
-            <Text fontSize={"1xl"}> H3</Text>
+          <PopoverBody fontWeight={"700"} cursor={"pointer"}>
+            <Text
+              fontSize={"3xl"}
+              onClick={(e) =>
+                editor.chain().focus().toggleHeading({ level: 1 }).run()
+              }
+              display={"flex"}
+              alignItems={"center"}
+              width={"50%"}
+            >
+              H1
+              <Icon
+                as={FaCheck}
+                fontSize={"sm"}
+                ml={"7"}
+                display={
+                  editor.isActive("heading", { level: 1 }) ? "flex" : "none"
+                }
+              />
+            </Text>
+            <Text
+              fontSize={"2xl"}
+              onClick={() =>
+                editor.chain().focus().toggleHeading({ level: 2 }).run()
+              }
+              display={"flex"}
+              alignItems={"center"}
+              width={"50%"}
+            >
+              H2
+              <Icon
+                as={FaCheck}
+                fontSize={"sm"}
+                ml={"7"}
+                display={
+                  editor.isActive("heading", { level: 2 }) ? "flex" : "none"
+                }
+              />
+            </Text>
+            <Text
+              fontSize={"xl"}
+              onClick={() =>
+                editor.chain().focus().toggleHeading({ level: 3 }).run()
+              }
+              display={"flex"}
+              alignItems={"center"}
+              width={"50%"}
+            >
+              H3
+              <Icon
+                as={FaCheck}
+                fontSize={"sm"}
+                ml={"7"}
+                display={
+                  editor.isActive("heading", { level: 3 }) ? "flex" : "none"
+                }
+              />
+            </Text>
           </PopoverBody>
         </PopoverContent>
       </Popover>
