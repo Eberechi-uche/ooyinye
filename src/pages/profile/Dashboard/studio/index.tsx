@@ -19,6 +19,7 @@ import TextEditor from "@/Components/userStudio/TextEditor";
 import { useFileUpload } from "@/Hooks/Profile/useFileUpload";
 import { useState } from "react";
 import { useCreateNewArticle } from "@/Hooks/Blog/useCreateNewArticle";
+import TipEditor from "@/Components/TextEditor/TipTapEditor";
 
 const Studio: React.FC = () => {
   const [user] = useAuthState(auth);
@@ -63,14 +64,14 @@ const Studio: React.FC = () => {
                 />
               </TabPanel>
               <TabPanel px={"0"}>
-                <p>Article content</p>
-                <TextEditor
+                {/* <TextEditor
                   articleContent={articleContent}
                   setArticleContent={setArticleContent}
                   saveArticle={handleArticleSave}
                   isLoading={loading}
                   error={error}
-                />
+                /> */}
+                <TipEditor />
               </TabPanel>
             </TabPanels>
           </Tabs>
