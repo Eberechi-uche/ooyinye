@@ -150,13 +150,14 @@ pre {
   color: #fff;
   font-family: "JetBrainsMono", monospace;
   padding: 0.75rem 1rem;
+  background-color: #221f1f;
+}
 
-  /* code {
-    color: inherit;
-    padding: 0;
-    background: none;
-    font-size: 0.8rem;
-  } */
+pre code {
+  color: inherit;
+  padding: 0;
+  background: none;
+  font-size: 0.8rem;
 }
 
 img {
@@ -186,4 +187,11 @@ blockquote {
   font-style: italic;
   font-family: Georgia, "Times New Roman", Times, serif;
   color: rgba(128, 123, 123, 0.769);
+}
+
+.TipTap-editor {
+  height: 80vh;
+  background-color: #fff;
+  padding: 1em 2em;
+  outline: none;
 }
