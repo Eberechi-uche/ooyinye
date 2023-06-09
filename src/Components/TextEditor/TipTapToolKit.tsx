@@ -23,15 +23,17 @@ const ToolKit: React.FC<ToolkitProp> = ({ editor }) => {
     return null;
   }
 
-  const active = "gray.200";
+  const active = "whiteAlpha.600";
   const inActive = "";
+  const btnColorScheme = "whiteAlpha";
+  const btnFontColor = "#fff";
 
   return (
     <Flex
       width={"100%"}
       h={"10vh"}
       p={"4"}
-      bg="gray.600"
+      bg="gray.900"
       justify={"space-evenly"}
     >
       <IconButton
@@ -40,26 +42,34 @@ const ToolKit: React.FC<ToolkitProp> = ({ editor }) => {
         onClick={() => editor.chain().focus().toggleBold().run()}
         disabled={!editor.can().chain().focus().toggleBold().run()}
         bg={editor.isActive("bold") ? `${active}` : `${inActive}`}
+        color={btnFontColor}
+        colorScheme={btnColorScheme}
       />
-      <IconButton
+      {/* <IconButton
         aria-label="code"
         icon={<GrCode />}
         onClick={() => editor.chain().focus().toggleCode().run()}
         disabled={!editor.can().chain().focus().toggleCode().run()}
         bg={editor.isActive("code") ? `${active}` : `${inActive}`}
-      />
+        colorScheme={btnColorScheme}
+        color={btnFontColor}
+      /> */}
       <IconButton
         aria-label="Blockquote"
         icon={<RiDoubleQuotesL />}
         onClick={() => editor.chain().focus().toggleBlockquote().run()}
         disabled={!editor.can().chain().focus().toggleCode().run()}
         bg={editor.isActive("blockquote") ? `${active}` : `${inActive}`}
+        colorScheme={btnColorScheme}
+        color={btnFontColor}
       />
       <IconButton
         aria-label="Italic"
         icon={<ImItalic />}
         onClick={() => editor.chain().focus().toggleItalic().run()}
         bg={editor.isActive("italic") ? `${active}` : `${inActive}`}
+        colorScheme={btnColorScheme}
+        color={btnFontColor}
       />
       <IconButton
         aria-label="codeBlock"
@@ -67,12 +77,16 @@ const ToolKit: React.FC<ToolkitProp> = ({ editor }) => {
         icon={<BiCodeBlock />}
         onClick={() => editor.chain().focus().toggleCodeBlock().run()}
         bg={editor.isActive("codeBlock") ? `${active}` : `${inActive}`}
+        colorScheme={btnColorScheme}
+        color={btnFontColor}
       />
       <IconButton
         aria-label="listItem"
         icon={<FaListUl />}
         onClick={() => editor.chain().focus().toggleBulletList().run()}
         bg={editor.isActive("bulletList") ? `${active}` : `${inActive}`}
+        colorScheme={btnColorScheme}
+        color={btnFontColor}
       />
       <IconButton
         aria-label="orderedList"
@@ -80,8 +94,10 @@ const ToolKit: React.FC<ToolkitProp> = ({ editor }) => {
         onClick={() => editor.chain().focus().toggleOrderedList().run()}
         disabled={!editor.can().splitListItem("listItem")}
         bg={editor.isActive("orderedList") ? `${active}` : `${inActive}`}
+        colorScheme={btnColorScheme}
+        color={btnFontColor}
       />
-      <Popover>
+      <Popover lazyBehavior={"unmount"}>
         <PopoverTrigger>
           <IconButton icon={<FaHeading />} aria-label="Heading" />
         </PopoverTrigger>

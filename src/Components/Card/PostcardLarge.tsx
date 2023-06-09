@@ -32,7 +32,13 @@ const PostcardLarge: React.FC<PostcardLargeProps> = ({ showProfile }) => {
           <Text fontWeight={"900"} textTransform={"capitalize"} my={"2"}>
             The quick brown fox jumps over the lazy dog The quick brown fox
           </Text>
-          <Text noOfLines={2} fontSize={"sm"} my={"1"}>
+          <Text
+            noOfLines={2}
+            fontSize={"sm"}
+            my={"1"}
+            fontWeight={"500"}
+            color={"gray.500"}
+          >
             The quick brown fox jumps over the lazy dog The quick brown fox
             jumps over the lazy dog The quick brown fox jumps over the lazy dog
             The quick brown fox jumps over the lazy dog

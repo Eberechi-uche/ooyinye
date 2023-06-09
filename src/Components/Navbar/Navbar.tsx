@@ -12,19 +12,18 @@ const Navbar: React.FC = () => {
         position={"sticky"}
         top={"0"}
         flexDir={"column"}
-        bg={"#ffff"}
         zIndex={"5"}
-        borderBottom={"1px solid "}
-        borderColor={"gray.700"}
+        color={"#fff"}
+        bg={"#000"}
       >
         <Flex p={"10px 5px"}>
           <Flex justify={"space-between"} width={"100%"} align={"center"}>
             <Link href={"/"}>
-              <Flex align={"center"}>
+              <Flex align={"center"} color={"#fff"}>
                 <Image
                   src={"/favicon.ico"}
                   alt={"logo"}
-                  boxSize={{ base: "10vw", md: "4vw" }}
+                  boxSize={{ base: "7vw", md: "3vw" }}
                 />
                 <Text
                   fontSize={"4vh"}
