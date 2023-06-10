@@ -6,6 +6,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { ProfileCardLargeProps } from "@/Components/Card/ProfileCardLarge";
+import SingleContentLayout from "@/Components/Layout/SingleContent.Layout";
 
 const Profile: React.FC = () => {
   const { profileId } = useRouter().query;
@@ -25,7 +26,7 @@ const Profile: React.FC = () => {
   }, [profileId]);
 
   return (
-    <Flex width={"100vw"} justify={"center"}>
+    <SingleContentLayout>
       <Flex maxW={"900px"} flexDir={"column"}>
         {/* <ProfilePageHeader profile={profileId} /> */}
         <ProfileCardLarge
@@ -40,7 +41,7 @@ const Profile: React.FC = () => {
           <Text> still working on this !</Text>
         </Flex>
       </Flex>
-    </Flex>
+    </SingleContentLayout>
   );
 };
 

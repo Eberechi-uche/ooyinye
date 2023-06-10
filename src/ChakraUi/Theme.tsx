@@ -9,6 +9,9 @@ const Theme = extendTheme({
         backgroundColor: "#F9F9F8",
         color: "gray.700",
       },
+      p: {
+        lineHeight: "1.6",
+      },
       a: {
         color: "inherit",
       },
@@ -16,7 +19,7 @@ const Theme = extendTheme({
   },
   fonts: {
     heading: `'Inter Variable', sans-serif`,
-    body: `'Inter Variable', sans-serif`,
+    body: `'Urbanist Variable', sans-serif`,
   },
   components: {
     Input: inputTheme,

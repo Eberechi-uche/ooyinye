@@ -1,4 +1,4 @@
-import { Flex, Image, Text, Icon } from "@chakra-ui/react";
+import { Flex, Image, Text, Icon, Divider } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { BsDot, BsFillPinFill, BsBookmark, BsClock } from "react-icons/bs";
@@ -25,7 +25,13 @@ const PostCard: React.FC<PostCardProps & Draft> = ({
   const setDraftAtom = useSetRecoilState(draftAtom);
   return (
     <>
-      <Flex flexDir={"column"} py={"5"} px={"5"}>
+      <Flex
+        flexDir={"column"}
+        py={"5"}
+        px={"5"}
+        borderBottom={"1px solid"}
+        borderColor={"gray.300"}
+      >
         {profile ? (
           <Flex width={"100%"} justify={"space-between"}>
             <Text> date</Text> <Icon as={BsFillPinFill} />
@@ -65,7 +71,7 @@ const PostCard: React.FC<PostCardProps & Draft> = ({
         <Flex
           align={"center"}
           mt={"2"}
-          fontSize={{ base: "sm", md: "sm" }}
+          fontSize={{ base: "md", md: "lg" }}
           justify={"space-between"}
           width={"100%"}
           onClick={() => {
@@ -93,7 +99,7 @@ const PostCard: React.FC<PostCardProps & Draft> = ({
           <Image
             alt={"postImage"}
             src={articleThumbnail}
-            width={{ base: "25%", md: "15%" }}
+            width={{ base: "30%", md: "15%" }}
             objectFit={"cover"}
             ml={"4"}
             borderRadius={"3px"}

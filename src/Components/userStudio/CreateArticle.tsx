@@ -81,7 +81,7 @@ const ArticleDetails: React.FC<ArticleDetailsProps> = ({
           <ArticleInput
             name="articleSlug"
             placeHolder="Article Slug"
-            label="Article Slug - note this is used as the article id on your draft"
+            label="Article slug"
             value={articleSlug}
             disable={true}
           />

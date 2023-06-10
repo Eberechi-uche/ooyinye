@@ -46,7 +46,7 @@ import { draftAtom } from "@/Atoms/DraftAtom";
 
 const Post: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [currentArticle] = useRecoilState(draftAtom);
+  const [currentArticle, setCurrentArticle] = useRecoilState(draftAtom);
   const [article, setArticle] = useState<Draft>({
     articleContent: "",
     articleDesc: "",
@@ -67,6 +67,12 @@ const Post: React.FC = () => {
     const docSnap = await getDoc(articleRef);
     if (docSnap.exists()) {
       setArticle({ ...docSnap.data() } as Draft);
+      if (!currentArticle) {
+        setCurrentArticle({
+          ...(docSnap.data() as Draft),
+        });
+      }
+
       return;
     } else {
       setArticle({
@@ -121,17 +127,7 @@ const Post: React.FC = () => {
               alignSelf={"center"}
             />
 
-            <Flex
-              flexDir={"column"}
-              mt={"10"}
-              bg={"gray.50"}
-              width={"100%"}
-              align={"center"}
-            >
-              <Text fontWeight={"700"} m={"4"} fontSize={"2xl"}>
-                more by
-              </Text>
-
+            <Flex flexDir={"column"} mt={"10"} width={"100%"} align={"center"}>
               <ProfileCardLarge
                 imageUrl={undefined}
                 Bio={undefined}

@@ -296,4 +296,5 @@ h6 {
 .view {
   padding: 10px;
   overflow-wrap: break-word;
+  line-height: 1.9;
 }

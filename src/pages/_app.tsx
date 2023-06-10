@@ -2,6 +2,8 @@ import "@/styles/globals.css";
 import "@fontsource/ultra";
 // Supports weights 100-900
 import "@fontsource-variable/inter";
+// Supports weights 100-900
+import "@fontsource-variable/urbanist";
 import type { AppProps } from "next/app";
 
 import Theme from "@/ChakraUi/Theme";
