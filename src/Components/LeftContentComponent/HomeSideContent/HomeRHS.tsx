@@ -39,7 +39,7 @@ const HomeRHS: React.FC = () => {
         cursor={"pointer"}
       >
         <Flex width={"100%"}>
-          <ExploreIcon value={"ExploreIcon"} />
+          <ExploreIcon value={"Explore"} />
         </Flex>
 
         <Flex

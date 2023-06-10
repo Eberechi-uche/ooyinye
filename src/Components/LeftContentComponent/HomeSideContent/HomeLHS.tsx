@@ -1,6 +1,7 @@
 import { Button, Flex, Icon, Text, Image, Divider } from "@chakra-ui/react";
 import PostCardPreview from "@/Components/Card/PostCardPreview";
 import Link from "next/link";
+import { SavedPostCard } from "@/Components/Card/SavePostCard";
 
 const HomeLHS: React.FC = () => {
   return (
@@ -33,12 +34,11 @@ const HomeLHS: React.FC = () => {
         </Flex>
         <Flex flexDir={"column"}>
           <Text fontWeight={"700"}> Saved Posts</Text>
-          <PostCardPreview />
-          <PostCardPreview />
-          <PostCardPreview />
-          <PostCardPreview />
-          <PostCardPreview />
-          <PostCardPreview />
+          <SavedPostCard />
+          <SavedPostCard />
+          <SavedPostCard />
+          <SavedPostCard />
+          <SavedPostCard />
         </Flex>
       </Flex>
     </>

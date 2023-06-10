@@ -1,4 +1,4 @@
-import { Button, Flex, Textarea, useToast, Icon } from "@chakra-ui/react";
+import { Button, Flex, useToast, Icon } from "@chakra-ui/react";
 import { BsArrowBarRight } from "react-icons/bs";
 
 type TextEditorProps = {
@@ -50,12 +50,3 @@ const TextEditor: React.FC<TextEditorProps> = ({
   );
 };
 export default TextEditor;
-function toast(arg0: {
-  title: string;
-  description: string;
-  status: string;
-  duration: number;
-  isClosable: boolean;
-}) {
-  throw new Error("Function not implemented.");
-}

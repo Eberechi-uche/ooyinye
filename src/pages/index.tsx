@@ -2,7 +2,7 @@ import Head from "next/head";
 import { Text, Flex, Button, Icon, Input } from "@chakra-ui/react";
 import HomePageHeader from "@/Components/Headers/HomePage.Header";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "@/Components/Firebase/ClientApp";
+import { auth, firestore } from "@/Components/Firebase/ClientApp";
 import ContentLayout from "@/Components/Layout/Content.Layout";
 import HomeRHS from "@/Components/LeftContentComponent/HomeSideContent/HomeRHS";
 import PostCard from "@/Components/Card/PostCard";
@@ -11,9 +11,35 @@ import HomeNavFooter from "@/Components/MobileFooter/HomeNavFooter";
 import { CiCirclePlus, CiSearch } from "react-icons/ci";
 import Link from "next/link";
 import { SearchIcon } from "@/Components/Icons/Icons";
+import { collection, doc, getDocs } from "firebase/firestore";
+import { useEffect, useState } from "react";
+import { Draft } from "@/Hooks/Blog/useCreateNewArticle";
+import { ArticleLoaders } from "@/Components/Loaders/loader";
 
 export default function Home() {
   const [user] = useAuthState(auth);
+  const [articleList, setArticleList] = useState<Draft[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  const fetchHomeArticle = async () => {
+    setLoading(true);
+    const querrySnapshot = await getDocs(
+      collection(firestore, "users", "@eb3rechi", "drafts")
+    );
+    const articles = querrySnapshot.docs.map((doc) => ({
+      ...doc.data(),
+    }));
+    setArticleList(articles as Draft[]);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    if (articleList) {
+      fetchHomeArticle();
+      return;
+    }
+    console.log("i ran");
+  }, [user]);
   return (
     <>
       <Head>
@@ -35,11 +61,28 @@ export default function Home() {
               <Text width={"100%"} fontWeight={"900"} px={"4"}>
                 Top Reads
               </Text>
-              <PostCard showProfile={true} />
-              <PostCard showProfile={true} />
-              <PostCard showProfile={true} />
-              <PostCard showProfile={true} />
-              <PostCard showProfile={true} />
+              {loading && (
+                <>
+                  <ArticleLoaders />
+                  <ArticleLoaders />
+                  <ArticleLoaders />
+                  <ArticleLoaders />
+                </>
+              )}
+              {!loading &&
+                articleList.map((article, index) => (
+                  <Flex key={index}>
+                    <PostCard
+                      id={index}
+                      articleSlug={article.articleSlug}
+                      articleTitle={article.articleTitle}
+                      articleContent={article.articleContent}
+                      articleThumbnail={article.articleThumbnail}
+                      articleDesc={article.articleDesc}
+                      showProfile={true}
+                    />
+                  </Flex>
+                ))}
             </Flex>
 
             <Flex width={"100%"} flexDir={"column"} py={"20"}>
@@ -73,14 +116,26 @@ export default function Home() {
                 </Link>
               </Flex>
 
-              <PostCard showProfile={true} />
-              <PostCard showProfile={true} />
-              <PostCard showProfile={true} />
-              <PostCard showProfile={true} />
-              <PostCard showProfile={true} />
-              <PostCard showProfile={true} />
-              <PostCard showProfile={true} />
-              <PostCard showProfile={true} />
+              {/* {loading && (
+                <>
+                  <ArticleLoaders />
+                  <ArticleLoaders />
+                  <ArticleLoaders />
+                  <ArticleLoaders />
+                </>
+              )}
+              {!loading &&
+                articleList.map((article, index) => (
+                  <PostCard
+                    id={index}
+                    articleSlug={article.articleSlug}
+                    articleTitle={article.articleTitle}
+                    articleContent={article.articleContent}
+                    articleThumbnail={article.articleThumbnail}
+                    articleDesc={article.articleDesc}
+                    showProfile={true}
+                  />
+                ))} */}
             </Flex>
           </>
           <>

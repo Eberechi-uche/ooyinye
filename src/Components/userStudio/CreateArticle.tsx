@@ -10,7 +10,7 @@ import {
   Text,
   Textarea,
 } from "@chakra-ui/react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { RiImageAddFill, RiImageEditFill } from "react-icons/ri";
 
 export type NewArticleProps = Pick<
@@ -27,7 +27,6 @@ type ArticleDetailsProps = {
   articleThumbnail: string;
   articleTitle: string;
   setArticleDetails: (prev: any) => void;
-  saveArticle: (e: NewArticleProps) => void;
 };
 
 const ArticleDetails: React.FC<ArticleDetailsProps> = ({
@@ -39,7 +38,6 @@ const ArticleDetails: React.FC<ArticleDetailsProps> = ({
   articleThumbnail,
   articleTitle,
   setArticleDetails,
-  saveArticle,
 }) => {
   const handleOnChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -60,10 +58,18 @@ const ArticleDetails: React.FC<ArticleDetailsProps> = ({
       [name]: value,
     }));
   };
+  useEffect(() => {
+    let slug = articleTitle.replace(/\s/g, "-");
+    setArticleDetails((prev: NewArticleProps) => ({
+      ...prev,
+      articleSlug: slug,
+    }));
+  }, [articleTitle]);
 
   return (
     <>
       <Flex flexDir={"column"} width={"100%"}>
+        <Text>{articleSlug}</Text>
         <Flex flexDir={"column"}>
           <ArticleInput
             name="articleTitle"

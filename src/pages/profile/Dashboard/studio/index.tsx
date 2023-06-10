@@ -20,6 +20,10 @@ import { useFileUpload } from "@/Hooks/Profile/useFileUpload";
 import { useState } from "react";
 import { useCreateNewArticle } from "@/Hooks/Blog/useCreateNewArticle";
 import TipEditor from "@/Components/TextEditor/TipTapEditor";
+import { useRouter } from "next/router";
+import { useSetRecoilState } from "recoil";
+import { draftAtom } from "@/Atoms/DraftAtom";
+import Preview from "@/Components/userStudio/Preview.component";
 
 const Studio: React.FC = () => {
   const [user] = useAuthState(auth);
@@ -33,9 +37,25 @@ const Studio: React.FC = () => {
     tag: "",
   });
   const [articleContent, setArticleContent] = useState("");
+  const route = useRouter();
+  const setDraftState = useSetRecoilState(draftAtom);
+  const [mode, setMode] = useState("edit");
 
-  const handleArticleSave = () => {
-    saveArticle(articleDetails, articleContent);
+  const handleArticleSave = (content: string) => {
+    saveArticle(articleDetails, content);
+  };
+
+  const handlePreviewAndPublish = (content: string) => {
+    const { articleDesc, articleSlug, articleThumbnail, articleTitle } =
+      articleDetails;
+    setDraftState({
+      articleDesc,
+      articleSlug,
+      articleThumbnail,
+      articleTitle,
+      articleContent: content,
+    });
+    setMode("preview");
   };
 
   return (
@@ -43,38 +63,43 @@ const Studio: React.FC = () => {
       <SingleContentLayout>
         <Flex flexDir={"column"} px={"2"}>
           <TextHeader text="Studio" />
-          <Tabs colorScheme="blackAplha">
-            <TabList>
-              <Tab>Article details</Tab>
-              <Tab>Article Content</Tab>
-            </TabList>
+          {mode === "edit" && (
+            <>
+              <Tabs colorScheme="blackAplha">
+                <TabList>
+                  <Tab>Article details</Tab>
+                  <Tab>Article Content</Tab>
+                </TabList>
 
-            <TabPanels p={"0"}>
-              <TabPanel px={"0"}>
-                <ArticleDetails
-                  setArticleDetails={setArticleDetails}
-                  articleDesc={articleDetails.articleDesc}
-                  articleSlug={articleDetails.articleSlug}
-                  articleTitle={articleDetails.articleTitle}
-                  articleThumbnail={articleDetails.articleThumbnail}
-                  file={file}
-                  onFileUpload={onFileUpload}
-                  setFile={setFile}
-                  saveArticle={handleArticleSave}
-                />
-              </TabPanel>
-              <TabPanel px={"0"}>
-                <TipEditor />
-                <TextEditor
-                  articleContent={articleContent}
-                  setArticleContent={setArticleContent}
-                  saveArticle={handleArticleSave}
-                  isLoading={loading}
-                  error={error}
-                />
-              </TabPanel>
-            </TabPanels>
-          </Tabs>
+                <TabPanels p={"0"}>
+                  <TabPanel px={"0"}>
+                    <ArticleDetails
+                      setArticleDetails={setArticleDetails}
+                      articleDesc={articleDetails.articleDesc}
+                      articleSlug={articleDetails.articleSlug}
+                      articleTitle={articleDetails.articleTitle}
+                      articleThumbnail={articleDetails.articleThumbnail}
+                      file={file}
+                      onFileUpload={onFileUpload}
+                      setFile={setFile}
+                    />
+                  </TabPanel>
+                  <TabPanel px={"0"}>
+                    <TipEditor
+                      saveArticle={handleArticleSave}
+                      isLoading={loading}
+                      preview={handlePreviewAndPublish}
+                    />
+                  </TabPanel>
+                </TabPanels>
+              </Tabs>
+            </>
+          )}
+          {mode === "preview" && (
+            <>
+              <Preview setMode={setMode} />
+            </>
+          )}
         </Flex>
       </SingleContentLayout>
     </>

@@ -28,7 +28,7 @@ import PostcardLarge from "@/Components/Card/PostcardLarge";
 import ProfileCardLarge from "@/Components/Card/ProfileCardLarge";
 import UserAuth from "@/Components/Auth.component/UserAuth";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "@/Components/Firebase/ClientApp";
+import { auth, firestore } from "@/Components/Firebase/ClientApp";
 import { User } from "firebase/auth";
 import Comments from "@/Components/Comments/Comment";
 import { useEffect, useState } from "react";
@@ -38,21 +38,62 @@ import {
   ShareIcon,
   SupportIcon,
 } from "@/Components/Icons/Icons";
-import { BsArrowRight } from "react-icons/bs";
 import { useRouter } from "next/router";
+import { doc, getDoc } from "firebase/firestore";
+import { Draft } from "@/Hooks/Blog/useCreateNewArticle";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import { draftAtom } from "@/Atoms/DraftAtom";
 
 const Post: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [currentArticle] = useRecoilState(draftAtom);
+  const [article, setArticle] = useState<Draft>({
+    articleContent: "",
+    articleDesc: "",
+    articleSlug: "",
+    articleThumbnail: "",
+    articleTitle: "",
+  });
   const [user] = useAuthState(auth);
   const { authorId, articleSlug } = useRouter().query;
+  const fetchArticle = async () => {
+    const articleRef = doc(
+      firestore,
+      "users",
+      `${authorId}`,
+      "drafts",
+      `${articleSlug}`
+    );
+    const docSnap = await getDoc(articleRef);
+    if (docSnap.exists()) {
+      setArticle({ ...docSnap.data() } as Draft);
+      return;
+    } else {
+      setArticle({
+        articleContent: "",
+        articleDesc: "",
+        articleSlug: "",
+        articleThumbnail: "",
+        articleTitle: "",
+      });
+    }
+  };
+
+  useEffect(() => {
+    fetchArticle();
+  }, []);
 
   return (
     <>
       <SingleContentLayout>
         <Flex pos={"relative"} flexDir={"column"} width={"100%"}>
           <BlogNavFooter onOpen={onOpen} />
-          <BlogPostHeader />
-          <Image alt={"imageName"} src={"/blogsample.png"} />
+          <BlogPostHeader
+            articleDesc={currentArticle.articleDesc}
+            articleThumbnail={currentArticle.articleThumbnail}
+            articleTitle={currentArticle.articleTitle}
+          />
+          <Image alt={"imageName"} src={currentArticle.articleThumbnail} />
           <Flex
             width={"100%"}
             align={"center"}
@@ -72,7 +113,7 @@ const Post: React.FC = () => {
             <SupportIcon value={"support"} />
           </Flex>
           <Flex minH={"100vh"} flexDir={"column"} width={"100%"}>
-            <BlogParser />
+            <BlogParser content={article.articleContent} />
             <Divider
               width={"20%"}
               colorScheme="blackAlpha"

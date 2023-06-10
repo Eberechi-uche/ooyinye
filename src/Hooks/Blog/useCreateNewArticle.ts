@@ -29,10 +29,9 @@ export const useCreateNewArticle = () => {
     articleContent: string
   ) => {
     if (
-      !articleContent ||
       !article.articleSlug ||
-      article.articleDesc ||
-      article.articleThumbnail
+      !article.articleDesc ||
+      !article.articleThumbnail
     ) {
       toast({
         description: "ensure  all article fields are  filled ",
@@ -62,6 +61,7 @@ export const useCreateNewArticle = () => {
     );
     await uploadString(imageRef, article.articleThumbnail, "data_url");
     const downloadUrl = await getDownloadURL(imageRef);
+
     const draft: Draft = {
       articleDesc: article.articleDesc,
       articleSlug: article.articleSlug,

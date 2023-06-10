@@ -1,32 +1,37 @@
 import { Flex, Icon, Text, Heading } from "@chakra-ui/react";
 import { CiCircleChevDown } from "react-icons/ci";
 import ProfileCardMini from "../Card/ProfileCardMini";
-
-const BlogPostHeader: React.FC = () => {
+import { Draft } from "@/Hooks/Blog/useCreateNewArticle";
+type BlogPostHeaderProps = Omit<Draft, "articleContent" | "articleSlug">;
+const BlogPostHeader: React.FC<BlogPostHeaderProps> = ({
+  articleDesc = "What Is Meant By Lorem Ipsum In Website? The word Lorem Ipsum is derived from the Latin word which means “pain itself”. It is a kind of a text filler tool that is used by the webmaster on the website",
+  articleThumbnail,
+  articleTitle = "The mystery behind lorem ipsum, origin, uses and everything inbetween",
+}) => {
   return (
     <>
       <Flex
         width={"100%"}
         flexDir={"column"}
         p={"2"}
-        height={{ base: "80vh", md: "85vh" }}
-        bg={"blue.500"}
+        minHeight={{ base: "100vh", md: "85vh" }}
+        bg={"blackAlpha.900"}
         align={"center"}
         textAlign={"center"}
         justify={"space-between"}
         color={"gray.100"}
       >
-        <Flex flexDir={"column"} width={"80%"} align={"center"} mt={"20%"}>
-          <Heading fontWeight={"500"} fontSize={"lg"}>
-            The mystery behind Lorem Ipsum, History and origin
+        <Flex flexDir={"column"} align={"center"} mt={"20%"}>
+          <Heading fontWeight={"700"} fontSize={"2xl"}>
+            {articleTitle}
           </Heading>
           <Flex
-            width={{ base: "100%", md: "80%", lg: "60%" }}
+            width={{ base: "100%", md: "80%", lg: "80%" }}
             color={"gray.300"}
+            my={"5"}
+            fontWeight={"700"}
           >
-            <Text>
-              the quick brown fox jumped over the lazy dog the quick brown fox
-            </Text>
+            <Text>{articleDesc}</Text>
           </Flex>
           <Flex
             align={"center"}
@@ -41,7 +46,7 @@ const BlogPostHeader: React.FC = () => {
           </Flex>
         </Flex>
 
-        <Icon as={CiCircleChevDown} fontSize={"4xl"} mb={"30%"} />
+        <Icon as={CiCircleChevDown} fontSize={"4xl"} my={"7"} />
       </Flex>
     </>
   );
