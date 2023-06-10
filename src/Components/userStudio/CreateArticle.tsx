@@ -69,7 +69,6 @@ const ArticleDetails: React.FC<ArticleDetailsProps> = ({
   return (
     <>
       <Flex flexDir={"column"} width={"100%"}>
-        <Text>{articleSlug}</Text>
         <Flex flexDir={"column"}>
           <ArticleInput
             name="articleTitle"
@@ -202,7 +201,7 @@ const SelectImage: React.FC<ImageSelect> = ({
 
       {file && (
         <Flex flexDir={"column"}>
-          <Image src={file} boxSize={"100%"} my={"5"} />
+          <Image src={file} boxSize={"100%"} my={"5"} alt={"user-file"} />
           <Flex width={"100%"} justify={"space-between"}>
             <Button
               width={"30%"}
@@ -241,7 +240,7 @@ const OnSelectedImage: React.FC<ImageSelect> = ({
 }) => {
   return (
     <Flex flexDir={"column"} width={"100%"}>
-      <Image src={file} boxSize={"100%"} my={"5"} />
+      <Image src={file} boxSize={"100%"} my={"5"} alt={"user-image"} />
       <Flex
         bg={"gray.900"}
         position={"absolute"}

@@ -10,7 +10,6 @@ import { draftAtom } from "@/Atoms/DraftAtom";
 
 type PostCardProps = {
   showProfile: boolean;
-  id: string | number;
 };
 
 const PostCard: React.FC<PostCardProps & Draft> = ({
@@ -19,7 +18,6 @@ const PostCard: React.FC<PostCardProps & Draft> = ({
   articleSlug,
   articleTitle,
   articleThumbnail,
-  id,
 }) => {
   const route = useRouter();
   const { profile } = route.query;
@@ -27,7 +25,7 @@ const PostCard: React.FC<PostCardProps & Draft> = ({
   const setDraftAtom = useSetRecoilState(draftAtom);
   return (
     <>
-      <Flex flexDir={"column"} py={"5"} px={"5"} key={id}>
+      <Flex flexDir={"column"} py={"5"} px={"5"}>
         {profile ? (
           <Flex width={"100%"} justify={"space-between"}>
             <Text> date</Text> <Icon as={BsFillPinFill} />

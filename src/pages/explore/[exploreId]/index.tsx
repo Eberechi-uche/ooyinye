@@ -7,7 +7,7 @@ const ExplorePost: React.FC = () => {
         <Flex width={"100%"} maxW={"700px"} flexDir={"column"}>
           <Flex flexDir={"column"}>
             <Text fontSize={"2xl"}> Ai</Text>
-            <Image src={"/insight.jpg"} width={"100%"} />
+            <Image src={"/insight.jpg"} width={"100%"} alt={"explore-image"} />
             <Text>
               the quick brown fox jumped over the lazy dog the quick brown fox
               jumped over the lazy dog the quick brown fox jumped over the lazy

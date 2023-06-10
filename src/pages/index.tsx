@@ -73,7 +73,6 @@ export default function Home() {
                 articleList.map((article, index) => (
                   <Flex key={index}>
                     <PostCard
-                      id={index}
                       articleSlug={article.articleSlug}
                       articleTitle={article.articleTitle}
                       articleContent={article.articleContent}
