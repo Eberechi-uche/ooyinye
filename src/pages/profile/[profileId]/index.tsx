@@ -37,13 +37,7 @@ const Profile: React.FC = () => {
           userDN={user?.userDN}
         />
         <Flex flexDir={"column"}>
-          <PostCard showProfile={false} />
-          <PostCard showProfile={false} />
-          <PostCard showProfile={false} />
-          <PostCard showProfile={false} />
-          <PostCard showProfile={false} />
-          <PostCard showProfile={false} />
-          <PostCard showProfile={false} />
+          <Text> still working on this !</Text>
         </Flex>
       </Flex>
     </Flex>
