@@ -1,12 +1,13 @@
-import { Flex, Image, Text, Icon, Divider } from "@chakra-ui/react";
+import { Flex, Image, Text, Icon, Divider, IconButton } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { BsDot, BsFillPinFill, BsBookmark, BsClock } from "react-icons/bs";
+import { BsDot, BsFillPinFill, BsBookmark } from "react-icons/bs";
 
 import ProfileCardMini from "./ProfileCardMini";
 import { Draft } from "@/Hooks/Blog/useCreateNewArticle";
 import { useSetRecoilState } from "recoil";
 import { draftAtom } from "@/Atoms/DraftAtom";
+import { FaPencilAlt } from "react-icons/fa";
 
 type PostCardProps = {
   showProfile: boolean;
@@ -17,6 +18,7 @@ const PostCard: React.FC<PostCardProps & Draft> = ({
   articleDesc,
   articleSlug,
   articleTitle,
+  articleContent,
   articleThumbnail,
 }) => {
   const route = useRouter();
@@ -30,7 +32,9 @@ const PostCard: React.FC<PostCardProps & Draft> = ({
         py={"5"}
         px={"5"}
         borderBottom={"1px solid"}
-        borderColor={"gray.300"}
+        borderColor={"whiteAlpha.900"}
+        width={"100%"}
+        cursor={"pointer"}
       >
         {profile ? (
           <Flex width={"100%"} justify={"space-between"}>
@@ -40,30 +44,21 @@ const PostCard: React.FC<PostCardProps & Draft> = ({
           <Flex align={"center"}>
             <Flex flexDir={"column"} width={"100%"}>
               {showProfile && <ProfileCardMini />}
-
-              <Flex align={"center"} justify={"space-between"}>
-                <Flex>
-                  <Text
-                    fontSize={"12px"}
-                    display={"flex"}
-                    alignItems={"center"}
-                  >
-                    1st April
-                  </Text>
-                  <Text
-                    fontSize={"12px"}
-                    display={"flex"}
-                    alignItems={"center"}
-                  >
-                    <Icon as={BsDot} mx={"2"} />
-                    <Icon as={BsClock} mx={"2"} />8 mins
-                  </Text>
-                </Flex>
-
-                <Flex>
-                  <Icon as={BsBookmark} />
-                </Flex>
-              </Flex>
+              {route.asPath !== "/profile/Dashboard" ? (
+                <>
+                  <PostCardArticleView />
+                </>
+              ) : (
+                <>
+                  <PostCardDraft
+                    articleDesc={articleDesc}
+                    articleSlug={articleSlug}
+                    articleTitle={articleTitle}
+                    articleThumbnail={articleThumbnail}
+                    articleContent={articleContent}
+                  />
+                </>
+              )}
             </Flex>
           </Flex>
         )}
@@ -81,6 +76,7 @@ const PostCard: React.FC<PostCardProps & Draft> = ({
               articleSlug,
               articleThumbnail,
               articleTitle,
+              lockTitle: true,
             });
             route.push(`/article/${"@eb3rechi"}/${articleSlug}`);
           }}
@@ -89,7 +85,7 @@ const PostCard: React.FC<PostCardProps & Draft> = ({
             flexDir={"column"}
             alignSelf={"flex-start"}
             height={"fit-content"}
-            width={"80%"}
+            width={"70%"}
           >
             <Text fontWeight={"900"} noOfLines={[3, 4]}>
               {articleTitle}
@@ -99,12 +95,81 @@ const PostCard: React.FC<PostCardProps & Draft> = ({
           <Image
             alt={"postImage"}
             src={articleThumbnail}
-            width={{ base: "30%", md: "15%" }}
+            width={{ base: "20%", md: "15%" }}
+            height={{ base: "50px", md: "70px" }}
             objectFit={"cover"}
-            ml={"4"}
-            borderRadius={"3px"}
-            alignSelf={"center"}
+            alignSelf={"flex-start"}
           />
+        </Flex>
+      </Flex>
+    </>
+  );
+};
+
+const PostCardDraft: React.FC<Draft> = (props) => {
+  const route = useRouter();
+  const setDraftAtom = useSetRecoilState(draftAtom);
+
+  return (
+    <>
+      <Flex align={"center"} justify={"space-between"} fontWeight={"900"}>
+        <Flex>
+          <Text fontSize={"md"} display={"flex"} alignItems={"center"} py={"4"}>
+            Publish
+          </Text>
+          <Text
+            fontSize={"12px"}
+            display={"flex"}
+            alignItems={"center"}
+            textTransform={"uppercase"}
+          >
+            <Icon as={BsDot} mx={"2"} />
+            Delete
+          </Text>
+        </Flex>
+
+        <Flex
+          align={"center"}
+          onClick={() => {
+            setDraftAtom({
+              ...(props as Draft),
+              lockTitle: true,
+            });
+            route.push("/profile/Dashboard/studio");
+          }}
+        >
+          <IconButton
+            icon={<FaPencilAlt />}
+            aria-label="edit"
+            bg={"black"}
+            color={"#fff"}
+          />
+        </Flex>
+      </Flex>
+    </>
+  );
+};
+
+const PostCardArticleView: React.FC = () => {
+  return (
+    <>
+      <Flex align={"center"} justify={"space-between"}>
+        <Flex>
+          <Text fontSize={"12px"} display={"flex"} alignItems={"center"}>
+            1st April
+          </Text>
+          <Text
+            fontSize={"12px"}
+            display={"flex"}
+            alignItems={"center"}
+            textTransform={"uppercase"}
+          >
+            <Icon as={BsDot} mx={"2"} />8 min read
+          </Text>
+        </Flex>
+
+        <Flex>
+          <Icon as={BsBookmark} />
         </Flex>
       </Flex>
     </>

@@ -21,6 +21,7 @@ import { auth } from "@/Components/Firebase/ClientApp";
 import { UserDetails } from "@/Hooks/Profile/useProfileData";
 import { useRouter } from "next/router";
 import TextHeader from "@/Components/Headers/TextHeader";
+import useGetProfileDetails from "@/Hooks/DataFetching/useGetProfileInfo";
 
 const Setting: React.FC = () => {
   const { file, onFileUpload, setFile } = useFileUpload();
@@ -34,6 +35,8 @@ const Setting: React.FC = () => {
     twitter: "",
     email: "",
   });
+  const profileId = `@${user?.email?.split("@")[0]}`;
+  const { getProfileDetails, profileDetails } = useGetProfileDetails(profileId);
   const [error, setError] = useState("");
   const fileRef = useRef<HTMLInputElement>(null);
 
@@ -56,6 +59,18 @@ const Setting: React.FC = () => {
       return;
     }
   }, [file]);
+  useEffect(() => {
+    if (profileDetails) {
+      setUserDetails({
+        Bio: profileDetails.Bio!,
+        twitter: profileDetails.twitter!,
+        email: profileDetails.email!,
+      });
+    }
+
+    getProfileDetails();
+    console.log(profileDetails);
+  }, [profileDetails.Bio]);
   return (
     <SingleContentLayout>
       <Flex width={"100%"} justify={"center"} flexDir={"column"} px={"3"}>

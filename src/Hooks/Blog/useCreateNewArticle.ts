@@ -55,18 +55,21 @@ export const useCreateNewArticle = () => {
     });
     setError("");
     setLoading(true);
-    const imageRef = ref(
-      storage,
-      `articleImages/${article.articleSlug}/thumbnail`
-    );
-    await uploadString(imageRef, article.articleThumbnail, "data_url");
-    const downloadUrl = await getDownloadURL(imageRef);
 
+    let imageUrl = article.articleThumbnail;
+    if (article.articleThumbnail.includes("data")) {
+      const imageRef = ref(
+        storage,
+        `articleImages/${article.articleSlug}/thumbnail`
+      );
+      await uploadString(imageRef, article.articleThumbnail, "data_url");
+      imageUrl = await getDownloadURL(imageRef);
+    }
     const draft: Draft = {
       articleDesc: article.articleDesc,
       articleSlug: article.articleSlug,
       articleTitle: article.articleTitle,
-      articleThumbnail: downloadUrl,
+      articleThumbnail: imageUrl,
       articleContent,
     };
 

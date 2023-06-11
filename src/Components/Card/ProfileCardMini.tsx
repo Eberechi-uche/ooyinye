@@ -1,11 +1,11 @@
 import { Icon, Flex, Image, Text } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 
-// type ProfileCardMiniProps = {
-//   displayName: string;
-//   imageUrl: string;
-//   profileId: string;
-// };
+type ProfileCardMiniProps = {
+  displayName: string;
+  imageUrl: string;
+  profileId: string;
+};
 const ProfileCardMini: React.FC = ({}) => {
   const route = useRouter();
   return (

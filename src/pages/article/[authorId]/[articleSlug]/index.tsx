@@ -14,9 +14,7 @@ import {
   useDisclosure,
   Image,
   SimpleGrid,
-  Avatar,
-  AvatarGroup,
-  Icon,
+  Box,
 } from "@chakra-ui/react";
 
 import BlogPostHeader from "@/Components/Headers/BlogPost.Header";
@@ -41,12 +39,12 @@ import {
 import { useRouter } from "next/router";
 import { doc, getDoc } from "firebase/firestore";
 import { Draft } from "@/Hooks/Blog/useCreateNewArticle";
-import { useRecoilState, useSetRecoilState } from "recoil";
-import { draftAtom } from "@/Atoms/DraftAtom";
+import { PageContent } from "@/Components/Loaders/loader";
+import useGetProfileDetails from "@/Hooks/DataFetching/useGetProfileInfo";
+import PostCard from "@/Components/Card/PostCard";
 
 const Post: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [currentArticle, setCurrentArticle] = useRecoilState(draftAtom);
   const [article, setArticle] = useState<Draft>({
     articleContent: "",
     articleDesc: "",
@@ -55,8 +53,19 @@ const Post: React.FC = () => {
     articleTitle: "",
   });
   const [user] = useAuthState(auth);
+  const [loading, setLoading] = useState(true);
   const { authorId, articleSlug } = useRouter().query;
+  const {
+    profileArticles,
+    profileDetails,
+    getProfileArticles,
+    getProfileDetails,
+  } = useGetProfileDetails(`${authorId}`);
+  const [error, setError] = useState("");
+
   const fetchArticle = async () => {
+    setLoading(true);
+    setError("");
     const articleRef = doc(
       firestore,
       "users",
@@ -64,101 +73,118 @@ const Post: React.FC = () => {
       "drafts",
       `${articleSlug}`
     );
-    const docSnap = await getDoc(articleRef);
-    if (docSnap.exists()) {
-      setArticle({ ...docSnap.data() } as Draft);
-      if (!currentArticle) {
-        setCurrentArticle({
-          ...(docSnap.data() as Draft),
-        });
-      }
 
-      return;
-    } else {
-      setArticle({
-        articleContent: "",
-        articleDesc: "",
-        articleSlug: "",
-        articleThumbnail: "",
-        articleTitle: "",
-      });
+    try {
+      const docSnap = await getDoc(articleRef);
+      setArticle({ ...docSnap.data() } as Draft);
+      setLoading(false);
+    } catch (error: any) {
+      setError(error.message);
+      setLoading(false);
     }
   };
 
   useEffect(() => {
     fetchArticle();
-  }, []);
+    getProfileDetails();
+    getProfileArticles();
+  }, [articleSlug]);
 
   return (
     <>
       <SingleContentLayout>
         <Flex pos={"relative"} flexDir={"column"} width={"100%"}>
-          <BlogNavFooter onOpen={onOpen} />
-          <BlogPostHeader
-            articleDesc={currentArticle.articleDesc}
-            articleThumbnail={currentArticle.articleThumbnail}
-            articleTitle={currentArticle.articleTitle}
-          />
-          <Image alt={"imageName"} src={currentArticle.articleThumbnail} />
-          <Flex
-            width={"100%"}
-            align={"center"}
-            justify={"space-between"}
-            py={"2"}
-            px={"5"}
-            top={"0"}
-            pos={"sticky"}
-            bg={"white"}
-            zIndex={"15"}
-            display={{ base: "none", md: "flex" }}
-            cursor={"pointer"}
-          >
-            <CommentsIcon value={"(3 comments)"} onOpen={onOpen} />
-            <ShareIcon value={"share"} />
-            <LikeIcon value={"5 like(s)"} />
-            <SupportIcon value={"support"} />
-          </Flex>
-          <Flex minH={"100vh"} flexDir={"column"} width={"100%"}>
-            <BlogParser content={article.articleContent} />
-            <Divider
-              width={"20%"}
-              colorScheme="blackAlpha"
-              border={"1px solid"}
-              alignSelf={"center"}
-            />
-
-            <Flex flexDir={"column"} mt={"10"} width={"100%"} align={"center"}>
-              <ProfileCardLarge
-                imageUrl={undefined}
-                Bio={undefined}
-                email={undefined}
-                userDN={undefined}
-                userId={undefined}
-                twitter={undefined}
+          {loading && <PageContent />}
+          {!loading && (
+            <>
+              <BlogNavFooter onOpen={onOpen} />
+              <BlogPostHeader
+                articleDesc={article.articleDesc}
+                articleThumbnail={article.articleThumbnail}
+                articleTitle={article.articleTitle}
               />
-              <SimpleGrid columns={{ base: 1, md: 2 }} placeItems={"center"}>
-                <PostcardLarge showProfile={false} />
-                <PostcardLarge showProfile={false} />
-                <PostcardLarge showProfile={false} />
-                <PostcardLarge showProfile={false} />
-                <PostcardLarge showProfile={false} />
-                <PostcardLarge showProfile={false} />
-              </SimpleGrid>
-            </Flex>
-            <Flex flexDir={"column"} width={"100%"} align={"center"} pb={"10"}>
-              <Text fontWeight={"700"} m={"4"} fontSize={"2xl"}>
-                Recommendation
-              </Text>
-              <SimpleGrid columns={{ base: 1, md: 2 }} placeItems={"center"}>
-                <PostcardLarge showProfile={true} />
-                <PostcardLarge showProfile={true} />
-                <PostcardLarge showProfile={true} />
-                <PostcardLarge showProfile={true} />
-                <PostcardLarge showProfile={true} />
-                <PostcardLarge showProfile={true} />
-              </SimpleGrid>
-            </Flex>
-          </Flex>
+
+              <Image alt={"imageName"} src={article.articleThumbnail} />
+              <Flex
+                width={"100%"}
+                align={"center"}
+                justify={"space-between"}
+                py={"2"}
+                px={"5"}
+                top={"0"}
+                pos={"sticky"}
+                bg={"white"}
+                zIndex={"15"}
+                display={{ base: "none", md: "flex" }}
+                cursor={"pointer"}
+              >
+                <CommentsIcon value={"(3 comments)"} onOpen={onOpen} />
+                <ShareIcon value={"share"} />
+                <LikeIcon value={"5 like(s)"} />
+                <SupportIcon value={"support"} />
+              </Flex>
+              <Flex minH={"100vh"} flexDir={"column"} width={"100%"}>
+                <Flex flexDir={"column"} my={"10"}>
+                  <BlogParser content={article.articleContent} />
+                </Flex>
+
+                <Flex
+                  flexDir={"column"}
+                  mt={"10"}
+                  width={"100%"}
+                  align={"center"}
+                >
+                  <ProfileCardLarge
+                    imageUrl={profileDetails.imageUrl}
+                    Bio={profileDetails.Bio}
+                    email={profileDetails.email}
+                    userDN={profileDetails.userDN}
+                    userId={profileDetails.userId}
+                    twitter={profileDetails.twitter}
+                  />
+                  <SimpleGrid
+                    columns={{ base: 1, md: 2 }}
+                    placeItems={"center"}
+                  >
+                    {!loading &&
+                      profileArticles.map((article, index) => (
+                        <PostcardLarge
+                          key={index}
+                          articleContent=""
+                          showProfile={false}
+                          articleDesc={article.articleDesc}
+                          articleSlug={article.articleSlug}
+                          articleTitle={article.articleTitle}
+                          articleThumbnail={article.articleThumbnail}
+                        />
+                      ))}
+                  </SimpleGrid>
+                </Flex>
+                <Flex
+                  flexDir={"column"}
+                  width={"100%"}
+                  align={"center"}
+                  pb={"10"}
+                >
+                  <Text fontWeight={"700"} m={"4"} fontSize={"2xl"}>
+                    Recommendation
+                  </Text>
+                  <SimpleGrid
+                    columns={{ base: 1, md: 2 }}
+                    placeItems={"center"}
+                  >
+                    {/* <PostcardLarge showProfile={true} />
+                    <PostcardLarge showProfile={true} />
+                    <PostcardLarge showProfile={true} />
+                    <PostcardLarge showProfile={true} />
+                    <PostcardLarge showProfile={true} />
+                    <PostcardLarge showProfile={true} /> */}
+                  </SimpleGrid>
+                </Flex>
+              </Flex>
+            </>
+          )}
+
           {isOpen && (
             <CommentDrawer onClose={onClose} isOpen={isOpen} user={user} />
           )}

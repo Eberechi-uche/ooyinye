@@ -7,38 +7,61 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { ProfileCardLargeProps } from "@/Components/Card/ProfileCardLarge";
 import SingleContentLayout from "@/Components/Layout/SingleContent.Layout";
+import useGetProfileDetails from "@/Hooks/DataFetching/useGetProfileInfo";
+import { ProfileContentLoadState } from "@/Components/Loaders/loader";
 
 const Profile: React.FC = () => {
   const { profileId } = useRouter().query;
-  const [user, setUser] = useState<ProfileCardLargeProps | null>(null);
+  console.log(profileId);
+  const {
+    loading,
+    profileArticles,
+    profileDetails,
+    error,
+    getProfileArticles,
+    getProfileDetails,
+  } = useGetProfileDetails(`${profileId}`);
+
   useEffect(() => {
-    const docRef = doc(firestore, "users", `${profileId}`);
-
-    const fetchData = async () => {
-      try {
-        const doc = await getDoc(docRef);
-        if (doc.exists()) {
-          setUser({ ...doc.data() } as ProfileCardLargeProps);
-        }
-      } catch (error) {}
-    };
-    fetchData();
+    getProfileDetails();
+    getProfileArticles();
   }, [profileId]);
-
   return (
     <SingleContentLayout>
       <Flex maxW={"900px"} flexDir={"column"}>
         {/* <ProfilePageHeader profile={profileId} /> */}
-        <ProfileCardLarge
-          Bio={user?.Bio}
-          imageUrl={user?.imageUrl}
-          twitter={user?.twitter}
-          email={user?.email}
-          userId={user?.userId}
-          userDN={user?.userDN}
-        />
+        {loading && (
+          <>
+            <ProfileContentLoadState />
+          </>
+        )}
+        {!loading && (
+          <>
+            <ProfileCardLarge
+              Bio={profileDetails?.Bio}
+              imageUrl={profileDetails?.imageUrl}
+              twitter={profileDetails?.twitter}
+              email={profileDetails?.email}
+              userId={profileDetails?.userId}
+              userDN={profileDetails?.userDN}
+            />
+          </>
+        )}
+
         <Flex flexDir={"column"}>
-          <Text> still working on this !</Text>
+          {!loading &&
+            profileArticles.map((article, index) => (
+              <Flex key={index}>
+                <PostCard
+                  articleContent=""
+                  showProfile={false}
+                  articleDesc={article.articleDesc}
+                  articleSlug={article.articleSlug}
+                  articleTitle={article.articleTitle}
+                  articleThumbnail={article.articleThumbnail}
+                />
+              </Flex>
+            ))}
         </Flex>
       </Flex>
     </SingleContentLayout>

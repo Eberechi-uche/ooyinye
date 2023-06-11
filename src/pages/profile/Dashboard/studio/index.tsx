@@ -8,20 +8,16 @@ import {
   TabPanel,
   Flex,
 } from "@chakra-ui/react";
-import { useToast } from "@chakra-ui/react";
-
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/Components/Firebase/ClientApp";
 import ArticleDetails, {
   NewArticleProps,
 } from "@/Components/userStudio/CreateArticle";
-import TextEditor from "@/Components/userStudio/TextEditor";
 import { useFileUpload } from "@/Hooks/Profile/useFileUpload";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useCreateNewArticle } from "@/Hooks/Blog/useCreateNewArticle";
 import TipEditor from "@/Components/TextEditor/TipTapEditor";
-import { useRouter } from "next/router";
-import { useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 import { draftAtom } from "@/Atoms/DraftAtom";
 import Preview from "@/Components/userStudio/Preview.component";
 
@@ -36,9 +32,7 @@ const Studio: React.FC = () => {
     articleTitle: "",
     tag: "",
   });
-  const [articleContent, setArticleContent] = useState("");
-  const route = useRouter();
-  const setDraftState = useSetRecoilState(draftAtom);
+  const [draftState, setDraftState] = useRecoilState(draftAtom);
   const [mode, setMode] = useState("edit");
 
   const handleArticleSave = (content: string) => {
@@ -46,17 +40,28 @@ const Studio: React.FC = () => {
   };
 
   const handlePreviewAndPublish = (content: string) => {
-    const { articleDesc, articleSlug, articleThumbnail, articleTitle } =
-      articleDetails;
-    setDraftState({
-      articleDesc,
-      articleSlug,
-      articleThumbnail,
-      articleTitle,
-      articleContent: content,
-    });
+    if (!draftState.articleSlug) {
+      setDraftState({
+        articleDesc: articleDetails.articleDesc,
+        articleSlug: articleDetails.articleSlug,
+        articleThumbnail: articleDetails.articleThumbnail,
+        articleTitle: articleDetails.articleTitle,
+        articleContent: content,
+        lockTitle: true,
+      });
+    }
+
     setMode("preview");
   };
+
+  useEffect(() => {
+    setArticleDetails({
+      articleDesc: draftState.articleDesc,
+      articleSlug: draftState.articleSlug,
+      articleThumbnail: draftState.articleThumbnail,
+      articleTitle: draftState.articleTitle,
+    });
+  }, [draftState]);
 
   return (
     <>
@@ -79,9 +84,10 @@ const Studio: React.FC = () => {
                       articleSlug={articleDetails.articleSlug}
                       articleTitle={articleDetails.articleTitle}
                       articleThumbnail={articleDetails.articleThumbnail}
-                      file={file}
+                      file={file || articleDetails.articleThumbnail}
                       onFileUpload={onFileUpload}
                       setFile={setFile}
+                      lockTitle={draftState.lockTitle}
                     />
                   </TabPanel>
                   <TabPanel px={"0"}>

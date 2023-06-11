@@ -8,7 +8,6 @@ import HomeRHS from "@/Components/LeftContentComponent/HomeSideContent/HomeRHS";
 import PostCard from "@/Components/Card/PostCard";
 import HomeLHS from "@/Components/LeftContentComponent/HomeSideContent/HomeLHS";
 import HomeNavFooter from "@/Components/MobileFooter/HomeNavFooter";
-import { CiCirclePlus, CiSearch } from "react-icons/ci";
 import Link from "next/link";
 import { SearchIcon } from "@/Components/Icons/Icons";
 import { collection, doc, getDocs } from "firebase/firestore";

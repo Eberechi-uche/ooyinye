@@ -33,7 +33,7 @@ const HomePageHeader: React.FC = () => {
             textAlign={{ base: "center", lg: "start" }}
           >
             <Heading
-              fontWeight={"light"}
+              fontWeight={"900"}
               fontSize={{
                 base: "50px",
                 md: "",

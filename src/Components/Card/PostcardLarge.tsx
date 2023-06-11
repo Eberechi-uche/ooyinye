@@ -4,10 +4,19 @@ import { BsBookmark, BsBookmarkPlus, BsClock } from "react-icons/bs";
 import { CiBookmarkPlus } from "react-icons/ci";
 import CardProfileMini from "./ProfileCardMini";
 import { IoBookmarkSharp } from "react-icons/io5";
+import { Draft } from "@/Hooks/Blog/useCreateNewArticle";
 type PostcardLargeProps = {
   showProfile: boolean;
 };
-const PostcardLarge: React.FC<PostcardLargeProps> = ({ showProfile }) => {
+const PostcardLarge: React.FC<PostcardLargeProps & Draft> = ({
+  showProfile,
+  articleDesc,
+  articleSlug,
+  articleTitle,
+  articleThumbnail,
+  articleContent,
+}) => {
+  const route = useRouter();
   return (
     <>
       <Flex width={"85%"} borderColor={"gray.50"} flexDir={"column"} my={"5"}>
@@ -19,28 +28,32 @@ const PostcardLarge: React.FC<PostcardLargeProps> = ({ showProfile }) => {
           mb={"2"}
         >
           <Image
-            src={"/insight.jpg"}
+            src={articleThumbnail}
             objectFit={"cover"}
             width={"100%"}
             alt={"user-profile"}
-            borderRadius={"4px"}
+            borderRadius={"2px"}
           />
         </Flex>
         <CardProfileMini />
 
-        <Flex flexDir={"column"} my={"2"}>
+        <Flex
+          flexDir={"column"}
+          my={"1"}
+          onClick={() => {
+            route.push(`/article/${"@eb3rechi"}/${articleSlug}`);
+          }}
+        >
           <Text
             fontWeight={"900"}
             textTransform={"capitalize"}
             my={"2"}
             fontSize={"lg"}
           >
-            The quick brown fox jumps over the lazy dog The quick brown fox
+            {articleTitle}
           </Text>
-          <Text noOfLines={2} fontWeight={"500"} color={"gray.500"}>
-            The quick brown fox jumps over the lazy dog The quick brown fox
-            jumps over the lazy dog The quick brown fox jumps over the lazy dog
-            The quick brown fox jumps over the lazy dog
+          <Text noOfLines={3} fontWeight={"500"} color={"gray.500"}>
+            {articleDesc}
           </Text>
 
           <Flex
@@ -51,7 +64,7 @@ const PostcardLarge: React.FC<PostcardLargeProps> = ({ showProfile }) => {
             my={"2"}
           >
             <Flex>
-              <Text fontSize={"xs"} my={"2"}>
+              <Text fontSize={"xs"} my={"2"} textTransform={"uppercase"}>
                 26 may, 2022
               </Text>
               <Text
@@ -60,14 +73,12 @@ const PostcardLarge: React.FC<PostcardLargeProps> = ({ showProfile }) => {
                 mx={"2"}
                 fontSize={"xs"}
               >
-                <Icon as={BsClock} mx={"1"} />
                 10min Read
               </Text>
             </Flex>
             <Icon as={BsBookmark} />
           </Flex>
         </Flex>
-        <Flex width={"100%"} justify={"space-between"} my={"2"}></Flex>
       </Flex>
     </>
   );

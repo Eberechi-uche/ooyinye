@@ -27,6 +27,7 @@ type ArticleDetailsProps = {
   articleThumbnail: string;
   articleTitle: string;
   setArticleDetails: (prev: any) => void;
+  lockTitle: boolean;
 };
 
 const ArticleDetails: React.FC<ArticleDetailsProps> = ({
@@ -38,20 +39,12 @@ const ArticleDetails: React.FC<ArticleDetailsProps> = ({
   articleThumbnail,
   articleTitle,
   setArticleDetails,
+  lockTitle,
 }) => {
   const handleOnChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    if (name == "articleTitle") {
-      const slug = articleTitle.replace(/\s/g, "-");
-      setArticleDetails((prev: NewArticleProps) => ({
-        ...prev,
-        [name]: value,
-        articleSlug: slug,
-      }));
-      return;
-    }
 
     setArticleDetails((prev: NewArticleProps) => ({
       ...prev,
@@ -76,6 +69,7 @@ const ArticleDetails: React.FC<ArticleDetailsProps> = ({
             placeHolder="Article title"
             label="Article title"
             value={articleTitle}
+            disable={lockTitle}
           />
 
           <ArticleInput

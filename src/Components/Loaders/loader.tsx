@@ -23,3 +23,39 @@ export const ArticleLoaders: React.FC = () => {
     </>
   );
 };
+export const PageContent: React.FC = () => {
+  return (
+    <>
+      <Flex flexDir={"column"} px={"1"} my={"4"}>
+        <Skeleton height={"70vh"} />
+
+        <Flex flexDir={"column"}>
+          <Skeleton height="10px" my={"2"} />
+          <Skeleton height="10px" my={"2"} />
+          <Skeleton height="10px" my={"2"} />
+          <Skeleton height="10px" my={"2"} />
+          <Skeleton height="10px" my={"2"} />
+          <Skeleton height="10px" my={"2"} />
+          <Skeleton height="10px" my={"2"} />
+          <Skeleton height="10px" my={"2"} />
+        </Flex>
+      </Flex>
+    </>
+  );
+};
+export const ProfileContentLoadState: React.FC = () => {
+  return (
+    <>
+      <Flex flexDir={"column"} px={"1"} my={"4"}>
+        <SkeletonCircle size={"10"} my={"2"} />
+        <Skeleton height={"10vh"} />
+        <Flex flexDir={"column"} my={"5"}>
+          <Skeleton height="10px" my={"2"} />
+          <Skeleton height="10px" my={"2"} />
+          <Skeleton height="10px" my={"2"} />
+          <Skeleton height="10px" my={"2"} />
+        </Flex>
+      </Flex>
+    </>
+  );
+};

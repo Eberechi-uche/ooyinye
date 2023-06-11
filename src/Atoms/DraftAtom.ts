@@ -6,6 +6,7 @@ type Draft = {
   articleThumbnail: string;
   articleSlug: string;
   articleContent: string;
+  lockTitle: boolean;
 };
 
 const defaultDraftState: Draft = {
@@ -14,6 +15,7 @@ const defaultDraftState: Draft = {
   articleThumbnail: "",
   articleTitle: "",
   articleContent: "",
+  lockTitle: false,
 };
 
 export const draftAtom = atom<Draft>({
