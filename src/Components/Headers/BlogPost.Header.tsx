@@ -1,7 +1,6 @@
 import { Flex, Icon, Text, Heading } from "@chakra-ui/react";
 import { CiCircleChevDown } from "react-icons/ci";
 import ProfileCardMini, { ProfileCardMiniProps } from "../Card/ProfileCardMini";
-import { Draft } from "@/Hooks/Blog/useCreateNewArticle";
 type BlogPostHeaderProps = {
   articleDesc: string;
   articleTitle: string;
