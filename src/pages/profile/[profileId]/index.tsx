@@ -53,12 +53,15 @@ const Profile: React.FC = () => {
             profileArticles.map((article, index) => (
               <Flex key={index}>
                 <PostCard
-                  articleContent=""
                   showProfile={false}
                   articleDesc={article.articleDesc}
                   articleSlug={article.articleSlug}
                   articleTitle={article.articleTitle}
                   articleThumbnail={article.articleThumbnail}
+                  authorDN=""
+                  authorId={`${profileId}`}
+                  authorImageUrl=""
+                  readtime=""
                 />
               </Flex>
             ))}
