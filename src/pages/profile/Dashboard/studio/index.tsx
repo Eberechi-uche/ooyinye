@@ -88,7 +88,7 @@ const Studio: React.FC = () => {
                       file={file || articleDetails.articleThumbnail}
                       onFileUpload={onFileUpload}
                       setFile={setFile}
-                      lockTitle={draftState.lockTitle}
+                      lockTitle={draftState.lockTitle!}
                     />
                   </TabPanel>
                   <TabPanel px={"0"}>
