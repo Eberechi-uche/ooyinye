@@ -23,7 +23,6 @@ export const SavedPostCard: React.FC = () => {
             </Text>
           </Flex>
           <Flex align={"center"} width={"100%"} justify={"space-between"}>
-            <ProfileCardMini />
             <Icon as={CiBookmarkMinus} />
           </Flex>
         </Flex>

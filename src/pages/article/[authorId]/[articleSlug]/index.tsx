@@ -165,6 +165,7 @@ const Post: React.FC = () => {
                           profileId={currentArticle.authorId}
                           imageUrl={currentArticle.authorImageUrl}
                           displayName={currentArticle.authorDN}
+                          published=""
                         />
                       ))}
                   </SimpleGrid>
