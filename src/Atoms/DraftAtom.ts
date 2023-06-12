@@ -1,6 +1,6 @@
 import { atom } from "recoil";
 
-type Draft = {
+export type Draft = {
   articleTitle: string;
   articleDesc: string;
   articleThumbnail: string;
@@ -8,6 +8,9 @@ type Draft = {
   articleContent: string;
   lockTitle: boolean;
   published: string;
+  authorId?: string;
+  authorDN?: string;
+  authorImageUrl?: string;
 };
 
 const defaultDraftState: Draft = {

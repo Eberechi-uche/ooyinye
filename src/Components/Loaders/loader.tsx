@@ -30,7 +30,7 @@ export const PageContent: React.FC = () => {
         <Skeleton height={"70vh"} />
 
         <Flex flexDir={"column"}>
-          <Skeleton height="10px" my={"2"} />
+          <Skeleton height="30vh" my={"2"} />
           <Skeleton height="10px" my={"2"} />
           <Skeleton height="10px" my={"2"} />
           <Skeleton height="10px" my={"2"} />

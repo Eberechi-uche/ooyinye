@@ -1,6 +1,12 @@
 import { Flex } from "@chakra-ui/react";
 
-import { CommentsIcon, LikeIcon, ShareIcon, SupportIcon } from "../Icons/Icons";
+import {
+  CommentsIcon,
+  HomeIcon,
+  LikeIcon,
+  ShareIcon,
+  SupportIcon,
+} from "../Icons/Icons";
 type BlogNavFooterProp = {
   onOpen: () => void;
 };
@@ -19,10 +25,9 @@ const BlogNavFooter: React.FC<BlogNavFooterProp> = ({ onOpen }) => {
         bottom={"0"}
         display={{ base: "flex", md: "none" }}
       >
+        <HomeIcon value="home" />
         <ShareIcon value={undefined} />
-        <LikeIcon value={undefined} />
         <CommentsIcon value={undefined} onOpen={onOpen} />
-        <SupportIcon value={undefined} />
       </Flex>
     </>
   );

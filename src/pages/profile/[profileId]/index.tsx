@@ -1,11 +1,8 @@
 import PostCard from "@/Components/Card/PostCard";
 import ProfileCardLarge from "@/Components/Card/ProfileCardLarge";
-import { firestore } from "@/Components/Firebase/ClientApp";
-import { Flex, Text } from "@chakra-ui/react";
-import { doc, getDoc } from "firebase/firestore";
+import { Flex } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import { ProfileCardLargeProps } from "@/Components/Card/ProfileCardLarge";
+import { useEffect } from "react";
 import SingleContentLayout from "@/Components/Layout/SingleContent.Layout";
 import useGetProfileDetails from "@/Hooks/DataFetching/useGetProfileInfo";
 import { ProfileContentLoadState } from "@/Components/Loaders/loader";
@@ -29,7 +26,6 @@ const Profile: React.FC = () => {
   return (
     <SingleContentLayout>
       <Flex maxW={"900px"} flexDir={"column"}>
-        {/* <ProfilePageHeader profile={profileId} /> */}
         {loading && (
           <>
             <ProfileContentLoadState />
@@ -58,9 +54,9 @@ const Profile: React.FC = () => {
                   articleSlug={article.articleSlug}
                   articleTitle={article.articleTitle}
                   articleThumbnail={article.articleThumbnail}
-                  authorDN=""
-                  authorId={`${profileId}`}
-                  authorImageUrl=""
+                  authorDN={article.authorDN!}
+                  authorId={`${article.authorId}`}
+                  authorImageUrl={article.authorImageUrl!}
                   readtime=""
                 />
               </Flex>

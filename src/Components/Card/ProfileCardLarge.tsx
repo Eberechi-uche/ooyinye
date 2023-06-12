@@ -231,8 +231,6 @@ const NotAuthUserAction: React.FC<NotAuthUserActionProps> = ({
         >
           follow
         </Button>
-
-        <SupportIcon value={"Support"} />
       </Flex>
     </>
   );
@@ -255,16 +253,6 @@ const AuthUserAction: React.FC = () => {
         >
           Dashboard
         </Button>
-        <Flex
-          border={"3px solid"}
-          py={"0.5"}
-          px={"1"}
-          borderRadius={"full"}
-          borderColor={"gray.400"}
-          cursor={"pointer"}
-        >
-          <ProfileSetting value={"setting"} />
-        </Flex>
       </Flex>
     </>
   );

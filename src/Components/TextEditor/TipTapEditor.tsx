@@ -21,7 +21,6 @@ const TipEditor: React.FC<TipEditorProps> = ({
   preview,
 }) => {
   const [draftContent] = useRecoilState(draftAtom);
-  console.log(draftContent.articleSlug);
   const editor = useEditor({
     editorProps: {
       attributes: {
@@ -73,7 +72,7 @@ const TipEditor: React.FC<TipEditorProps> = ({
             }}
             isLoading={isLoading}
           >
-            Preview & Publish
+            Preview & save
             <Icon as={BsArrowBarRight} fontSize={"2xl"} ml={"2"} />
           </Button>
         </Flex>

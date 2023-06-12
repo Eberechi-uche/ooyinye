@@ -15,7 +15,7 @@ const ProfileCardMini: React.FC<ProfileCardMiniProps> = (props) => {
         align={"center"}
         my={"2"}
         onClick={() => {
-          route.push(`/profile/@${props.profileId}`);
+          route.push(`/profile/${props.profileId}`);
         }}
       >
         <Flex>

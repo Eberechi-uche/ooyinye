@@ -73,8 +73,8 @@ const PostCard: React.FC<PostCardProps & Article> = (props) => {
           <Image
             alt={"postImage"}
             src={props.articleThumbnail}
-            width={{ base: "20%", md: "15%" }}
-            height={{ base: "70px", md: "70px" }}
+            width={{ base: "70px", md: "15%" }}
+            height={{ base: "50px", md: "70px" }}
             objectFit={"cover"}
             alignSelf={"flex-start"}
           />

@@ -1,8 +1,8 @@
+import { Draft } from "@/Atoms/DraftAtom";
 import { ProfileCardLargeProps } from "@/Components/Card/ProfileCardLarge";
 import { firestore } from "@/Components/Firebase/ClientApp";
 import { collection, doc, getDoc, getDocs } from "firebase/firestore";
-import { useEffect, useState } from "react";
-import { Draft } from "../Blog/useCreateNewArticle";
+import { useState } from "react";
 
 function useGetProfileDetails(profile: string) {
   const [loading, setLoading] = useState(true);

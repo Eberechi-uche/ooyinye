@@ -6,18 +6,15 @@ import { auth } from "../Firebase/ClientApp";
 import { useSetRecoilState } from "recoil";
 import { authModalState } from "@/Atoms/AuthModalAtom";
 
-import { RiSettings3Line, RiShareCircleLine } from "react-icons/ri";
-import {
-  FaCompass,
-  FaRegComment,
-  FaRegHeart,
-  FaSearch,
-  FaUser,
-} from "react-icons/fa";
-import { BsCoin, BsFillBookmarksFill } from "react-icons/bs";
+import { RiSettings3Line } from "react-icons/ri";
+import { FaCompass, FaRegComment, FaSearch, FaUser } from "react-icons/fa";
+import { RiHeartAddFill } from "react-icons/ri";
+import { BsBookmarkPlus, BsCoin, BsFillBookmarksFill } from "react-icons/bs";
 import { CgNotes } from "react-icons/cg";
 
 import { RxDashboard } from "react-icons/rx";
+import { BiHomeAlt } from "react-icons/bi";
+import { GrShare } from "react-icons/gr";
 
 type IconProps = {
   value: string | undefined;
@@ -182,7 +179,7 @@ export const LikeIcon: React.FC<IconProps> = ({ value }) => {
           }
         }}
       >
-        <Icon as={FaRegHeart} fontSize={"xl"} />
+        <Icon as={RiHeartAddFill} fontSize={"xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}
@@ -197,7 +194,7 @@ export const ShareIcon: React.FC<IconProps> = ({ value }) => {
   return (
     <>
       <Flex align={"center"}>
-        <Icon as={RiShareCircleLine} fontSize={"xl"} />
+        <Icon as={GrShare} fontSize={"xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}
@@ -251,6 +248,41 @@ export const SupportIcon: React.FC<IconProps> = ({ value }) => {
     <>
       <Flex align={"center"}>
         <Icon as={BsCoin} fontSize={"3xl"} />
+        {value && (
+          <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
+            {value}
+          </Text>
+        )}
+      </Flex>
+    </>
+  );
+};
+export const HomeIcon: React.FC<IconProps> = ({ value }) => {
+  const route = useRouter();
+  return (
+    <>
+      <Flex
+        align={"center"}
+        onClick={() => {
+          route.push("/");
+        }}
+      >
+        <Icon as={BiHomeAlt} fontSize={"2xl"} />
+        {value && (
+          <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
+            {value}
+          </Text>
+        )}
+      </Flex>
+    </>
+  );
+};
+
+export const AddbookMarkIcon: React.FC<IconProps> = ({ value }) => {
+  return (
+    <>
+      <Flex align={"center"}>
+        <Icon as={BsBookmarkPlus} fontSize={"xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}

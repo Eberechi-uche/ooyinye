@@ -166,7 +166,12 @@ export const useCreateNewArticle = () => {
         collection(firestore, "Articles"),
         publishDoc
       );
-      await updateDoc(draftRef, { published: articleRef.id });
+      await updateDoc(draftRef, {
+        published: articleRef.id,
+        authorDN: user.displayName,
+        authorId: userId,
+        authorImageUrl: user.photoURL,
+      });
     } catch (error: any) {
       console.log(error.message);
       setPublishing("");

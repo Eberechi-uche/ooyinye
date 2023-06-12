@@ -63,9 +63,9 @@ const PostcardLarge: React.FC<
             my={"2"}
           >
             <Flex>
-              <Text fontSize={"xs"} my={"2"} textTransform={"uppercase"}>
+              {/* <Text fontSize={"xs"} my={"2"} textTransform={"uppercase"}>
                 26 may, 2022
-              </Text>
+              </Text> */}
               <Text
                 display={"flex"}
                 alignItems={"center"}

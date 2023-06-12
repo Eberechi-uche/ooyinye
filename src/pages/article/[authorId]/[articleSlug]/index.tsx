@@ -31,19 +31,19 @@ import { User } from "firebase/auth";
 import Comments from "@/Components/Comments/Comment";
 import { useEffect, useState } from "react";
 import {
+  AddbookMarkIcon,
   CommentsIcon,
+  HomeIcon,
   LikeIcon,
   ShareIcon,
-  SupportIcon,
 } from "@/Components/Icons/Icons";
 import { useRouter } from "next/router";
 import { doc, getDoc } from "firebase/firestore";
 import { Draft } from "@/Hooks/Blog/useCreateNewArticle";
 import { PageContent } from "@/Components/Loaders/loader";
 import useGetProfileDetails from "@/Hooks/DataFetching/useGetProfileInfo";
-import PostCard from "@/Components/Card/PostCard";
 import { useRecoilState } from "recoil";
-import { articleAtom } from "@/Atoms/ArticleAtom";
+import { Article, articleAtom } from "@/Atoms/ArticleAtom";
 
 const Post: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -82,6 +82,7 @@ const Post: React.FC = () => {
       const docSnap = await getDoc(articleRef);
       setArticle({ ...docSnap.data() } as Draft);
       setLoading(false);
+      setCurrentArticle({ ...(docSnap.data() as Article) });
     } catch (error: any) {
       setError(error.message);
       setLoading(false);
@@ -104,7 +105,7 @@ const Post: React.FC = () => {
               <BlogNavFooter onOpen={onOpen} />
               <BlogPostHeader
                 articleDesc={article.articleDesc}
-                imageUrl={currentArticle.authorImageUrl}
+                imageUrl={currentArticle.authorImageUrl!}
                 profileId={currentArticle.authorId}
                 displayName={currentArticle.authorDN}
                 articleTitle={article.articleTitle}
@@ -124,14 +125,27 @@ const Post: React.FC = () => {
                 display={{ base: "none", md: "flex" }}
                 cursor={"pointer"}
               >
-                <CommentsIcon value={"(3 comments)"} onOpen={onOpen} />
+                <HomeIcon value="home" />
+                <CommentsIcon value={"comments"} onOpen={onOpen} />
                 <ShareIcon value={"share"} />
-                <LikeIcon value={"5 like(s)"} />
-                <SupportIcon value={"support"} />
               </Flex>
               <Flex minH={"100vh"} flexDir={"column"} width={"100%"}>
                 <Flex flexDir={"column"} my={"10"}>
                   <BlogParser content={article.articleContent} />
+                </Flex>
+                <Flex
+                  width={"50%"}
+                  justify={"space-between"}
+                  fontSize={"2xl"}
+                  border={"2px solid"}
+                  p={"5"}
+                  alignSelf={"center"}
+                  borderRadius={"full"}
+                  borderColor={"gray.200"}
+                  color={"gray.600"}
+                >
+                  <LikeIcon value="" />
+                  <AddbookMarkIcon value="" />
                 </Flex>
 
                 <Flex
@@ -162,9 +176,9 @@ const Post: React.FC = () => {
                           articleSlug={article.articleSlug}
                           articleTitle={article.articleTitle}
                           articleThumbnail={article.articleThumbnail}
-                          profileId={currentArticle.authorId}
-                          imageUrl={currentArticle.authorImageUrl}
-                          displayName={currentArticle.authorDN}
+                          profileId={article.authorId!}
+                          imageUrl={article.authorImageUrl!}
+                          displayName={article.authorDN!}
                           published=""
                         />
                       ))}
@@ -230,7 +244,7 @@ const CommentDrawer: React.FC<CommentDrawerProps> = ({
           <DrawerHeader>
             <Flex width={"100%"} align={"center"}>
               <Text mr={"5"}> comments</Text>
-              <Text fontSize={"sm"}> 200</Text>
+              <Text fontSize={"sm"}> </Text>
             </Flex>
           </DrawerHeader>
 
@@ -257,10 +271,10 @@ const CommentDrawer: React.FC<CommentDrawerProps> = ({
                   </Flex>
                 </>
               )}
-
+              {/* 
               <Comments />
               <Comments />
-              <Comments />
+              <Comments /> */}
             </Flex>
           </DrawerBody>
 

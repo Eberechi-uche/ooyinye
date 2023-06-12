@@ -6,12 +6,14 @@ import BlogPostHeader from "../Headers/BlogPost.Header";
 import { RiPencilFill } from "react-icons/ri";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../Firebase/ClientApp";
+import { useCreateNewArticle } from "@/Hooks/Blog/useCreateNewArticle";
 
 type PreviewProp = {
   setMode: (mode: string) => void;
 };
 const Preview: React.FC<PreviewProp> = ({ setMode }) => {
-  const [currentDraf] = useRecoilState(draftAtom);
+  const [currentDraft] = useRecoilState(draftAtom);
+  const { saveArticle } = useCreateNewArticle();
   const [user] = useAuthState(auth);
 
   const authId = `@${user?.email?.split("@")[0]}`;
@@ -22,15 +24,15 @@ const Preview: React.FC<PreviewProp> = ({ setMode }) => {
           Preview mode
         </Text>
         <BlogPostHeader
-          articleDesc={currentDraf.articleDesc}
-          articleTitle={currentDraf.articleTitle}
+          articleDesc={currentDraft.articleDesc}
+          articleTitle={currentDraft.articleTitle}
           profileId={authId}
           imageUrl={user?.photoURL!}
           displayName={user?.displayName!}
         />
-        <Image src={currentDraf.articleThumbnail} alt={"blog image"} />
+        <Image src={currentDraft.articleThumbnail} alt={"blog image"} />
         <div
-          dangerouslySetInnerHTML={{ __html: currentDraf.articleContent }}
+          dangerouslySetInnerHTML={{ __html: currentDraft.articleContent }}
           className="view"
         />
 
@@ -54,8 +56,14 @@ const Preview: React.FC<PreviewProp> = ({ setMode }) => {
             Edit
           </Button>
 
-          <Button colorScheme="green" color={"#fff"}>
-            Publish
+          <Button
+            colorScheme="green"
+            color={"#fff"}
+            onClick={() => {
+              saveArticle(currentDraft, currentDraft.articleContent);
+            }}
+          >
+            save
           </Button>
         </Flex>
       </Flex>
