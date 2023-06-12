@@ -6,7 +6,7 @@ export type Draft = {
   articleThumbnail: string;
   articleSlug: string;
   articleContent: string;
-  lockTitle: boolean;
+  lockTitle?: boolean;
   published: string;
   authorId?: string;
   authorDN?: string;

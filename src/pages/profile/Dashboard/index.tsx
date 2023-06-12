@@ -1,4 +1,4 @@
-import { draftAtom } from "@/Atoms/DraftAtom";
+import { Draft, draftAtom } from "@/Atoms/DraftAtom";
 import ArticleDraftCard from "@/Components/Card/ArticleDraftCard";
 import { auth } from "@/Components/Firebase/ClientApp";
 import TextHeader from "@/Components/Headers/TextHeader";
@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { RiDraftLine } from "react-icons/ri";
 import { useSetRecoilState } from "recoil";
-import { Draft, useCreateNewArticle } from "@/Hooks/Blog/useCreateNewArticle";
+import { useCreateNewArticle } from "@/Hooks/Blog/useCreateNewArticle";
 
 const Dashboard: React.FC = () => {
   const [user] = useAuthState(auth);
@@ -72,7 +72,6 @@ const Dashboard: React.FC = () => {
                 articleThumbnail: "",
                 articleSlug: "",
                 articleTitle: "",
-                lockTitle: false,
                 published: "",
               });
               route.push("/profile/Dashboard/studio");

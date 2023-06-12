@@ -39,11 +39,11 @@ import {
 } from "@/Components/Icons/Icons";
 import { useRouter } from "next/router";
 import { doc, getDoc } from "firebase/firestore";
-import { Draft } from "@/Hooks/Blog/useCreateNewArticle";
 import { PageContent } from "@/Components/Loaders/loader";
 import useGetProfileDetails from "@/Hooks/DataFetching/useGetProfileInfo";
 import { useRecoilState } from "recoil";
 import { Article, articleAtom } from "@/Atoms/ArticleAtom";
+import { Draft } from "@/Atoms/DraftAtom";
 
 const Post: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();

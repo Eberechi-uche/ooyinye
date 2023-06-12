@@ -16,15 +16,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useState } from "react";
 import { authModalState } from "@/Atoms/AuthModalAtom";
 import { Article } from "@/Atoms/ArticleAtom";
-
-export type Draft = {
-  articleDesc: string;
-  articleSlug: string;
-  articleTitle: string;
-  articleThumbnail: string;
-  articleContent: string;
-  published: string;
-};
+import { Draft } from "@/Atoms/DraftAtom";
 
 export const useCreateNewArticle = () => {
   const setAuthState = useSetRecoilState(authModalState);

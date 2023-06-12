@@ -1,11 +1,11 @@
-import { draftAtom } from "@/Atoms/DraftAtom";
-import { Draft, useCreateNewArticle } from "@/Hooks/Blog/useCreateNewArticle";
+import { Draft, draftAtom } from "@/Atoms/DraftAtom";
+import { useCreateNewArticle } from "@/Hooks/Blog/useCreateNewArticle";
 import { Flex, Icon, IconButton, Text, Image, Button } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { BsDot } from "react-icons/bs";
 import { FaPencilAlt } from "react-icons/fa";
 import { FcApproval } from "react-icons/fc";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 
 const ArticleDraftCard: React.FC<Draft & ArticleDraft> = (props) => {
   return (
