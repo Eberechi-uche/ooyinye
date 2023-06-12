@@ -1,10 +1,9 @@
 import { Flex, Image, Text, Icon } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import { BsBookmark, BsBookmarkPlus, BsClock } from "react-icons/bs";
-import { CiBookmarkPlus } from "react-icons/ci";
+import { BsBookmark } from "react-icons/bs";
 import CardProfileMini, { ProfileCardMiniProps } from "./ProfileCardMini";
-import { IoBookmarkSharp } from "react-icons/io5";
-import { Draft } from "@/Hooks/Blog/useCreateNewArticle";
+import { Draft } from "@/Atoms/DraftAtom";
+
 type PostcardLargeProps = {
   showProfile: boolean;
 };

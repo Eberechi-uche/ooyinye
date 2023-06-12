@@ -16,7 +16,7 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { ProfileSetting, SupportIcon } from "../Icons/Icons";
+
 import { BsTwitter } from "react-icons/bs";
 import { IoMail } from "react-icons/io5";
 import { useProfileData } from "@/Hooks/Profile/useProfileData";
