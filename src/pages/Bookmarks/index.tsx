@@ -10,11 +10,7 @@ const Bookmarks: React.FC = () => {
         <TextHeader text="Saved article" />
 
         <Flex px={"1"} flexDir={"column"} align={"center"} width={"100%"}>
-          <SavedPostCard />
-          <SavedPostCard />
-          <SavedPostCard />
-          <SavedPostCard />
-          <SavedPostCard />
+          <Text> No saved articles</Text>
         </Flex>
       </SingleContentLayout>
     </>
