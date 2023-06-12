@@ -48,6 +48,7 @@ const Studio: React.FC = () => {
         articleTitle: articleDetails.articleTitle,
         articleContent: content,
         lockTitle: true,
+        published: "",
       });
     }
 
