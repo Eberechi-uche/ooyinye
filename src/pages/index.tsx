@@ -10,9 +10,8 @@ import HomeLHS from "@/Components/LeftContentComponent/HomeSideContent/HomeLHS";
 import HomeNavFooter from "@/Components/MobileFooter/HomeNavFooter";
 import Link from "next/link";
 import { SearchIcon } from "@/Components/Icons/Icons";
-import { collection, doc, getDocs } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { Draft } from "@/Hooks/Blog/useCreateNewArticle";
 import { ArticleLoaders } from "@/Components/Loaders/loader";
 import { Article } from "@/Atoms/ArticleAtom";
 

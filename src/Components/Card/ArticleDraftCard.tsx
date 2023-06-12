@@ -1,5 +1,4 @@
 import { Draft, draftAtom } from "@/Atoms/DraftAtom";
-import { useCreateNewArticle } from "@/Hooks/Blog/useCreateNewArticle";
 import { Flex, Icon, IconButton, Text, Image, Button } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { BsDot } from "react-icons/bs";

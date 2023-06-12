@@ -14,7 +14,6 @@ import {
   useDisclosure,
   Image,
   SimpleGrid,
-  Box,
 } from "@chakra-ui/react";
 
 import BlogPostHeader from "@/Components/Headers/BlogPost.Header";
