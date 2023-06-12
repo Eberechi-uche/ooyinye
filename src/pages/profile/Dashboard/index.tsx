@@ -1,5 +1,5 @@
 import { draftAtom } from "@/Atoms/DraftAtom";
-import PostCard from "@/Components/Card/PostCard";
+import ArticleDraftCard from "@/Components/Card/ArticleDraftCard";
 import { auth } from "@/Components/Firebase/ClientApp";
 import TextHeader from "@/Components/Headers/TextHeader";
 import SingleContentLayout from "@/Components/Layout/SingleContent.Layout";
@@ -11,8 +11,11 @@ import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { RiDraftLine } from "react-icons/ri";
 import { useSetRecoilState } from "recoil";
+import { Draft, useCreateNewArticle } from "@/Hooks/Blog/useCreateNewArticle";
+
 const Dashboard: React.FC = () => {
   const [user] = useAuthState(auth);
+  const { publishArticle, publishing } = useCreateNewArticle();
   const setDraftSate = useSetRecoilState(draftAtom);
 
   const userId = `@${user?.email?.split("@")[0]}`;
@@ -20,9 +23,17 @@ const Dashboard: React.FC = () => {
     articles: 0,
     views: 0,
   });
-  const { getProfileArticles, profileArticles, loading } =
+  const { getProfileArticles, profileArticles, loading, setProfileArticles } =
     useGetProfileDetails(userId);
   const route = useRouter();
+
+  const handleArticlePuslish = async (article: Draft) => {
+    const status = await publishArticle(article);
+    if (status === "Published") {
+      const newStateState = updateClientArticleSate(profileArticles, article);
+      setProfileArticles(newStateState);
+    }
+  };
 
   useEffect(() => {
     getProfileArticles();
@@ -62,6 +73,7 @@ const Dashboard: React.FC = () => {
                 articleSlug: "",
                 articleTitle: "",
                 lockTitle: false,
+                published: "",
               });
               route.push("/profile/Dashboard/studio");
             }}
@@ -81,15 +93,17 @@ const Dashboard: React.FC = () => {
             </>
           )}
           {!loading &&
-            profileArticles.map((article, index) => (
-              <Flex key={index}>
-                <PostCard
+            profileArticles.map((article) => (
+              <Flex key={article.articleSlug}>
+                <ArticleDraftCard
                   articleContent={article.articleContent}
-                  showProfile={false}
                   articleDesc={article.articleDesc}
                   articleSlug={article.articleSlug}
                   articleTitle={article.articleTitle}
                   articleThumbnail={article.articleThumbnail}
+                  published={article.published}
+                  handlePublish={handleArticlePuslish}
+                  publishing={publishing}
                 />
               </Flex>
             ))}
@@ -125,3 +139,17 @@ const OverViewCard: React.FC<OverViewCardProps> = ({ heading, value }) => {
     </>
   );
 };
+function updateClientArticleSate(draft: Draft[], article: Draft) {
+  const articleId = draft.find((item) => {
+    return item.articleSlug === article.articleSlug;
+  });
+  const newArticleId: Draft = {
+    ...articleId!,
+    published: "true",
+  };
+
+  const newDraftArray = draft.map((item) => {
+    return item.articleSlug !== article.articleSlug ? item : newArticleId;
+  });
+  return newDraftArray;
+}

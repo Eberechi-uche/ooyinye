@@ -2,20 +2,15 @@ import { Flex, Image, Text, Icon } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { BsBookmark, BsBookmarkPlus, BsClock } from "react-icons/bs";
 import { CiBookmarkPlus } from "react-icons/ci";
-import CardProfileMini from "./ProfileCardMini";
+import CardProfileMini, { ProfileCardMiniProps } from "./ProfileCardMini";
 import { IoBookmarkSharp } from "react-icons/io5";
 import { Draft } from "@/Hooks/Blog/useCreateNewArticle";
 type PostcardLargeProps = {
   showProfile: boolean;
 };
-const PostcardLarge: React.FC<PostcardLargeProps & Draft> = ({
-  showProfile,
-  articleDesc,
-  articleSlug,
-  articleTitle,
-  articleThumbnail,
-  articleContent,
-}) => {
+const PostcardLarge: React.FC<
+  PostcardLargeProps & Draft & ProfileCardMiniProps
+> = (props) => {
   const route = useRouter();
   return (
     <>
@@ -28,20 +23,24 @@ const PostcardLarge: React.FC<PostcardLargeProps & Draft> = ({
           mb={"2"}
         >
           <Image
-            src={articleThumbnail}
+            src={props.articleThumbnail}
             objectFit={"cover"}
             width={"100%"}
             alt={"user-profile"}
             borderRadius={"2px"}
           />
         </Flex>
-        <CardProfileMini />
+        <CardProfileMini
+          profileId={props.profileId}
+          displayName={props.displayName}
+          imageUrl={props.imageUrl}
+        />
 
         <Flex
           flexDir={"column"}
           my={"1"}
           onClick={() => {
-            route.push(`/article/${"@eb3rechi"}/${articleSlug}`);
+            route.push(`/article/${"@eb3rechi"}/${props.articleSlug}`);
           }}
         >
           <Text
@@ -50,10 +49,10 @@ const PostcardLarge: React.FC<PostcardLargeProps & Draft> = ({
             my={"2"}
             fontSize={"lg"}
           >
-            {articleTitle}
+            {props.articleTitle}
           </Text>
           <Text noOfLines={3} fontWeight={"500"} color={"gray.500"}>
-            {articleDesc}
+            {props.articleDesc}
           </Text>
 
           <Flex

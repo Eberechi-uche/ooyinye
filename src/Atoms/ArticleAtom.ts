@@ -10,11 +10,10 @@ export type Article = {
   articleSlug: string;
   tag?: string;
   readtime: string;
-  date?: Date;
+  publishDate?: Date;
   bgColor?: string;
-  articleId: string;
-  likes: number;
-  comments: number;
+  likes?: number;
+  comments?: number;
 };
 
 const defaultArticleState: Article = {
@@ -27,7 +26,6 @@ const defaultArticleState: Article = {
   articleSlug: "",
   readtime: "",
   bgColor: "",
-  articleId: "",
   likes: 0,
   comments: 0,
 };

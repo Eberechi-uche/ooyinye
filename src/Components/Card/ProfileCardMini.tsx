@@ -1,12 +1,12 @@
 import { Icon, Flex, Image, Text } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 
-type ProfileCardMiniProps = {
+export type ProfileCardMiniProps = {
   displayName: string;
   imageUrl: string;
   profileId: string;
 };
-const ProfileCardMini: React.FC = ({}) => {
+const ProfileCardMini: React.FC<ProfileCardMiniProps> = (props) => {
   const route = useRouter();
   return (
     <>
@@ -15,19 +15,19 @@ const ProfileCardMini: React.FC = ({}) => {
         align={"center"}
         my={"2"}
         onClick={() => {
-          route.push("/profile/@adalovelace");
+          route.push(`/profile/@${props.profileId}`);
         }}
       >
         <Flex>
           <Image
-            src={"/ada-lovelace.webp"}
+            src={props.imageUrl}
             boxSize={"20px"}
             objectFit={"cover"}
             borderRadius={"full"}
             mr={"2"}
             alt={"profile"}
           />
-          <Text fontWeight={"400"}>Ada Lovelace</Text>
+          <Text fontWeight={"400"}>{props.displayName}</Text>
         </Flex>
       </Flex>
     </>

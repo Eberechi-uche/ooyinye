@@ -1,13 +1,14 @@
 import { Flex, Icon, Text, Heading } from "@chakra-ui/react";
 import { CiCircleChevDown } from "react-icons/ci";
-import ProfileCardMini from "../Card/ProfileCardMini";
+import ProfileCardMini, { ProfileCardMiniProps } from "../Card/ProfileCardMini";
 import { Draft } from "@/Hooks/Blog/useCreateNewArticle";
-type BlogPostHeaderProps = Omit<Draft, "articleContent" | "articleSlug">;
-const BlogPostHeader: React.FC<BlogPostHeaderProps> = ({
-  articleDesc = "What Is Meant By Lorem Ipsum In Website? The word Lorem Ipsum is derived from the Latin word which means “pain itself”. It is a kind of a text filler tool that is used by the webmaster on the website",
-  articleThumbnail,
-  articleTitle = "The mystery behind lorem ipsum, origin, uses and everything inbetween",
-}) => {
+type BlogPostHeaderProps = {
+  articleDesc: string;
+  articleTitle: string;
+};
+const BlogPostHeader: React.FC<BlogPostHeaderProps & ProfileCardMiniProps> = (
+  props
+) => {
   return (
     <>
       <Flex
@@ -23,7 +24,7 @@ const BlogPostHeader: React.FC<BlogPostHeaderProps> = ({
       >
         <Flex flexDir={"column"} align={"center"} mt={"20%"}>
           <Heading fontWeight={"700"} fontSize={"2xl"}>
-            {articleTitle}
+            {props.articleTitle}
           </Heading>
           <Flex
             width={{ base: "100%", md: "80%", lg: "80%" }}
@@ -31,7 +32,7 @@ const BlogPostHeader: React.FC<BlogPostHeaderProps> = ({
             my={"5"}
             fontWeight={"700"}
           >
-            <Text>{articleDesc}</Text>
+            <Text>{props.articleDesc}</Text>
           </Flex>
           <Flex
             align={"center"}
@@ -41,7 +42,11 @@ const BlogPostHeader: React.FC<BlogPostHeaderProps> = ({
             fontSize={"xs"}
           >
             <Text> by</Text>
-            <ProfileCardMini />
+            <ProfileCardMini
+              profileId={props.profileId}
+              imageUrl={props.imageUrl}
+              displayName={props.displayName}
+            />
             <Text> 26 may 2023</Text>
           </Flex>
         </Flex>

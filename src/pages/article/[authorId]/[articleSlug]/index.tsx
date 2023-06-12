@@ -42,15 +42,19 @@ import { Draft } from "@/Hooks/Blog/useCreateNewArticle";
 import { PageContent } from "@/Components/Loaders/loader";
 import useGetProfileDetails from "@/Hooks/DataFetching/useGetProfileInfo";
 import PostCard from "@/Components/Card/PostCard";
+import { useRecoilState } from "recoil";
+import { articleAtom } from "@/Atoms/ArticleAtom";
 
 const Post: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [currentArticle, setCurrentArticle] = useRecoilState(articleAtom);
   const [article, setArticle] = useState<Draft>({
     articleContent: "",
     articleDesc: "",
     articleSlug: "",
     articleThumbnail: "",
     articleTitle: "",
+    published: "",
   });
   const [user] = useAuthState(auth);
   const [loading, setLoading] = useState(true);
@@ -100,7 +104,9 @@ const Post: React.FC = () => {
               <BlogNavFooter onOpen={onOpen} />
               <BlogPostHeader
                 articleDesc={article.articleDesc}
-                articleThumbnail={article.articleThumbnail}
+                imageUrl={currentArticle.authorImageUrl}
+                profileId={currentArticle.authorId}
+                displayName={currentArticle.authorDN}
                 articleTitle={article.articleTitle}
               />
 
@@ -156,6 +162,9 @@ const Post: React.FC = () => {
                           articleSlug={article.articleSlug}
                           articleTitle={article.articleTitle}
                           articleThumbnail={article.articleThumbnail}
+                          profileId={currentArticle.authorId}
+                          imageUrl={currentArticle.authorImageUrl}
+                          displayName={currentArticle.authorDN}
                         />
                       ))}
                   </SimpleGrid>

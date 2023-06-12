@@ -52,6 +52,8 @@ const follow = async (userProfile: UserSnippet, authUser: User) => {
 
 const unFollow = () => {};
 
+// update user Profile photo
+
 export const useProfileData = () => {
   const [user] = useAuthState(auth);
   const [loading, setLoading] = useState(false);

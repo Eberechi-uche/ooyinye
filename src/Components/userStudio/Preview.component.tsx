@@ -1,17 +1,20 @@
 import { draftAtom } from "@/Atoms/DraftAtom";
-import { Flex, Button, IconButton, Icon, Text, Image } from "@chakra-ui/react";
+import { Flex, Button, Icon, Text, Image } from "@chakra-ui/react";
 import { useRecoilState } from "recoil";
 import BlogPostHeader from "../Headers/BlogPost.Header";
-import SingleContentLayout from "../Layout/SingleContent.Layout";
-import { BsPencil } from "react-icons/bs";
-import { ImPencil2 } from "react-icons/im";
+
 import { RiPencilFill } from "react-icons/ri";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../Firebase/ClientApp";
 
 type PreviewProp = {
   setMode: (mode: string) => void;
 };
 const Preview: React.FC<PreviewProp> = ({ setMode }) => {
   const [currentDraf] = useRecoilState(draftAtom);
+  const [user] = useAuthState(auth);
+
+  const authId = `@${user?.email?.split("@")[0]}`;
   return (
     <>
       <Flex flexDir={"column"}>
@@ -21,7 +24,9 @@ const Preview: React.FC<PreviewProp> = ({ setMode }) => {
         <BlogPostHeader
           articleDesc={currentDraf.articleDesc}
           articleTitle={currentDraf.articleTitle}
-          articleThumbnail={currentDraf.articleThumbnail}
+          profileId={authId}
+          imageUrl={user?.photoURL!}
+          displayName={user?.displayName!}
         />
         <Image src={currentDraf.articleThumbnail} alt={"blog image"} />
         <div
@@ -48,6 +53,7 @@ const Preview: React.FC<PreviewProp> = ({ setMode }) => {
             <Icon as={RiPencilFill} />
             Edit
           </Button>
+
           <Button colorScheme="green" color={"#fff"}>
             Publish
           </Button>

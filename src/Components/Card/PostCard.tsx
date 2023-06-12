@@ -1,30 +1,21 @@
-import { Flex, Image, Text, Icon, Divider, IconButton } from "@chakra-ui/react";
-import Link from "next/link";
+import { Flex, Image, Text, Icon } from "@chakra-ui/react";
+
 import { useRouter } from "next/router";
 import { BsDot, BsFillPinFill, BsBookmark } from "react-icons/bs";
 
 import ProfileCardMini from "./ProfileCardMini";
-import { Draft } from "@/Hooks/Blog/useCreateNewArticle";
 import { useSetRecoilState } from "recoil";
-import { draftAtom } from "@/Atoms/DraftAtom";
-import { FaPencilAlt } from "react-icons/fa";
+import { Article, articleAtom } from "@/Atoms/ArticleAtom";
 
 type PostCardProps = {
   showProfile: boolean;
 };
 
-const PostCard: React.FC<PostCardProps & Draft> = ({
-  showProfile,
-  articleDesc,
-  articleSlug,
-  articleTitle,
-  articleContent,
-  articleThumbnail,
-}) => {
+const PostCard: React.FC<PostCardProps & Article> = (props) => {
   const route = useRouter();
   const { profile } = route.query;
 
-  const setDraftAtom = useSetRecoilState(draftAtom);
+  const setCurrentArticle = useSetRecoilState(articleAtom);
   return (
     <>
       <Flex
@@ -43,22 +34,14 @@ const PostCard: React.FC<PostCardProps & Draft> = ({
         ) : (
           <Flex align={"center"}>
             <Flex flexDir={"column"} width={"100%"}>
-              {showProfile && <ProfileCardMini />}
-              {route.asPath !== "/profile/Dashboard" ? (
-                <>
-                  <PostCardArticleView />
-                </>
-              ) : (
-                <>
-                  <PostCardDraft
-                    articleDesc={articleDesc}
-                    articleSlug={articleSlug}
-                    articleTitle={articleTitle}
-                    articleThumbnail={articleThumbnail}
-                    articleContent={articleContent}
-                  />
-                </>
+              {props.showProfile && (
+                <ProfileCardMini
+                  displayName={props.authorDN}
+                  profileId={props.authorId}
+                  imageUrl={props.authorImageUrl}
+                />
               )}
+              <PostCardArticleView />
             </Flex>
           </Flex>
         )}
@@ -70,15 +53,10 @@ const PostCard: React.FC<PostCardProps & Draft> = ({
           justify={"space-between"}
           width={"100%"}
           onClick={() => {
-            setDraftAtom({
-              articleContent: "",
-              articleDesc,
-              articleSlug,
-              articleThumbnail,
-              articleTitle,
-              lockTitle: true,
+            setCurrentArticle({
+              ...props,
             });
-            route.push(`/article/${"@eb3rechi"}/${articleSlug}`);
+            route.push(`/article/${props.authorId}/${props.articleSlug}`);
           }}
         >
           <Flex
@@ -88,61 +66,17 @@ const PostCard: React.FC<PostCardProps & Draft> = ({
             width={"70%"}
           >
             <Text fontWeight={"900"} noOfLines={[3, 4]}>
-              {articleTitle}
+              {props.articleTitle}
             </Text>
           </Flex>
 
           <Image
             alt={"postImage"}
-            src={articleThumbnail}
+            src={props.articleThumbnail}
             width={{ base: "20%", md: "15%" }}
-            height={{ base: "50px", md: "70px" }}
+            height={{ base: "70px", md: "70px" }}
             objectFit={"cover"}
             alignSelf={"flex-start"}
-          />
-        </Flex>
-      </Flex>
-    </>
-  );
-};
-
-const PostCardDraft: React.FC<Draft> = (props) => {
-  const route = useRouter();
-  const setDraftAtom = useSetRecoilState(draftAtom);
-
-  return (
-    <>
-      <Flex align={"center"} justify={"space-between"} fontWeight={"900"}>
-        <Flex>
-          <Text fontSize={"md"} display={"flex"} alignItems={"center"} py={"4"}>
-            Publish
-          </Text>
-          <Text
-            fontSize={"12px"}
-            display={"flex"}
-            alignItems={"center"}
-            textTransform={"uppercase"}
-          >
-            <Icon as={BsDot} mx={"2"} />
-            Delete
-          </Text>
-        </Flex>
-
-        <Flex
-          align={"center"}
-          onClick={() => {
-            setDraftAtom({
-              ...(props as Draft),
-              lockTitle: true,
-            });
-            route.push("/profile/Dashboard/studio");
-          }}
-        >
-          <IconButton
-            icon={<FaPencilAlt />}
-            aria-label="edit"
-            bg={"black"}
-            color={"#fff"}
           />
         </Flex>
       </Flex>

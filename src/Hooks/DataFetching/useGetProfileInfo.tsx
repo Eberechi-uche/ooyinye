@@ -36,7 +36,7 @@ function useGetProfileDetails(profile: string) {
       collection(firestore, "users", profile, "drafts")
     );
     const articleSnapshot = profileQuerry.docs.map(
-      (doc, index) =>
+      (doc) =>
         ({
           ...doc.data(),
         } as Draft)
@@ -52,6 +52,8 @@ function useGetProfileDetails(profile: string) {
     error,
     getProfileArticles,
     getProfileDetails,
+    setProfileArticles,
   };
 }
+
 export default useGetProfileDetails;

@@ -14,21 +14,20 @@ import { collection, doc, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { Draft } from "@/Hooks/Blog/useCreateNewArticle";
 import { ArticleLoaders } from "@/Components/Loaders/loader";
+import { Article } from "@/Atoms/ArticleAtom";
 
 export default function Home() {
   const [user] = useAuthState(auth);
-  const [articleList, setArticleList] = useState<Draft[]>([]);
+  const [articleList, setArticleList] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
 
   const fetchHomeArticle = async () => {
     setLoading(true);
-    const querrySnapshot = await getDocs(
-      collection(firestore, "users", "@eb3rechi", "drafts")
-    );
+    const querrySnapshot = await getDocs(collection(firestore, "Articles"));
     const articles = querrySnapshot.docs.map((doc) => ({
       ...doc.data(),
     }));
-    setArticleList(articles as Draft[]);
+    setArticleList(articles as Article[]);
     setLoading(false);
   };
 
@@ -74,10 +73,13 @@ export default function Home() {
                     <PostCard
                       articleSlug={article.articleSlug}
                       articleTitle={article.articleTitle}
-                      articleContent={article.articleContent}
+                      authorDN={article.authorDN}
+                      authorId={article.authorId}
+                      authorImageUrl={article.authorImageUrl}
                       articleThumbnail={article.articleThumbnail}
                       articleDesc={article.articleDesc}
                       showProfile={true}
+                      readtime={article.readtime}
                     />
                   </Flex>
                 ))}
