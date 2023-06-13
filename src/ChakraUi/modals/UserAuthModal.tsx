@@ -10,7 +10,13 @@ import {
   ModalHeader,
   ModalBody,
   ModalCloseButton,
+  Image,
+  Flex,
+  Text,
 } from "@chakra-ui/react";
+import { Draft, draftAtom } from "@/Atoms/DraftAtom";
+import ArticleDraftCard from "@/Components/Card/ArticleDraftCard";
+import { useCreateNewArticle } from "@/Hooks/Blog/useCreateNewArticle";
 
 const AuthModal: React.FC = () => {
   const [value, setValue] = useRecoilState(authModalState);
@@ -48,4 +54,5 @@ const AuthModal: React.FC = () => {
     </>
   );
 };
+
 export default AuthModal;

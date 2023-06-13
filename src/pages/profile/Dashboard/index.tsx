@@ -12,6 +12,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { RiDraftLine } from "react-icons/ri";
 import { useSetRecoilState } from "recoil";
 import { useCreateNewArticle } from "@/Hooks/Blog/useCreateNewArticle";
+import { GrArticle } from "react-icons/gr";
 
 const Dashboard: React.FC = () => {
   const [user] = useAuthState(auth);
@@ -106,6 +107,14 @@ const Dashboard: React.FC = () => {
                 />
               </Flex>
             ))}
+          {!loading && !profileArticles.length && (
+            <Flex width={"100%"} flexDir={"column"} align={"center"} my={"4"}>
+              <Text fontWeight={"900"}>
+                You have no Drafts or Published articles, yet!
+              </Text>
+              <Icon as={GrArticle} fontSize={"30vh"} />
+            </Flex>
+          )}
         </Flex>
       </Flex>
     </SingleContentLayout>

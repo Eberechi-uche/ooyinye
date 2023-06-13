@@ -65,7 +65,9 @@ const Profile: React.FC = () => {
             ))}
           {!loading && !profileArticles.length && (
             <Flex width={"100%"} flexDir={"column"} align={"center"}>
-              <Text fontWeight={"900"}>User have no Articles</Text>
+              <Text fontWeight={"900"}>
+                {profileDetails.userDN} have no Articles
+              </Text>
               <Icon as={GrArticle} fontSize={"30vh"} />
             </Flex>
           )}

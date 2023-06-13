@@ -7,16 +7,28 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import { auth, firestore, storage } from "../../Components/Firebase/ClientApp";
-import { useToast } from "@chakra-ui/react";
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  Button,
+  useDisclosure,
+  useToast,
+} from "@chakra-ui/react";
 import { useSetRecoilState } from "recoil";
 
 import { NewArticleProps } from "@/Components/userStudio/CreateArticle";
 import { getDownloadURL, ref, uploadString } from "firebase/storage";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useState } from "react";
+import React, { useState } from "react";
 import { authModalState } from "@/Atoms/AuthModalAtom";
 import { Article } from "@/Atoms/ArticleAtom";
 import { Draft } from "@/Atoms/DraftAtom";
+import { count } from "console";
 
 export const useCreateNewArticle = () => {
   const setAuthState = useSetRecoilState(authModalState);
@@ -26,6 +38,8 @@ export const useCreateNewArticle = () => {
   const [publishing, setPublishing] = useState("");
   const [error, setError] = useState("");
   const userId = `@${user?.email?.split("@")[0]}`;
+
+  // save Article
   const saveArticle = async (
     article: NewArticleProps,
     articleContent: string
@@ -96,6 +110,7 @@ export const useCreateNewArticle = () => {
       });
 
       setLoading(false);
+      return true;
     } catch (error: any) {
       console.log(error.message);
       setError(error.message), setLoading(false);
