@@ -6,10 +6,11 @@ import { auth, firestore } from "@/Components/Firebase/ClientApp";
 import TextHeader from "@/Components/Headers/TextHeader";
 import SingleContentLayout from "@/Components/Layout/SingleContent.Layout";
 import { ArticleLoaders } from "@/Components/Loaders/loader";
-import { Flex, Stack, Text } from "@chakra-ui/react";
+import { Flex, Icon, Stack, Text } from "@chakra-ui/react";
 import { collection, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { HiOutlineBookmark } from "react-icons/hi";
 import { useRecoilState } from "recoil";
 
 const Bookmarks: React.FC = () => {
@@ -73,6 +74,16 @@ const Bookmarks: React.FC = () => {
                   key={article.articleID}
                 />
               ))}
+            </>
+          )}
+          {!loading && !savedArticles.length && (
+            <>
+              <Text fontWeight={"900"}> You have no saved Articles </Text>
+              <Icon
+                as={HiOutlineBookmark}
+                fontSize={"30vh"}
+                color={"orange.600"}
+              />
             </>
           )}
         </Flex>

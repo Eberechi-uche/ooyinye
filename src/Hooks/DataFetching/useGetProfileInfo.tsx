@@ -31,7 +31,7 @@ function useGetProfileDetails(profile: string) {
     setLoading(false);
   }
 
-  async function getProfileArticles() {
+  async function getProfileArticles(filter: boolean) {
     const profileQuerry = await getDocs(
       collection(firestore, "users", profile, "drafts")
     );
@@ -41,6 +41,14 @@ function useGetProfileDetails(profile: string) {
           ...doc.data(),
         } as Draft)
     );
+    if (filter) {
+      const filteredArray = articleSnapshot.filter((article) => {
+        return article.published !== "";
+      });
+      setProfileArticles(filteredArray);
+      setLoading(false);
+      return;
+    }
     setProfileArticles(articleSnapshot);
     setLoading(false);
   }

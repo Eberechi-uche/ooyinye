@@ -1,10 +1,19 @@
-import { Flex, Text, Image, Divider, Textarea, Button } from "@chakra-ui/react";
+import {
+  Flex,
+  Text,
+  Image,
+  Divider,
+  Textarea,
+  Button,
+  Icon,
+} from "@chakra-ui/react";
 import ProfileCardMini from "../Card/ProfileCardMini";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../Firebase/ClientApp";
 import { useEffect, useState } from "react";
 import UserAuth from "../Auth.component/UserAuth";
 import { useArticleData } from "@/Hooks/Blog/useArticleData";
+import { RiChat1Line } from "react-icons/ri";
 
 export type CommentData = {
   text: string;
@@ -87,9 +96,10 @@ const CommentsComponent: React.FC<CommentsComponentProps> = (props) => {
               />
             ))}
           {!allComments.length && (
-            <>
+            <Flex width={"100%"} flexDir={"column"} align={"center"}>
               <Text fontWeight={"900"}>No comments yet</Text>
-            </>
+              <Icon as={RiChat1Line} fontSize={"35vh"} />
+            </Flex>
           )}
         </Flex>
       </Flex>

@@ -36,7 +36,7 @@ const Dashboard: React.FC = () => {
   };
 
   useEffect(() => {
-    getProfileArticles();
+    getProfileArticles(false);
   }, [user]);
   useEffect(() => {
     setStats({ articles: profileArticles.length, views: 0 });

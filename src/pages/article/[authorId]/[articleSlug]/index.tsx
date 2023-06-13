@@ -101,7 +101,7 @@ const Post: React.FC = () => {
   useEffect(() => {
     fetchArticle();
     getProfileDetails();
-    getProfileArticles();
+    getProfileArticles(true);
   }, [articleSlug]);
 
   return (

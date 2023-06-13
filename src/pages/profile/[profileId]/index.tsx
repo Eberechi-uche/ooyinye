@@ -1,14 +1,17 @@
 import PostCard from "@/Components/Card/PostCard";
 import ProfileCardLarge from "@/Components/Card/ProfileCardLarge";
-import { Flex } from "@chakra-ui/react";
+import { Flex, Icon, Text } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import SingleContentLayout from "@/Components/Layout/SingleContent.Layout";
 import useGetProfileDetails from "@/Hooks/DataFetching/useGetProfileInfo";
 import { ProfileContentLoadState } from "@/Components/Loaders/loader";
+import { Article } from "@/Atoms/ArticleAtom";
+import { GrArticle } from "react-icons/gr";
 
 const Profile: React.FC = () => {
   const { profileId } = useRouter().query;
+
   const {
     loading,
     profileArticles,
@@ -20,7 +23,7 @@ const Profile: React.FC = () => {
 
   useEffect(() => {
     getProfileDetails();
-    getProfileArticles();
+    getProfileArticles(true);
   }, [profileId]);
   return (
     <SingleContentLayout>
@@ -60,6 +63,12 @@ const Profile: React.FC = () => {
                 />
               </Flex>
             ))}
+          {!loading && !profileArticles.length && (
+            <Flex width={"100%"} flexDir={"column"} align={"center"}>
+              <Text fontWeight={"900"}>User have no Articles</Text>
+              <Icon as={GrArticle} fontSize={"30vh"} />
+            </Flex>
+          )}
         </Flex>
       </Flex>
     </SingleContentLayout>
