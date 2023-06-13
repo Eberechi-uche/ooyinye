@@ -81,7 +81,7 @@ export const useCreateNewArticle = () => {
       const userDraftRef = doc(
         firestore,
         "users",
-        `@${userId}`,
+        `${userId}`,
         "drafts",
         `${article.articleSlug}`
       );
