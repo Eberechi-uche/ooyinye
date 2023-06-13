@@ -1,6 +1,5 @@
 import {
   Button,
-  Divider,
   Drawer,
   DrawerBody,
   DrawerCloseButton,
@@ -9,7 +8,6 @@ import {
   DrawerHeader,
   DrawerOverlay,
   Flex,
-  Input,
   Text,
   useDisclosure,
   Image,
@@ -23,11 +21,10 @@ import SingleContentLayout from "@/Components/Layout/SingleContent.Layout";
 import BlogNavFooter from "@/Components/MobileFooter/BlogNavFooter";
 import PostcardLarge from "@/Components/Card/PostcardLarge";
 import ProfileCardLarge from "@/Components/Card/ProfileCardLarge";
-import UserAuth from "@/Components/Auth.component/UserAuth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, firestore } from "@/Components/Firebase/ClientApp";
 import { User } from "firebase/auth";
-import Comments from "@/Components/Comments/Comment";
+import CommentsComponent from "@/Components/Comments/Comment";
 import { useEffect, useState } from "react";
 import {
   AddbookMarkIcon,
@@ -43,9 +40,11 @@ import useGetProfileDetails from "@/Hooks/DataFetching/useGetProfileInfo";
 import { useRecoilState } from "recoil";
 import { Article, articleAtom } from "@/Atoms/ArticleAtom";
 import { Draft } from "@/Atoms/DraftAtom";
+import { useArticleData } from "@/Hooks/Blog/useArticleData";
 
 const Post: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { likeArticle, getArticle } = useArticleData();
   const [currentArticle, setCurrentArticle] = useRecoilState(articleAtom);
   const [article, setArticle] = useState<Draft>({
     articleContent: "",
@@ -66,6 +65,14 @@ const Post: React.FC = () => {
   } = useGetProfileDetails(`${authorId}`);
   const [error, setError] = useState("");
 
+  const handleLike = () => {
+    setCurrentArticle((prev) => ({
+      ...prev,
+      likes: prev.likes! + 1,
+    }));
+    likeArticle(article.published);
+  };
+
   const fetchArticle = async () => {
     setLoading(true);
     setError("");
@@ -79,13 +86,16 @@ const Post: React.FC = () => {
 
     try {
       const docSnap = await getDoc(articleRef);
-      setArticle({ ...docSnap.data() } as Draft);
-      setLoading(false);
-      setCurrentArticle({ ...(docSnap.data() as Article) });
+      const article = { ...(docSnap.data() as Draft) };
+      setArticle(article as Draft);
+
+      getArticle(article.published);
     } catch (error: any) {
       setError(error.message);
       setLoading(false);
     }
+
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -99,7 +109,7 @@ const Post: React.FC = () => {
       <SingleContentLayout>
         <Flex pos={"relative"} flexDir={"column"} width={"100%"}>
           {loading && <PageContent />}
-          {!loading && (
+          {!loading && currentArticle.articleDesc && (
             <>
               <BlogNavFooter onOpen={onOpen} />
               <BlogPostHeader
@@ -137,14 +147,31 @@ const Post: React.FC = () => {
                   justify={"space-between"}
                   fontSize={"2xl"}
                   border={"2px solid"}
-                  p={"5"}
+                  px={"3"}
+                  py={"2"}
                   alignSelf={"center"}
                   borderRadius={"full"}
                   borderColor={"gray.200"}
                   color={"gray.600"}
+                  my={"3"}
                 >
-                  <LikeIcon value="" />
-                  <AddbookMarkIcon value="" />
+                  <LikeIcon
+                    value={`${currentArticle.likes}`}
+                    iconAction={handleLike}
+                  />
+                  <AddbookMarkIcon
+                    authorId={currentArticle.authorId}
+                    authorDN={currentArticle.authorDN}
+                    authorImageUrl={currentArticle.authorImageUrl}
+                    articleTitle={currentArticle.articleTitle}
+                    articleDesc={currentArticle.articleDesc}
+                    articleThumbnail={currentArticle.articleThumbnail}
+                    articleSlug={currentArticle.articleSlug}
+                    readtime={currentArticle.readtime}
+                    articleID={currentArticle.articleID}
+                    value={""}
+                    size=""
+                  />
                 </Flex>
 
                 <Flex
@@ -169,7 +196,6 @@ const Post: React.FC = () => {
                       profileArticles.map((article, index) => (
                         <PostcardLarge
                           key={index}
-                          articleContent=""
                           showProfile={false}
                           articleDesc={article.articleDesc}
                           articleSlug={article.articleSlug}
@@ -178,7 +204,10 @@ const Post: React.FC = () => {
                           profileId={article.authorId!}
                           imageUrl={article.authorImageUrl!}
                           displayName={article.authorDN!}
-                          published=""
+                          authorDN={currentArticle.authorDN}
+                          authorId={currentArticle.authorId}
+                          authorImageUrl={currentArticle.authorImageUrl}
+                          readtime=""
                         />
                       ))}
                   </SimpleGrid>
@@ -209,7 +238,12 @@ const Post: React.FC = () => {
           )}
 
           {isOpen && (
-            <CommentDrawer onClose={onClose} isOpen={isOpen} user={user} />
+            <CommentDrawer
+              onClose={onClose}
+              isOpen={isOpen}
+              user={user}
+              articleID={article.published}
+            />
           )}
         </Flex>
       </SingleContentLayout>
@@ -220,6 +254,7 @@ const Post: React.FC = () => {
 type CommentDrawerProps = {
   isOpen: boolean;
   user: User | null | undefined;
+  articleID: string;
 
   onClose: () => void;
 };
@@ -227,6 +262,7 @@ const CommentDrawer: React.FC<CommentDrawerProps> = ({
   isOpen,
   onClose,
   user,
+  articleID,
 }) => {
   return (
     <>
@@ -248,33 +284,7 @@ const CommentDrawer: React.FC<CommentDrawerProps> = ({
           </DrawerHeader>
 
           <DrawerBody>
-            <Flex flexDir={"column"}>
-              <Divider />
-              {user ? (
-                <>
-                  <Input placeholder={"comment"} />
-                </>
-              ) : (
-                <>
-                  <Flex
-                    width={{ base: "100%", md: "60%" }}
-                    flexDir={"column"}
-                    p={"4"}
-                    alignSelf={"center"}
-                    onClick={onClose}
-                  >
-                    <Text textAlign={"center"} mb={"2"}>
-                      Login to Join the conversation
-                    </Text>
-                    <UserAuth />
-                  </Flex>
-                </>
-              )}
-              {/* 
-              <Comments />
-              <Comments />
-              <Comments /> */}
-            </Flex>
+            <CommentsComponent onClose={onClose} articleID={articleID} />
           </DrawerBody>
 
           <DrawerFooter py={"10"}>

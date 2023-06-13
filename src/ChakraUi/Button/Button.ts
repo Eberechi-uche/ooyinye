@@ -2,11 +2,12 @@ import { defineStyle, defineStyleConfig } from "@chakra-ui/react";
 
 const outline = defineStyle({
   border: "2px solid",
-  borderRadius: 0,
+  borderRadius: "full",
   fontWeight: "semibold",
   color: "black",
   _hover: {
-    color: "green",
+    color: "#fff",
+    bg: "black",
   },
 });
 const solid = defineStyle({

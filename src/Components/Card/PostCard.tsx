@@ -6,6 +6,7 @@ import { BsDot, BsFillPinFill, BsBookmark } from "react-icons/bs";
 import ProfileCardMini from "./ProfileCardMini";
 import { useSetRecoilState } from "recoil";
 import { Article, articleAtom } from "@/Atoms/ArticleAtom";
+import { AddbookMarkIcon } from "../Icons/Icons";
 
 type PostCardProps = {
   showProfile: boolean;
@@ -23,7 +24,7 @@ const PostCard: React.FC<PostCardProps & Article> = (props) => {
         py={"5"}
         px={"5"}
         borderBottom={"1px solid"}
-        borderColor={"whiteAlpha.900"}
+        borderColor={"blackAlpha.200"}
         width={"100%"}
         cursor={"pointer"}
       >
@@ -41,7 +42,7 @@ const PostCard: React.FC<PostCardProps & Article> = (props) => {
                   imageUrl={props.authorImageUrl}
                 />
               )}
-              <PostCardArticleView />
+              <PostCardArticleView {...props} />
             </Flex>
           </Flex>
         )}
@@ -84,7 +85,7 @@ const PostCard: React.FC<PostCardProps & Article> = (props) => {
   );
 };
 
-const PostCardArticleView: React.FC = () => {
+const PostCardArticleView: React.FC<Article> = (props: Article) => {
   return (
     <>
       <Flex align={"center"} justify={"space-between"}>
@@ -103,7 +104,13 @@ const PostCardArticleView: React.FC = () => {
         </Flex>
 
         <Flex>
-          <Icon as={BsBookmark} />
+          <AddbookMarkIcon
+            value=""
+            size="xl"
+            {...props}
+            readtime={""}
+            articleID={props.articleID!}
+          />
         </Flex>
       </Flex>
     </>

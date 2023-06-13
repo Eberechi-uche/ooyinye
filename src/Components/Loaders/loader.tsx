@@ -11,7 +11,7 @@ export const ArticleLoaders: React.FC = () => {
     <>
       <Flex flexDir={"column"} px={"4"} my={"4"}>
         <Flex align={"center"}>
-          <SkeletonCircle size={"5"} />
+          <SkeletonCircle size={"7"} />
         </Flex>
 
         <Flex flexDir={"column"}>
@@ -55,6 +55,18 @@ export const ProfileContentLoadState: React.FC = () => {
           <Skeleton height="10px" my={"2"} />
           <Skeleton height="10px" my={"2"} />
         </Flex>
+      </Flex>
+    </>
+  );
+};
+
+export const commentsLoader: React.FC = () => {
+  return (
+    <>
+      <Flex flexDir={"column"}>
+        <SkeletonCircle size={"7"} my={"1"} />
+        <Skeleton height="10px" my={"1"} />
+        <Skeleton height="10px" my={"1"} />
       </Flex>
     </>
   );

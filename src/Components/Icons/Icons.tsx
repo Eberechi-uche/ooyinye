@@ -6,18 +6,23 @@ import { auth } from "../Firebase/ClientApp";
 import { useSetRecoilState } from "recoil";
 import { authModalState } from "@/Atoms/AuthModalAtom";
 
-import { RiSettings3Line } from "react-icons/ri";
-import { FaCompass, FaRegComment, FaSearch, FaUser } from "react-icons/fa";
+import { RiChat1Line, RiSettings3Line } from "react-icons/ri";
+import { FaSearch } from "react-icons/fa";
 import { RiHeartAddFill } from "react-icons/ri";
-import { BsBookmarkPlus, BsCoin, BsFillBookmarksFill } from "react-icons/bs";
-import { CgNotes } from "react-icons/cg";
-
+import { AiOutlineUser } from "react-icons/ai";
+import { MdOutlineExplore } from "react-icons/md";
+import { HiOutlineBookmark } from "react-icons/hi";
 import { RxDashboard } from "react-icons/rx";
 import { BiHomeAlt } from "react-icons/bi";
-import { GrShare } from "react-icons/gr";
+import { GrArticle, GrShare } from "react-icons/gr";
+import { FcBookmark } from "react-icons/fc";
+import { useArticleData } from "@/Hooks/Blog/useArticleData";
+import { Article } from "@/Atoms/ArticleAtom";
 
 type IconProps = {
-  value: string | undefined;
+  value: string | number | undefined;
+  iconAction?: () => void;
+  size?: string;
 };
 export const ExploreIcon: React.FC<IconProps> = ({ value }) => {
   const route = useRouter();
@@ -29,7 +34,7 @@ export const ExploreIcon: React.FC<IconProps> = ({ value }) => {
           route.push("/explore");
         }}
       >
-        <Icon as={FaCompass} fontSize={"xl"} />
+        <Icon as={MdOutlineExplore} fontSize={"2xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}
@@ -71,7 +76,7 @@ export const BookmarkIcon: React.FC<IconProps> = ({ value }) => {
           route.push("/Bookmarks");
         }}
       >
-        <Icon as={BsFillBookmarksFill} fontSize={"xl"} />
+        <Icon as={FcBookmark} fontSize={"2xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}
@@ -81,7 +86,7 @@ export const BookmarkIcon: React.FC<IconProps> = ({ value }) => {
     </>
   );
 };
-export const DraftIcon: React.FC<IconProps> = ({ value }) => {
+export const DraftIcon: React.FC<IconProps> = (props) => {
   const route = useRouter();
 
   return (
@@ -92,10 +97,10 @@ export const DraftIcon: React.FC<IconProps> = ({ value }) => {
           route.push("/profile/Dashboard/studio");
         }}
       >
-        <Icon as={CgNotes} fontSize={"xl"} />
-        {value && (
+        <Icon as={GrArticle} fontSize={"2xl"} />
+        {props.value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
-            {value}
+            {props.value}
           </Text>
         )}
       </Flex>
@@ -128,7 +133,7 @@ export const ProfileIcon: React.FC<ProfileProps & IconProps> = ({
           route.push(`/profile/@${userID}`);
         }}
       >
-        <Icon as={FaUser} fontSize={"xl"} />
+        <Icon as={AiOutlineUser} fontSize={"xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}
@@ -150,7 +155,7 @@ export const CommentsIcon: React.FC<IconProps & CommentIconProp> = ({
   return (
     <>
       <Flex align={"center"} onClick={onOpen}>
-        <Icon as={FaRegComment} fontSize={"xl"} />
+        <Icon as={RiChat1Line} fontSize={"2xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}
@@ -161,7 +166,7 @@ export const CommentsIcon: React.FC<IconProps & CommentIconProp> = ({
   );
 };
 
-export const LikeIcon: React.FC<IconProps> = ({ value }) => {
+export const LikeIcon: React.FC<IconProps> = ({ value, iconAction }) => {
   const setAuthState = useSetRecoilState(authModalState);
   const [user] = useAuthState(auth);
 
@@ -177,14 +182,32 @@ export const LikeIcon: React.FC<IconProps> = ({ value }) => {
             });
             return;
           }
+          iconAction && iconAction();
         }}
       >
-        <Icon as={RiHeartAddFill} fontSize={"xl"} />
-        {value && (
-          <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
-            {value}
-          </Text>
-        )}
+        {/* <Icon as={RiHeartAddFill} fontSize={"2xl"} /> */}
+
+        <Text
+          fontSize={"xl"}
+          _hover={{
+            transform: `scale(1.3)`,
+            transition: "0.5s ease-in-out",
+          }}
+        >
+          &#128079;&#127997;
+        </Text>
+
+        <Text
+          // display={{ base: "none", lg: "flex" }}
+          ml={"3"}
+          border={"1px solid"}
+          borderColor={"gray.300"}
+          borderRadius={"full"}
+          fontSize={"sm"}
+          px={"2"}
+        >
+          {value}
+        </Text>
       </Flex>
     </>
   );
@@ -241,22 +264,22 @@ export const ProfileSetting: React.FC<IconProps> = ({ value }) => {
   );
 };
 
-export const SupportIcon: React.FC<IconProps> = ({ value }) => {
-  const route = useRouter();
+// export const SupportIcon: React.FC<IconProps> = ({ value }) => {
+//   const route = useRouter();
 
-  return (
-    <>
-      <Flex align={"center"}>
-        <Icon as={BsCoin} fontSize={"3xl"} />
-        {value && (
-          <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
-            {value}
-          </Text>
-        )}
-      </Flex>
-    </>
-  );
-};
+//   return (
+//     <>
+//       <Flex align={"center"}>
+//         <Icon as={BsCoin} fontSize={"3xl"} />
+//         {value && (
+//           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
+//             {value}
+//           </Text>
+//         )}
+//       </Flex>
+//     </>
+//   );
+// };
 export const HomeIcon: React.FC<IconProps> = ({ value }) => {
   const route = useRouter();
   return (
@@ -278,14 +301,33 @@ export const HomeIcon: React.FC<IconProps> = ({ value }) => {
   );
 };
 
-export const AddbookMarkIcon: React.FC<IconProps> = ({ value }) => {
+export const AddbookMarkIcon: React.FC<IconProps & Article> = (props) => {
+  const setAuthState = useSetRecoilState(authModalState);
+  const [user] = useAuthState(auth);
+  const { saveArticle } = useArticleData();
   return (
     <>
-      <Flex align={"center"}>
-        <Icon as={BsBookmarkPlus} fontSize={"xl"} />
-        {value && (
+      <Flex
+        align={"center"}
+        onClick={() => {
+          if (!user) {
+            setAuthState({
+              view: "Login",
+              open: true,
+            });
+            return;
+          }
+          saveArticle(props);
+        }}
+      >
+        <Icon
+          as={HiOutlineBookmark}
+          fontSize={props.size}
+          color={"orange.600"}
+        />
+        {props.value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
-            {value}
+            {props.value}
           </Text>
         )}
       </Flex>

@@ -24,7 +24,8 @@ export default function Home() {
     setLoading(true);
     const querrySnapshot = await getDocs(collection(firestore, "Articles"));
     const articles = querrySnapshot.docs.map((doc) => ({
-      ...doc.data(),
+      articleID: doc.id,
+      ...(doc.data() as Article),
     }));
     setArticleList(articles as Article[]);
     setLoading(false);
@@ -35,7 +36,6 @@ export default function Home() {
       fetchHomeArticle();
       return;
     }
-    console.log("i ran");
   }, [user]);
   return (
     <>
@@ -67,8 +67,8 @@ export default function Home() {
                 </>
               )}
               {!loading &&
-                articleList.map((article, index) => (
-                  <Flex key={index}>
+                articleList.map((article) => (
+                  <Flex key={article.articleID}>
                     <PostCard
                       articleSlug={article.articleSlug}
                       articleTitle={article.articleTitle}
@@ -79,6 +79,8 @@ export default function Home() {
                       articleDesc={article.articleDesc}
                       showProfile={true}
                       readtime={article.readtime}
+                      likes={article.likes}
+                      articleID={article.articleID}
                     />
                   </Flex>
                 ))}

@@ -21,13 +21,13 @@ const ProfileCardMini: React.FC<ProfileCardMiniProps> = (props) => {
         <Flex>
           <Image
             src={props.imageUrl}
-            boxSize={"20px"}
+            boxSize={"25px"}
             objectFit={"cover"}
             borderRadius={"full"}
             mr={"2"}
             alt={"profile"}
           />
-          <Text fontWeight={"400"}>{props.displayName}</Text>
+          <Text fontWeight={"600"}>{props.displayName}</Text>
         </Flex>
       </Flex>
     </>

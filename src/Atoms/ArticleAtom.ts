@@ -14,6 +14,8 @@ export type Article = {
   bgColor?: string;
   likes?: number;
   comments?: number;
+  savedID?: number;
+  articleID?: string;
 };
 
 const defaultArticleState: Article = {

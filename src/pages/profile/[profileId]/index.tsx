@@ -9,7 +9,6 @@ import { ProfileContentLoadState } from "@/Components/Loaders/loader";
 
 const Profile: React.FC = () => {
   const { profileId } = useRouter().query;
-  console.log(profileId);
   const {
     loading,
     profileArticles,

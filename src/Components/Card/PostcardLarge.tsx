@@ -3,12 +3,14 @@ import { useRouter } from "next/router";
 import { BsBookmark } from "react-icons/bs";
 import CardProfileMini, { ProfileCardMiniProps } from "./ProfileCardMini";
 import { Draft } from "@/Atoms/DraftAtom";
+import { AddbookMarkIcon } from "../Icons/Icons";
+import { Article } from "@/Atoms/ArticleAtom";
 
 type PostcardLargeProps = {
   showProfile: boolean;
 };
 const PostcardLarge: React.FC<
-  PostcardLargeProps & Draft & ProfileCardMiniProps
+  PostcardLargeProps & Article & ProfileCardMiniProps
 > = (props) => {
   const route = useRouter();
   return (
@@ -39,7 +41,7 @@ const PostcardLarge: React.FC<
           flexDir={"column"}
           my={"1"}
           onClick={() => {
-            route.push(`/article/${"@eb3rechi"}/${props.articleSlug}`);
+            route.push(`/article/${props.authorId}/${props.articleSlug}`);
           }}
         >
           <Text
@@ -74,7 +76,7 @@ const PostcardLarge: React.FC<
                 10min Read
               </Text>
             </Flex>
-            <Icon as={BsBookmark} />
+            <AddbookMarkIcon value="" {...(props as Article)} />
           </Flex>
         </Flex>
       </Flex>
