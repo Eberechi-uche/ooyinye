@@ -1,12 +1,6 @@
 import { Flex } from "@chakra-ui/react";
 
-import {
-  CommentsIcon,
-  HomeIcon,
-  LikeIcon,
-  ShareIcon,
-  SupportIcon,
-} from "../Icons/Icons";
+import { CommentsIcon, HomeIcon, ShareIcon } from "../Icons/Icons";
 type BlogNavFooterProp = {
   onOpen: () => void;
 };

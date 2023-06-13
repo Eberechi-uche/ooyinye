@@ -38,7 +38,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { PageContent } from "@/Components/Loaders/loader";
 import useGetProfileDetails from "@/Hooks/DataFetching/useGetProfileInfo";
 import { useRecoilState } from "recoil";
-import { Article, articleAtom } from "@/Atoms/ArticleAtom";
+import { articleAtom } from "@/Atoms/ArticleAtom";
 import { Draft } from "@/Atoms/DraftAtom";
 import { useArticleData } from "@/Hooks/Blog/useArticleData";
 

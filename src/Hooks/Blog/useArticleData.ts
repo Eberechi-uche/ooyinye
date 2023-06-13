@@ -2,7 +2,6 @@ import { Article, articleAtom } from "@/Atoms/ArticleAtom";
 import { authUserAtom } from "@/Atoms/AuthUserAtom";
 import { CommentData } from "@/Components/Comments/Comment";
 import { auth, firestore } from "@/Components/Firebase/ClientApp";
-import { AiFillAlert } from "react-icons/ai";
 import { useToast } from "@chakra-ui/react";
 import {
   addDoc,
