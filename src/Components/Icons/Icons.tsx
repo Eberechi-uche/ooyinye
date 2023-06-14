@@ -309,7 +309,8 @@ export const AddbookMarkIcon: React.FC<IconProps & Article> = (props) => {
     <>
       <Flex
         align={"center"}
-        onClick={() => {
+        onClick={(e: React.MouseEvent) => {
+          e.stopPropagation();
           if (!user) {
             setAuthState({
               view: "Login",

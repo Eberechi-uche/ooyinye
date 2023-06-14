@@ -29,6 +29,7 @@ const PostcardLarge: React.FC<
             width={"100%"}
             alt={"user-profile"}
             borderRadius={"2px"}
+            loading={"lazy"}
           />
         </Flex>
         <CardProfileMini
@@ -64,9 +65,6 @@ const PostcardLarge: React.FC<
             my={"2"}
           >
             <Flex>
-              {/* <Text fontSize={"xs"} my={"2"} textTransform={"uppercase"}>
-                26 may, 2022
-              </Text> */}
               <Text
                 display={"flex"}
                 alignItems={"center"}

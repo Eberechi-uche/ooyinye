@@ -78,6 +78,7 @@ const PostCard: React.FC<PostCardProps & Article> = (props) => {
             height={{ base: "50px", md: "70px" }}
             objectFit={"cover"}
             alignSelf={"flex-start"}
+            loading={"lazy"}
           />
         </Flex>
       </Flex>

@@ -109,15 +109,46 @@ const Post: React.FC = () => {
   return (
     <>
       <Head>
-        <meta property="og:title" content={article.articleTitle.slice(0, 60)} />
-        <meta property="og:url" content={route.asPath} />
-        <meta property="og:image" content={article.articleThumbnail} />
-        <meta property="og:image:width" content={"1200"} />
-        <meta property="og:image:height" content={"630"} />
-        <meta property="og:type" content="article" />
+        <title key={"title"}> {article.articleTitle.slice(0, 60)}</title>
+        <meta
+          property="title"
+          content={article.articleTitle.slice(0, 60)}
+          key={"title"}
+        />
+        <meta property="url" content={route.asPath} key={"url"} />
+        <meta
+          property="image"
+          content={article.articleThumbnail}
+          key={"image"}
+        />
+        <meta property="image:width" content={"1200"} key={"imageW"} />
+        <meta property="image:height" content={"630"} key={"imageH"} />
+        <meta property="type" content="article" key={"type"} />
+        <meta
+          property="description"
+          content={article.articleDesc.slice(0, 100)}
+          key={"desc"}
+        />
+      </Head>
+      <Head>
+        <meta
+          property="og:title"
+          content={article.articleTitle.slice(0, 60)}
+          key={"title"}
+        />
+        <meta property="og:url" content={route.asPath} key={"url"} />
+        <meta
+          property="og:image"
+          content={article.articleThumbnail}
+          key={"image"}
+        />
+        <meta property="og:image:width" content={"1200"} key={"imageW"} />
+        <meta property="og:image:height" content={"630"} key={"imageH"} />
+        <meta property="og:type" content="article" key={"type"} />
         <meta
           property="og:description"
           content={article.articleDesc.slice(0, 100)}
+          key={"desc"}
         />
       </Head>
       <SingleContentLayout>
