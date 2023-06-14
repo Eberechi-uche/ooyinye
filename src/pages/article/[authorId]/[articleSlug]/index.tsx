@@ -109,11 +109,6 @@ const Post: React.FC = () => {
   return (
     <>
       <Head>
-        {/* twitter car */}
-        {/* <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@whitep4nth3r" />
-        <meta name="twitter:creator" content="@whitep4nth3r" /> */}
-        {/* OG base data */}
         <meta property="og:url" content={route.asPath} />
         <meta property="og:title" content={article.articleTitle.slice(0, 60)} />
         <meta
@@ -122,22 +117,17 @@ const Post: React.FC = () => {
         />
         <meta property="og:site_name" content="https://ooyinye.vercel.app/" />
         <meta property="og:locale" content="en_GB" />
-        {/* OG image data */}
         <meta property="og:image" content={article.articleThumbnail} />
         <meta property="og:image:alt" content={article.articleTitle} />
         <meta property="og:image:width" content="1140" />
         <meta property="og:image:height" content="600" />
-        {/* extra metadata for Slack unfurls */}
         <meta name="twitter:label1" content="Written by" />
         <meta name="twitter:data1" content={article.authorDN} />
         <meta name="twitter:label2" content="Reading time" />
         //! look into this
         <meta name="twitter:data2" content="3 minutes" />
-        {/* extra metadata — unknown support */}
         <meta property="og:type" content="article" />
         <meta property="article:section" content="introduction" />
-        {/* <meta property="article:tag" content="CSS" />
-        <meta property="article:tag" content="Snippets" /> */}
       </Head>
       <SingleContentLayout>
         <Flex pos={"relative"} flexDir={"column"} width={"100%"}>
