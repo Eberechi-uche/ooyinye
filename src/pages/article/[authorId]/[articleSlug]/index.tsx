@@ -130,7 +130,7 @@ const Post: React.FC = () => {
           key={"desc"}
         />
       </Head>
-      <Head>
+      {/* <Head>
         <meta
           property="og:title"
           content={article.articleTitle.slice(0, 60)}
@@ -150,7 +150,7 @@ const Post: React.FC = () => {
           content={article.articleDesc.slice(0, 100)}
           key={"desc"}
         />
-      </Head>
+      </Head> */}
       <SingleContentLayout>
         <Flex pos={"relative"} flexDir={"column"} width={"100%"}>
           {loading && <PageContent />}
