@@ -106,16 +106,22 @@ const Post: React.FC = () => {
   }, [articleSlug]);
 
   // console.log(route.asPath);
+  {
+    /* <meta property="og:url" content={route.asPath} /> */
+  }
+  {
+    /* <meta property="og:title" content={article.articleTitle.slice(0, 60)} /> */
+  }
+  {
+    /* <meta
+          property="og:description"
+          content={article.articleDesc.slice(0, 60)}
+        /> */
+  }
 
   return (
     <>
       <Head>
-        {/* <meta property="og:url" content={route.asPath} /> */}
-        {/* <meta property="og:title" content={article.articleTitle.slice(0, 60)} /> */}
-        {/* <meta
-          property="og:description"
-          content={article.articleDesc.slice(0, 60)}
-        /> */}
         <meta property="og:site_name" content="https://ooyinye.vercel.app/" />
         <meta property="og:locale" content="en_GB" />
         <meta property="og:image" content={article.articleThumbnail} />
@@ -125,7 +131,6 @@ const Post: React.FC = () => {
         <meta name="twitter:label1" content="Written by" />
         <meta name="twitter:data1" content={article.authorDN} />
         <meta name="twitter:label2" content="Reading time" />
-        //! look into this
         <meta name="twitter:data2" content="3 minutes" />
         <meta property="og:type" content="article" />
         <meta property="article:section" content="introduction" />
