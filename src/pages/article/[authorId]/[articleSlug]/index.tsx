@@ -109,20 +109,27 @@ const Post: React.FC = () => {
   return (
     <>
       <Head>
-        <meta property="og:url" content={route.asPath} />
-        <meta property="og:title" content={article.articleTitle.slice(0, 60)} />
+        <title> {currentArticle.articleTitle}</title>
+        <meta name="image" content={currentArticle.articleThumbnail} />
+        <meta name="image:alt" content={currentArticle.articleTitle} />
+        <meta name="image:width" content="1140" />
+        <meta name="image:height" content="600" />
+        <meta name="description" content={currentArticle.articleDesc} />
         <meta
-          property="og:description"
-          content={article.articleDesc.slice(0, 60)}
+          name="description"
+          content="spark your curiosity, ignite your passion, and open doors to a world of inspiration and knowledge."
         />
+        <meta property="og:url" content={route.asPath} />
+        <meta property="og:title" content={currentArticle.articleTitle} />
+        <meta property="og:description" content={article.articleDesc} />
         <meta property="og:site_name" content="https://ooyinye.vercel.app/" />
         <meta property="og:locale" content="en_GB" />
-        <meta property="og:image" content={article.articleThumbnail} />
-        <meta property="og:image:alt" content={article.articleTitle} />
+        <meta property="og:image" content={currentArticle.articleThumbnail} />
+        <meta property="og:image:alt" content={currentArticle.articleTitle} />
         <meta property="og:image:width" content="1140" />
         <meta property="og:image:height" content="600" />
         <meta name="twitter:label1" content="Written by" />
-        <meta name="twitter:data1" content={article.authorDN} />
+        <meta name="twitter:data1" content={currentArticle.authorDN} />
         <meta name="twitter:label2" content="Reading time" />
         <meta name="twitter:data2" content="3 minutes" />
         <meta property="og:type" content="article" />

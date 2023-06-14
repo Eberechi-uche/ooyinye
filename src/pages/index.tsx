@@ -40,9 +40,23 @@ export default function Home() {
   return (
     <>
       <Head>
+        <title> Ooyinye</title>
+        <meta name="image" content="/headerHomeImage.gif" />
+        <meta name="image:alt" content="Loading website for Ooyinye" />
+        <meta name="image:width" content="1140" />
+        <meta name="image:height" content="600" />
+        <meta
+          name="description"
+          content="spark your curiosity, ignite your passion, and open doors to a world of inspiration and knowledge."
+        />
+        <meta
+          name="description"
+          content="spark your curiosity, ignite your passion, and open doors to a world of inspiration and knowledge."
+        />
+
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="Ooyinye" />
-        <meta property="og:url" content={"https://ooyinye.vercel.app/"} />
+        <meta name="url" content={"https://ooyinye.vercel.app/"} />
         <meta
           property="og:title"
           content="Your Gateway to inspiration and knowledge"
