@@ -52,12 +52,12 @@ export default function Home() {
         <meta name="image:height" content={"630"} key={"imageH"} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel={"img"} href="/headerHomeImage.gif" /> */}
-        {/* <!-- twitter card --> */}
+        {/* twitter card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="Ooyinye" />
         {/* <meta name="twitter:creator" content="@whitep4nth3r" /> */}
 
-        {/* <!-- OG base data --> */}
+        {/* OG base data */}
         <meta property="og:url" content={route.asPath} />
         <meta
           property="og:title"
@@ -70,18 +70,17 @@ export default function Home() {
         <meta property="og:site_name" content="https://ooyinye.vercel.app/" />
         <meta property="og:locale" content="en_GB" />
 
-        {/* <!-- OG image data --> */}
+        {/* OG image data */}
         <meta property="og:image" content="/headerHomeImage.gif" />
         <meta property="og:image:alt" content="Loading website for Ooyinye" />
         <meta property="og:image:width" content="1140" />
         <meta property="og:image:height" content="600" />
 
-        {/* <!-- extra metadata for Slack unfurls --> */}
+        {/* extra metadata for Slack unfurls */}
         <meta name="twitter:label1" content="Ooyinye" />
         <meta name="twitter:data1" content="Connect , grow , explore" />
 
-        {/* 
-<!-- extra metadata — unknown support --> */}
+        {/* extra metadata — unknown support */}
         <meta property="og:type" content="Website" />
         <meta property="article:section" content="Home" />
       </Head>
