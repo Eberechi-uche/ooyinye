@@ -41,6 +41,7 @@ import { useRecoilState } from "recoil";
 import { articleAtom } from "@/Atoms/ArticleAtom";
 import { Draft } from "@/Atoms/DraftAtom";
 import { useArticleData } from "@/Hooks/Blog/useArticleData";
+import { title } from "process";
 
 const Post: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -104,18 +105,23 @@ const Post: React.FC = () => {
     getProfileDetails();
     getProfileArticles(true);
   }, [articleSlug]);
+  let metatTitle = currentArticle.articleTitle;
+  let metaDes = currentArticle.articleDesc;
+  let metaUrl = route.asPath;
+  let metaThumbnail = currentArticle.articleThumbnail;
+  let metaAuthor = currentArticle.authorDN;
   // console.log(route.asPath);
 
   return (
     <>
       <Head>
-        <title> {currentArticle.articleTitle}</title>
-        <meta name="image" content={currentArticle.articleThumbnail} />
-        <meta name="image:alt" content={currentArticle.articleTitle} />
+        <title> {metatTitle}</title>
+        <meta name="image" content={metaThumbnail} />
+        <meta name="image:alt" content={metatTitle} />
         <meta name="image:width" content="1140" />
         <meta name="image:height" content="600" />
-        <meta name="description" content={currentArticle.articleDesc} />
-        <meta name="url" content={route.asPath} />
+        <meta name="description" content={metaDes} />
+        <meta name="url" content={metaUrl} />
         <meta name="type" content="article" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="Ooyinye" />
@@ -123,17 +129,17 @@ const Post: React.FC = () => {
           name="description"
           content="spark your curiosity, ignite your passion, and open doors to a world of inspiration and knowledge."
         />
-        <meta property="og:url" content={route.asPath} />
-        <meta property="og:title" content={currentArticle.articleTitle} />
-        <meta property="og:description" content={article.articleDesc} />
+        <meta property="og:url" content={metaUrl} />
+        <meta property="og:title" content={metatTitle} />
+        <meta property="og:description" content={metaDes} />
         <meta property="og:site_name" content="https://ooyinye.vercel.app/" />
         <meta property="og:locale" content="en_GB" />
-        <meta property="og:image" content={currentArticle.articleThumbnail} />
-        <meta property="og:image:alt" content={currentArticle.articleTitle} />
+        <meta property="og:image" content={metaThumbnail} />
+        <meta property="og:image:alt" content={metatTitle} />
         <meta property="og:image:width" content="1140" />
         <meta property="og:image:height" content="600" />
         <meta name="twitter:label1" content="Written by" />
-        <meta name="twitter:data1" content={currentArticle.authorDN} />
+        <meta name="twitter:data1" content={metaAuthor} />
         <meta name="twitter:label2" content="Reading time" />
         <meta name="twitter:data2" content="3 minutes" />
         <meta property="og:type" content="article" />
