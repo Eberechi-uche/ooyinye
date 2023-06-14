@@ -13,7 +13,7 @@ import {
   Image,
   SimpleGrid,
 } from "@chakra-ui/react";
-
+import Head from "next/head";
 import BlogPostHeader from "@/Components/Headers/BlogPost.Header";
 import BlogParser from "@/Components/BlogParser/BlogParser";
 
@@ -56,7 +56,8 @@ const Post: React.FC = () => {
   });
   const [user] = useAuthState(auth);
   const [loading, setLoading] = useState(true);
-  const { authorId, articleSlug } = useRouter().query;
+  const route = useRouter();
+  const { authorId, articleSlug } = route.query;
   const {
     profileArticles,
     profileDetails,
@@ -103,9 +104,22 @@ const Post: React.FC = () => {
     getProfileDetails();
     getProfileArticles(true);
   }, [articleSlug]);
+  // console.log(route.asPath);
 
   return (
     <>
+      <Head>
+        <meta property="og:title" content={article.articleTitle.slice(0, 60)} />
+        <meta property="og:url" content={route.asPath} />
+        <meta property="og:image" content={article.articleThumbnail} />
+        <meta property="og:image:width" content={"1200"} />
+        <meta property="og:image:height" content={"630"} />
+        <meta property="og:type" content="article" />
+        <meta
+          property="og:description"
+          content={article.articleDesc.slice(0, 100)}
+        />
+      </Head>
       <SingleContentLayout>
         <Flex pos={"relative"} flexDir={"column"} width={"100%"}>
           {loading && <PageContent />}
