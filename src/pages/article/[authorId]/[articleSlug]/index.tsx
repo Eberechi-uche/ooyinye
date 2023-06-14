@@ -115,6 +115,10 @@ const Post: React.FC = () => {
         <meta name="image:width" content="1140" />
         <meta name="image:height" content="600" />
         <meta name="description" content={currentArticle.articleDesc} />
+        <meta name="url" content={route.asPath} />
+        <meta name="type" content="article" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="Ooyinye" />
         <meta
           name="description"
           content="spark your curiosity, ignite your passion, and open doors to a world of inspiration and knowledge."
