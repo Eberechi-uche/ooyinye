@@ -14,13 +14,11 @@ import { collection, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { ArticleLoaders } from "@/Components/Loaders/loader";
 import { Article } from "@/Atoms/ArticleAtom";
-import { useRouter } from "next/router";
 
 export default function Home() {
   const [user] = useAuthState(auth);
   const [articleList, setArticleList] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
-  const route = useRouter();
 
   const fetchHomeArticle = async () => {
     setLoading(true);
@@ -44,8 +42,7 @@ export default function Home() {
       <Head>
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="Ooyinye" />
-
-        <meta property="og:url" content={route.asPath} />
+        <meta property="og:url" content={"https://ooyinye.vercel.app/"} />
         <meta
           property="og:title"
           content="Your Gateway to inspiration and knowledge"
@@ -56,15 +53,12 @@ export default function Home() {
         />
         <meta property="og:site_name" content="https://ooyinye.vercel.app/" />
         <meta property="og:locale" content="en_GB" />
-
         <meta property="og:image" content="/headerHomeImage.gif" />
         <meta property="og:image:alt" content="Loading website for Ooyinye" />
         <meta property="og:image:width" content="1140" />
         <meta property="og:image:height" content="600" />
-
         <meta name="twitter:label1" content="Ooyinye" />
         <meta name="twitter:data1" content="Connect , grow , explore" />
-
         <meta property="og:type" content="Website" />
         <meta property="article:section" content="Home" />
       </Head>
