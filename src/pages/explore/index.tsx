@@ -8,11 +8,12 @@ const Explore: React.FC = () => {
       <Flex
         width={"100vw"}
         bgImage={"url('/explore.png')"}
-        bgPos={"top"}
-        bgRepeat={"no-repeat"}
+        backgroundSize={"cover"}
         flexDir={"column"}
         align={"center"}
-        height={"100vh"}
+        bgPos={"center"}
+        // bg={"blackAlpha.900"}
+        color={"#fff"}
       >
         <Flex
           flexDir={"column"}

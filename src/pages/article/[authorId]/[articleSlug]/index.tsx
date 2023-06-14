@@ -111,21 +111,21 @@ const Post: React.FC = () => {
       <Head>
         <title key={"title"}> {article.articleTitle.slice(0, 60)}</title>
         <meta
-          property="title"
+          name="title"
           content={article.articleTitle.slice(0, 60)}
           key={"title"}
         />
-        <meta property="url" content={route.asPath} key={"url"} />
+        <meta name="url" content={route.asPath} key={"url"} />
         <meta
           property="image"
           content={article.articleThumbnail}
           key={"image"}
         />
-        <meta property="image:width" content={"1200"} key={"imageW"} />
-        <meta property="image:height" content={"630"} key={"imageH"} />
-        <meta property="type" content="article" key={"type"} />
+        <meta name="image:width" content={"1200"} key={"imageW"} />
+        <meta name="image:height" content={"630"} key={"imageH"} />
+        <meta name="type" content="article" key={"type"} />
         <meta
-          property="description"
+          name="description"
           content={article.articleDesc.slice(0, 100)}
           key={"desc"}
         />

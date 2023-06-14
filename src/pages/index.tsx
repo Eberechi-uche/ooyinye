@@ -46,7 +46,7 @@ export default function Home() {
           content="Your Gateway to inspiration and knowledge"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="gif" href="/headerHomeImage.gif" />
+        <link rel={"img"} href="/headerHomeImage.gif" />
       </Head>
       {!user && <HomePageHeader />}
 
