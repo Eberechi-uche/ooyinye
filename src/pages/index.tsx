@@ -45,6 +45,9 @@ export default function Home() {
           name="description"
           content="Your Gateway to inspiration and knowledge"
         />
+        <meta property="image" content={"/headerHomeImage.gif"} key={"image"} />
+        <meta name="image:width" content={"1200"} key={"imageW"} />
+        <meta name="image:height" content={"630"} key={"imageH"} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel={"img"} href="/headerHomeImage.gif" />
       </Head>
