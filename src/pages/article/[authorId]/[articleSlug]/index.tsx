@@ -104,24 +104,17 @@ const Post: React.FC = () => {
     getProfileDetails();
     getProfileArticles(true);
   }, [articleSlug]);
-
   // console.log(route.asPath);
-  {
-    /* <meta property="og:url" content={route.asPath} /> */
-  }
-  {
-    /* <meta property="og:title" content={article.articleTitle.slice(0, 60)} /> */
-  }
-  {
-    /* <meta
-          property="og:description"
-          content={article.articleDesc.slice(0, 60)}
-        /> */
-  }
 
   return (
     <>
       <Head>
+        <meta property="og:url" content={route.asPath} />
+        <meta property="og:title" content={article.articleTitle.slice(0, 60)} />
+        <meta
+          property="og:description"
+          content={article.articleDesc.slice(0, 60)}
+        />
         <meta property="og:site_name" content="https://ooyinye.vercel.app/" />
         <meta property="og:locale" content="en_GB" />
         <meta property="og:image" content={article.articleThumbnail} />
