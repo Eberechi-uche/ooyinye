@@ -109,47 +109,35 @@ const Post: React.FC = () => {
   return (
     <>
       <Head>
-        <title key={"title"}> {article.articleTitle.slice(0, 60)}</title>
-        <meta
-          name="title"
-          content={article.articleTitle.slice(0, 60)}
-          key={"title"}
-        />
-        <meta name="url" content={route.asPath} key={"url"} />
-        <meta
-          property="image"
-          content={article.articleThumbnail}
-          key={"image"}
-        />
-        <meta name="image:width" content={"1200"} key={"imageW"} />
-        <meta name="image:height" content={"630"} key={"imageH"} />
-        <meta name="type" content="article" key={"type"} />
-        <meta
-          name="description"
-          content={article.articleDesc.slice(0, 100)}
-          key={"desc"}
-        />
-      </Head>
-      <Head>
-        <meta
-          property="og:title"
-          content={article.articleTitle.slice(0, 60)}
-          key={"title"}
-        />
-        <meta property="og:url" content={route.asPath} key={"url"} />
-        <meta
-          property="og:image"
-          content={article.articleThumbnail}
-          key={"image"}
-        />
-        <meta property="og:image:width" content={"1200"} key={"imageW"} />
-        <meta property="og:image:height" content={"630"} key={"imageH"} />
-        <meta property="og:type" content="article" key={"type"} />
+        {/* <!-- twitter card --> */}
+        {/* <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@whitep4nth3r" />
+        <meta name="twitter:creator" content="@whitep4nth3r" /> */}
+        {/* <!-- OG base data --> */}
+        <meta property="og:url" content={route.asPath} />
+        <meta property="og:title" content={article.articleTitle.slice(0, 60)} />
         <meta
           property="og:description"
-          content={article.articleDesc.slice(0, 100)}
-          key={"desc"}
+          content={article.articleDesc.slice(0, 60)}
         />
+        <meta property="og:site_name" content="https://ooyinye.vercel.app/" />
+        <meta property="og:locale" content="en_GB" />
+        {/* <!-- OG image data --> */}
+        <meta property="og:image" content={article.articleThumbnail} />
+        <meta property="og:image:alt" content={article.articleTitle} />
+        <meta property="og:image:width" content="1140" />
+        <meta property="og:image:height" content="600" />
+        {/* <!-- extra metadata for Slack unfurls --> */}
+        <meta name="twitter:label1" content="Written by" />
+        <meta name="twitter:data1" content={article.authorDN} />
+        <meta name="twitter:label2" content="Reading time" />
+        //! look into this
+        <meta name="twitter:data2" content="3 minutes" />
+        {/* <!-- extra metadata — unknown support --> */}
+        <meta property="og:type" content="article" />
+        <meta property="article:section" content="introduction" />
+        {/* <meta property="article:tag" content="CSS" />
+        <meta property="article:tag" content="Snippets" /> */}
       </Head>
       <SingleContentLayout>
         <Flex pos={"relative"} flexDir={"column"} width={"100%"}>
