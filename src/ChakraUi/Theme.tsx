@@ -15,8 +15,8 @@ const Theme = extendTheme({
     },
   },
   fonts: {
-    heading: `'Urbanist Variable', sans-serif`,
-    body: `'Urbanist Variable', sans-serif`,
+    heading: `'Montserrat Variable', sans-serif;`,
+    body: `'Montserrat Variable', sans-serif;`,
   },
   components: {
     Input: inputTheme,

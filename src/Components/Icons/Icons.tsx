@@ -7,7 +7,8 @@ import { useSetRecoilState } from "recoil";
 import { authModalState } from "@/Atoms/AuthModalAtom";
 
 import { RiChat1Line, RiSettings3Line } from "react-icons/ri";
-import { FaSearch } from "react-icons/fa";
+import { FaHandsWash, FaSearch } from "react-icons/fa";
+
 import { RiHeartAddFill } from "react-icons/ri";
 import { AiOutlineUser } from "react-icons/ai";
 import { MdOutlineExplore } from "react-icons/md";
@@ -185,17 +186,7 @@ export const LikeIcon: React.FC<IconProps> = ({ value, iconAction }) => {
           iconAction && iconAction();
         }}
       >
-        {/* <Icon as={RiHeartAddFill} fontSize={"2xl"} /> */}
-
-        <Text
-          fontSize={"xl"}
-          _hover={{
-            transform: `scale(1.3)`,
-            transition: "0.5s ease-in-out",
-          }}
-        >
-          &#128079;&#127997;
-        </Text>
+        <Icon as={FaHandsWash} fontSize={"2xl"} />
 
         <Text
           // display={{ base: "none", lg: "flex" }}

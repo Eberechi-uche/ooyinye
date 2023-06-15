@@ -31,6 +31,8 @@ const HomeNavFooter: React.FC = () => {
         position={"fixed"}
         bottom={"0"}
         display={{ base: "flex", md: "none" }}
+        borderTop={"1px solid"}
+        borderColor={"gray.300"}
       >
         <ExploreIcon value={undefined} />
         <SearchIcon value={undefined} />

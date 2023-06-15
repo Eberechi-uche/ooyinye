@@ -4,6 +4,7 @@ import { useSetRecoilState } from "recoil";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { auth } from "../Firebase/ClientApp";
 import { useState } from "react";
+import { FIREBASE_ERROR } from "../Firebase/error";
 
 const Login: React.FC = () => {
   const setAuthViewState = useSetRecoilState(authModalState);
@@ -11,7 +12,7 @@ const Login: React.FC = () => {
     Email: "",
     password: "",
   });
-  const [signInWithEmailAndPassword, , loading] =
+  const [signInWithEmailAndPassword, , loading, error] =
     useSignInWithEmailAndPassword(auth);
 
   const handleUserInput = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -60,6 +61,11 @@ const Login: React.FC = () => {
           placeholder="Password"
           onChange={handleUserInput}
         />
+        {error && (
+          <Text color={"red.700"} fontSize={"sm"} pb={"2"}>
+            {FIREBASE_ERROR[error.message as keyof typeof FIREBASE_ERROR]}
+          </Text>
+        )}
         {loading ? (
           <Spinner size={{ base: "xs", md: "sm" }} />
         ) : (

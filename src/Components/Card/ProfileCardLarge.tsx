@@ -60,6 +60,8 @@ const ProfileCardLarge: React.FC<ProfileCardLargeProps> = ({
         onClick={() => {
           route.push(`/profile/${userId}`);
         }}
+        color={"blackAlpha.800"}
+        fontFamily={"monospace"}
       >
         <Flex justify={"space-between"} width={"100%"}>
           <Flex width={"100%"} align={"center"}>
@@ -71,7 +73,9 @@ const ProfileCardLarge: React.FC<ProfileCardLargeProps> = ({
               mr={"2"}
               alt={"profile"}
             />
-            <Text fontWeight={"500"}> {userDN}</Text>
+            <Text fontWeight={"900"} textTransform={"uppercase"}>
+              {userDN}
+            </Text>
           </Flex>
           {userId !== `@${user?.email?.split("@")[0]}` && (
             <NotAuthUserAction

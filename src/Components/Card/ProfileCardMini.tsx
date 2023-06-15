@@ -5,9 +5,11 @@ export type ProfileCardMiniProps = {
   displayName: string;
   imageUrl: string;
   profileId: string;
+  size?: string;
 };
 const ProfileCardMini: React.FC<ProfileCardMiniProps> = (props) => {
   const route = useRouter();
+
   return (
     <>
       <Flex
@@ -18,16 +20,24 @@ const ProfileCardMini: React.FC<ProfileCardMiniProps> = (props) => {
           route.push(`/profile/${props.profileId}`);
         }}
       >
-        <Flex>
+        <Flex align={"center"}>
           <Image
             src={props.imageUrl}
-            boxSize={"25px"}
+            boxSize={props.size ? props.size : "20px"}
             objectFit={"cover"}
             borderRadius={"full"}
             mr={"2"}
             alt={"profile"}
           />
-          <Text fontWeight={"600"}>{props.displayName}</Text>
+          <Text
+            fontWeight={"800"}
+            fontSize={props.size ? "md" : "xs"}
+            color={"blackAlpha.700"}
+            textTransform={"uppercase"}
+            fontFamily={"monospace"}
+          >
+            {props.displayName}
+          </Text>
         </Flex>
       </Flex>
     </>

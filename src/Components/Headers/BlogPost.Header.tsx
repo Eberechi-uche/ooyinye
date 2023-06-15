@@ -14,43 +14,41 @@ const BlogPostHeader: React.FC<BlogPostHeaderProps & ProfileCardMiniProps> = (
         width={"100%"}
         flexDir={"column"}
         p={"2"}
-        minHeight={{ base: "100vh", md: "85vh" }}
-        bg={"blackAlpha.900"}
-        align={"center"}
-        textAlign={"center"}
-        justify={"space-between"}
-        color={"gray.100"}
+        textAlign={"left"}
+        mb={"5"}
+        alignSelf={"center"}
+        borderBottom={"1px solid"}
+        borderColor={"gray.200"}
       >
-        <Flex flexDir={"column"} align={"center"} mt={"20%"}>
-          <Heading fontWeight={"700"} fontSize={"2xl"}>
+        <Flex flexDir={"column"}>
+          <Heading fontWeight={"900"} fontSize={"4xl"}>
             {props.articleTitle}
           </Heading>
-          <Flex
-            width={{ base: "100%", md: "80%", lg: "80%" }}
-            color={"gray.300"}
-            my={"5"}
-            fontWeight={"700"}
-          >
+          <Flex color={"blackAlpha.600"} my={"5"} fontWeight={"700"}>
             <Text>{props.articleDesc}</Text>
           </Flex>
           <Flex
-            align={"center"}
             justify={"space-evenly"}
             mt={"2"}
             flexDir={"column"}
             fontSize={"xs"}
           >
-            <Text> by</Text>
             <ProfileCardMini
               profileId={props.profileId}
               imageUrl={props.imageUrl}
               displayName={props.displayName}
+              size="50px"
             />
-            <Text> 26 may 2023</Text>
           </Flex>
         </Flex>
 
-        <Icon as={CiCircleChevDown} fontSize={"4xl"} my={"7"} />
+        <Icon
+          as={CiCircleChevDown}
+          fontSize={"5xl"}
+          my={"7"}
+          color={"gray.300"}
+          alignSelf={"center"}
+        />
       </Flex>
     </>
   );

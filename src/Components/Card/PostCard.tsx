@@ -28,29 +28,10 @@ const PostCard: React.FC<PostCardProps & Article> = (props) => {
         width={"100%"}
         cursor={"pointer"}
       >
-        {profile ? (
-          <Flex width={"100%"} justify={"space-between"}>
-            <Text> date</Text> <Icon as={BsFillPinFill} />
-          </Flex>
-        ) : (
-          <Flex align={"center"}>
-            <Flex flexDir={"column"} width={"100%"}>
-              {props.showProfile && (
-                <ProfileCardMini
-                  displayName={props.authorDN}
-                  profileId={props.authorId}
-                  imageUrl={props.authorImageUrl}
-                />
-              )}
-              <PostCardArticleView {...props} />
-            </Flex>
-          </Flex>
-        )}
-
         <Flex
           align={"center"}
           mt={"2"}
-          fontSize={{ base: "md", md: "lg" }}
+          fontSize={{ base: "sm", md: "md" }}
           justify={"space-between"}
           width={"100%"}
           onClick={() => {
@@ -81,6 +62,24 @@ const PostCard: React.FC<PostCardProps & Article> = (props) => {
             loading={"lazy"}
           />
         </Flex>
+        {profile ? (
+          <Flex width={"100%"} justify={"space-between"}>
+            <Text> date</Text> <Icon as={BsFillPinFill} />
+          </Flex>
+        ) : (
+          <Flex align={"center"}>
+            <Flex flexDir={"column"} width={"100%"}>
+              <PostCardArticleView {...props} />
+              {props.showProfile && (
+                <ProfileCardMini
+                  displayName={props.authorDN}
+                  profileId={props.authorId}
+                  imageUrl={props.authorImageUrl}
+                />
+              )}
+            </Flex>
+          </Flex>
+        )}
       </Flex>
     </>
   );
@@ -89,18 +88,18 @@ const PostCard: React.FC<PostCardProps & Article> = (props) => {
 const PostCardArticleView: React.FC<Article> = (props: Article) => {
   return (
     <>
-      <Flex align={"center"} justify={"space-between"}>
-        <Flex>
-          <Text fontSize={"12px"} display={"flex"} alignItems={"center"}>
-            1st April
+      <Flex
+        align={"center"}
+        justify={"space-between"}
+        my={"1"}
+        fontWeight={"700"}
+      >
+        <Flex fontSize={"2xs"} textTransform={"uppercase"}>
+          <Text display={"flex"} alignItems={"center"} fontSize={"inherit"}>
+            2, june
           </Text>
-          <Text
-            fontSize={"12px"}
-            display={"flex"}
-            alignItems={"center"}
-            textTransform={"uppercase"}
-          >
-            <Icon as={BsDot} mx={"2"} />8 min read
+          <Text display={"flex"} alignItems={"center"} fontSize={"inherit"}>
+            <Icon as={BsDot} mx={"2"} />4 min Read
           </Text>
         </Flex>
 

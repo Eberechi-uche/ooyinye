@@ -4,6 +4,8 @@ import "@fontsource/ultra";
 import "@fontsource-variable/inter";
 // Supports weights 100-900
 import "@fontsource-variable/urbanist";
+// Supports weights 100-900
+import "@fontsource-variable/montserrat";
 import type { AppProps } from "next/app";
 
 import Theme from "@/ChakraUi/Theme";

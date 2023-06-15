@@ -18,6 +18,8 @@ const BlogNavFooter: React.FC<BlogNavFooterProp> = ({ onOpen }) => {
         position={"fixed"}
         bottom={"0"}
         display={{ base: "flex", md: "none" }}
+        borderTop={"1px solid"}
+        borderColor={"gray.300"}
       >
         <HomeIcon value="home" />
         <ShareIcon value={undefined} />
