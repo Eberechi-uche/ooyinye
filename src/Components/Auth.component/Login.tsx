@@ -12,7 +12,7 @@ const Login: React.FC = () => {
     Email: "",
     password: "",
   });
-  const [signInWithEmailAndPassword, , loading, error] =
+  const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
 
   const handleUserInput = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,10 +26,12 @@ const Login: React.FC = () => {
   const HandleUserLogin = async (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
     await signInWithEmailAndPassword(userDetails.Email, userDetails.password);
-    setAuthViewState({
-      view: "Login",
-      open: false,
-    });
+    if (user) {
+      setAuthViewState({
+        view: "Login",
+        open: false,
+      });
+    }
   };
   return (
     <form onSubmit={HandleUserLogin}>
@@ -39,6 +41,7 @@ const Login: React.FC = () => {
         align={"center"}
         mb={{ base: "50%", md: "20%" }}
       >
+        <Text my={"2"}> welcome back </Text>
         <Input
           value={userDetails.Email}
           required
@@ -69,7 +72,16 @@ const Login: React.FC = () => {
         {loading ? (
           <Spinner size={{ base: "xs", md: "sm" }} />
         ) : (
-          <Button variant={"unstyled"} type="submit">
+          <Button
+            variant={"solid"}
+            type="submit"
+            bg="green.900"
+            color={"white"}
+            size={"sm"}
+            _hover={{
+              bg: "green.500",
+            }}
+          >
             Log in
           </Button>
         )}
@@ -90,6 +102,7 @@ const Login: React.FC = () => {
                 view: "Sign Up",
               }));
             }}
+            color={"orange.500"}
           >
             Sign up
           </Text>

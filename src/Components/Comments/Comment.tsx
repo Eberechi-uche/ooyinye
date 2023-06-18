@@ -147,7 +147,7 @@ const CommentHeader: React.FC<CommentHeaderProps> = (props) => {
         border={"1px solid"}
         borderColor={"gray.200"}
         borderRadius={"5px"}
-        h={"20vh"}
+        maxW={"100%"}
       >
         <Flex width={"100%"} my={"2"} px={"2"}>
           <Image

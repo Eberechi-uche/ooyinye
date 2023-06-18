@@ -34,8 +34,9 @@ export const ExploreIcon: React.FC<IconProps> = ({ value }) => {
         onClick={() => {
           route.push("/explore");
         }}
+        fontWeight={"600"}
       >
-        <Icon as={MdOutlineExplore} fontSize={"2xl"} />
+        <Icon as={MdOutlineExplore} fontSize={"2xl"} color={"green.700"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}
@@ -54,6 +55,7 @@ export const SearchIcon: React.FC<IconProps> = ({ value }) => {
         onClick={() => {
           route.push("/search");
         }}
+        fontWeight={"600"}
       >
         <Icon as={FaSearch} fontSize={"xl"} />
         {value && (
@@ -76,6 +78,7 @@ export const BookmarkIcon: React.FC<IconProps> = ({ value }) => {
         onClick={() => {
           route.push("/Bookmarks");
         }}
+        fontWeight={"600"}
       >
         <Icon as={FcBookmark} fontSize={"2xl"} />
         {value && (
@@ -97,6 +100,7 @@ export const DraftIcon: React.FC<IconProps> = (props) => {
         onClick={() => {
           route.push("/profile/Dashboard/studio");
         }}
+        fontWeight={"600"}
       >
         <Icon as={GrArticle} fontSize={"2xl"} />
         {props.value && (
@@ -122,6 +126,7 @@ export const ProfileIcon: React.FC<ProfileProps & IconProps> = ({
   return (
     <>
       <Flex
+        fontWeight={"600"}
         align={"center"}
         onClick={() => {
           if (!userID) {
@@ -155,7 +160,7 @@ export const CommentsIcon: React.FC<IconProps & CommentIconProp> = ({
 }) => {
   return (
     <>
-      <Flex align={"center"} onClick={onOpen}>
+      <Flex align={"center"} onClick={onOpen} fontWeight={"600"}>
         <Icon as={RiChat1Line} fontSize={"2xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
@@ -174,6 +179,7 @@ export const LikeIcon: React.FC<IconProps> = ({ value, iconAction }) => {
   return (
     <>
       <Flex
+        fontWeight={"600"}
         align={"center"}
         onClick={() => {
           if (!user) {
@@ -207,7 +213,7 @@ export const LikeIcon: React.FC<IconProps> = ({ value, iconAction }) => {
 export const ShareIcon: React.FC<IconProps> = ({ value }) => {
   return (
     <>
-      <Flex align={"center"}>
+      <Flex align={"center"} fontWeight={"600"}>
         <Icon as={GrShare} fontSize={"xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
@@ -222,7 +228,7 @@ export const ShareIcon: React.FC<IconProps> = ({ value }) => {
 export const DashboardIcon: React.FC<IconProps> = ({ value }) => {
   return (
     <>
-      <Flex align={"center"}>
+      <Flex align={"center"} fontWeight={"600"}>
         <Icon as={RxDashboard} fontSize={"xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
@@ -239,6 +245,7 @@ export const ProfileSetting: React.FC<IconProps> = ({ value }) => {
   return (
     <>
       <Flex
+        fontWeight={"600"}
         align={"center"}
         onClick={() => {
           route.push("/profile/profile-setting");
@@ -276,6 +283,7 @@ export const HomeIcon: React.FC<IconProps> = ({ value }) => {
   return (
     <>
       <Flex
+        fontWeight={"600"}
         align={"center"}
         onClick={() => {
           route.push("/");
@@ -299,6 +307,7 @@ export const AddbookMarkIcon: React.FC<IconProps & Article> = (props) => {
   return (
     <>
       <Flex
+        fontWeight={"600"}
         align={"center"}
         onClick={(e: React.MouseEvent) => {
           e.stopPropagation();

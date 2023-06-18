@@ -21,7 +21,7 @@ const BlogPostHeader: React.FC<BlogPostHeaderProps & ProfileCardMiniProps> = (
         borderColor={"gray.200"}
       >
         <Flex flexDir={"column"}>
-          <Heading fontWeight={"900"} fontSize={"4xl"}>
+          <Heading fontWeight={"900"} fontSize={{ base: "2xl", md: "4xl" }}>
             {props.articleTitle}
           </Heading>
           <Flex color={"blackAlpha.600"} my={"5"} fontWeight={"700"}>

@@ -14,8 +14,13 @@ const UserAuth: React.FC = () => {
             open: true,
           }));
         }}
-        variant={"brandPrimary"}
+        variant={"solid"}
         size={"sm"}
+        bg="green.900"
+        color={"white"}
+        _hover={{
+          bg: "green.500",
+        }}
       >
         Log in
       </Button>

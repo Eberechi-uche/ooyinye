@@ -2,8 +2,16 @@ import { Button, Flex, Icon, Text, Image, Divider } from "@chakra-ui/react";
 import PostCardPreview from "@/Components/Card/PostCardPreview";
 import Link from "next/link";
 import { SavedPostCard } from "@/Components/Card/SavePostCard";
+import useGetCollection from "@/Hooks/DataFetching/useGetCollection";
+import UserInfoCard from "@/Components/Card/UserInfoCard";
+import { UserSnippetLoader } from "@/Components/Loaders/loader";
+import { useEffect } from "react";
 
 const HomeLHS: React.FC = () => {
+  const { getAllCollection, collectionData, loading } = useGetCollection();
+  useEffect(() => {
+    getAllCollection();
+  }, []);
   return (
     <>
       <Flex
@@ -24,22 +32,19 @@ const HomeLHS: React.FC = () => {
         </Flex>
 
         <Flex flexDir={"column"}>
-          <Text fontWeight={"700"}> Top writters</Text>
-          <TopUsers />
-          <TopUsers />
-          <TopUsers />
-          <TopUsers />
-          <TopUsers />
-          <TopUsers />
+          <Text fontWeight={"700"}> Authors to follow</Text>
+          {collectionData &&
+            collectionData.map((user) => (
+              <UserInfoCard
+                imageUrl={user.imageUrl}
+                displayName={user.userDN}
+                profileId={user.userId}
+                key={user.userId}
+              />
+            ))}
+          {loading && <UserSnippetLoader />}
         </Flex>
-        <Flex flexDir={"column"}>
-          <Text fontWeight={"700"}> Saved Posts</Text>
-          <SavedPostCard />
-          <SavedPostCard />
-          <SavedPostCard />
-          <SavedPostCard />
-          <SavedPostCard />
-        </Flex>
+        <Flex flexDir={"column"}></Flex>
       </Flex>
     </>
   );
@@ -77,40 +82,6 @@ const Anouncements: React.FC = () => {
           />
         </Flex>
       </Flex>
-    </>
-  );
-};
-
-export const TopUsers: React.FC = () => {
-  return (
-    <>
-      <Link href={"/profile/Quick Fox"}>
-        <Flex
-          align={"center"}
-          my={"5"}
-          width={"100%"}
-          justify={"space-between"}
-        >
-          <Flex align={"center"}>
-            <Image
-              src={"/profile.jpeg"}
-              alt={"userProfile"}
-              boxSize={"35px"}
-              objectFit={"contain"}
-              borderRadius={"full"}
-            />
-            <Text textTransform={"capitalize"} fontWeight={"500"} ml={"2"}>
-              charles babbage
-            </Text>
-          </Flex>
-          <Flex>
-            <Button color={"#fff"} colorScheme="green" size={"xs"}>
-              follow
-            </Button>
-          </Flex>
-        </Flex>
-        <Divider />
-      </Link>
     </>
   );
 };

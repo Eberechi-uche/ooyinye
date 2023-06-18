@@ -105,8 +105,17 @@ const SignUp: React.FC = () => {
             {loading ? (
               <Spinner size={{ base: "xs", md: "sm" }} />
             ) : (
-              <Button variant={"unstyled"} type="submit">
-                SignUp
+              <Button
+                variant={"solid"}
+                type="submit"
+                bg={"orange.500"}
+                size={"sm"}
+                color={"white"}
+                _hover={{
+                  bg: "orange.300",
+                }}
+              >
+                Sign up
               </Button>
             )}
           </Flex>
@@ -118,7 +127,7 @@ const SignUp: React.FC = () => {
               ml={"2"}
               textDecor={"underline"}
               fontWeight={"extrabold"}
-              textDecorationColor={"teal.400"}
+              textDecorationColor={"orange.500"}
               cursor={"pointer"}
               onClick={() => {
                 setAuthViewState((prev) => ({
@@ -126,6 +135,7 @@ const SignUp: React.FC = () => {
                   view: "Login",
                 }));
               }}
+              color={"green.900"}
             >
               Login
             </Text>

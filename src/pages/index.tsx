@@ -14,11 +14,13 @@ import { collection, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { ArticleLoaders } from "@/Components/Loaders/loader";
 import { Article } from "@/Atoms/ArticleAtom";
+import { useProfileData } from "@/Hooks/Profile/useProfileData";
 
 export default function Home() {
   const [user] = useAuthState(auth);
   const [articleList, setArticleList] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
+  const { updateUserState } = useProfileData();
 
   const fetchHomeArticle = async () => {
     setLoading(true);
@@ -34,6 +36,10 @@ export default function Home() {
   useEffect(() => {
     if (articleList) {
       fetchHomeArticle();
+      if (user) {
+        updateUserState();
+      }
+
       return;
     }
   }, [user]);

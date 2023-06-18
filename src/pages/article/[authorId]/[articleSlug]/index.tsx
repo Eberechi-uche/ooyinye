@@ -41,7 +41,7 @@ import { useRecoilState } from "recoil";
 import { articleAtom } from "@/Atoms/ArticleAtom";
 import { Draft } from "@/Atoms/DraftAtom";
 import { useArticleData } from "@/Hooks/Blog/useArticleData";
-import { title } from "process";
+import { useProfileData } from "@/Hooks/Profile/useProfileData";
 
 const Post: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -65,6 +65,7 @@ const Post: React.FC = () => {
     getProfileArticles,
     getProfileDetails,
   } = useGetProfileDetails(`${authorId}`);
+  const { updateUserState, userState } = useProfileData();
   const [error, setError] = useState("");
 
   const handleLike = () => {
@@ -105,6 +106,12 @@ const Post: React.FC = () => {
     getProfileDetails();
     getProfileArticles(true);
   }, [articleSlug]);
+
+  useEffect(() => {
+    if (user && !userState.updated) {
+      updateUserState();
+    }
+  }, [user]);
   let metatTitle = currentArticle.articleTitle;
   let metaDes = currentArticle.articleDesc;
   let metaUrl = route.asPath;

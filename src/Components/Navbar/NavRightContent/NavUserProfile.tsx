@@ -33,10 +33,15 @@ import {
   ProfileIcon,
   ProfileSetting,
 } from "@/Components/Icons/Icons";
+import { useProfileData } from "@/Hooks/Profile/useProfileData";
+import { useResetRecoilState } from "recoil";
+import { authUserAtom } from "@/Atoms/AuthUserAtom";
 
 const NavUserProfile: React.FC = () => {
   const [user] = useAuthState(auth);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { userState } = useProfileData();
+  const resetUserState = useResetRecoilState(authUserAtom);
 
   return (
     <>
@@ -71,6 +76,7 @@ const NavUserProfile: React.FC = () => {
               onClick={(event: React.MouseEvent) => {
                 event.stopPropagation();
                 signOut(auth);
+                resetUserState();
               }}
             >
               <Icon as={CiLogin} mr={"2"} />

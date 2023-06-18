@@ -1,11 +1,18 @@
 import { auth, firestore, storage } from "@/Components/Firebase/ClientApp";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { setDoc, doc, writeBatch } from "firebase/firestore";
+import {
+  setDoc,
+  doc,
+  writeBatch,
+  collection,
+  getDocs,
+} from "firebase/firestore";
 import { useState } from "react";
 import { ref, uploadString } from "firebase/storage";
 import { User } from "firebase/auth";
-import { useSetRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { authModalState } from "@/Atoms/AuthModalAtom";
+import { authUserAtom } from "@/Atoms/AuthUserAtom";
 
 export type UserDetails = {
   Bio: string;
@@ -59,6 +66,8 @@ export const useProfileData = () => {
   const [loading, setLoading] = useState(false);
   const [updateError, setUpdateError] = useState("");
   const setAuthModalState = useSetRecoilState(authModalState);
+  const [userState, setUserState] = useRecoilState(authUserAtom);
+  const userID = `@${user?.email?.split("@")[0]}`;
 
   const updateUserBio = async (data: UserDetails) => {
     setLoading(true);
@@ -66,11 +75,9 @@ export const useProfileData = () => {
       return;
     }
     try {
-      await setDoc(
-        doc(firestore, "users", `@${user?.email?.split("@")[0]}`),
-        data,
-        { merge: true }
-      );
+      await setDoc(doc(firestore, "users", `${userID}`), data, {
+        merge: true,
+      });
     } catch (error: any) {
       console.log(error.message);
       setLoading(false);
@@ -82,10 +89,7 @@ export const useProfileData = () => {
     setUpdateError("");
     setLoading(true);
     try {
-      const imageRef = ref(
-        storage,
-        `profilePicture/@${user?.email?.split("@")[0]}/image}`
-      );
+      const imageRef = ref(storage, `profilePicture/${userID}/image}`);
       await uploadString(imageRef, photo, "data_url");
     } catch (error: any) {
       console.log(error.message);
@@ -104,14 +108,39 @@ export const useProfileData = () => {
     }
     setLoading(true);
     await follow(userProfile, user!);
+    setUserState((prev) => ({
+      ...prev,
+      following: [...prev.following, userProfile],
+    }));
     setLoading(false);
   };
+  //UPDATE USER STATE
 
+  const updateUserState = async () => {
+    const userFollowingRef = collection(
+      firestore,
+      "users",
+      `${userID}`,
+      "following"
+    );
+    const usersDocs = await getDocs(userFollowingRef);
+    const users = usersDocs.docs.map((user) => ({
+      ...(user.data() as UserSnippet),
+    }));
+    setUserState((prev) => ({
+      ...prev,
+      following: users as UserSnippet[],
+      updated: true,
+    }));
+    console.log(users);
+  };
   return {
     updateUserBio,
     updateUserDp,
     loading,
     updateError,
     onClickFollow,
+    updateUserState,
+    userState,
   };
 };

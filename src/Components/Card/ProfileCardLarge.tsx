@@ -13,6 +13,7 @@ import {
   DrawerHeader,
   DrawerOverlay,
   useDisclosure,
+  Skeleton,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -25,30 +26,32 @@ import { UserSnippet } from "@/Hooks/Profile/useProfileData";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../Firebase/ClientApp";
 
-import { useState } from "react";
-import { TopUsers } from "../LeftContentComponent/HomeSideContent/HomeLHS";
+import { useEffect, useState } from "react";
+import useGetCollection from "@/Hooks/DataFetching/useGetCollection";
+import UserInfoCard from "./UserInfoCard";
+import { UserSnippetLoader } from "../Loaders/loader";
 
 export type ProfileCardLargeProps = {
-  email: string | undefined;
-  Bio: string | undefined;
-  imageUrl: string | undefined;
-  userId: string | undefined;
-  twitter: string | undefined;
-  userDN: string | undefined;
+  email: string;
+  Bio: string;
+  imageUrl: string;
+  userId: string;
+  twitter: string;
+  userDN: string;
 };
 const ProfileCardLarge: React.FC<ProfileCardLargeProps> = ({
   email,
   twitter,
-  imageUrl = "/ada-lovelace.webp",
+  imageUrl,
   Bio,
-  userId = "@adalovelace",
-  userDN = "Ada lovelace ",
+  userId,
+  userDN,
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const route = useRouter();
   const [user] = useAuthState(auth);
 
-  const { onClickFollow, loading } = useProfileData();
+  const { onClickFollow, loading, userState } = useProfileData();
   const [drawerValue, setDrawerValue] = useState("");
 
   return (
@@ -84,6 +87,7 @@ const ProfileCardLarge: React.FC<ProfileCardLargeProps> = ({
               userId={userId}
               imageUrl={imageUrl}
               isLoading={loading}
+              following={userState.following}
             />
           )}
 
@@ -118,27 +122,27 @@ const ProfileCardLarge: React.FC<ProfileCardLargeProps> = ({
           my={"2"}
         >
           <Button
-            size={"xs"}
-            colorScheme="blackAlpha"
-            color={"#fff"}
+            size={"sm"}
+            color={"blackAlpha.900"}
             onClick={(e) => {
               e.stopPropagation();
               setDrawerValue("followers");
               onOpen();
             }}
+            variant={"unstyled"}
           >
             followers
           </Button>
           <Button
             ml={"4"}
-            size={"xs"}
-            colorScheme="blackAlpha"
-            color={"#fff"}
+            size={"sm"}
+            color={"blackAlpha.900"}
             onClick={(e) => {
               e.stopPropagation();
               setDrawerValue("following");
               onOpen();
             }}
+            variant={"unstyled"}
           >
             following
           </Button>
@@ -150,6 +154,7 @@ const ProfileCardLarge: React.FC<ProfileCardLargeProps> = ({
           isOpen={isOpen}
           onClose={onClose}
           value={drawerValue}
+          cardProfileId={userId}
         />
       )}
     </>
@@ -159,12 +164,19 @@ type ProfileCardLargeDrawerProps = {
   isOpen: boolean;
   onClose: () => void;
   value: string;
+  cardProfileId: string;
 };
 const ProfileCardLargeDrawer: React.FC<ProfileCardLargeDrawerProps> = ({
   isOpen,
   onClose,
   value,
+  cardProfileId,
 }) => {
+  const { getCollection, collectionData, loading } = useGetCollection();
+
+  useEffect(() => {
+    getCollection(cardProfileId, value);
+  }, [isOpen]);
   return (
     <>
       <Drawer isOpen={isOpen} placement="right" onClose={onClose} size={"md"}>
@@ -174,17 +186,21 @@ const ProfileCardLargeDrawer: React.FC<ProfileCardLargeDrawerProps> = ({
           <DrawerHeader>
             <Flex width={"100%"}>
               <Text mr={"5"}>{value}</Text>
-              <Text> 5</Text>
+              <Text> {collectionData.length}</Text>
             </Flex>
           </DrawerHeader>
 
           <DrawerBody onClick={onClose}>
-            <TopUsers />
-            <TopUsers />
-            <TopUsers />
-            <TopUsers />
-            <TopUsers />
-            <TopUsers />
+            {collectionData &&
+              collectionData.map((user) => (
+                <UserInfoCard
+                  imageUrl={user.imageUrl}
+                  displayName={user.userDN}
+                  profileId={user.userId}
+                  key={user.userId}
+                />
+              ))}
+            {loading && <UserSnippetLoader />}
           </DrawerBody>
 
           <DrawerFooter>
@@ -204,6 +220,7 @@ type NotAuthUserActionProps = {
   userId: string;
   userDN: string;
   imageUrl: string;
+  following: UserSnippet[];
 };
 
 const NotAuthUserAction: React.FC<NotAuthUserActionProps> = ({
@@ -212,29 +229,54 @@ const NotAuthUserAction: React.FC<NotAuthUserActionProps> = ({
   userDN,
   userId,
   imageUrl,
+  following,
 }) => {
+  const follwingUser =
+    following &&
+    following.find((user) => {
+      return user.userId === userId;
+    });
   return (
     <>
       <Flex align={"center"}>
-        <Button
-          borderRadius={"full"}
-          size={"sm"}
-          bg={"gray.800"}
-          colorScheme="blackAlpha"
-          color={"#fff"}
-          mr={"3"}
-          isLoading={isLoading}
-          onClick={(e) => {
-            e.stopPropagation();
-            onClickFollow({
-              userId,
-              userDN,
-              imageUrl,
-            });
-          }}
-        >
-          follow
-        </Button>
+        {!follwingUser ? (
+          <>
+            <Button
+              borderRadius={"full"}
+              size={"sm"}
+              bg={"gray.800"}
+              colorScheme="blackAlpha"
+              color={"#fff"}
+              mr={"3"}
+              isLoading={isLoading}
+              onClick={(e) => {
+                e.stopPropagation();
+                onClickFollow({
+                  userId,
+                  userDN,
+                  imageUrl,
+                });
+              }}
+            >
+              follow
+            </Button>
+          </>
+        ) : (
+          <>
+            <Button
+              borderRadius={"full"}
+              size={"sm"}
+              color={"blackAlpha.900"}
+              mr={"3"}
+              isLoading={isLoading}
+              variant={"unstyled"}
+              border={"2px solid"}
+              px={"2"}
+            >
+              following
+            </Button>
+          </>
+        )}
       </Flex>
     </>
   );

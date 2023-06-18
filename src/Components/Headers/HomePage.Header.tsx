@@ -17,7 +17,12 @@ const HomePageHeader: React.FC = () => {
   }, []);
   return (
     <>
-      <Flex bg={"gray.900"} justify={"center"}>
+      <Flex
+        bg={"whiteAlpha.900"}
+        justify={"center"}
+        borderBottom={"5px solid"}
+        borderColor={"orange.500"}
+      >
         <Flex
           height={"70vh"}
           justify={"center"}
@@ -41,7 +46,9 @@ const HomePageHeader: React.FC = () => {
               }}
               bgImage="url('homeTextbg.webp')"
               bgClip="text"
-              bgPosition={"center"}
+              bgPosition={{
+                base: "top",
+              }}
               bgSize={"cover"}
             >
               Be On The <br />
@@ -59,7 +66,12 @@ const HomePageHeader: React.FC = () => {
                     open: true,
                   });
                 }}
-                variant={"brandPrimary"}
+                color={"offwhite"}
+                variant={"solid"}
+                _hover={{
+                  bg: "green.900",
+                }}
+                bg={"orange.500"}
               >
                 Get Started
               </Button>
