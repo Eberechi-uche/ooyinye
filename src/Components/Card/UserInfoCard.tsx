@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ProfileCardMiniProps } from "./ProfileCardMini";
 import { useRecoilState } from "recoil";
 import { authUserAtom } from "@/Atoms/AuthUserAtom";
-import { UserSnippet, useProfileData } from "@/Hooks/Profile/useProfileData";
+import { useProfileData } from "@/Hooks/Profile/useProfileData";
 
 export const UserInfoCard: React.FC<ProfileCardMiniProps> = (props) => {
   const [userState] = useRecoilState(authUserAtom);

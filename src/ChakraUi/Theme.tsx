@@ -15,8 +15,8 @@ const Theme = extendTheme({
     },
   },
   fonts: {
-    heading: `'Montserrat Variable', sans-serif;`,
-    body: `'Montserrat Variable', sans-serif;`,
+    heading: `'Source Sans Pro', sans-serif`,
+    body: `'Source Sans Pro', sans-serif`,
   },
   components: {
     Input: inputTheme,

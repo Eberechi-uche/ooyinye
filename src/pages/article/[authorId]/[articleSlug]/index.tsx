@@ -117,7 +117,6 @@ const Post: React.FC = () => {
   let metaUrl = route.asPath;
   let metaThumbnail = currentArticle.articleThumbnail;
   let metaAuthor = currentArticle.authorDN;
-  // console.log(route.asPath);
 
   return (
     <>

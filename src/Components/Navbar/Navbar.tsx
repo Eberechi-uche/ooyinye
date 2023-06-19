@@ -23,10 +23,10 @@ const Navbar: React.FC = () => {
             <Link href={"/"}>
               <Flex align={"center"}>
                 <Image
-                  src={"/favi.svg"}
+                  src={"/favicon.ico"}
                   alt={"logo"}
                   objectFit={"contain"}
-                  boxSize={{ base: "5vh", md: "8vh" }}
+                  boxSize={{ base: "7vw", md: "2vw" }}
                 />
                 <Text
                   fontSize={"4vh"}

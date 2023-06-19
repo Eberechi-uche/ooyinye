@@ -31,12 +31,13 @@ const Studio: React.FC = () => {
     articleThumbnail: "",
     articleTitle: "",
     tag: "",
+    readtime: 0,
   });
   const [draftState, setDraftState] = useRecoilState(draftAtom);
   const [mode, setMode] = useState("edit");
 
-  const handleArticleSave = (content: string) => {
-    saveArticle(articleDetails, content);
+  const handleArticleSave = (content: string, readtime: number) => {
+    saveArticle({ ...articleDetails, readtime: readtime }, content);
   };
 
   const handlePreviewAndPublish = (content: string) => {
@@ -61,6 +62,7 @@ const Studio: React.FC = () => {
       articleSlug: draftState.articleSlug,
       articleThumbnail: draftState.articleThumbnail,
       articleTitle: draftState.articleTitle,
+      readtime: 0,
     });
   }, [draftState]);
 

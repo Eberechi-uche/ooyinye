@@ -1,12 +1,18 @@
 import "@/styles/globals.css";
-import "@fontsource/ultra";
+
+import "@fontsource/source-sans-pro/200.css";
+import "@fontsource/source-sans-pro/300.css";
+import "@fontsource/source-sans-pro/400.css";
+import "@fontsource/source-sans-pro/600.css";
+import "@fontsource/source-sans-pro/700.css";
+import "@fontsource/source-sans-pro/900.css";
 // Supports weights 100-900
 import "@fontsource-variable/inter";
 // Supports weights 100-900
-import "@fontsource-variable/urbanist";
 // Supports weights 100-900
-import "@fontsource-variable/montserrat";
 import type { AppProps } from "next/app";
+
+// Supports weights 100-900
 
 import Theme from "@/ChakraUi/Theme";
 import { ChakraProvider } from "@chakra-ui/react";
