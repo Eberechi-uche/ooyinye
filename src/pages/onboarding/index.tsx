@@ -11,7 +11,7 @@ const flowArray = [
     bg: "#e1b480",
   },
   {
-    heading: " Enter your Display name below ",
+    heading: "Enter your Display name below ",
     subHeading: "This Appears on your authored blog post and comment",
 
     bg: "#9bc400",
@@ -53,7 +53,7 @@ const OnboardingFLow: React.FC<OnboardingFlowProp> = ({ page, change }) => {
     <>
       <Flex
         flexDir={"column"}
-        height={"92vh"}
+        height={"100vh"}
         width={"100%"}
         justify={"space-between"}
         bg={bg}
@@ -61,11 +61,11 @@ const OnboardingFLow: React.FC<OnboardingFlowProp> = ({ page, change }) => {
         color={"white"}
       >
         <Flex flexDir={"column"} align={"center"} p={"10"}>
-          <Text fontSize={"4xl"}>{heading}</Text>
+          <Text fontSize={"2xl"}>{heading}</Text>
           <Text> {subHeading}</Text>
           {page == 1 && <Welcome />}
         </Flex>
-        <Flex px={"10px"} flexDir={"column"}>
+        <Flex px={"10px"} flexDir={"column"} mb={"5"}>
           <Flex justify={"space-around"} align={"center"} p={"7"}>
             <Flex justify={"start"} align={"center"} fontSize={"4xl"}>
               <Icon as={page === 0 ? RxDotFilled : RxDot} p={"0"} />

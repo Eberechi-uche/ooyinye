@@ -54,8 +54,8 @@ const Setting: React.FC = () => {
   };
   useEffect(() => {
     setError("");
-    if (file && file.length / 1024 > 600) {
-      setError("file too large, should be less than 400kb");
+    if (file && file.length / 1024 > 3500) {
+      setError("file too large, should be less than 3mb");
       return;
     }
   }, [file]);
@@ -67,9 +67,7 @@ const Setting: React.FC = () => {
         email: profileDetails.email!,
       });
     }
-
     getProfileDetails();
-    console.log(profileDetails);
   }, [profileDetails.Bio]);
   return (
     <SingleContentLayout>
@@ -152,15 +150,21 @@ const Setting: React.FC = () => {
             onChange={handleInputChange}
             name={"Bio"}
           />
-          <Text
-            color={
-              wordCount - userDetails.Bio.length > 0 ? "green.400" : "red.400"
-            }
-            fontWeight={"400"}
-            fontSize={"sm"}
-          >
-            {wordCount - userDetails.Bio.length} remaining
-          </Text>
+          {userDetails.Bio && (
+            <>
+              <Text
+                color={
+                  wordCount - userDetails.Bio.length > 0
+                    ? "green.400"
+                    : "red.400"
+                }
+                fontWeight={"400"}
+                fontSize={"sm"}
+              >
+                {wordCount - userDetails.Bio.length} remaining
+              </Text>
+            </>
+          )}
         </Flex>
         <Stack spacing={4} mt={"4"}>
           <InputGroup>
@@ -190,15 +194,19 @@ const Setting: React.FC = () => {
         </Stack>
       </Flex>
       <Flex my={"7"} width={"100%"} justify={"flex-end"} px={"3"}>
-        <Button
-          colorScheme="green"
-          color={"#fff"}
-          onClick={handleProfileUpdate}
-          isLoading={loading}
-          isDisabled={userDetails.Bio.length < 10}
-        >
-          update
-        </Button>
+        {userDetails.Bio && (
+          <>
+            <Button
+              colorScheme="green"
+              color={"#fff"}
+              onClick={handleProfileUpdate}
+              isLoading={loading}
+              isDisabled={userDetails.Bio.length < 10}
+            >
+              update
+            </Button>
+          </>
+        )}
       </Flex>
     </SingleContentLayout>
   );
