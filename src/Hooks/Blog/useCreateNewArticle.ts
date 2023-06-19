@@ -5,6 +5,8 @@ import {
   addDoc,
   collection,
   updateDoc,
+  Timestamp,
+  serverTimestamp,
 } from "firebase/firestore";
 import { auth, firestore, storage } from "../../Components/Firebase/ClientApp";
 import {
@@ -42,7 +44,8 @@ export const useCreateNewArticle = () => {
   // save Article
   const saveArticle = async (
     article: NewArticleProps,
-    articleContent: string
+    articleContent: string,
+    ReadTime: number
   ) => {
     if (
       !article.articleSlug ||
@@ -89,6 +92,7 @@ export const useCreateNewArticle = () => {
       articleThumbnail: imageUrl,
       articleContent,
       published: "",
+      readTime: ReadTime,
     };
 
     try {
@@ -161,11 +165,12 @@ export const useCreateNewArticle = () => {
       authorImageUrl: user.photoURL!,
       likes: 0,
       comments: 0,
-      readtime: "2",
+      readtime: draft.readTime!,
       articleDesc: draft.articleDesc,
       articleSlug: draft.articleSlug,
       articleThumbnail: draft.articleThumbnail,
       articleTitle: draft.articleTitle,
+      publishDate: serverTimestamp() as Timestamp,
     };
 
     try {
@@ -178,6 +183,7 @@ export const useCreateNewArticle = () => {
         authorDN: user.displayName,
         authorId: userId,
         authorImageUrl: user.photoURL,
+        publishDate: serverTimestamp() as Timestamp,
       });
     } catch (error: any) {
       console.log(error.message);

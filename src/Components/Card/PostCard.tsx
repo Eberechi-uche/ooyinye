@@ -7,6 +7,7 @@ import ProfileCardMini from "./ProfileCardMini";
 import { useSetRecoilState } from "recoil";
 import { Article, articleAtom } from "@/Atoms/ArticleAtom";
 import { AddbookMarkIcon } from "../Icons/Icons";
+import moment from "moment";
 
 type PostCardProps = {
   showProfile: boolean;
@@ -96,10 +97,11 @@ const PostCardArticleView: React.FC<Article> = (props: Article) => {
       >
         <Flex fontSize={"2xs"} textTransform={"uppercase"}>
           <Text display={"flex"} alignItems={"center"} fontSize={"inherit"}>
-            2, june
+            {moment(new Date(props.publishDate!.seconds * 1000)).fromNow()}
           </Text>
           <Text display={"flex"} alignItems={"center"} fontSize={"inherit"}>
-            <Icon as={BsDot} mx={"2"} />4 min Read
+            <Icon as={BsDot} mx={"2"} />
+            {props.readtime} min read
           </Text>
         </Flex>
 
@@ -108,7 +110,7 @@ const PostCardArticleView: React.FC<Article> = (props: Article) => {
             value=""
             size="xl"
             {...props}
-            readtime={""}
+            readtime={props.readtime}
             articleID={props.articleID!}
           />
         </Flex>

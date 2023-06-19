@@ -74,6 +74,7 @@ const Dashboard: React.FC = () => {
                 articleSlug: "",
                 articleTitle: "",
                 published: "",
+                readTime: 0,
               });
               route.push("/profile/Dashboard/studio");
             }}
@@ -104,6 +105,7 @@ const Dashboard: React.FC = () => {
                   published={article.published}
                   handlePublish={handleArticlePuslish}
                   publishing={publishing}
+                  readTime={article.readTime}
                 />
               </Flex>
             ))}

@@ -1,3 +1,4 @@
+import { Timestamp } from "firebase/firestore";
 import { atom } from "recoil";
 
 export type Article = {
@@ -9,8 +10,8 @@ export type Article = {
   articleThumbnail: string;
   articleSlug: string;
   tag?: string;
-  readtime: string;
-  publishDate?: Date;
+  readtime: number;
+  publishDate?: Timestamp;
   bgColor?: string;
   likes?: number;
   comments?: number;
@@ -26,7 +27,7 @@ const defaultArticleState: Article = {
   articleDesc: "",
   articleThumbnail: "",
   articleSlug: "",
-  readtime: "",
+  readtime: 0,
   bgColor: "",
   likes: 0,
   comments: 0,

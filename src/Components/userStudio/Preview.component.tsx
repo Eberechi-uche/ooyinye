@@ -90,7 +90,8 @@ const Preview: React.FC<PreviewProp> = ({ setMode }) => {
             onClick={async () => {
               const stats = await saveArticle(
                 currentDraft,
-                currentDraft.articleContent
+                currentDraft.articleContent,
+                currentDraft.readTime
               );
               if (currentDraft.published) {
                 return;

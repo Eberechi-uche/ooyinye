@@ -59,7 +59,8 @@ const Profile: React.FC = () => {
                   authorDN={article.authorDN!}
                   authorId={`${article.authorId}`}
                   authorImageUrl={article.authorImageUrl!}
-                  readtime=""
+                  readtime={article.readTime}
+                  publishDate={article.publishDate}
                 />
               </Flex>
             ))}

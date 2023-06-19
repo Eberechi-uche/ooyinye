@@ -1,6 +1,7 @@
 import { Draft, draftAtom } from "@/Atoms/DraftAtom";
 import { Flex, Icon, IconButton, Text, Image, Button } from "@chakra-ui/react";
 import { useRouter } from "next/router";
+import { BiEdit } from "react-icons/bi";
 import { BsDot } from "react-icons/bs";
 import { FaPencilAlt } from "react-icons/fa";
 import { FcApproval } from "react-icons/fc";
@@ -27,6 +28,7 @@ const ArticleDraftCard: React.FC<Draft & ArticleDraft> = (props) => {
           published={props.published}
           handlePublish={props.handlePublish}
           publishing={props.publishing}
+          readTime={props.readTime}
         />
 
         <Flex
@@ -76,6 +78,7 @@ const PostCardDraft: React.FC<Draft & ArticleDraft> = (props) => {
     published,
     articleContent,
     publishing,
+    readTime,
   } = props;
   const route = useRouter();
   const setDraftAtom = useSetRecoilState(draftAtom);
@@ -95,6 +98,7 @@ const PostCardDraft: React.FC<Draft & ArticleDraft> = (props) => {
                 display={"flex"}
                 alignItems={"center"}
                 justifyContent={"center"}
+                fontSize={"xs"}
               >
                 published
                 <Icon as={FcApproval} ml={"2"} />
@@ -112,8 +116,10 @@ const PostCardDraft: React.FC<Draft & ArticleDraft> = (props) => {
                     articleTitle,
                     published,
                     articleContent,
+                    readTime,
                   });
                 }}
+                variant={"unstyled"}
                 isLoading={publishing === articleSlug}
               >
                 Publish
@@ -143,10 +149,16 @@ const PostCardDraft: React.FC<Draft & ArticleDraft> = (props) => {
           }}
         >
           <IconButton
-            icon={<FaPencilAlt />}
+            size={"sm"}
+            fontSize={"xl"}
+            _hover={{
+              color: "#fff",
+              bg: "#000",
+            }}
+            icon={<BiEdit />}
             aria-label="edit"
-            bg={"black"}
-            color={"#fff"}
+            bg={"#fff"}
+            color={"#000"}
           />
         </Flex>
       </Flex>

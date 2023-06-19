@@ -9,11 +9,12 @@ import { BsArrowBarRight } from "react-icons/bs";
 import { useRecoilState } from "recoil";
 import { draftAtom } from "@/Atoms/DraftAtom";
 import { useEffect } from "react";
+import CharacterCount from "@tiptap/extension-character-count";
 
 type TipEditorProps = {
-  saveArticle: (e: string) => void;
+  saveArticle: (e: string, readTime: number) => void;
   isLoading: boolean;
-  preview: (e: string) => void;
+  preview: (e: string, readTime: number) => void;
 };
 const TipEditor: React.FC<TipEditorProps> = ({
   saveArticle,
@@ -30,6 +31,10 @@ const TipEditor: React.FC<TipEditorProps> = ({
     extensions: [
       //
 
+      CharacterCount.configure({
+        mode: "nodeSize",
+      }),
+
       StarterKit,
     ],
     content: "",
@@ -45,7 +50,11 @@ const TipEditor: React.FC<TipEditorProps> = ({
     <div className="test">
       <ToolKit editor={editor} />
       <EditorContent editor={editor} />
-      <Text></Text>
+      <Text>
+        Readtime:
+        {editor && Math.round(editor.storage.characterCount.words() / 200)}
+        mins
+      </Text>
       <Flex flexDir={"column"} my={"5"}>
         <Flex my={"5"} justify={"space-between"} alignSelf={"flex-end"}>
           <Button
@@ -55,7 +64,11 @@ const TipEditor: React.FC<TipEditorProps> = ({
             bg={"blackAlpha.900"}
             onClick={() => {
               let articleHTML = editor?.getHTML()!;
-              saveArticle(articleHTML);
+              let readTime =
+                editor &&
+                Math.round(editor.storage.characterCount.words() / 200);
+
+              saveArticle(articleHTML, readTime!);
             }}
             isLoading={isLoading}
             mr={"5"}
@@ -68,7 +81,10 @@ const TipEditor: React.FC<TipEditorProps> = ({
             borderRadius={"full"}
             onClick={() => {
               let articleHTML = editor?.getHTML()!;
-              preview(articleHTML);
+              let readTime =
+                editor &&
+                Math.round(editor.storage.characterCount.words() / 200);
+              preview(articleHTML, readTime!);
             }}
             isLoading={isLoading}
           >

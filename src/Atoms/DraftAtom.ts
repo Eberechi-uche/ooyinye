@@ -1,3 +1,4 @@
+import { Timestamp } from "firebase/firestore";
 import { atom } from "recoil";
 
 export type Draft = {
@@ -10,7 +11,9 @@ export type Draft = {
   published: string;
   authorId?: string;
   authorDN?: string;
+  readTime: number;
   authorImageUrl?: string;
+  publishDate?: Timestamp;
 };
 
 const defaultDraftState: Draft = {
@@ -21,6 +24,7 @@ const defaultDraftState: Draft = {
   articleContent: "",
   lockTitle: false,
   published: "",
+  readTime: 0,
 };
 
 export const draftAtom = atom<Draft>({
