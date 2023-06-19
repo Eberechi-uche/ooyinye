@@ -8,6 +8,7 @@ const Theme = extendTheme({
       "html, body": {
         backgroundColor: "#fff",
         color: "gray.700",
+        fontSize: "lg",
       },
       a: {
         color: "inherit",
