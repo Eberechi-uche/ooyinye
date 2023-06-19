@@ -8,13 +8,13 @@ const flowArray = [
     heading: "Welcome to Ooyinye - ",
     subHeading: "Blog, Read, Connect and grow",
 
-    bg: "#e1b480",
+    bg: "#DD6B20",
   },
   {
     heading: "Enter your Display name below ",
     subHeading: "This Appears on your authored blog post and comment",
 
-    bg: "#9bc400",
+    bg: "#22543D",
   },
 ];
 const Onboarding: React.FC = () => {
