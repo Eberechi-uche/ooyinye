@@ -45,7 +45,8 @@ export const useCreateNewArticle = () => {
   const saveArticle = async (
     article: NewArticleProps,
     articleContent: string,
-    ReadTime: number
+    ReadTime: number,
+    currentDraft: Draft
   ) => {
     if (
       !article.articleSlug ||
@@ -84,7 +85,29 @@ export const useCreateNewArticle = () => {
       await uploadString(imageRef, article.articleThumbnail, "data_url");
       imageUrl = await getDownloadURL(imageRef);
     }
+    if (currentDraft.published) {
+      const userDraftRef = doc(
+        firestore,
+        "users",
+        `${userId}`,
+        "drafts",
+        `${article.articleSlug}`
+      );
+      await updateDoc(userDraftRef, {
+        articleContent: articleContent,
+        articleDesc: article.articleDesc,
+      });
 
+      toast({
+        description: "Article updated",
+        position: "top",
+        status: "info",
+        duration: 2000,
+        isClosable: true,
+      });
+      setLoading(false);
+      return;
+    }
     const draft: Draft = {
       articleDesc: article.articleDesc,
       articleSlug: article.articleSlug,
@@ -202,6 +225,7 @@ export const useCreateNewArticle = () => {
 
     return "Published";
   };
+
   return {
     saveArticle,
     loading,

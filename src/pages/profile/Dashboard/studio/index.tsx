@@ -30,13 +30,12 @@ const Studio: React.FC = () => {
     articleSlug: "",
     articleThumbnail: "",
     articleTitle: "",
-    tag: "",
   });
   const [draftState, setDraftState] = useRecoilState(draftAtom);
   const [mode, setMode] = useState("edit");
 
   const handleArticleSave = (content: string, readtime: number) => {
-    saveArticle(articleDetails, content, readtime);
+    saveArticle(articleDetails, content, readtime, draftState);
   };
 
   const handlePreviewAndPublish = (content: string, readtime: number) => {

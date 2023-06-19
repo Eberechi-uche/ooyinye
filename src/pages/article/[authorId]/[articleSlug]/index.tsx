@@ -54,6 +54,7 @@ const Post: React.FC = () => {
     articleThumbnail: "",
     articleTitle: "",
     published: "",
+    readTime: 0,
   });
   const [user] = useAuthState(auth);
   const [loading, setLoading] = useState(true);
@@ -252,7 +253,8 @@ const Post: React.FC = () => {
                           authorDN={currentArticle.authorDN}
                           authorId={currentArticle.authorId}
                           authorImageUrl={currentArticle.authorImageUrl}
-                          readtime=""
+                          readtime={article.readTime}
+                          publishDate={article.publishDate}
                         />
                       ))}
                   </SimpleGrid>

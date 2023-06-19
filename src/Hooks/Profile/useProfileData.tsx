@@ -132,7 +132,6 @@ export const useProfileData = () => {
       following: users as UserSnippet[],
       updated: true,
     }));
-    console.log(users);
   };
   return {
     updateUserBio,

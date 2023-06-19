@@ -5,6 +5,7 @@ import CardProfileMini, { ProfileCardMiniProps } from "./ProfileCardMini";
 import { Draft } from "@/Atoms/DraftAtom";
 import { AddbookMarkIcon } from "../Icons/Icons";
 import { Article } from "@/Atoms/ArticleAtom";
+import moment from "moment";
 
 type PostcardLargeProps = {
   showProfile: boolean;
@@ -53,7 +54,7 @@ const PostcardLarge: React.FC<
           >
             {props.articleTitle}
           </Text>
-          <Text noOfLines={3} fontWeight={"500"} color={"gray.500"}>
+          <Text noOfLines={3} fontWeight={"500"} color={"blackAlpha.500"}>
             {props.articleDesc}
           </Text>
 
@@ -64,14 +65,12 @@ const PostcardLarge: React.FC<
             align={"center"}
             my={"2"}
           >
-            <Flex>
-              <Text
-                display={"flex"}
-                alignItems={"center"}
-                mx={"2"}
-                fontSize={"xs"}
-              >
-                10min Read
+            <Flex fontSize={"xs"} fontWeight={"extrabold"}>
+              <Text>
+                {moment(new Date(props.publishDate!.seconds * 1000)).fromNow()}
+              </Text>
+              <Text display={"flex"} alignItems={"center"} mx={"2"}>
+                {props.readtime} min read
               </Text>
             </Flex>
             <AddbookMarkIcon value="" {...(props as Article)} />

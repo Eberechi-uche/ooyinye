@@ -48,7 +48,7 @@ const PostCard: React.FC<PostCardProps & Article> = (props) => {
             height={"fit-content"}
             width={"70%"}
           >
-            <Text fontWeight={"900"} noOfLines={[3, 4]}>
+            <Text fontWeight={"900"} noOfLines={[3, 4]} fontSize={"md"}>
               {props.articleTitle}
             </Text>
           </Flex>

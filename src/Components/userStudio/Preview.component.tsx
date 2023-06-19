@@ -91,14 +91,14 @@ const Preview: React.FC<PreviewProp> = ({ setMode }) => {
               const stats = await saveArticle(
                 currentDraft,
                 currentDraft.articleContent,
-                currentDraft.readTime
+                currentDraft.readTime,
+                currentDraft
               );
-              if (currentDraft.published) {
+              if (currentDraft.published.length > 1) {
                 return;
               }
-              if (true) {
-                onOpen();
-              }
+
+              onOpen();
             }}
           >
             save

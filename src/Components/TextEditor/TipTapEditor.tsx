@@ -21,7 +21,7 @@ const TipEditor: React.FC<TipEditorProps> = ({
   isLoading,
   preview,
 }) => {
-  const [draftContent] = useRecoilState(draftAtom);
+  const [draftContent, setDraftContent] = useRecoilState(draftAtom);
   const editor = useEditor({
     editorProps: {
       attributes: {
@@ -81,6 +81,11 @@ const TipEditor: React.FC<TipEditorProps> = ({
             borderRadius={"full"}
             onClick={() => {
               let articleHTML = editor?.getHTML()!;
+              setDraftContent((prev) => ({
+                ...prev,
+                articleContent: articleHTML,
+              }));
+
               let readTime =
                 editor &&
                 Math.round(editor.storage.characterCount.words() / 200);
