@@ -39,7 +39,6 @@ const Bookmarks: React.FC = () => {
           ...(doc.data() as Article),
         }));
         setSavedArticles(articlesArray as Article[]);
-        console.log(articlesArray);
         setUserAuthState((prev) => ({
           ...prev,
           Bookmarks: [...(articlesArray as Article[])],
@@ -55,9 +54,10 @@ const Bookmarks: React.FC = () => {
   return (
     <>
       <SingleContentLayout>
-        <TextHeader text="Saved article" />
-
-        <Flex px={"1"} flexDir={"column"} align={"center"} width={"100%"}>
+        <Flex flexDir={"column"} align={"center"} width={"100%"}>
+          <Flex width={"100%"} flexDir={"column"} px={"1"}>
+            <TextHeader text="Saved article(s)" />
+          </Flex>
           {loading && (
             <Flex flexDir={"column"} width={"100%"}>
               <ArticleLoaders />

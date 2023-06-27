@@ -14,6 +14,7 @@ import { useEffect, useState } from "react";
 import UserAuth from "../Auth.component/UserAuth";
 import { useArticleData } from "@/Hooks/Blog/useArticleData";
 import { RiChat1Line } from "react-icons/ri";
+import { PiChatTeardropTextBold } from "react-icons/pi";
 
 export type CommentData = {
   text: string;
@@ -98,7 +99,7 @@ const CommentsComponent: React.FC<CommentsComponentProps> = (props) => {
           {!allComments.length && (
             <Flex width={"100%"} flexDir={"column"} align={"center"}>
               <Text fontWeight={"900"}>No comments yet</Text>
-              <Icon as={RiChat1Line} fontSize={"35vh"} />
+              <Icon as={PiChatTeardropTextBold} fontSize={"25vh"} />
             </Flex>
           )}
         </Flex>

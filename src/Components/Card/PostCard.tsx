@@ -93,7 +93,8 @@ const PostCardArticleView: React.FC<Article> = (props: Article) => {
         align={"center"}
         justify={"space-between"}
         my={"1"}
-        fontWeight={"700"}
+        fontWeight={"900"}
+        color={"blackAlpha.500"}
       >
         <Flex fontSize={"2xs"} textTransform={"uppercase"}>
           <Text display={"flex"} alignItems={"center"} fontSize={"inherit"}>

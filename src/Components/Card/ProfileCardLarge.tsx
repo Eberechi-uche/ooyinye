@@ -65,6 +65,7 @@ const ProfileCardLarge: React.FC<ProfileCardLargeProps> = ({
         }}
         color={"blackAlpha.800"}
         fontFamily={"monospace"}
+        cursor={"pointer"}
       >
         <Flex justify={"space-between"} width={"100%"}>
           <Flex width={"100%"} align={"center"}>

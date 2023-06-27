@@ -6,19 +6,29 @@ import { auth } from "../Firebase/ClientApp";
 import { useSetRecoilState } from "recoil";
 import { authModalState } from "@/Atoms/AuthModalAtom";
 
-import { RiChat1Line, RiSettings3Line } from "react-icons/ri";
-import { FaHandsWash, FaSearch } from "react-icons/fa";
+import { RiSettings3Line } from "react-icons/ri";
 
-import { RiHeartAddFill } from "react-icons/ri";
-import { AiOutlineUser } from "react-icons/ai";
-import { MdOutlineExplore } from "react-icons/md";
+import {
+  PiChatTeardropTextBold,
+  PiCompassDuotone,
+  PiExportBold,
+  PiHandsClappingThin,
+  PiHouseDuotone,
+  PiMagnifyingGlassDuotone,
+  PiNewspaperFill,
+  PiNutDuotone,
+  PiShareDuotone,
+  PiSquaresFourDuotone,
+  PiUserDuotone,
+} from "react-icons/pi";
 import { HiOutlineBookmark } from "react-icons/hi";
 import { RxDashboard } from "react-icons/rx";
-import { BiHomeAlt } from "react-icons/bi";
-import { GrArticle, GrShare } from "react-icons/gr";
+import { GrArticle } from "react-icons/gr";
 import { FcBookmark } from "react-icons/fc";
 import { useArticleData } from "@/Hooks/Blog/useArticleData";
 import { Article } from "@/Atoms/ArticleAtom";
+import { CiShare1 } from "react-icons/ci";
+import { IoCopyOutline } from "react-icons/io5";
 
 type IconProps = {
   value: string | number | undefined;
@@ -36,7 +46,7 @@ export const ExploreIcon: React.FC<IconProps> = ({ value }) => {
         }}
         fontWeight={"600"}
       >
-        <Icon as={MdOutlineExplore} fontSize={"2xl"} color={"green.700"} />
+        <Icon as={PiCompassDuotone} fontSize={"2xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}
@@ -57,7 +67,7 @@ export const SearchIcon: React.FC<IconProps> = ({ value }) => {
         }}
         fontWeight={"600"}
       >
-        <Icon as={FaSearch} fontSize={"xl"} />
+        <Icon as={PiMagnifyingGlassDuotone} fontSize={"xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}
@@ -102,7 +112,7 @@ export const DraftIcon: React.FC<IconProps> = (props) => {
         }}
         fontWeight={"600"}
       >
-        <Icon as={GrArticle} fontSize={"2xl"} />
+        <Icon as={PiNewspaperFill} fontSize={"2xl"} />
         {props.value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {props.value}
@@ -139,7 +149,7 @@ export const ProfileIcon: React.FC<ProfileProps & IconProps> = ({
           route.push(`/profile/@${userID}`);
         }}
       >
-        <Icon as={AiOutlineUser} fontSize={"xl"} />
+        <Icon as={PiUserDuotone} fontSize={"xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}
@@ -161,7 +171,7 @@ export const CommentsIcon: React.FC<IconProps & CommentIconProp> = ({
   return (
     <>
       <Flex align={"center"} onClick={onOpen} fontWeight={"600"}>
-        <Icon as={RiChat1Line} fontSize={"2xl"} />
+        <Icon as={PiChatTeardropTextBold} fontSize={"2xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}
@@ -192,7 +202,7 @@ export const LikeIcon: React.FC<IconProps> = ({ value, iconAction }) => {
           iconAction && iconAction();
         }}
       >
-        <Icon as={FaHandsWash} fontSize={"2xl"} />
+        <Icon as={PiHandsClappingThin} fontSize={"2xl"} />
 
         <Text
           // display={{ base: "none", lg: "flex" }}
@@ -214,7 +224,7 @@ export const ShareIcon: React.FC<IconProps> = ({ value }) => {
   return (
     <>
       <Flex align={"center"} fontWeight={"600"}>
-        <Icon as={GrShare} fontSize={"xl"} />
+        <Icon as={PiExportBold} fontSize={"xl"} color={"gray.900"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}
@@ -229,7 +239,7 @@ export const DashboardIcon: React.FC<IconProps> = ({ value }) => {
   return (
     <>
       <Flex align={"center"} fontWeight={"600"}>
-        <Icon as={RxDashboard} fontSize={"xl"} />
+        <Icon as={PiSquaresFourDuotone} fontSize={"xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}
@@ -251,7 +261,7 @@ export const ProfileSetting: React.FC<IconProps> = ({ value }) => {
           route.push("/profile/profile-setting");
         }}
       >
-        <Icon as={RiSettings3Line} fontSize={"2xl"} />
+        <Icon as={PiNutDuotone} fontSize={"2xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}
@@ -289,7 +299,7 @@ export const HomeIcon: React.FC<IconProps> = ({ value }) => {
           route.push("/");
         }}
       >
-        <Icon as={BiHomeAlt} fontSize={"2xl"} />
+        <Icon as={PiHouseDuotone} fontSize={"2xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}

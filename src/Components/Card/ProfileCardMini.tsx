@@ -31,9 +31,9 @@ const ProfileCardMini: React.FC<ProfileCardMiniProps> = (props) => {
             alt={"profile"}
           />
           <Text
-            fontWeight={"800"}
+            fontWeight={"thin"}
             fontSize={"xs"}
-            color={"orange.700"}
+            color={"blackAlpha.600"}
             textTransform={"uppercase"}
             fontFamily={"monospace"}
           >

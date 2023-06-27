@@ -6,12 +6,12 @@ const TextHeader: React.FC<HeadTextProps> = ({ text }) => {
   return (
     <>
       <Text
-        fontSize={"xl"}
-        fontWeight={"600"}
-        color={"gray.800"}
+        fontSize={"3xl"}
+        fontWeight={"900"}
+        textTransform={"uppercase"}
         textAlign={"left"}
         my={"4"}
-        borderBottom={"5px solid"}
+        borderBottom={"1px solid"}
       >
         {text}
       </Text>

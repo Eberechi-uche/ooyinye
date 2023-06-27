@@ -31,10 +31,10 @@ const ToolKit: React.FC<ToolkitProp> = ({ editor }) => {
   return (
     <Flex
       width={"100%"}
-      h={"10vh"}
-      p={"4"}
-      bg="gray.900"
+      p={"1"}
+      bg="blackAlpha.500"
       justify={"space-evenly"}
+      borderTopRadius={"5px"}
     >
       <IconButton
         icon={<GrBold />}
@@ -99,7 +99,12 @@ const ToolKit: React.FC<ToolkitProp> = ({ editor }) => {
       />
       <Popover lazyBehavior={"unmount"}>
         <PopoverTrigger>
-          <IconButton icon={<FaHeading />} aria-label="Heading" />
+          <IconButton
+            icon={<FaHeading />}
+            aria-label="Heading"
+            colorScheme="white"
+            color={"#fff"}
+          />
         </PopoverTrigger>
         <PopoverContent>
           <PopoverArrow />

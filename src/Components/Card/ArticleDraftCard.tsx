@@ -5,6 +5,7 @@ import { BiEdit } from "react-icons/bi";
 import { BsDot } from "react-icons/bs";
 import { FaPencilAlt } from "react-icons/fa";
 import { FcApproval } from "react-icons/fc";
+import { PiCheckCircleDuotone, PiCheckCircleFill } from "react-icons/pi";
 import { useSetRecoilState } from "recoil";
 
 const ArticleDraftCard: React.FC<Draft & ArticleDraft> = (props) => {
@@ -101,7 +102,7 @@ const PostCardDraft: React.FC<Draft & ArticleDraft> = (props) => {
                 fontSize={"xs"}
               >
                 published
-                <Icon as={FcApproval} ml={"2"} />
+                <Icon as={PiCheckCircleDuotone} ml={"2"} />
               </Text>
             </>
           ) : (

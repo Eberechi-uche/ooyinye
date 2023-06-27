@@ -203,7 +203,7 @@ code {
 
 .TipTap-editor {
   height: 90vh;
-  background-color: #fff;
+  background-color: rgba(196, 185, 185, 0.529);
   padding: 10px;
   outline: none;
   overflow: scroll;

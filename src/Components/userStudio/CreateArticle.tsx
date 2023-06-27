@@ -11,6 +11,7 @@ import {
   Textarea,
 } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
+import { FcAddImage } from "react-icons/fc";
 import { RiImageAddFill, RiImageEditFill } from "react-icons/ri";
 
 export type NewArticleProps = Pick<
@@ -185,7 +186,7 @@ const SelectImage: React.FC<ImageSelect> = ({
         onChange={onFileUpload}
       />
       <Icon
-        as={RiImageAddFill}
+        as={FcAddImage}
         fontSize={"6xl"}
         placeSelf={"center"}
         onClick={() => {

@@ -65,7 +65,12 @@ const PostcardLarge: React.FC<
             align={"center"}
             my={"2"}
           >
-            <Flex fontSize={"xs"} fontWeight={"extrabold"}>
+            <Flex
+              fontSize={"xs"}
+              fontWeight={"900"}
+              textTransform={"uppercase"}
+              color={"blackAlpha.600"}
+            >
               <Text>
                 {moment(new Date(props.publishDate!.seconds * 1000)).fromNow()}
               </Text>

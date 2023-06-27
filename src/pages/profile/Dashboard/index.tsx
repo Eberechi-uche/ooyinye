@@ -13,6 +13,7 @@ import { RiDraftLine } from "react-icons/ri";
 import { useSetRecoilState } from "recoil";
 import { useCreateNewArticle } from "@/Hooks/Blog/useCreateNewArticle";
 import { GrArticle } from "react-icons/gr";
+import { PiNewspaperThin } from "react-icons/pi";
 
 const Dashboard: React.FC = () => {
   const [user] = useAuthState(auth);
@@ -46,7 +47,7 @@ const Dashboard: React.FC = () => {
     <SingleContentLayout>
       <Flex flexDir={"column"} width={"100%"} px={"3"}>
         <TextHeader text="Dashboard" />
-        <Flex flexDir={"column"} mx={"5"}>
+        <Flex flexDir={"column"} mx={"1"}>
           <Text fontWeight={"900"}> Stats</Text>
           <Flex
             flexWrap={"wrap"}
@@ -79,8 +80,9 @@ const Dashboard: React.FC = () => {
               route.push("/profile/Dashboard/studio");
             }}
             cursor={"pointer"}
+            textTransform={"uppercase"}
           >
-            <Icon as={RiDraftLine} fontSize={"6xl"} color={"green.500"} />
+            <Icon as={PiNewspaperThin} fontSize={"6xl"} color={"green.500"} />
             <Text> new Article</Text>
           </Flex>
         </Flex>
