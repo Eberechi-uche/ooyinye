@@ -91,7 +91,12 @@ export default function Home() {
           </>
           <>
             <HomeNavFooter />
-            <Flex flexDir={"column"} width={"100%"}>
+            <Flex
+              flexDir={"column"}
+              width={"100%"}
+              bg={"orange.500"}
+              color={"#fff"}
+            >
               <Text width={"100%"} fontWeight={"900"} px={"4"}>
                 Top Reads
               </Text>
@@ -104,8 +109,15 @@ export default function Home() {
                 </>
               )}
               {!loading &&
-                articleList.map((article) => (
-                  <Flex key={article.articleID}>
+                articleList.slice(0, 3).map((article, index) => (
+                  <Flex key={article.articleID} paddingLeft={"1"}>
+                    <Text
+                      fontSize={"5xl"}
+                      fontWeight={"900"}
+                      color={"blackAlpha.400"}
+                    >
+                      {index + 1}
+                    </Text>
                     <PostCard
                       articleSlug={article.articleSlug}
                       articleTitle={article.articleTitle}
@@ -155,7 +167,7 @@ export default function Home() {
                 </Link>
               </Flex>
 
-              {/* {loading && (
+              {loading && (
                 <>
                   <ArticleLoaders />
                   <ArticleLoaders />
@@ -164,17 +176,24 @@ export default function Home() {
                 </>
               )}
               {!loading &&
-                articleList.map((article, index) => (
-                  <PostCard
-                    id={index}
-                    articleSlug={article.articleSlug}
-                    articleTitle={article.articleTitle}
-                    articleContent={article.articleContent}
-                    articleThumbnail={article.articleThumbnail}
-                    articleDesc={article.articleDesc}
-                    showProfile={true}
-                  />
-                ))} */}
+                articleList.map((article) => (
+                  <Flex key={article.articleID}>
+                    <PostCard
+                      articleSlug={article.articleSlug}
+                      articleTitle={article.articleTitle}
+                      authorDN={article.authorDN}
+                      authorId={article.authorId}
+                      authorImageUrl={article.authorImageUrl}
+                      articleThumbnail={article.articleThumbnail}
+                      articleDesc={article.articleDesc}
+                      showProfile={true}
+                      readtime={article.readtime}
+                      likes={article.likes}
+                      articleID={article.articleID}
+                      publishDate={article.publishDate}
+                    />
+                  </Flex>
+                ))}
             </Flex>
           </>
           <>

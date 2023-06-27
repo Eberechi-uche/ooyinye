@@ -16,7 +16,7 @@ const Navbar: React.FC = () => {
         color={"black"}
         bg={"whiteAlpha.800"}
         borderBottom={"1px solid"}
-        borderColor={"gray.200"}
+        borderColor={"orange.300"}
       >
         <Flex p={"5px 5px"}>
           <Flex justify={"space-between"} width={"100%"} align={"center"}>

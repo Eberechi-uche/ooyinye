@@ -17,8 +17,6 @@ const BlogPostHeader: React.FC<BlogPostHeaderProps & ProfileCardMiniProps> = (
         textAlign={"left"}
         mb={"5"}
         alignSelf={"center"}
-        borderBottom={"1px solid"}
-        borderColor={"gray.200"}
       >
         <Flex flexDir={"column"}>
           <Heading fontWeight={"900"} fontSize={{ base: "2xl", md: "4xl" }}>
@@ -37,18 +35,18 @@ const BlogPostHeader: React.FC<BlogPostHeaderProps & ProfileCardMiniProps> = (
               profileId={props.profileId}
               imageUrl={props.imageUrl}
               displayName={props.displayName}
-              size="50px"
+              size="30px"
             />
           </Flex>
         </Flex>
 
-        <Icon
+        {/* <Icon
           as={CiCircleChevDown}
           fontSize={"5xl"}
           my={"7"}
           color={"gray.300"}
           alignSelf={"center"}
-        />
+        /> */}
       </Flex>
     </>
   );

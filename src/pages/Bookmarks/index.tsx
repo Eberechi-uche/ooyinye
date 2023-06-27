@@ -39,6 +39,7 @@ const Bookmarks: React.FC = () => {
           ...(doc.data() as Article),
         }));
         setSavedArticles(articlesArray as Article[]);
+        console.log(articlesArray);
         setUserAuthState((prev) => ({
           ...prev,
           Bookmarks: [...(articlesArray as Article[])],

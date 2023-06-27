@@ -76,7 +76,11 @@ const ProfileCardLarge: React.FC<ProfileCardLargeProps> = ({
               mr={"2"}
               alt={"profile"}
             />
-            <Text fontWeight={"900"} textTransform={"uppercase"}>
+            <Text
+              fontWeight={"900"}
+              textTransform={"uppercase"}
+              color={"orange.700"}
+            >
               {userDN}
             </Text>
           </Flex>

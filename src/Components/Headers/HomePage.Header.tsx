@@ -1,6 +1,8 @@
 import { authModalState } from "@/Atoms/AuthModalAtom";
-import { Button, Flex, Heading, Text, Image } from "@chakra-ui/react";
+import { Button, Flex, Heading, Text, Image, Icon } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import { BiArrowFromRight } from "react-icons/bi";
+import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import ReactTextTransition, { presets } from "react-text-transition";
 import { useSetRecoilState } from "recoil";
 
@@ -17,17 +19,11 @@ const HomePageHeader: React.FC = () => {
   }, []);
   return (
     <>
-      <Flex
-        bg={"whiteAlpha.900"}
-        justify={"center"}
-        borderBottom={"5px solid"}
-        borderColor={"orange.500"}
-      >
+      <Flex bg={"orange.500"} justify={"center"} width={"100dvw"}>
         <Flex
-          height={"70vh"}
           justify={"center"}
           width={"100%"}
-          px={"20px"}
+          p={"20px"}
           color={"white"}
           maxW={"1300px"}
         >
@@ -54,10 +50,15 @@ const HomePageHeader: React.FC = () => {
               Be On The <br />
               Know.
             </Heading>
-            <Flex flexDir={"column"} display={"absolute"}>
+            <Flex
+              flexDir={"column"}
+              // display={"absolute"}
+
+              width={"100%"}
+            >
               <Text my={"5"}>
-                Create, Read, content that <br />
-                inspires you
+                Create, Read, content that inspires you, <br /> Unleash Yourself
+                to the world Today!
               </Text>
               <Button
                 onClick={() => {
@@ -70,10 +71,28 @@ const HomePageHeader: React.FC = () => {
                 variant={"solid"}
                 _hover={{
                   bg: "green.900",
+                  width: {
+                    base: "60%",
+                    md: "35%",
+                    lg: "30%",
+                  },
                 }}
-                bg={"orange.500"}
+                bg={"orange.300"}
+                transition={"all 0.5s ease-in-out"}
+                display={"flex"}
+                justifyContent={"space-between"}
+                width={{
+                  base: "50%",
+                  md: "30%",
+                  lg: "25%",
+                }}
+                alignSelf={{
+                  base: "center",
+                  lg: "flex-start",
+                }}
               >
-                Get Started
+                Get started
+                <Icon as={BsArrowRight} ml={"2"} />
               </Button>
             </Flex>
           </Flex>

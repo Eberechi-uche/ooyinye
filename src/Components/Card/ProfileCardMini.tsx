@@ -19,6 +19,7 @@ const ProfileCardMini: React.FC<ProfileCardMiniProps> = (props) => {
         onClick={() => {
           route.push(`/profile/${props.profileId}`);
         }}
+        cursor={"pointer"}
       >
         <Flex align={"center"}>
           <Image
@@ -31,8 +32,8 @@ const ProfileCardMini: React.FC<ProfileCardMiniProps> = (props) => {
           />
           <Text
             fontWeight={"800"}
-            fontSize={props.size ? "md" : "xs"}
-            color={"blackAlpha.700"}
+            fontSize={"xs"}
+            color={"orange.700"}
             textTransform={"uppercase"}
             fontFamily={"monospace"}
           >

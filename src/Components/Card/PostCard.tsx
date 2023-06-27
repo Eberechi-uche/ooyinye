@@ -29,6 +29,13 @@ const PostCard: React.FC<PostCardProps & Article> = (props) => {
         width={"100%"}
         cursor={"pointer"}
       >
+        {props.showProfile && (
+          <ProfileCardMini
+            displayName={props.authorDN}
+            profileId={props.authorId}
+            imageUrl={props.authorImageUrl}
+          />
+        )}
         <Flex
           align={"center"}
           mt={"2"}
@@ -71,13 +78,6 @@ const PostCard: React.FC<PostCardProps & Article> = (props) => {
           <Flex align={"center"}>
             <Flex flexDir={"column"} width={"100%"}>
               <PostCardArticleView {...props} />
-              {props.showProfile && (
-                <ProfileCardMini
-                  displayName={props.authorDN}
-                  profileId={props.authorId}
-                  imageUrl={props.authorImageUrl}
-                />
-              )}
             </Flex>
           </Flex>
         )}

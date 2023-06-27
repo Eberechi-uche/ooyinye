@@ -94,7 +94,7 @@ const Preview: React.FC<PreviewProp> = ({ setMode }) => {
                 currentDraft.readTime,
                 currentDraft
               );
-              if (currentDraft.published.length > 1) {
+              if (currentDraft.published && currentDraft.published.length > 1) {
                 return;
               }
 
