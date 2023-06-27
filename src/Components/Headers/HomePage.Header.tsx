@@ -19,11 +19,12 @@ const HomePageHeader: React.FC = () => {
   }, []);
   return (
     <>
-      <Flex bg={"orange.500"} justify={"center"} width={"100dvw"}>
+      <Flex bg={"orange.500"} justify={"center"} width={"100dvw"} py={"40px"}>
         <Flex
           justify={"center"}
           width={"100%"}
-          p={"20px"}
+          px={"20px"}
+          py={"40px"}
           color={"white"}
           maxW={"1300px"}
         >
@@ -67,6 +68,7 @@ const HomePageHeader: React.FC = () => {
                     open: true,
                   });
                 }}
+                border={"2px solid "}
                 color={"offwhite"}
                 variant={"solid"}
                 _hover={{
@@ -77,7 +79,7 @@ const HomePageHeader: React.FC = () => {
                     lg: "30%",
                   },
                 }}
-                bg={"orange.300"}
+                bg={"orange.500"}
                 transition={"all 0.5s ease-in-out"}
                 display={"flex"}
                 justifyContent={"space-between"}

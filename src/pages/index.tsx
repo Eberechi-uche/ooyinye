@@ -94,7 +94,7 @@ export default function Home() {
             <Flex
               flexDir={"column"}
               width={"100%"}
-              bg={"orange.500"}
+              bg={user ? "green.900" : "orange.500"}
               color={"#fff"}
             >
               <Text width={"100%"} fontWeight={"900"} px={"4"}>
@@ -114,7 +114,7 @@ export default function Home() {
                     <Text
                       fontSize={"5xl"}
                       fontWeight={"900"}
-                      color={"blackAlpha.400"}
+                      color={"whiteAlpha.600"}
                     >
                       {index + 1}
                     </Text>
