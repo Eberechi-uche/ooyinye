@@ -35,7 +35,11 @@ const LikesCard: React.FC<LikeCardProps> = ({ likesArray, totalLikes }) => {
         }}
       >
         {likesArray.map((like) => (
-          <Avatar name={like.authorDN} src={like.authorImageUrl} />
+          <Avatar
+            name={like.authorDN}
+            src={like.authorImageUrl}
+            key={like.authorId}
+          />
         ))}
       </AvatarGroup>
       {isOpen && (
@@ -82,6 +86,7 @@ const LikesModal: React.FC<LikesModalProps> = (props) => {
                 displayName={like.authorDN}
                 imageUrl={like.authorImageUrl}
                 profileId={like.authorId}
+                key={like.authorId}
               />
             ))}
           </ModalBody>
