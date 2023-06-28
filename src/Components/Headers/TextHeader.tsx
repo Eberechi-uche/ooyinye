@@ -10,8 +10,6 @@ const TextHeader: React.FC<HeadTextProps> = ({ text }) => {
         fontWeight={"900"}
         textTransform={"uppercase"}
         textAlign={"left"}
-        my={"4"}
-        borderBottom={"1px solid"}
       >
         {text}
       </Text>

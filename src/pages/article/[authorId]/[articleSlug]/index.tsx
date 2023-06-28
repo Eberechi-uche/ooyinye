@@ -12,6 +12,8 @@ import {
   useDisclosure,
   Image,
   SimpleGrid,
+  Avatar,
+  AvatarGroup,
 } from "@chakra-ui/react";
 import Head from "next/head";
 import BlogPostHeader from "@/Components/Headers/BlogPost.Header";
@@ -34,7 +36,7 @@ import {
   ShareIcon,
 } from "@/Components/Icons/Icons";
 import { useRouter } from "next/router";
-import { doc, getDoc } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { PageContent } from "@/Components/Loaders/loader";
 import useGetProfileDetails from "@/Hooks/DataFetching/useGetProfileInfo";
 import { useRecoilState } from "recoil";
@@ -42,11 +44,13 @@ import { articleAtom } from "@/Atoms/ArticleAtom";
 import { Draft } from "@/Atoms/DraftAtom";
 import { useArticleData } from "@/Hooks/Blog/useArticleData";
 import { useProfileData } from "@/Hooks/Profile/useProfileData";
+import LikesCard, { LikedUserDetails } from "@/Components/Card/LikesCard";
 
 const Post: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { likeArticle, getArticle } = useArticleData();
   const [currentArticle, setCurrentArticle] = useRecoilState(articleAtom);
+  const [likes, setLikes] = useState<LikedUserDetails[]>([]);
   const [article, setArticle] = useState<Draft>({
     articleContent: "",
     articleDesc: "",
@@ -68,15 +72,51 @@ const Post: React.FC = () => {
   } = useGetProfileDetails(`${authorId}`);
   const { updateUserState, userState } = useProfileData();
   const [error, setError] = useState("");
+  const authID = user && `@${user.email?.split("@")[0]}`;
 
-  const handleLike = () => {
+  const handleLike = async () => {
     setCurrentArticle((prev) => ({
       ...prev,
       likes: prev.likes! + 1,
     }));
-    likeArticle(article.published);
+    const isNewLike = await likeArticle(article.published, {
+      authorDN: `${user?.displayName!}`,
+      authorId: `@${user?.email?.split("@")[0]}`,
+      authorImageUrl: `${user?.photoURL}`,
+    });
+    if (isNewLike) {
+      setLikes((prev) => [
+        {
+          authorDN: `${user?.displayName!}`,
+          authorId: `@${user?.email?.split("@")[0]}`,
+          authorImageUrl: `${user?.photoURL}`,
+        },
+        ...prev,
+      ]);
+    }
   };
 
+  const getLikes = async () => {
+    const likesRef = collection(
+      firestore,
+      "Articles",
+      `${article.published}`,
+      "likes"
+    );
+    try {
+      const likesSnapshot = await getDocs(likesRef);
+      if (likesSnapshot.empty) {
+        console.log("empty");
+        return;
+      }
+      const likesData = likesSnapshot.docs.map((like) => ({
+        ...like.data(),
+      }));
+      setLikes(likesData as LikedUserDetails[]);
+    } catch (error: any) {
+      console.log(error.message);
+    }
+  };
   const fetchArticle = async () => {
     setLoading(true);
     setError("");
@@ -90,6 +130,7 @@ const Post: React.FC = () => {
 
     try {
       const docSnap = await getDoc(articleRef);
+
       const article = { ...(docSnap.data() as Draft) };
       setArticle(article as Draft);
 
@@ -104,6 +145,7 @@ const Post: React.FC = () => {
 
   useEffect(() => {
     fetchArticle();
+
     getProfileDetails();
     getProfileArticles(true);
   }, [articleSlug]);
@@ -113,6 +155,9 @@ const Post: React.FC = () => {
       updateUserState();
     }
   }, [user]);
+  useEffect(() => {
+    article.published && getLikes();
+  }, [article.published]);
   let metatTitle = currentArticle.articleTitle;
   let metaDes = currentArticle.articleDesc;
   let metaUrl = route.asPath;
@@ -188,36 +233,63 @@ const Post: React.FC = () => {
                 <Flex flexDir={"column"} my={"10"}>
                   <BlogParser content={article.articleContent} />
                 </Flex>
-                <Flex
-                  width={"50%"}
-                  justify={"space-between"}
-                  fontSize={"2xl"}
-                  border={"2px solid"}
-                  px={"3"}
-                  py={"2"}
-                  alignSelf={"center"}
-                  borderRadius={"full"}
-                  borderColor={"gray.200"}
-                  color={"gray.600"}
-                  my={"3"}
-                >
-                  <LikeIcon
-                    value={`${currentArticle.likes}`}
-                    iconAction={handleLike}
-                  />
-                  <AddbookMarkIcon
-                    authorId={currentArticle.authorId}
-                    authorDN={currentArticle.authorDN}
-                    authorImageUrl={currentArticle.authorImageUrl}
-                    articleTitle={currentArticle.articleTitle}
-                    articleDesc={currentArticle.articleDesc}
-                    articleThumbnail={currentArticle.articleThumbnail}
-                    articleSlug={currentArticle.articleSlug}
-                    readtime={currentArticle.readtime}
-                    articleID={currentArticle.articleID}
-                    value={""}
-                    size=""
-                  />
+                <Flex width={"100%"} px={"2"} my={"3"}>
+                  <Flex
+                    w={{ base: "50%", md: "40%", lg: "20%" }}
+                    justify={"space-between"}
+                    fontSize={"2xl"}
+                    border={"1px solid"}
+                    px={"3"}
+                    py={"2"}
+                    alignSelf={"center"}
+                    borderRadius={"full"}
+                    borderColor={"gray.200"}
+                    color={"gray.600"}
+                  >
+                    <LikeIcon
+                      value={`${currentArticle.likes}`}
+                      iconAction={handleLike}
+                      liked={likes.find((like) => {
+                        return like.authorId === authID;
+                      })}
+                    />
+                    <AddbookMarkIcon
+                      authorId={currentArticle.authorId}
+                      authorDN={currentArticle.authorDN}
+                      authorImageUrl={currentArticle.authorImageUrl}
+                      articleTitle={currentArticle.articleTitle}
+                      articleDesc={currentArticle.articleDesc}
+                      articleThumbnail={currentArticle.articleThumbnail}
+                      articleSlug={currentArticle.articleSlug}
+                      readtime={currentArticle.readtime}
+                      articleID={currentArticle.articleID}
+                      value={""}
+                      size=""
+                    />
+                  </Flex>
+
+                  <>
+                    {likes.length > 0 && (
+                      <Flex
+                        justify={"space-between"}
+                        fontSize={"2xl"}
+                        border={"1px solid"}
+                        px={"3"}
+                        py={"1"}
+                        alignSelf={"center"}
+                        borderRadius={"full"}
+                        borderColor={"gray.200"}
+                        color={"gray.600"}
+                        mx={"2"}
+                        minH={"45px"}
+                      >
+                        <LikesCard
+                          likesArray={likes}
+                          totalLikes={currentArticle.likes!}
+                        />
+                      </Flex>
+                    )}
+                  </>
                 </Flex>
 
                 <Flex

@@ -19,7 +19,7 @@ const HomePageHeader: React.FC = () => {
   }, []);
   return (
     <>
-      <Flex bg={"orange.500"} justify={"center"} width={"100dvw"} py={"40px"}>
+      <Flex bg={"orange.500"} justify={"center"} py={"40px"}>
         <Flex
           justify={"center"}
           width={"100%"}

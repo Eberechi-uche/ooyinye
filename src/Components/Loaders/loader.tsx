@@ -9,7 +9,7 @@ import {
 export const ArticleLoaders: React.FC = () => {
   return (
     <>
-      <Flex flexDir={"column"} px={"4"} my={"4"}>
+      <Flex flexDir={"column"} px={"4"} my={"4"} width={"100%"}>
         <Flex flexDir={"column"}>
           <SkeletonText mt="4" noOfLines={3} spacing="4" skeletonHeight="2" />
         </Flex>

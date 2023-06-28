@@ -10,25 +10,30 @@ import { RiSettings3Line } from "react-icons/ri";
 
 import {
   PiChatTeardropTextBold,
+  PiCompass,
+  PiCompassBold,
   PiCompassDuotone,
   PiExportBold,
+  PiHandsClappingFill,
   PiHandsClappingThin,
+  PiHouseBold,
   PiHouseDuotone,
   PiMagnifyingGlassDuotone,
   PiNewspaperFill,
+  PiNutBold,
   PiNutDuotone,
+  PiPlusCircleBold,
   PiShareDuotone,
+  PiSquaresFourBold,
   PiSquaresFourDuotone,
   PiUserDuotone,
 } from "react-icons/pi";
 import { HiOutlineBookmark } from "react-icons/hi";
-import { RxDashboard } from "react-icons/rx";
-import { GrArticle } from "react-icons/gr";
 import { FcBookmark } from "react-icons/fc";
 import { useArticleData } from "@/Hooks/Blog/useArticleData";
 import { Article } from "@/Atoms/ArticleAtom";
-import { CiShare1 } from "react-icons/ci";
-import { IoCopyOutline } from "react-icons/io5";
+import { Topic } from "@/pages/explore";
+import { LikedUserDetails } from "../Card/LikesCard";
 
 type IconProps = {
   value: string | number | undefined;
@@ -46,7 +51,7 @@ export const ExploreIcon: React.FC<IconProps> = ({ value }) => {
         }}
         fontWeight={"600"}
       >
-        <Icon as={PiCompassDuotone} fontSize={"2xl"} />
+        <Icon as={PiCompass} fontSize={"2xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}
@@ -182,7 +187,14 @@ export const CommentsIcon: React.FC<IconProps & CommentIconProp> = ({
   );
 };
 
-export const LikeIcon: React.FC<IconProps> = ({ value, iconAction }) => {
+type LikeIconsProp = {
+  liked: LikedUserDetails | undefined;
+};
+export const LikeIcon: React.FC<IconProps & LikeIconsProp> = ({
+  value,
+  iconAction,
+  liked,
+}) => {
   const setAuthState = useSetRecoilState(authModalState);
   const [user] = useAuthState(auth);
 
@@ -201,8 +213,20 @@ export const LikeIcon: React.FC<IconProps> = ({ value, iconAction }) => {
           }
           iconAction && iconAction();
         }}
+        transition={"all 0.5s ease-in-out"}
+        _hover={{
+          transform: "scale(1.2)",
+        }}
       >
-        <Icon as={PiHandsClappingThin} fontSize={"2xl"} />
+        {liked ? (
+          <>
+            <Icon as={PiHandsClappingFill} fontSize={"2xl"} color={"#000"} />
+          </>
+        ) : (
+          <>
+            <Icon as={PiHandsClappingThin} fontSize={"2xl"} />
+          </>
+        )}
 
         <Text
           // display={{ base: "none", lg: "flex" }}
@@ -239,7 +263,7 @@ export const DashboardIcon: React.FC<IconProps> = ({ value }) => {
   return (
     <>
       <Flex align={"center"} fontWeight={"600"}>
-        <Icon as={PiSquaresFourDuotone} fontSize={"xl"} />
+        <Icon as={PiSquaresFourBold} fontSize={"xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}
@@ -261,7 +285,7 @@ export const ProfileSetting: React.FC<IconProps> = ({ value }) => {
           route.push("/profile/profile-setting");
         }}
       >
-        <Icon as={PiNutDuotone} fontSize={"2xl"} />
+        <Icon as={PiNutBold} fontSize={"2xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}
@@ -272,22 +296,19 @@ export const ProfileSetting: React.FC<IconProps> = ({ value }) => {
   );
 };
 
-// export const SupportIcon: React.FC<IconProps> = ({ value }) => {
-//   const route = useRouter();
-
-//   return (
-//     <>
-//       <Flex align={"center"}>
-//         <Icon as={BsCoin} fontSize={"3xl"} />
-//         {value && (
-//           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
-//             {value}
-//           </Text>
-//         )}
-//       </Flex>
-//     </>
-//   );
-// };
+type FollowTopicProps = {
+  following: boolean;
+  size: string;
+};
+export const FollowTopicIcon: React.FC<Topic & FollowTopicProps> = (props) => {
+  return (
+    <>
+      <Flex align={"center"}>
+        <Icon as={PiPlusCircleBold} fontSize={props.size} />
+      </Flex>
+    </>
+  );
+};
 export const HomeIcon: React.FC<IconProps> = ({ value }) => {
   const route = useRouter();
   return (
@@ -299,7 +320,7 @@ export const HomeIcon: React.FC<IconProps> = ({ value }) => {
           route.push("/");
         }}
       >
-        <Icon as={PiHouseDuotone} fontSize={"2xl"} />
+        <Icon as={PiHouseBold} fontSize={"2xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}

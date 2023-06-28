@@ -26,7 +26,7 @@ const Navbar: React.FC = () => {
                   src={"/favicon.ico"}
                   alt={"logo"}
                   objectFit={"contain"}
-                  boxSize={{ base: "7vw", md: "2vw" }}
+                  boxSize={{ base: "7vw", md: "4vw", lg: "2vw" }}
                 />
                 <Text
                   fontSize={"4vh"}

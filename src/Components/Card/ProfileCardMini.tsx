@@ -25,7 +25,7 @@ const ProfileCardMini: React.FC<ProfileCardMiniProps> = (props) => {
           <Image
             src={props.imageUrl}
             boxSize={props.size ? props.size : "20px"}
-            objectFit={"cover"}
+            objectFit={"fill"}
             borderRadius={"full"}
             mr={"2"}
             alt={"profile"}

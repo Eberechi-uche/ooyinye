@@ -112,8 +112,8 @@ export default function Home() {
                 articleList.slice(0, 3).map((article, index) => (
                   <Flex key={article.articleID} paddingLeft={"1"}>
                     <Text
-                      fontSize={"5xl"}
-                      fontWeight={"900"}
+                      fontSize={"6xl"}
+                      fontWeight={"600"}
                       color={"whiteAlpha.600"}
                     >
                       {index + 1}

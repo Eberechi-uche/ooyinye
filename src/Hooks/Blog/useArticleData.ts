@@ -1,5 +1,6 @@
 import { Article, articleAtom } from "@/Atoms/ArticleAtom";
 import { authUserAtom } from "@/Atoms/AuthUserAtom";
+import { LikedUserDetails } from "@/Components/Card/LikesCard";
 import { CommentData } from "@/Components/Comments/Comment";
 import { auth, firestore } from "@/Components/Firebase/ClientApp";
 import { useToast } from "@chakra-ui/react";
@@ -80,11 +81,25 @@ export const useArticleData = () => {
   };
 
   // ADD LIKES
-  const likeArticle = async (articleId: string) => {
+  const likeArticle = async (
+    articleId: string,
+    authordDetails: LikedUserDetails
+  ) => {
+    let newLike = false;
     const articleRef = doc(firestore, "Articles", `${articleId}`);
+    const userRef = doc(articleRef, "likes", `${authordDetails.authorId}`);
+    const userDoc = await getDoc(userRef);
+    if (!userDoc.exists()) {
+      setDoc(userRef, {
+        ...authordDetails,
+      });
+      newLike = true;
+    }
+
     updateDoc(articleRef, {
       likes: increment(1),
     });
+    return newLike;
   };
 
   // ADD SAVED ARTICLES
