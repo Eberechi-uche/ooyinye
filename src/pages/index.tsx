@@ -113,7 +113,7 @@ export default function Home() {
                   <Flex key={article.articleID} paddingLeft={"1"}>
                     <Text
                       fontSize={"6xl"}
-                      fontWeight={"600"}
+                      fontWeight={"800"}
                       color={"whiteAlpha.600"}
                     >
                       {index + 1}

@@ -25,17 +25,17 @@ const ProfileCardMini: React.FC<ProfileCardMiniProps> = (props) => {
           <Image
             src={props.imageUrl}
             boxSize={props.size ? props.size : "20px"}
-            objectFit={"fill"}
-            borderRadius={"full"}
+            objectFit={"cover"}
+            borderRadius={"5px"}
             mr={"2"}
             alt={"profile"}
           />
           <Text
-            fontWeight={"thin"}
+            fontWeight={"900"}
             fontSize={"xs"}
-            color={"blackAlpha.600"}
+            color={"blackAlpha.500"}
             textTransform={"uppercase"}
-            fontFamily={"monospace"}
+            // fontFamily={"monospace"}
           >
             {props.displayName}
           </Text>

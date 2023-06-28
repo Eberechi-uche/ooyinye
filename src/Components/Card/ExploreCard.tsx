@@ -15,7 +15,7 @@ const ExploreCard: React.FC<Topic> = (props) => {
   const route = useRouter();
   return (
     <>
-      <Flex width={"100%"} flexDir={"column"} my={"4"}>
+      <Flex width={"100%"} flexDir={"column"} my={"4"} py={"3"}>
         <Image
           alt={"exloreT"}
           src={props.imageUrl}
@@ -42,14 +42,14 @@ const ExploreCard: React.FC<Topic> = (props) => {
             route.push(`/explore/${props.id}`);
           }}
         >
-          <Text>{props.desc}</Text>
+          <Text noOfLines={2}>{props.desc}</Text>
           <Flex align={"center"} color={props.bgColor}>
             <Text>Articles</Text>
 
             <Icon as={PiArrowRightBold} mx={"4"} />
           </Flex>
         </Flex>
-        <Divider />
+        <Divider my={"2"} />
       </Flex>
     </>
   );
