@@ -13,7 +13,6 @@ const baseStyle = definePartsStyle({
   excessLabel: {
     bg: "orange.500",
     color: "white",
-
     borderRadius: "full",
   },
 });
