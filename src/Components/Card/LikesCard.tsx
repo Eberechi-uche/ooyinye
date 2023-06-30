@@ -29,7 +29,7 @@ const LikesCard: React.FC<LikeCardProps> = ({ likesArray, totalLikes }) => {
     <>
       <AvatarGroup
         size="sm"
-        max={3}
+        max={4}
         onClick={() => {
           onOpen();
         }}
