@@ -113,9 +113,9 @@ const ProfileCardLarge: React.FC<ProfileCardLargeProps> = ({
           )}
           {email && (
             <>
-              <Link href={email}>
+              <a href={`mailto: ${email}`} target="_blank">
                 <Icon as={IoMail} />
-              </Link>
+              </a>
             </>
           )}
         </Flex>
