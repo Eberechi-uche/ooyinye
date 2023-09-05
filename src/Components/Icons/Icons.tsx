@@ -238,11 +238,8 @@ export const LikeIcon: React.FC<IconProps & LikeIconsProp> = ({
 
         <Text
           // display={{ base: "none", lg: "flex" }}
-          ml={"3"}
-          border={"1px solid"}
-          borderColor={"gray.300"}
-          borderRadius={"full"}
-          fontSize={"sm"}
+          fontSize={"xs"}
+          fontWeight={"800"}
           px={"2"}
         >
           {value}

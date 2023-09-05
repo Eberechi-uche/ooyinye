@@ -242,12 +242,12 @@ const Post: React.FC = () => {
                     w={{ base: "50%", md: "40%", lg: "20%" }}
                     justify={"space-between"}
                     fontSize={"2xl"}
-                    border={"1px solid"}
+                    border={"2px solid"}
                     px={"3"}
                     py={"2"}
                     alignSelf={"center"}
                     borderRadius={"full"}
-                    borderColor={"gray.200"}
+                    borderColor={"#f2f2f2"}
                     color={"gray.600"}
                   >
                     <LikeIcon
@@ -277,12 +277,12 @@ const Post: React.FC = () => {
                       <Flex
                         justify={"space-between"}
                         fontSize={"2xl"}
-                        border={"1px solid"}
+                        border={"2px solid"}
                         px={"3"}
                         py={"1"}
                         alignSelf={"center"}
                         borderRadius={"full"}
-                        borderColor={"gray.200"}
+                        borderColor={"#f2f2f2"}
                         color={"gray.600"}
                         mx={"2"}
                         minH={"45px"}
