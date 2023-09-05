@@ -56,7 +56,7 @@ const Welcome: React.FC = () => {
   const handleProfileCreation = async () => {
     const imageRef = ref(
       storage,
-      `profilePicture/@${user?.email?.split("@")[0]}/image}`
+      `profilePicture/@${user?.email?.split("@")[0]}/image`
     );
     await uploadString(imageRef, profileImageURL, "data_url");
     const downloardUrl = await getDownloadURL(imageRef);

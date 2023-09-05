@@ -14,9 +14,11 @@ const Navbar: React.FC = () => {
         flexDir={"column"}
         zIndex={"7"}
         color={"black"}
-        bg={"whiteAlpha.800"}
-        borderBottom={"1px solid"}
-        borderColor={"orange.300"}
+        bg={"#fff"}
+        borderBottom={"2px solid"}
+        borderColor={"#f2f2f2"}
+        py={"4"}
+        px={"4"}
       >
         <Flex p={"5px 5px"}>
           <Flex justify={"space-between"} width={"100%"} align={"center"}>

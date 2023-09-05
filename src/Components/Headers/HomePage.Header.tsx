@@ -19,7 +19,7 @@ const HomePageHeader: React.FC = () => {
   }, []);
   return (
     <>
-      <Flex bg={"orange.500"} justify={"center"} py={"40px"}>
+      <Flex justify={"center"} py={"40px"}>
         <Flex
           justify={"center"}
           width={"100%"}
@@ -37,14 +37,14 @@ const HomePageHeader: React.FC = () => {
             <Heading
               fontWeight={"900"}
               fontSize={{
-                base: "50px",
+                base: "70px",
                 md: "",
-                lg: "100px",
+                lg: "120px",
               }}
               bgImage="url('homeTextbg.webp')"
               bgClip="text"
               bgPosition={{
-                base: "top",
+                base: "left",
               }}
               bgSize={"cover"}
             >

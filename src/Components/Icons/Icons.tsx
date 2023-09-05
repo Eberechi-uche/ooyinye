@@ -28,12 +28,20 @@ import {
   PiSquaresFourDuotone,
   PiUserDuotone,
 } from "react-icons/pi";
-import { HiOutlineBookmark } from "react-icons/hi";
+import { HiOutlineBookmark, HiOutlineNewspaper } from "react-icons/hi";
+import { CiBookmark } from "react-icons/ci";
+import {
+  AiOutlineUser,
+  AiOutlineSearch,
+  AiOutlineCompass,
+} from "react-icons/ai";
 import { FcBookmark } from "react-icons/fc";
+import { LuSettings2 } from "react-icons/lu";
 import { useArticleData } from "@/Hooks/Blog/useArticleData";
 import { Article } from "@/Atoms/ArticleAtom";
 import { Topic } from "@/pages/explore";
 import { LikedUserDetails } from "../Card/LikesCard";
+import { BsDashSquare } from "react-icons/bs";
 
 type IconProps = {
   value: string | number | undefined;
@@ -72,7 +80,7 @@ export const SearchIcon: React.FC<IconProps> = ({ value }) => {
         }}
         fontWeight={"600"}
       >
-        <Icon as={PiMagnifyingGlassDuotone} fontSize={"xl"} />
+        <Icon as={AiOutlineSearch} fontSize={"xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}
@@ -117,7 +125,7 @@ export const DraftIcon: React.FC<IconProps> = (props) => {
         }}
         fontWeight={"600"}
       >
-        <Icon as={PiNewspaperFill} fontSize={"2xl"} />
+        <Icon as={HiOutlineNewspaper} fontSize={"2xl"} />
         {props.value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {props.value}
@@ -154,7 +162,7 @@ export const ProfileIcon: React.FC<ProfileProps & IconProps> = ({
           route.push(`/profile/@${userID}`);
         }}
       >
-        <Icon as={PiUserDuotone} fontSize={"xl"} />
+        <Icon as={AiOutlineUser} fontSize={"xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}
@@ -263,7 +271,7 @@ export const DashboardIcon: React.FC<IconProps> = ({ value }) => {
   return (
     <>
       <Flex align={"center"} fontWeight={"600"}>
-        <Icon as={PiSquaresFourBold} fontSize={"xl"} />
+        <Icon as={BsDashSquare} fontSize={"xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}
@@ -285,7 +293,7 @@ export const ProfileSetting: React.FC<IconProps> = ({ value }) => {
           route.push("/profile/profile-setting");
         }}
       >
-        <Icon as={PiNutBold} fontSize={"2xl"} />
+        <Icon as={LuSettings2} fontSize={"2xl"} />
         {value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {value}
@@ -352,11 +360,7 @@ export const AddbookMarkIcon: React.FC<IconProps & Article> = (props) => {
           saveArticle(props);
         }}
       >
-        <Icon
-          as={HiOutlineBookmark}
-          fontSize={props.size}
-          color={"orange.600"}
-        />
+        <Icon as={CiBookmark} fontSize={props.size} />
         {props.value && (
           <Text display={{ base: "none", lg: "flex" }} ml={"3"}>
             {props.value}

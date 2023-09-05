@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Text, Flex, Button, Icon, Input } from "@chakra-ui/react";
+import { Text, Flex, Input } from "@chakra-ui/react";
 import HomePageHeader from "@/Components/Headers/HomePage.Header";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, firestore } from "@/Components/Firebase/ClientApp";
@@ -94,10 +94,10 @@ export default function Home() {
             <Flex
               flexDir={"column"}
               width={"100%"}
-              bg={user ? "green.900" : "orange.500"}
-              color={"#fff"}
+              bg={user ? "#CDD193" : "#f2f2f2"}
+              px={"6"}
             >
-              <Text width={"100%"} fontWeight={"900"} px={"4"}>
+              <Text width={"100%"} fontWeight={"900"} py={"6"}>
                 Top Reads
               </Text>
               {loading && (
@@ -111,11 +111,7 @@ export default function Home() {
               {!loading &&
                 articleList.slice(0, 3).map((article, index) => (
                   <Flex key={article.articleID} paddingLeft={"1"}>
-                    <Text
-                      fontSize={"6xl"}
-                      fontWeight={"800"}
-                      color={"whiteAlpha.600"}
-                    >
+                    <Text fontSize={"2xl"} fontWeight={"600"} my={"5"}>
                       {index + 1}
                     </Text>
                     <PostCard

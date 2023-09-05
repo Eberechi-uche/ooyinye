@@ -17,7 +17,7 @@ const Theme = extendTheme({
     },
   },
   fonts: {
-    heading: `'Source Sans Pro', sans-serif`,
+    heading: `'Cedarville Cursive', sans-serif;`,
     body: `'Source Sans Pro', sans-serif`,
   },
   components: {

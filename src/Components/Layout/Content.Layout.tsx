@@ -17,8 +17,8 @@ const ContentLayout: React.FC<ContentLayoutProps> = ({ children }) => {
             width={"max-content"}
             flexDir={"column"}
             align={"center"}
-            borderRight={"1px solid"}
-            borderColor={"orange.300"}
+            borderRight={"2px solid"}
+            borderColor={"#f2f2f2"}
           >
             {children && children[0 as keyof typeof children]}
           </Flex>
@@ -32,10 +32,11 @@ const ContentLayout: React.FC<ContentLayoutProps> = ({ children }) => {
           </Flex>
           <Flex
             display={{ base: "none", lg: "unset" }}
-            borderColor={"gray.200"}
             minH={"100vh"}
             p={"4"}
             maxW={"400px"}
+            borderLeft={"2px solid"}
+            borderColor={"#f2f2f2"}
           >
             {children && children[2 as keyof typeof children]}
           </Flex>
