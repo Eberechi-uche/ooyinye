@@ -68,6 +68,7 @@ const PostCard: React.FC<PostCardProps & Article> = (props) => {
             objectFit={"cover"}
             alignSelf={"flex-start"}
             loading={"lazy"}
+            borderRadius={"3px"}
           />
         </Flex>
         {profile ? (

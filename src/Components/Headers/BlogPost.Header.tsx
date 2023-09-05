@@ -1,6 +1,7 @@
 import { Flex, Icon, Text, Heading } from "@chakra-ui/react";
 import { CiCircleChevDown } from "react-icons/ci";
 import ProfileCardMini, { ProfileCardMiniProps } from "../Card/ProfileCardMini";
+import { AiOutlineEllipsis } from "react-icons/ai";
 type BlogPostHeaderProps = {
   articleDesc: string;
   articleTitle: string;
@@ -19,9 +20,9 @@ const BlogPostHeader: React.FC<BlogPostHeaderProps & ProfileCardMiniProps> = (
         alignSelf={"center"}
       >
         <Flex flexDir={"column"}>
-          <Heading fontWeight={"900"} fontSize={{ base: "2xl", md: "4xl" }}>
+          <Text fontWeight={"900"} fontSize={{ base: "2xl", md: "4xl" }}>
             {props.articleTitle}
-          </Heading>
+          </Text>
           <Flex color={"blackAlpha.600"} my={"5"} fontWeight={"700"}>
             <Text>{props.articleDesc}</Text>
           </Flex>
@@ -31,6 +32,13 @@ const BlogPostHeader: React.FC<BlogPostHeaderProps & ProfileCardMiniProps> = (
             flexDir={"column"}
             fontSize={"xs"}
           >
+            <Icon
+              as={AiOutlineEllipsis}
+              fontSize={"7xl"}
+              my={"7"}
+              color={"gray.500"}
+              alignSelf={"center"}
+            />
             <ProfileCardMini
               profileId={props.profileId}
               imageUrl={props.imageUrl}
@@ -39,14 +47,6 @@ const BlogPostHeader: React.FC<BlogPostHeaderProps & ProfileCardMiniProps> = (
             />
           </Flex>
         </Flex>
-
-        {/* <Icon
-          as={CiCircleChevDown}
-          fontSize={"5xl"}
-          my={"7"}
-          color={"gray.300"}
-          alignSelf={"center"}
-        /> */}
       </Flex>
     </>
   );

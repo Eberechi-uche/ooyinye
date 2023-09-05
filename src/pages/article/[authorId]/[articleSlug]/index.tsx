@@ -14,6 +14,7 @@ import {
   SimpleGrid,
   Avatar,
   AvatarGroup,
+  Icon,
 } from "@chakra-ui/react";
 import Head from "next/head";
 import BlogPostHeader from "@/Components/Headers/BlogPost.Header";
@@ -45,6 +46,7 @@ import { Draft } from "@/Atoms/DraftAtom";
 import { useArticleData } from "@/Hooks/Blog/useArticleData";
 import { useProfileData } from "@/Hooks/Profile/useProfileData";
 import LikesCard, { LikedUserDetails } from "@/Components/Card/LikesCard";
+import { AiOutlineEllipsis } from "react-icons/ai";
 
 const Post: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -212,6 +214,7 @@ const Post: React.FC = () => {
               />
 
               <Image alt={"imageName"} src={article.articleThumbnail} />
+
               <Flex
                 width={"100%"}
                 align={"center"}
@@ -233,6 +236,7 @@ const Post: React.FC = () => {
                 <Flex flexDir={"column"} my={"10"}>
                   <BlogParser content={article.articleContent} />
                 </Flex>
+
                 <Flex width={"100%"} px={"2"} my={"3"}>
                   <Flex
                     w={{ base: "50%", md: "40%", lg: "20%" }}
@@ -291,7 +295,13 @@ const Post: React.FC = () => {
                     )}
                   </>
                 </Flex>
-
+                <Icon
+                  as={AiOutlineEllipsis}
+                  fontSize={"7xl"}
+                  my={"7"}
+                  color={"gray.500"}
+                  alignSelf={"center"}
+                />
                 <Flex
                   flexDir={"column"}
                   mt={"10"}
@@ -331,7 +341,7 @@ const Post: React.FC = () => {
                       ))}
                   </SimpleGrid>
                 </Flex>
-                <Flex
+                {/* <Flex
                   flexDir={"column"}
                   width={"100%"}
                   align={"center"}
@@ -344,14 +354,14 @@ const Post: React.FC = () => {
                     columns={{ base: 1, md: 2 }}
                     placeItems={"center"}
                   >
-                    {/* <PostcardLarge showProfile={true} />
                     <PostcardLarge showProfile={true} />
                     <PostcardLarge showProfile={true} />
                     <PostcardLarge showProfile={true} />
                     <PostcardLarge showProfile={true} />
-                    <PostcardLarge showProfile={true} /> */}
+                    <PostcardLarge showProfile={true} />
+                    <PostcardLarge showProfile={true} />
                   </SimpleGrid>
-                </Flex>
+                </Flex> */}
               </Flex>
             </>
           )}

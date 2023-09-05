@@ -17,7 +17,7 @@ const Navbar: React.FC = () => {
         bg={"#fff"}
         borderBottom={"2px solid"}
         borderColor={"#f2f2f2"}
-        py={"4"}
+        py={"2"}
         px={"4"}
       >
         <Flex p={"5px 5px"}>
