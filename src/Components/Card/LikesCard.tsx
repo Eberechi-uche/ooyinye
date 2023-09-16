@@ -28,11 +28,14 @@ const LikesCard: React.FC<LikeCardProps> = ({ likesArray, totalLikes }) => {
   return (
     <>
       <AvatarGroup
-        size="sm"
+        size="2xs"
         max={4}
         onClick={() => {
           onOpen();
         }}
+        fontSize={"small"}
+        spacing={"-0.5"}
+        fontWeight={"900"}
       >
         {likesArray.map((like) => (
           <Avatar

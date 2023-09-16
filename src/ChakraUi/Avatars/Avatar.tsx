@@ -8,12 +8,12 @@ const baseStyle = definePartsStyle({
   // define the part you're going to style
 
   container: {
-    borderColor: "orange.500",
+    border: "none",
   },
   excessLabel: {
-    bg: "orange.500",
-    color: "white",
-    borderRadius: "full",
+    color: "#000",
+    border: "none",
+    bg: "none",
   },
 });
 

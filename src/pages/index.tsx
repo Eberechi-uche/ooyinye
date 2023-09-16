@@ -94,7 +94,8 @@ export default function Home() {
             <Flex
               flexDir={"column"}
               width={"100%"}
-              bg={user ? "#CDD193" : "#f2f2f2"}
+              bg={user ? "#fff" : "orange.600"}
+              color={user ? "" : "orange.600"}
               px={"6"}
             >
               <Text width={"100%"} fontWeight={"900"} py={"6"}>
@@ -111,8 +112,8 @@ export default function Home() {
               {!loading &&
                 articleList.slice(0, 3).map((article, index) => (
                   <Flex key={article.articleID} paddingLeft={"1"}>
-                    <Text fontSize={"2xl"} fontWeight={"600"} my={"5"}>
-                      {index + 1}
+                    <Text fontSize={"2xl"} fontWeight={"700"} my={"5"}>
+                      0{index + 1}
                     </Text>
                     <PostCard
                       articleSlug={article.articleSlug}

@@ -36,7 +36,6 @@ const ProfileCardMini: React.FC<ProfileCardMiniProps> = (props) => {
             fontSize={"xs"}
             color={"blackAlpha.500"}
             textTransform={"uppercase"}
-            fontFamily={"monospace"}
           >
             {props.displayName}
           </Text>

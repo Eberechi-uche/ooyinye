@@ -34,9 +34,9 @@ const BlogPostHeader: React.FC<BlogPostHeaderProps & ProfileCardMiniProps> = (
           >
             <Icon
               as={AiOutlineEllipsis}
-              fontSize={"7xl"}
+              fontSize={"4xl"}
               my={"7"}
-              color={"gray.500"}
+              color={"#f2f2f2"}
               alignSelf={"center"}
             />
             <ProfileCardMini

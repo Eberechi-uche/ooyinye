@@ -64,7 +64,6 @@ const ProfileCardLarge: React.FC<ProfileCardLargeProps> = ({
           route.push(`/profile/${userId}`);
         }}
         color={"blackAlpha.800"}
-        fontFamily={"monospace"}
         cursor={"pointer"}
       >
         <Flex justify={"space-between"} width={"100%"}>
@@ -79,7 +78,7 @@ const ProfileCardLarge: React.FC<ProfileCardLargeProps> = ({
               alt={"profile"}
             />
             <Text
-              fontWeight={"900"}
+              fontWeight={"600"}
               textTransform={"uppercase"}
               color={"orange.700"}
             >
