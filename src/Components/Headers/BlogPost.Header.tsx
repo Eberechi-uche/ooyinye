@@ -17,18 +17,14 @@ const BlogPostHeader: React.FC<BlogPostHeaderProps & ProfileCardMiniProps> = (
         p={"4"}
         textAlign={"left"}
         mb={"5"}
-        // bg={"olivedrab"}
         alignSelf={"center"}
       >
         <Flex flexDir={"column"}>
-          <Text
-            fontWeight={"700"}
-            fontSize={{ base: "2xl", md: "4xl" }}
-            color={"#000"}
-          >
+          <Text fontWeight={"600"} fontSize={{ base: "2xl", md: "4xl" }}>
             {props.articleTitle}
           </Text>
-          <Flex color={"#CCCDC6"} my={"5"} fontWeight={"700"}>
+          <Flex h={"2px"} w={"100%"} bg={"red.600"} />
+          <Flex my={"5"} fontWeight={"600"} color={"blackAlpha.500"}>
             <Text>{props.articleDesc}</Text>
           </Flex>
           <Flex

@@ -91,14 +91,13 @@ export default function Home() {
           </>
           <>
             <HomeNavFooter />
-            <Flex
-              flexDir={"column"}
-              width={"100%"}
-              bg={user ? "#fff" : "orange.600"}
-              color={user ? "" : "orange.600"}
-              px={"6"}
-            >
-              <Text width={"100%"} fontWeight={"900"} py={"6"}>
+            <Flex flexDir={"column"} width={"100%"} px={"6"}>
+              <Text
+                width={"100%"}
+                fontWeight={"600"}
+                py={"6"}
+                color={"red.600"}
+              >
                 Top Reads
               </Text>
               {loading && (
@@ -110,9 +109,14 @@ export default function Home() {
                 </>
               )}
               {!loading &&
-                articleList.slice(0, 3).map((article, index) => (
-                  <Flex key={article.articleID} paddingLeft={"1"}>
-                    <Text fontSize={"2xl"} fontWeight={"700"} my={"5"}>
+                articleList.slice(0, 4).map((article, index) => (
+                  <Flex key={article.articleID} w={"100%"}>
+                    <Text
+                      fontSize={"2xl"}
+                      fontWeight={"600"}
+                      my={"5"}
+                      color={"red.600"}
+                    >
                       0{index + 1}
                     </Text>
                     <PostCard
@@ -140,7 +144,9 @@ export default function Home() {
                 align={"center"}
                 px={"4"}
               >
-                <Text fontWeight={"900"}>For you</Text>
+                <Text fontWeight={"600"} color={"red.600"}>
+                  For you
+                </Text>
                 <Link href={"/search"}>
                   <Flex
                     align={"center"}

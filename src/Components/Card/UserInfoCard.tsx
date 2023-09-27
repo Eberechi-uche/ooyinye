@@ -26,8 +26,8 @@ export const UserInfoCard: React.FC<ProfileCardMiniProps> = (props) => {
               borderRadius={"full"}
             />
             <Text
-              textTransform={"capitalize"}
-              fontWeight={"700"}
+              textTransform={"uppercase"}
+              fontWeight={"600"}
               ml={"2"}
               fontSize={"sm"}
             >

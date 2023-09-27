@@ -19,48 +19,35 @@ const HomePageHeader: React.FC = () => {
   }, []);
   return (
     <>
-      <Flex justify={"center"} py={"40px"}>
+      <Flex justify={"center"} py={"40px"} bg={"red.700"}>
         <Flex
           justify={"center"}
           width={"100%"}
           px={"20px"}
           py={"40px"}
-          color={"white"}
           maxW={"1300px"}
+          align={"center"}
+          color={"white"}
         >
           <Flex
+            w={{
+              base: "70%",
+              md: "65%",
+              lg: "50%",
+            }}
             flexDir={"column"}
-            width={{ base: "100%", lg: "50%" }}
-            justify={"center"}
-            textAlign={{ base: "center", lg: "start" }}
+            textAlign={"center"}
           >
-            <Heading
-              fontWeight={"900"}
+            <Text
               fontSize={{
-                base: "70px",
-                md: "",
-                lg: "120px",
+                base: "3xl",
+                lg: "6xl",
               }}
-              bgImage="url('homeTextbg.webp')"
-              bgClip="text"
-              bgPosition={{
-                base: "left",
-              }}
-              bgSize={"cover"}
+              fontWeight={"700"}
             >
-              Be On The <br />
-              Know.
-            </Heading>
-            <Flex
-              flexDir={"column"}
-              // display={"absolute"}
-
-              width={"100%"}
-            >
-              <Text my={"5"}>
-                Create, Read, content that inspires you, <br /> Unleash Yourself
-                to the world Today!
-              </Text>
+              Create, read, and connect
+            </Text>
+            <Flex w={"100%"} my={"4"} justify={"center"}>
               <Button
                 onClick={() => {
                   setAuthModalView({
@@ -68,49 +55,13 @@ const HomePageHeader: React.FC = () => {
                     open: true,
                   });
                 }}
-                border={"2px solid "}
-                color={"offwhite"}
-                variant={"solid"}
-                _hover={{
-                  bg: "green.900",
-                  width: {
-                    base: "60%",
-                    md: "35%",
-                    lg: "30%",
-                  },
-                }}
-                bg={"orange.500"}
-                transition={"all 0.5s ease-in-out"}
-                display={"flex"}
-                justifyContent={"space-between"}
-                width={{
-                  base: "50%",
-                  md: "30%",
-                  lg: "25%",
-                }}
-                alignSelf={{
-                  base: "center",
-                  lg: "flex-start",
-                }}
+                w={"50%"}
+                color={"white"}
+                colorScheme={"whiteAlpha"}
               >
-                Get started
-                <Icon as={BsArrowRight} ml={"2"} />
+                get started
               </Button>
             </Flex>
-          </Flex>
-
-          <Flex
-            width={"50%"}
-            height={"100%"}
-            display={{ base: "none", lg: "block" }}
-          >
-            <Image
-              src={"headerHomeImage.gif"}
-              alt={"homepageImage"}
-              objectFit={"contain"}
-              width={"100%"}
-              height={"100%"}
-            />
           </Flex>
         </Flex>
       </Flex>

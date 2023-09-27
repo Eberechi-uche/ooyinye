@@ -17,17 +17,13 @@ const PostcardLarge: React.FC<
   return (
     <>
       <Flex width={"85%"} borderColor={"gray.50"} flexDir={"column"} my={"5"}>
-        <Flex
-          maxH={"170px"}
-          minH={"170px"}
-          width={"100%"}
-          position={"relative"}
-          mb={"2"}
-        >
+        <Flex width={"100%"} position={"relative"} mb={"2"}>
           <Image
             src={props.articleThumbnail}
             objectFit={"cover"}
             width={"100%"}
+            h={"100%"}
+            maxH={"200px"}
             alt={"user-profile"}
             borderRadius={"2px"}
             loading={"lazy"}
@@ -47,7 +43,7 @@ const PostcardLarge: React.FC<
           }}
         >
           <Text
-            fontWeight={"900"}
+            fontWeight={"600"}
             textTransform={"capitalize"}
             my={"2"}
             fontSize={"lg"}
@@ -67,7 +63,7 @@ const PostcardLarge: React.FC<
           >
             <Flex
               fontSize={"xs"}
-              fontWeight={"900"}
+              fontWeight={"600"}
               textTransform={"uppercase"}
               color={"blackAlpha.600"}
             >

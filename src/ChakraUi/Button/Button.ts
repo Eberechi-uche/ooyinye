@@ -11,10 +11,11 @@ const outline = defineStyle({
   },
 });
 const solid = defineStyle({
-  borderRadius: 100,
+  borderRadius: "full",
   fontWeight: "semibold",
   color: "black",
   colorScheme: "blackAlpha",
+  textTransform: "capitalize",
 });
 const brandPrimary = defineStyle({
   background: "black",

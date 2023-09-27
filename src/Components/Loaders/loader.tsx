@@ -10,11 +10,11 @@ export const ArticleLoaders: React.FC = () => {
   return (
     <>
       <Flex flexDir={"column"} px={"4"} my={"4"} width={"100%"}>
-        <Flex flexDir={"column"}>
-          <SkeletonText mt="4" noOfLines={3} spacing="4" skeletonHeight="2" />
-        </Flex>
         <Flex align={"center"} my={"2"}>
           <SkeletonCircle size={"7"} />
+        </Flex>
+        <Flex flexDir={"column"}>
+          <SkeletonText mt="4" noOfLines={3} spacing="4" skeletonHeight="2" />
         </Flex>
       </Flex>
     </>
@@ -24,10 +24,10 @@ export const PageContent: React.FC = () => {
   return (
     <>
       <Flex flexDir={"column"} px={"1"} my={"4"}>
-        <Skeleton height={"70vh"} />
+        <Skeleton height={"50vh"} />
 
         <Flex flexDir={"column"}>
-          <SkeletonText mt="4" noOfLines={10} spacing="4" skeletonHeight="2" />
+          <SkeletonText mt="4" noOfLines={5} spacing="4" skeletonHeight="2" />
         </Flex>
       </Flex>
     </>

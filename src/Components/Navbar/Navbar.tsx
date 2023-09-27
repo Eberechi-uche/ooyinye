@@ -23,21 +23,9 @@ const Navbar: React.FC = () => {
         <Flex p={"5px 5px"}>
           <Flex justify={"space-between"} width={"100%"} align={"center"}>
             <Link href={"/"}>
-              <Flex align={"center"}>
-                <Image
-                  src={"/favicon.ico"}
-                  alt={"logo"}
-                  objectFit={"contain"}
-                  boxSize={{ base: "7vw", md: "4vw", lg: "2vw" }}
-                />
-                <Text
-                  fontSize={"4vh"}
-                  display={{ base: "none", md: "block" }}
-                  fontWeight={"700"}
-                >
-                  ònyìnyé
-                </Text>
-              </Flex>
+              <Text fontWeight={"700"} fontSize={"sm"} color={"red.600"}>
+                òonyìnyé
+              </Text>
             </Link>
             <Flex
               width={{ base: "50%", md: "30%" }}
@@ -45,7 +33,7 @@ const Navbar: React.FC = () => {
               cursor={"pointer"}
               align={"center"}
             >
-              <Text
+              {/* <Text
                 fontWeight={"900"}
                 fontSize={{ base: "sm", md: "md" }}
                 _hover={{
@@ -58,12 +46,12 @@ const Navbar: React.FC = () => {
                     fontWeight: "200",
                   }}
                 >
-                  meet {""}
+                  meet 
                 </span>
                 Oònyìnyé
-              </Text>
-              <NavRightContent user={user} />
+              </Text> */}
             </Flex>
+            <NavRightContent user={user} />
           </Flex>
         </Flex>
       </Flex>

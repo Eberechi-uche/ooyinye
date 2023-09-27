@@ -200,8 +200,14 @@ const Post: React.FC = () => {
         <meta property="article:section" content="introduction" />
       </Head>
       <SingleContentLayout>
-        <Flex pos={"relative"} flexDir={"column"} width={"100%"}>
+        <Flex pos={"relative"} flexDir={"column"} width={"100%"} py={"6"}>
           {loading && <PageContent />}
+          {!loading && !currentArticle.articleDesc && (
+            <Text>
+              Unable to retrieve article, article might have been deleted by
+              author
+            </Text>
+          )}
           {!loading && currentArticle.articleDesc && (
             <>
               <BlogNavFooter onOpen={onOpen} />
