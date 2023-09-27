@@ -7,6 +7,12 @@ import "@fontsource/source-sans-pro/600.css";
 import "@fontsource/source-sans-pro/700.css";
 import "@fontsource/source-sans-pro/900.css";
 import "@fontsource/cedarville-cursive";
+import "@fontsource/source-serif-pro/200.css";
+import "@fontsource/source-serif-pro/300.css";
+import "@fontsource/source-serif-pro/400.css";
+import "@fontsource/source-serif-pro/600.css";
+import "@fontsource/source-serif-pro/700.css";
+import "@fontsource/source-serif-pro/900.css";
 // Supports weights 100-900
 import "@fontsource-variable/inter";
 // Supports weights 100-900
