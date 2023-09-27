@@ -69,6 +69,7 @@ const PostCard: React.FC<PostCardProps & Article> = (props) => {
             alignSelf={"flex-start"}
             loading={"lazy"}
             borderRadius={"3px"}
+            fallbackSrc="public/placeholder.jpeg"
           />
         </Flex>
         {profile ? (
