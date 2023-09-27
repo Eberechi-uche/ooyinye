@@ -4,11 +4,15 @@ import { ProfileCardMiniProps } from "./ProfileCardMini";
 import { useRecoilState } from "recoil";
 import { authUserAtom } from "@/Atoms/AuthUserAtom";
 import { useProfileData } from "@/Hooks/Profile/useProfileData";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../Firebase/ClientApp";
 
 export const UserInfoCard: React.FC<ProfileCardMiniProps> = (props) => {
   const [userState] = useRecoilState(authUserAtom);
+  const [user] = useAuthState(auth);
 
   const { onClickFollow, loading } = useProfileData();
+  console.log(props.displayName, user?.displayName);
   const isFollowing = userState.following.find((user) => {
     return user.userId === props.profileId;
   });
@@ -26,7 +30,7 @@ export const UserInfoCard: React.FC<ProfileCardMiniProps> = (props) => {
               borderRadius={"full"}
             />
             <Text
-              textTransform={"uppercase"}
+              textTransform={"capitalize"}
               fontWeight={"600"}
               ml={"2"}
               fontSize={"sm"}

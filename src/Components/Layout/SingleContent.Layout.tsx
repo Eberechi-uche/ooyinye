@@ -9,12 +9,12 @@ const SingleContentLayout: React.FC<SingleContentLayoutProps> = ({
   return (
     <>
       <Flex justify={"center"}>
-        <Flex justify={"center"} width={"100%"} maxWidth={"1300px"}>
+        <Flex justify={"center"} width={"100%"} maxWidth={"1300px"} h={"100%"}>
           <Flex
             direction={"column"}
-            width={{ base: "100%", lg: "65%" }}
+            width={{ base: "100%", lg: "70%" }}
             pos={"relative"}
-            h={"100vh"}
+            minH={"100vh"}
           >
             {children}
           </Flex>

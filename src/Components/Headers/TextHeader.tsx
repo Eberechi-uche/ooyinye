@@ -6,9 +6,9 @@ const TextHeader: React.FC<HeadTextProps> = ({ text }) => {
   return (
     <>
       <Text
-        fontSize={"3xl"}
-        fontWeight={"900"}
-        textTransform={"uppercase"}
+        fontSize={"md"}
+        fontWeight={"500"}
+        textTransform={"capitalize"}
         textAlign={"left"}
       >
         {text}

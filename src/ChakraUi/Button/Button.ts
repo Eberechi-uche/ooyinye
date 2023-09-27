@@ -6,16 +6,23 @@ const outline = defineStyle({
   fontWeight: "semibold",
   color: "black",
   _hover: {
-    color: "#fff",
+    color: "#fafafa",
     bg: "black",
+    border: "2px solid",
+    borderColor: "#000",
   },
 });
 const solid = defineStyle({
   borderRadius: "full",
   fontWeight: "semibold",
-  color: "black",
-  colorScheme: "blackAlpha",
+  color: "#fafafa",
+  background: "#000",
+
   textTransform: "capitalize",
+  _hover: {
+    bg: "#fafafa",
+    color: "black",
+  },
 });
 const brandPrimary = defineStyle({
   background: "black",

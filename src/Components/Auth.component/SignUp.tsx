@@ -95,7 +95,7 @@ const SignUp: React.FC = () => {
           <Flex fontSize={"xs"} color={"red.400"}>
             {error && (
               <Text>
-                {FIREBASE_ERROR[error.message as keyof typeof FIREBASE_ERROR]}
+                {FIREBASE_ERROR[error.code as keyof typeof FIREBASE_ERROR]}
               </Text>
             )}
             {userError && <Text> {userError}</Text>}

@@ -42,6 +42,7 @@ const CommentsComponent: React.FC<CommentsComponentProps> = (props) => {
       text: userComment,
     };
     addComment(props.articleID, comment);
+    setUserComment("");
     setAllComments((prev) => [...prev, comment]);
   };
 
@@ -145,12 +146,13 @@ const CommentHeader: React.FC<CommentHeaderProps> = (props) => {
     <>
       <Flex
         flexDir={"column"}
-        border={"1px solid"}
+        border={"1.5px solid"}
         borderColor={"gray.200"}
-        borderRadius={"5px"}
+        borderRadius={"16px"}
         maxW={"100%"}
+        px={"2"}
       >
-        <Flex width={"100%"} my={"2"} px={"2"}>
+        <Flex width={"100%"} my={"2"}>
           <Image
             alt={"profile-Image"}
             src={props.profileImage}
@@ -158,16 +160,16 @@ const CommentHeader: React.FC<CommentHeaderProps> = (props) => {
             borderRadius={"full"}
             objectFit={"cover"}
           />
-          <Text fontWeight={"600"} ml={"2"}>
+          {/* <Text fontWeight={"600"} ml={"2"}>
             {props.profileDN}
-          </Text>
+          </Text> */}
         </Flex>
         <Textarea
+          px={"0"}
           value={props.value}
           onChange={handleChange}
-          fontSize={"sm"}
           placeholder={"comment..."}
-          fontWeight={"600"}
+          fontWeight={"400"}
           _placeholder={{
             fontSize: "xs",
             fontWeight: "600",
@@ -178,7 +180,7 @@ const CommentHeader: React.FC<CommentHeaderProps> = (props) => {
       </Flex>
       <Flex my={"1"} justify={"flex-end"}>
         <Button
-          variant={"outline"}
+          variant={"brandPrimary"}
           isDisabled={props.value.length <= 0}
           onClick={props.handleSend}
           isLoading={props.loading}

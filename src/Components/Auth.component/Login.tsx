@@ -66,7 +66,7 @@ const Login: React.FC = () => {
         />
         {error && (
           <Text color={"red.700"} fontSize={"sm"} pb={"2"}>
-            {FIREBASE_ERROR[error.message as keyof typeof FIREBASE_ERROR]}
+            {FIREBASE_ERROR[error.code as keyof typeof FIREBASE_ERROR]}
           </Text>
         )}
         {loading ? (

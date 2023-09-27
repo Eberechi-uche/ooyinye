@@ -322,10 +322,7 @@ const Post: React.FC = () => {
                     userId={profileDetails.userId}
                     twitter={profileDetails.twitter}
                   />
-                  <SimpleGrid
-                    columns={{ base: 1, md: 2 }}
-                    placeItems={"center"}
-                  >
+                  <SimpleGrid columns={[1, 2, 3]} placeItems={"center"}>
                     {!loading &&
                       profileArticles.map((article, index) => (
                         <PostcardLarge
