@@ -6,10 +6,11 @@ const TextHeader: React.FC<HeadTextProps> = ({ text }) => {
   return (
     <>
       <Text
-        fontSize={"md"}
+        fontSize={"lg"}
         fontWeight={"500"}
         textTransform={"capitalize"}
         textAlign={"left"}
+        p={"6"}
       >
         {text}
       </Text>
