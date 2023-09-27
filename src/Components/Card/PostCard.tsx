@@ -55,7 +55,7 @@ const PostCard: React.FC<PostCardProps & Article> = (props) => {
             height={"fit-content"}
             width={"70%"}
           >
-            <Text fontWeight={"600"} noOfLines={[3, 4]} fontSize={"md"}>
+            <Text fontWeight={"700"} noOfLines={[3, 4]} fontSize={"md"}>
               {props.articleTitle}
             </Text>
           </Flex>
@@ -63,7 +63,7 @@ const PostCard: React.FC<PostCardProps & Article> = (props) => {
           <Image
             alt={"postImage"}
             src={props.articleThumbnail}
-            width={{ base: "70px", md: "15%" }}
+            width={{ base: "70px", md: "20%" }}
             height={{ base: "50px", md: "70px" }}
             objectFit={"cover"}
             alignSelf={"flex-start"}

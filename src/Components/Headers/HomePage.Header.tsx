@@ -31,21 +31,35 @@ const HomePageHeader: React.FC = () => {
         >
           <Flex
             w={{
-              base: "70%",
-              md: "65%",
-              lg: "50%",
+              base: "100%",
+              md: "75%",
+              lg: "65%",
             }}
             flexDir={"column"}
             textAlign={"center"}
           >
             <Text
               fontSize={{
-                base: "3xl",
-                lg: "6xl",
+                base: "xl",
+                md: "4xl",
+                lg: "5xl",
               }}
-              fontWeight={"700"}
+              fontWeight={"600"}
             >
-              Create, read, and connect
+              Unite ✊🏾, craft 🖋️, share and inspire.
+              <br />
+              Be part of the storytelling revolution.
+            </Text>
+            <Text
+              fontSize={{
+                base: "sm",
+                md: "lg",
+                lg: "xl",
+              }}
+              fontWeight={"300"}
+            >
+              explore diverse Perspective and collaborate <br /> seamlessly on
+              your journey through words
             </Text>
             <Flex w={"100%"} my={"4"} justify={"center"}>
               <Button

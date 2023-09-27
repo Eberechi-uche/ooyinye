@@ -7,7 +7,7 @@ const TextHeader: React.FC<HeadTextProps> = ({ text }) => {
     <>
       <Text
         fontSize={"lg"}
-        fontWeight={"500"}
+        fontWeight={"700"}
         textTransform={"capitalize"}
         textAlign={"left"}
         p={"6"}
